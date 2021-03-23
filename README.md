@@ -12,8 +12,7 @@
 
 <br>
 
-# 지하철 노선도 미션
-[ATDD 강의](https://edu.nextstep.camp/c/R89PYi5H) 실습을 위한 지하철 노선도 애플리케이션
+# 인프라공방 샘플 서비스 - 지하철 노선도
 
 <br>
 
@@ -37,18 +36,3 @@ npm run dev
 ./gradlew bootRun
 ```
 <br>
-
-## ✏️ Code Review Process
-[텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
-
-<br>
-
-## 🐞 Bug Report
-
-버그를 발견한다면, [Issues](https://github.com/next-step/atdd-subway-service/issues) 에 등록해주세요 :)
-
-<br>
-
-## 📝 License
-
-This project is [MIT](https://github.com/next-step/atdd-subway-service/blob/master/LICENSE.md) licensed.
