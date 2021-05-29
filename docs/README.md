@@ -18,7 +18,8 @@
         * **Name : enemfk777-admin-subnet-01 IPv4 CIDR : 192.168.2.160/27**
 - [X] Internet Gateway 연결
     * **Name : enemfk777-internet-gateway VPC : enemfk777-vpc-01**
-- [ ] Route Table 생성
+- [X] Route Table 생성
+    * **Name : enemfk777-internet-gateway-routing-table 연결 : private subnet을 제외한 전부**
 - [ ] Security Group 설정
     - [ ] 외부망
         * 전체 대역 : 443 포트 오픈
