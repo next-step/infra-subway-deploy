@@ -38,7 +38,9 @@
         * **ap-northeast-2b 가용역역에서 t2.micro 생성이 안되어서 public-02를 2c로 옮김**
     - [X] 내부망에 데이터베이스용도의 EC2 생성
         * **Name : enemfk777-ec2-private-01**
-    - [ ] 관리망에 베스쳔 서버용도의 EC2 생성
+    - [X] 관리망에 베스쳔 서버용도의 EC2 생성
+        * **Name : enemfk777-ec2-admin-01**
+        * **ap-northeast-2d 가용역역에서 t2.micro 생성이 안되어서 public-02를 2a로 옮김**
     - [ ] 베스쳔 서버에 Session Timeout 600s 설정
     - [ ] 베스쳔 서버에 Command 감사로그 설정
 
