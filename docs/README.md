@@ -25,9 +25,10 @@
         * 전체 대역 : 443 포트 오픈
         * 관리망 : 22번 포트 오픈
             * **Name : enemfk777-security-group-public**
-    - [ ] 내부망
+    - [X] 내부망
         * 외부망 : 3306 포트 오픈
         * 관리망 : 22번 포트 오픈
+            * **Name : enemfk777-security-group-private**
     - [ ] 관리망
         * 자신의 공인 IP : 22번 포트 오픈
 - [ ] 서버 생성
