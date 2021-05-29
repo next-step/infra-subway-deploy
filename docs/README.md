@@ -48,7 +48,20 @@
         export HISTTIMEFORMAT
         export TMOUT=600              ## 세션 타임아웃 설정
         ```
-    - [ ] 베스쳔 서버에 Command 감사로그 설정
+    - [X] 베스쳔 서버에 Command 감사로그 설정
+        ```shell
+        #sudo vi ~/.bashrc
+        tty=`tty | awk -F"/dev/" '{print $2}'`
+        IP=`w | grep "$tty" | awk '{print $3}'`
+        export PROMPT_COMMAND='logger -p local0.debug "[USER]$(whoami) [IP]$IP [PID]$$ [PWD]`pwd` [COMMAND] $(history 1 | sed "s/^[ ]*[0-9]\+[ ]*//" )"'
+        ```
+        ```shell
+        #sudo vi /etc/rsyslog.d/50-default.conf
+        local0.*                        /var/log/command.log
+        # 원격지에 로그를 남길 경우
+        local0.*                        @원격지서버IP
+        #sudo service rsyslog restart
+        ```
 
 ### 웹 애플리케이션 배포
 - [ ] 외부망에 웹 애플리케이션을 배포
