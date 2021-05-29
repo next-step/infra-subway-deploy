@@ -21,9 +21,10 @@
 - [X] Route Table 생성
     * **Name : enemfk777-internet-gateway-routing-table 연결 : private subnet을 제외한 전부**
 - [ ] Security Group 설정
-    - [ ] 외부망
+    - [X] 외부망
         * 전체 대역 : 443 포트 오픈
         * 관리망 : 22번 포트 오픈
+            * **Name : enemfk777-security-group-public**
     - [ ] 내부망
         * 외부망 : 3306 포트 오픈
         * 관리망 : 22번 포트 오픈
