@@ -41,7 +41,13 @@
     - [X] 관리망에 베스쳔 서버용도의 EC2 생성
         * **Name : enemfk777-ec2-admin-01**
         * **ap-northeast-2d 가용역역에서 t2.micro 생성이 안되어서 public-02를 2a로 옮김**
-    - [ ] 베스쳔 서버에 Session Timeout 600s 설정
+    - [X] 베스쳔 서버에 Session Timeout 600s 설정
+        ```shell
+        ##추가
+        HISTTIMEFORMAT="%F %T -- "    ## history 명령 결과에 시간값 추가
+        export HISTTIMEFORMAT
+        export TMOUT=600              ## 세션 타임아웃 설정
+        ```
     - [ ] 베스쳔 서버에 Command 감사로그 설정
 
 ### 웹 애플리케이션 배포
