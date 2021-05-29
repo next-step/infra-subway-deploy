@@ -33,7 +33,9 @@
         * 자신의 공인 IP : 22번 포트 오픈
             * **Name : enemfk777-security-group-admin**
 - [ ] 서버 생성
-    - [ ] 외부망에 웹 서비스용도의 EC2 생성
+    - [X] 외부망에 웹 서비스용도의 EC2 생성
+      * **Name : enemfk777-ec2-public-01, enemfk777-ec2-public-02**
+      * **ap-northeast-2b 가용역역에서 t2.micro 생성이 안되어서 public-02를 2c로 옮김**
     - [ ] 내부망에 데이터베이스용도의 EC2 생성
     - [ ] 관리망에 베스쳔 서버용도의 EC2 생성
     - [ ] 베스쳔 서버에 Session Timeout 600s 설정
