@@ -16,7 +16,8 @@
         * **Name : enemfk777-private-subnet-01 IPv4 CIDR : 192.168.2.128/27**
     - [X] 관리용으로 사용할 Subnet : 32개씩 1개
         * **Name : enemfk777-admin-subnet-01 IPv4 CIDR : 192.168.2.160/27**
-- [ ] Internet Gateway 연결
+- [X] Internet Gateway 연결
+    * **Name : enemfk777-internet-gateway VPC : enemfk777-vpc-01**
 - [ ] Route Table 생성
 - [ ] Security Group 설정
     - [ ] 외부망
