@@ -20,7 +20,7 @@
     * **Name : enemfk777-internet-gateway VPC : enemfk777-vpc-01**
 - [X] Route Table 생성
     * **Name : enemfk777-internet-gateway-routing-table 연결 : private subnet을 제외한 전부**
-- [ ] Security Group 설정
+- [X] Security Group 설정
     - [X] 외부망
         * 전체 대역 : 443 포트 오픈
         * 관리망 : 22번 포트 오픈
@@ -29,8 +29,9 @@
         * 외부망 : 3306 포트 오픈
         * 관리망 : 22번 포트 오픈
             * **Name : enemfk777-security-group-private**
-    - [ ] 관리망
+    - [X] 관리망
         * 자신의 공인 IP : 22번 포트 오픈
+            * **Name : enemfk777-security-group-admin**
 - [ ] 서버 생성
     - [ ] 외부망에 웹 서비스용도의 EC2 생성
     - [ ] 내부망에 데이터베이스용도의 EC2 생성
