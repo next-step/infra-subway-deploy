@@ -44,10 +44,16 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
-
+    * public subnet (외부망으로 사용할 Subnet)
+        * **Name : enemfk777-public-subnet-01 IPv4 CIDR : 192.168.2.0/26**
+        * **Name : enemfk777-public-subnet-02 IPv4 CIDR : 192.168.2.64/26**
+    * private subnet (내부망으로 사용할 Subnet)
+        * **Name : enemfk777-private-subnet-01 IPv4 CIDR : 192.168.2.128/27**
+    * admin subnet  (관리용으로 사용할 Subnet)
+        * **Name : enemfk777-admin-subnet-01 IPv4 CIDR : 192.168.2.160/27**
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : //TODO : 리뷰어님께 질문할 내용을 먼저 질문 드리고 진행
 
 3. 베스천 서버에 접속을 위한 pem키는 리뷰어에게 DM으로 공유해주세요
 
