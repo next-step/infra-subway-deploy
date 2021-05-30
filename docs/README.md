@@ -64,5 +64,9 @@
         ```
 
 ### 웹 애플리케이션 배포
-- [ ] 외부망에 웹 애플리케이션을 배포
+- [x] 외부망에 웹 애플리케이션을 배포
+    * ```shell
+        #infra-subway-deploy 디렉토리 내부에서
+        nohup java -Djava.security.egd=file:/dev/./urandom -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar 1>~/applog.log 2>&1 &
+        ```
 - [ ] DNS 설정
