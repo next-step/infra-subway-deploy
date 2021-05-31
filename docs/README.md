@@ -1,8 +1,8 @@
 # 그럴듯한 서비스 만들기
 ## 1단계 - 서비스 구성하기
 ### 요구사항
-- [ ] 웹 서비스를 운영할 네트워크 망 구성하기
-- [ ] 웹 애플리케이션 배포하기
+- [X] 웹 서비스를 운영할 네트워크 망 구성하기
+- [X] 웹 애플리케이션 배포하기
 
 ### 망구성
 - [X] VPC 생성
@@ -69,4 +69,7 @@
         #infra-subway-deploy 디렉토리 내부에서
         nohup java -Djava.security.egd=file:/dev/./urandom -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar 1>~/applog.log 2>&1 &
         ```
-- [ ] DNS 설정
+- [X] DNS 설정
+    * pub 01 : www.서비스-구성하기.메인.한국
+    * pub 02 : www.서비스-구성하기.서버.한국
+    * port를 8080으로 지정해야해서 redirect방식으로 도메인 주소를 연결
