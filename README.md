@@ -53,6 +53,7 @@ npm run dev
 
 - URL
   - [http://15.165.255.27:8080](http://15.165.255.27:8080)
+  - [http://hodol.ga:8080](http://hodol.ga:8080)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
