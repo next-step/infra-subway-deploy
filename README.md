@@ -43,11 +43,18 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역
+
+  |Purpose|Criteria|Name|Subnet ID|IPv4 CIDR|
+      |---|---|---|---|---|
+  |외부망|Public|catsbi-a|subnet-06260fce1eea456b3|192.168.0.0/26|
+  |데이터베이스|Public|catsbi-b|subnet-0d4e8ae2fc3fb01ca|192.168.0.64/26|
+  |내부망|Private|catsbi-c|subnet-01b22938e34ae5676|192.168.0.128/26|
+  |관리용|Private|catsbi-d|subnet-024e6e23e1c1c8463|192.168.0.160/26|  
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://infra.catsbi-subway.kro.kr:8080/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
