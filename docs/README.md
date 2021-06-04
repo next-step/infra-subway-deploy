@@ -1,12 +1,12 @@
 # 그럴듯한 서비스 만들기
 ## 2단계 - 서비스 배포하기
 ### 요구사항
-- [ ] 운영 환경 구성하기
+- [x] 운영 환경 구성하기
 - [ ] 개발 환경 구성하기
 
 ### 요구사항 설명
 **운영 환경 구성하기**
-- [ ] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+- [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
     - [x] 외부망에 Nginx로 Reverse Proxy를 구성
         * ec2 instance name : enemfk777-ec2-public-reverse-proxy
         * bastion alias name : nginx ex) ssh ubuntu@nginx
@@ -19,7 +19,10 @@
             * 인바운드 22포트 admin subnet 대역에 대해 오픈
     - [x] Reverse Proxy에 TLS 설정
       * https://public.enemfk777.kro.kr/
-- [ ] 운영 데이터베이스 구성하기
+- [x] 운영 데이터베이스 구성하기
+    * ec2 instance name : enemfk777-ec2-private-01
+    * bastion alias name : private01 ex) ssh ubuntu@private01
+    * docker 설치를 위해 인터넷 게이트웨이 라우팅 테이블에 private subnet을 잠시 추가해서 작업후 다시 제거
 
 **개발 환경 구성하기**
 - [ ] 설정 파일 나누기
