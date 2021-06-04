@@ -43,11 +43,18 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 : 200.200.0.0/24   
+    - kwj1270-public-a : 200.200.0.0/26
+    - kwj1270-public-b : 200.200.0.64/26
+    - kwj1270-internal-c : 200.200.0.128/27
+    - kwj1270-management-d : 200.200.0.160/27
 
-2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
+2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요  
+  
+- URL :    
+  - [http://3.34.255.93:8080](http://3.34.255.93:8080)      
+  - [http://kwj1270.ga:8080](http://kwj1270.ga:8080)     
 
-- URL : 
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
