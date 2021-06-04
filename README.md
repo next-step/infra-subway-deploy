@@ -45,9 +45,21 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+- 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+    - `192.0.0.0/26`, `192.0.0.64/26`
+    - sarguments-subnet-public-a, b
+- 내부망으로 사용할 Subnet : 32개씩 1개
+    - `192.0.0.128/27`
+    - sarguments-subnet-private
+- 관리용으로 사용할 Subnet : 32개씩 1개
+    - `192.0.0.160/27`
+    - sarguments-subnet-admin
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
+    - 54.180.170.24:8080
+    - http://subway.javajigi.p-e.kr:8080
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
