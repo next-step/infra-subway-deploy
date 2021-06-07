@@ -27,5 +27,6 @@
 **개발 환경 구성하기**
 - [x] 설정 파일 나누기
     * JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
-- [ ] 데이터베이스 테이블 스키마 버전 관리
-- [ ] SonarLint 설정하기
+- [x] 데이터베이스 테이블 스키마 버전 관리
+- [x] SonarLint 설정하기
+- [x] MultiRun 설정하기
