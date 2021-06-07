@@ -23,3 +23,9 @@
     * ec2 instance name : enemfk777-ec2-private-01
     * bastion alias name : private01 ex) ssh ubuntu@private01
     * docker 설치를 위해 인터넷 게이트웨이 라우팅 테이블에 private subnet을 잠시 추가해서 작업후 다시 제거
+
+**개발 환경 구성하기**
+- [ ] 설정 파일 나누기
+    * JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+- [ ] 데이터베이스 테이블 스키마 버전 관리
+- [ ] SonarLint 설정하기
