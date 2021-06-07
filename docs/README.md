@@ -6,7 +6,7 @@
 
 ### 요구사항 설명
 **운영 환경 구성하기**
-- [ ] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+- [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
     - [x] 외부망에 Nginx로 Reverse Proxy를 구성
-    - [ ] Reverse Proxy에 TLS 설정
+    - [x] Reverse Proxy에 TLS 설정
 - [ ] 운영 데이터베이스 구성하기

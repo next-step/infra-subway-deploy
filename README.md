@@ -53,7 +53,8 @@ npm run dev
         * **Name : enemfk777-admin-subnet-01 IPv4 CIDR : 192.168.2.160/27**
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : //TODO : 리뷰어님께 질문할 내용을 먼저 질문 드리고 진행
+pub 01 서버 어플리케이션 도메인 주소 : www.서비스-구성하기.메인.한국
+pub 02 서버 어플리케이션 도메인 주소 : www.서비스-구성하기.서버.한국
 
 3. 베스천 서버에 접속을 위한 pem키는 리뷰어에게 DM으로 공유해주세요
 
@@ -62,4 +63,4 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://public.enemfk777.kro.kr/
