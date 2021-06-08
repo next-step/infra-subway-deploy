@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'name.remal.sonarlint' version '1.3.1'
 }
 
 group = 'nextstep'
@@ -35,8 +36,15 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
 }
 
 test {
 	useJUnitPlatform()
+}
+
+sonarlint {
+	excludes {
+		message 'java:S3740'
+	}
 }
