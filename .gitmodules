@@ -1,3 +1,6 @@
 [submodule "src/main/resources/config"]
 	path = src/main/resources/config
 	url = https://github.com/kimhodol/infra-subway-deploy-config.git
+[submodule "nginx"]
+	path = nginx
+	url = https://github.com/kimhodol/infra-subway-deploy-nginx.git
