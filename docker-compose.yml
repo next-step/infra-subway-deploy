@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web:
+    image: subway:0.0.1-SNAPSHOT
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    expose:
+      - 8080
+    depends_on:
+      - db
+    restart: on-failure
+  nginx:
+    image: nextstep/reverse-proxy:0.0.2
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - web
+    restart: on-failure
