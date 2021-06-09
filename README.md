@@ -19,22 +19,30 @@
 ## 🚀 Getting Started
 
 ### Install
+
 #### npm 설치
+
 ```
 cd frontend
 npm install
 ```
+
 > `frontend` 디렉토리에서 수행해야 합니다.
 
 ### Usage
+
 #### webpack server 구동
+
 ```
 npm run dev
 ```
+
 #### application 구동
+
 ```
 ./gradlew clean build
 ```
+
 <br>
 
 ## 미션
@@ -42,25 +50,29 @@ npm run dev
 * 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
 
 ### 1단계 - 망 구성하기
+
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
-  - 외부망 hongbin-dev-pub-a(10.0.1.0/26)
-  - 외부망 hongbin-dev-pub-c(10.0.1.64/26)
-  - 내부망 hongbin-dev-prv-a(10.0.1.128/27)
-  - 관리용 hongbin-dev-bastion(10.0.1.160/27)
+
+- 대역 :
+    - 외부망 hongbin-dev-pub-a(10.0.1.0/26)
+    - 외부망 hongbin-dev-pub-c(10.0.1.64/26)
+    - 내부망 hongbin-dev-prv-a(10.0.1.128/27)
+    - 관리용 hongbin-dev-bastion(10.0.1.160/27)
 
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
-  - hongbin-dev.kro.kr
-  - 3.35.201.206
+- URL :
+    - hongbin-dev.kro.kr
+    - 3.35.201.206
 
-3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에
+   업로드해주세요
 
 ---
 
 ### 2단계 - 배포하기
+
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://hongbin-dev.kro.kr/
