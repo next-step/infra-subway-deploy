@@ -1,0 +1,3 @@
+[submodule "config"]
+	path = src/main/resources/config
+	url = https://github.com/ninjasul/infra-subway-deploy-secret.git
