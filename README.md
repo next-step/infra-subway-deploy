@@ -11,13 +11,27 @@ VPC : 10.10.7.0/24
 관리망 : 10.10.7.0/27
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://sooragenius:8080
+- URL : http://sooragenius.com:8080
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 ---
 
 ### 2단계 - 배포하기
+Private네트워크 NAT 연결
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://sooragenius.com
+
+
+--- config 폴더의 설정
+# application-local.properties
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
+spring.datasource.username=root
+spring.datasource.password=qwe123
+# application-prod.properties
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://10.10.7.62:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
+spring.datasource.username=root
+spring.datasource.password=masterpw
