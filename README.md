@@ -57,28 +57,6 @@ npm run dev
 
 ### 2단계 - 배포하기
 
-public 대역에 reverse-proxy역할을 하는 ec2를 새롭게 생성했습니다.
-
-public security group에서  443,80 포트로 접근가능하도록 security group을 수정하였고
-
-reverse-proxy통해서 트래픽이 유입되도록 구성했습니다.
-
-```
-   
-------------public--------------------------
-
-[443,80]
-nginx       
-     ----------- [8080] spring boot app
-            |
-            ---- [8080] spring boot app
-
------------internal--------------------------
-
-          [3306] mysql
-----------------------------------------------------
-```
-
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : https://nextstep.n-e.kr/sections
+- URL : https://nextstep.n-e.kr
