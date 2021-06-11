@@ -1,0 +1,6 @@
+[submodule "src/main/resources/config"]
+	path = src/main/resources/config
+	url = git@github.com:realizeme/infra-subway-config.git
+[submodule "nginx"]
+	path = nginx
+	url = git@github.com:realizeme/infra-subway-nginx-deploy.git
