@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'org.flywaydb.flyway' version '6.4.3'
 	id 'java'
 }
 
@@ -35,8 +36,17 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
+	compile "org.flywaydb:flyway-core:6.4.3"
 }
 
 test {
 	useJUnitPlatform()
+}
+
+// NOTE: how to use
+// gradle bootRun -Dspring.profiles.active=prod
+bootRun {
+	String activeProfile = !System.properties['spring.profiles.active'] ? 'local' : System.properties['spring.profiles.active']
+	systemProperty "spring.profiles.active", activeProfile
 }
