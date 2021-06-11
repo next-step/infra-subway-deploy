@@ -37,7 +37,6 @@ dependencies {
 
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
-	compile "org.flywaydb:flyway-core:6.4.3"
 }
 
 test {
@@ -46,10 +45,10 @@ test {
 
 // NOTE: how to use
 // gradle bootRun -Dspring.profiles.active=prod
-bootRun {
-	String activeProfile = !System.properties['spring.profiles.active'] ? 'local' : System.properties['spring.profiles.active']
-	systemProperty "spring.profiles.active", activeProfile
-}
+//bootRun {
+//	String activeProfile = !System.properties['spring.profiles.active'] ? 'local' : System.properties['spring.profiles.active']
+//	systemProperty "spring.profiles.active", activeProfile
+//}
 
 
 
