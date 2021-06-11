@@ -44,13 +44,20 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+| Name | 망 | 서브넷 | 
+|:--:|:--:|:--:|
+|ku-lee-a|외부망|192.130.0.0/26|
+|ku-lee-b|외부망|192.130.0.64/26|
+|ku-lee-c|내부망|192.130.0.128/27|
+|ku-lee-d|관리망|192.130.0.160/27|
+
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://3.37.14.163:8080 / http://mysubway.kro.kr
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+- 업로드 완료! (ku-lee.pem)
 ---
 
 ### 2단계 - 배포하기
