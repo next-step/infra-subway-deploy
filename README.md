@@ -43,13 +43,21 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+
+- VPC CIDR : 192.168.5.0/24
+- 외부망 : oper912-public1 192.168.5.0/26
+- 외부망 : oper912-public2 192.168.5.64/26
+- 내부망 : oper912-db      192.168.5.128/27
+- 관리망 : oper912-bastion 192.168.5.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- public IP : 13.125.42.22 / 80 or 8080
+- domain : oper912-infra-subway.p-e.kr
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+
+pem key name : oper912-keypair.pem
 
 ---
 
