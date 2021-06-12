@@ -45,9 +45,14 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+jis1218-admin : 10.10.13.0/26
+jis1218-private : 10.10.13.64/26
+jis1218-public1 : 10.10.13.128/27
+jis1218-public2 : 10.10.13.160/27
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://13.209.18.62:8080, http://https://insup.kro.kr/ (접속이 잘 안됩니다 ㅜ.ㅜ)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
