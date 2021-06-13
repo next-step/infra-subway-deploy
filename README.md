@@ -43,7 +43,11 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 : 192.168.99.0/24
+  - 외부망 서브넷(yzzzzun-public-a) : 192.168.99.0/26
+  - 외부망 서브넷(yzzzzun-public-b) : 192.168.99.64/26
+  - 내부망 서브넷(yzzzzun-private-a) : 192.168.99.128/27
+  - 관리용 서브넷(yzzzzun-private-b) : 192.168.99.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
@@ -57,10 +61,10 @@ npm run dev
 
 - [x] VPC 생성
   - [x] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
-- [ ] Subnet 생성
-  - [ ] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
-  - [ ] 내부망으로 사용할 Subnet : 32개씩 1개
-  - [ ] 관리용으로 사용할 Subnet : 32개씩 1개
+- [x] Subnet 생성
+  - [x] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+  - [x] 내부망으로 사용할 Subnet : 32개씩 1개
+  - [x] 관리용으로 사용할 Subnet : 32개씩 1개
 - [ ] Internet Gateway 연결
 - [ ] Route Table 생성
 - [ ] Security Group 설정
