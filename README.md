@@ -69,8 +69,8 @@ npm run dev
 - [x] Route Table 생성
   - [x] 외부망에서 쓸 Route Table 설정
   - [x] 내부망에서 쓸 Route Table 설정
-- [ ] Security Group 설정
-  - [ ] 외부망
+- [x] Security Group 설정
+  - [x] 외부망
     - 전체 대역 : 8080 포트 오픈
     - 관리망 : 22번 포트 오픈
   - [ ] 내부망
@@ -79,7 +79,7 @@ npm run dev
   - [ ] 관리망
     - 자신의 공인 IP : 22번 포트 오픈
 - [ ] 서버 생성
-  - [ ] 외부망에 웹 서비스용도의 EC2 생성
+  - [x] 외부망에 웹 서비스용도의 EC2 생성
   - [ ] 내부망에 데이터베이스용도의 EC2생성
   - [ ] 관리망에 베스쳔 서버용도의 EC2 생성
   - [ ] 베스쳔 서버에 Session Timeout 600s 설정
