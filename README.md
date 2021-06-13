@@ -66,7 +66,9 @@ npm run dev
   - [x] 내부망으로 사용할 Subnet : 32개씩 1개
   - [x] 관리용으로 사용할 Subnet : 32개씩 1개
 - [x] Internet Gateway 연결
-- [ ] Route Table 생성
+- [x] Route Table 생성
+  - [x] 외부망에서 쓸 Route Table 설정
+  - [x] 내부망에서 쓸 Route Table 설정
 - [ ] Security Group 설정
   - [ ] 외부망
     - 전체 대역 : 8080 포트 오픈
