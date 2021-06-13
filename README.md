@@ -45,7 +45,7 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 :
     * 외부망 서브넷 1(applemango2021-public-1) : 192.168.77.0/26
-    * 외부망 서브넷 2(applemango2021-private) : 192.168.77.64/26
+    * 외부망 서브넷 2(applemango2021-public-2) : 192.168.77.64/26
     * 관리망 서브넷(applemango2021-admin) : 192.168.77.128/27
     * 내부망 서브넷(applemango2021-private) : 192.168.77.160/27
     
