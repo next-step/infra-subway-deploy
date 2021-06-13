@@ -65,7 +65,7 @@ npm run dev
   - [x] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
   - [x] 내부망으로 사용할 Subnet : 32개씩 1개
   - [x] 관리용으로 사용할 Subnet : 32개씩 1개
-- [ ] Internet Gateway 연결
+- [x] Internet Gateway 연결
 - [ ] Route Table 생성
 - [ ] Security Group 설정
   - [ ] 외부망
