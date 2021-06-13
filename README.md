@@ -43,14 +43,21 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
-
+- 대역 :
+    * 외부망 서브넷 1(applemango2021-public-1) : 192.168.77.0/26
+    * 외부망 서브넷 2(applemango2021-public-2) : 192.168.77.64/26
+    * 관리망 서브넷(applemango2021-admin) : 192.168.77.128/27
+    * 내부망 서브넷(applemango2021-private) : 192.168.77.160/27
+    
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
+    * 공인 IP : 3.34.50.96
+    * URL : http://subway.applemango2021.kro.kr:8080
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
+    - pem키는 [여기](https://drive.google.com/file/d/1nf_7LqYkAIevUdPv5HSNtT0BHo1h9FK6/view?usp=sharing )에서 다운받으시면 됩니다!
 ---
 
 ### 2단계 - 배포하기
