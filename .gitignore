@@ -40,3 +40,6 @@ out/
 frontend/node_modules
 fronted/.prttierrc.js
 fronted/.eslintrc.js
+
+### git submodules ###
+src/main/resources/config
