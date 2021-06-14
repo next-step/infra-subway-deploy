@@ -204,7 +204,7 @@ public class LineAcceptanceTest extends AcceptanceTest {
                 extract();
     }
 
-    public static void 지하철_노선_생성됨(ExtractableResponse response) {
+    public static void 지하철_노선_생성됨(ExtractableResponse<Response> response) {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
         assertThat(response.header("Location")).isNotBlank();
     }
