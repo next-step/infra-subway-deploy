@@ -43,10 +43,10 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
->외부망1: itdar-public-a: 172.30.1.0/26  
-외부망2: itdar-public-c: 172.30.1.64/26  
-내부망1: itdar-private-a: 172.30.1.128/27  
-관리용1: itdar-private-c: 172.30.1.160/27
+>외부망1: itdar-public-a: 192.168.10.0/26  
+외부망2: itdar-public-c: 192.168.10.64/26  
+내부망1: itdar-private-a: 192.168.10.128/27  
+관리용1: itdar-private-c: 192.168.10.160/27  
 
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
