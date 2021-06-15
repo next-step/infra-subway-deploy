@@ -70,4 +70,4 @@ npm run dev
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL :
+- URL : [https://theproject.p-e.kr](https://theproject.p-e.kr)
