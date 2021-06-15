@@ -62,21 +62,17 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
-
-
-
-
+- URL : https://like-len.kro.kr/
 
 ---
 
 작업 리스트
 
 - [x] TLS 적용
-- [ ] 설정 파일 나누기
+- [x] 설정 파일 나누기
   - JUnit : h2
   - Local : docker(mysql)
   - Prod : 운영 DB를 사용하도록 설정
-- [ ] 데이터베이스 테이블 스키마 버전 관리
-- [ ] SonarLint 설정하기
-- [ ] MultiRun 설정하기
+- [x] 데이터베이스 테이블 스키마 버전 관리
+- [x] SonarLint 설정하기
+- [x] MultiRun 설정하기
