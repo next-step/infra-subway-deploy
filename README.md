@@ -44,12 +44,17 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+    1. joojimin-public-01 ( 192.168.180.0/26 )
+    2. joojimin-public-02 ( 192.168.180.64/26 )
+    3. joojimin-private-01 ( 192.168.180.128/27 )
+    4. joojimin-admin-01 ( 192.168.180.160/27 )
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://joojimin.kro.kr:8080/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+    * [joojimin-keypair.pem](https://drive.google.com/drive/folders/1_dP2lcgmhM6EkDlJFND6WxiSPH7z3JVn) 에 올려놨습니다~!
 
 ---
 
