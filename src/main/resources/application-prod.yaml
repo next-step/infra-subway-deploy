@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mysql://10.10.13.135:3306/subway?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password: masterpw
+    driver-class-name: com.mysql.cj.jdbc.Drive
