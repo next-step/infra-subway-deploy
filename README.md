@@ -51,7 +51,7 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - PUBLIC IP: 3.36.115.85:8080
-- URL : http://main.lkimilhol-subway.p-e.kr/
+- URL : http://lkimilhol-subway.p-e.kr/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
@@ -60,7 +60,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://lkimilhol-subway.p-e.kr/
 
 
 
@@ -69,3 +69,5 @@ npm run dev
 Q. 키 페어를 다운 받을 때 왜 저는 cer 파일이 생성되었을까요...? 이게 문제는 없을까요?
 
 Q. 도메인을 생성해서 외부망 서버가 올라가있는 public ip를 넣었는데요. 외부망 서버에서 80 포트를 8080 포트로 포워딩을 했으면 도메인 주소만 입력해도 pulbicIP:8080 으로 리다이렉션 되는것이 아닌가요...? pulbicIp:80 으로 브라우저 연결 시 8080포트로 변경 되는건 확인했는데 도메인으로 접속 시는 연결이 제대로 되지 않아 질문드립니다!
+
+A. aws에서 포트를 열어 해결!
