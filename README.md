@@ -45,9 +45,22 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+목적 | 이름 | 대역
+---|---|---
+외부망 1 | byunghakjang1230-public-1 | 192.168.85.0/26
+외부망 2 | byunghakjang1230-public-2 | 192.168.85.64/26
+내부망 | byunghakjang1230-internal | 192.168.85.160/27
+관리망 | byunghakjang1230-manage | 192.168.85.128/27
+ 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
+
+위치 | URL | IP
+---|---|---
+서버 1 | http://1.woojang.p-e.kr:8080 | 3.35.135.151:8080
+서버 2 | http://2.woojang.p-e.kr:8080 | 54.180.116.69
+
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
