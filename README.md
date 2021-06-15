@@ -51,7 +51,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://subway.likelen.kro.kr/
+- URL : http://like-len.kro.kr/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요.
 
@@ -63,3 +63,20 @@ npm run dev
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : 
+
+
+
+
+
+---
+
+작업 리스트
+
+- [x] TLS 적용
+- [ ] 설정 파일 나누기
+  - JUnit : h2
+  - Local : docker(mysql)
+  - Prod : 운영 DB를 사용하도록 설정
+- [ ] 데이터베이스 테이블 스키마 버전 관리
+- [ ] SonarLint 설정하기
+- [ ] MultiRun 설정하기
