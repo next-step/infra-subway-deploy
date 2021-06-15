@@ -1,29 +1,13 @@
 spring:
   profiles:
-    active: test
+    active: prod
 
-  jpa:
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
 
 handlebars:
   enabled: true
   suffix: .html
 
-logging:
-  level:
-    org:
-      hibernate:
-        type:
-          descriptor:
-            sql: trace
 
-security:
-  jwt:
-    token:
-      secret-key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
-      expire-length: 3600000
+
 
 
