@@ -34,6 +34,7 @@ npm run dev
 #### application 구동
 ```
 ./gradlew clean build
+./gradlew bootRun
 ```
 <br>
 
