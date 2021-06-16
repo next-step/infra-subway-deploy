@@ -14,6 +14,7 @@ public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private String email;
     private String password;
     private Integer age;
@@ -29,6 +30,10 @@ public class Member extends BaseEntity {
 
     public Long getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
