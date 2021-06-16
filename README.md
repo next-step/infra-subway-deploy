@@ -59,5 +59,12 @@ npm run dev
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
+   - URL : https://jhh992000.ddns.net
 
-- URL : https://jhh992000.ddns.net
+2. 설정파일 나누기
+   - git submodule 을 활용하여 설정외부화
+   - https://github.com/jhh992000/infra-subway-config (확인을 위해 public repository 로 설정)
+  
+3. 데이터베이스 스키마 버전관리
+   - src/main/resources/db/migration/V1__init.sql
+   - src/main/resources/db/migration/V2__member_add_name.sql
