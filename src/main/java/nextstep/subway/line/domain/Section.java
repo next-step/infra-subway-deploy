@@ -1,12 +1,13 @@
 package nextstep.subway.line.domain;
 
+import nextstep.subway.common.BaseEntity;
 import nextstep.subway.station.domain.Station;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Section implements Serializable {
+public class Section extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
