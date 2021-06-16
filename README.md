@@ -54,10 +54,17 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 
 - 대역 :
-    - 외부망1 : etff-public1 10.51.1.0/26
-    - 외부망2 : etff-public2 10.51.1.64/26
-    - 내부망1 : etff-private1 10.51.1.128/27
-    - 관리망1 : etff-admin1 10.51.1.160/27
+  - 외부망1 : etff-public1 10.51.1.0/26
+  - 외부망2 : etff-public2 10.51.1.64/26
+  - 내부망1 : etff-private1 10.51.1.128/27
+  - 관리망1 : etff-admin1 10.51.1.160/27
+
+- timeout 설정
+  ![timeout](./asset/timeout.png)
+
+- log 설정
+  ![log](./asset/log.png)
+
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
