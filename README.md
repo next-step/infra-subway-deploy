@@ -47,7 +47,7 @@ npm run dev
 subnet-0c89905d33363d7ab / jaewanlee-subnet-public-1 : 192.168.6.0/26
 subnet-0910caa5a0726d245 / jaewanlee-subnet-public-2 : 192.168.6.64/26
 subnet-007a174a128cf9ad9 / jaewanlee-subnet-private : 192.168.6.128/27
-subnet-0c3ad0d3555980a41 / jaewanlee-subnet-admin : lee-vpc	192.168.6.160/27
+subnet-0c3ad0d3555980a41 / jaewanlee-subnet-admin :	192.168.6.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
