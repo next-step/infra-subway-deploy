@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml> 
+<configuration debug="true">
+    <springProfile name="local">
+        <property resource="logback-local.properties"/>
+    </springProfile>
+    <springProfile name="prod">
+        <property resource="logback-prod.properties"/>
+    </springProfile>
+    <springProfile name="test">
+        <property resource="logback-test.properties"/>
+    </springProfile>
+    
+    <property name="LOG_PATH" value="${log.config.path}"/>
+    <property name="LOG_NAME" value="${log.config.filename}"/>
+    <property name="LOG_PATTERN" value="[%d{HH:mm:ss.SSS}] [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <appender name="LOCAL_CONSOLE_POLICY" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+             <Pattern>${LOG_PATTERN}</Pattern>
+        </layout>
+    </appender>
+ 
+    <appender name="INFO_FILE_POLICY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter" >
+            <level>INFO</level>
+        </filter> 
+       <file>${LOG_PATH}/${LOG_NAME}_info.log</file>
+       <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${LOG_PATTERN}</Pattern>
+       </encoder>
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/old/${LOG_NAME}_info.%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory> 
+       </rollingPolicy>
+    </appender>
+    
+    <appender name="ERROR_FILE_POLICY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter" >
+            <level>ERROR</level>
+        </filter>
+        <file>${LOG_PATH}/${LOG_NAME}_error.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${LOG_PATTERN}</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/old/${LOG_NAME}_error.%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>100</maxHistory> 
+        </rollingPolicy>
+    </appender>
+    
+    <root level="INFO">
+        <springProfile name="local">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+        </springProfile>
+        <springProfile name="prod">
+            <appender-ref ref="INFO_FILE_POLICY"/>
+            <appender-ref ref="ERROR_FILE_POLICY"/>
+        </springProfile>
+    </root>
+    
+     <springProfile name="local">
+        <logger name="org.springframework.jdbc" level="error" additivity="false">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+        </logger>
+        <logger name="jdbc.sqlonly" level="info" additivity="false">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+        </logger>
+        <logger name="jdbc.resulttable" level="info" additivity="false">
+             <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+        </logger>
+    </springProfile>
+    
+    
+     <springProfile name="prod">
+        <logger name="org.springframework.jdbc" level="error" additivity="false">
+            <appender-ref ref="ERROR_FILE_POLICY"/>
+        </logger>
+        <logger name="jdbc.sqlonly" level="error" additivity="false">
+        <appender-ref ref="ERROR_FILE_POLICY"/>
+    </logger>
+    </springProfile>
+</configuration>
