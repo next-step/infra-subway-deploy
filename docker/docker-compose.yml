@@ -9,8 +9,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: subway
-      MYSQL_USER: root
-      MYSQL_PASSWORD: masterpw
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
       TZ: Asia/Seoul
     volumes:
       - ./db/mysql/data:/var/lib/mysql
