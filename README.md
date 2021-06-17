@@ -73,7 +73,7 @@ npm run dev
 - [x] local, test, prod 로 설정 파일 나누기
 - [x] flyway 적용해보기
 - [ ] Intellij SonarLint & MultiRun 세팅하기
-- [ ] git submodule 을 활용해서 설정 관리해보기
+- [x] git submodule 을 활용해서 설정 관리해보기
 
 1. TLS가 적용된 URL을 알려주세요
 
