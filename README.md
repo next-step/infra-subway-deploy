@@ -43,13 +43,47 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
-
+- 대역 : 192.168.123.0/24
+    * public 1 : 192.168.123.0/26
+    * public 2 : 192.168.123.64/26
+    * private 1 : 192.168.123.128/27
+    * bastion 1 : 192.168.123.160/27
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
-
+- URL : http://chae-yh-domain.kro.kr/
+    * http://52.78.95.218:8080/
+    * http://13.209.40.136:8080/
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+    * chae-yh-keypair.pem
+    
+#### 요구사항
+* 웹 서비스를 운영할 네트워크 망 구성하기
+    * VPC 생성
+        * CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성 [O] -> chae-yh-vpc
+    * Subnet 생성
+        * 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성) [O] -> chae-yh-subnet-public-1 / chae-yh-subnet-public-2
+        * 내부망으로 사용할 Subnet : 32개씩 1개 [O] -> chae-yh-subnet-private-1
+        * 관리용으로 사용할 Subnet : 32개씩 1개 [O] -> chae-yh-subnet-public-3
+    * Internet Gateway 연결 [O] -> chae-yh-internetgateway
+    * Route Table 생성 [O] -> chae-yh-routingtable-public / chae-yh-routingtable-private
+    * Security Group 설정 
+        * 외부망 -> chae-yh-securitygroup-public
+            * 전체 대역 : 8080 포트 오픈 [O]
+            * 관리망 : 22번 포트 오픈 [O]
+            * 전체 대역 : 80 포트 오픈 [O] -> DNS 설정 시 ip 매핑이 80번으로만 가능하여 해당 포트를 8080으로 포트포워딩함             
+        * 내부망 -> chae-yh-securitygroup-private
+            * 외부망 : 3306 포트 오픈 [O]
+            * 관리망 : 22번 포트 오픈 [O]
+        * 관리망 -> chae-yh-securitygroup-public-bastion
+            * 자신의 공인 IP : 22번 포트 오픈 [O]
+    * 서버 생성
+        * 외부망에 웹 서비스용도의 EC2 생성 [O] -> chae-yh-ec2-public-1 / chae-yh-ec2-public-2
+        * 내부망에 데이터베이스용도의 EC2 생성 [O] -> chae-yh-ec2-private-1-db
+        * 관리망에 베스쳔 서버용도의 EC2 생성 [O] -> chae-yh-ec2-public-3-bastion
+        * 베스쳔 서버에 Session Timeout 600s 설정 [O]
+        * 베스쳔 서버에 Command 감사로그 설정 [O]
+* 웹 애플리케이션 배포하기 
+    * 외부망에 웹 애플리케이션을 배포 [O]
+    * DNS 설정 [O]
 
 ---
 
