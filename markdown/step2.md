@@ -20,4 +20,5 @@
 - [X] 데이터베이스 테이블 스키마 버전 관리
 - [X] SonarLint 설정하기
   - ![sonarlint](./sonarlint.png)
-- [ ] MultiRun 설정하기
+- [X] MultiRun 설정하기
+  - ![multirun](./multirun.png)
