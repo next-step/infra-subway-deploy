@@ -59,6 +59,22 @@ npm run dev
 ---
 
 ### 2단계 - 배포하기
+#### 운영 환경 구성하기
+- [x] reverse proxy 의 역할을 하는 ec2 생성
+  - [x] 베스쳔 서버 공개키 등록
+- [x] reverse proxy 용 보안그룹 설정
+  - [x] 전체 대역: 443, 80
+  - [x] 관리망: 22
+- [x] DNS 설정
+- [x] TLS 설정
+- [x] 운영 DB 세팅
+#### 개발 환경 구성하기
+- [x] 로컬 db 설치하기
+- [x] local, test, prod 로 설정 파일 나누기
+- [x] flyway 적용해보기
+- [x] Intellij SonarLint & MultiRun 세팅하기
+- [x] git submodule 을 활용해서 설정 관리해보기
+
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://nextstep.5minho.p-e.kr/
