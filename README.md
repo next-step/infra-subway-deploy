@@ -51,7 +51,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://yzzzzun.kro.kr/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
@@ -87,8 +87,8 @@ npm run dev
 
 #### 웹 애플리케이션 배포
 
-- [ ] 외부망에 웹 애플리케이션을 배포
-- [ ] DNS설정
+- [x] 외부망에 웹 애플리케이션을 배포
+- [x] DNS설정
 
 ---
 
