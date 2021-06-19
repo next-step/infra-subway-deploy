@@ -1,13 +1,14 @@
 package nextstep.subway.member.domain;
 
-import nextstep.subway.common.BaseEntity;
-import nextstep.subway.auth.application.AuthorizationException;
-import org.apache.commons.lang3.StringUtils;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.apache.commons.lang3.StringUtils;
+
+import nextstep.subway.auth.application.AuthorizationException;
+import nextstep.subway.common.BaseEntity;
 
 @Entity
 public class Member extends BaseEntity {
@@ -17,9 +18,10 @@ public class Member extends BaseEntity {
     private String email;
     private String password;
     private Integer age;
+    private String name;
+    private String address;
 
-    public Member() {
-    }
+    public Member() {}
 
     public Member(String email, String password, Integer age) {
         this.email = email;
