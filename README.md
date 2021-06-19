@@ -152,16 +152,22 @@ npm run dev
     
   *[ ] 📍운영 데이터베이스 구성하기
   
-    a. DB 컨테이너 생성 
+    a. 내부망용 서브넷 라우팅 테이블 임시로 변경
+    - internal용 라우팅 테이블 사용시 key 등록을 위한 최초 접속이 불가능함)
+    - 이후부터는 bastion 서버만을 통해 접속
+    
+    b. **db $** Docker 설치 
+
+    c. **db $** DB 컨테이너 구동 
     ```
-    web $  docker run -d -p 3306:3306 --name prod-db brainbackdoor/data-subway:0.0.1
+    db $  docker run -d -p 3306:3306 --name prod-db brainbackdoor/data-subway:0.0.1
     ```
   
 ### 2. 개발 환경 구성하기
   * [ ] 설정 파일 나누기 
-      * JUnit : h2 
-      * Local : docker(mysql)
-      *  Prod : 운영 DB를 사용하도록 설정
+      * [x] JUnit : h2 
+      * [x] Local : docker(mysql)
+      * Prod : 운영 DB를 사용하도록 설정
   * [ ] 데이터베이스 테이블 스키마 버전 관리
   * [ ] SonarLint 설정하기
   * [ ] MultiRun 설정하기
