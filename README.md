@@ -153,19 +153,18 @@ npm run dev
     
   *[ ] 📍운영 데이터베이스 구성하기 
    
-    a. 내부망용 서브넷 라우팅 테이블 임시로 변경
-        
-    - internal용 라우팅 테이블 사용시 key 등록을 위한 최초 접속이 불가능함)
-    - 이후부터는 bastion 서버만을 통해 접속할 것이기 때문에 internal 라우팅 테이블로 변경하였으나 
+    → 내부망용 서버에 데이터베이스 구성
+      1. 내부망용 서브넷 라우팅 테이블 임시로 변경 
+         - internal용 라우팅 테이블 사용시 key 등록을 위한 최초 접속이 불가능함)
+         - 이후부터는 bastion 서버만을 통해 접속할 것이기 때문에 internal 라우팅 테이블로 변경하였으나 
       docker install등을 위해 다시 기본 라우팅 테이블로 변경함
     
-    b. **db $** Docker 설치 
-
-    c. **db $** DB 컨테이너 구동     
-   
-    ```
-    db $  docker run -d -p 3306:3306 --name prod-db brainbackdoor/data-subway:0.0.1
-    ```
+      2. **db $** Docker 설치 
+      3. **db $** DB 컨테이너 구동 
+         
+         ```
+         db $  docker run -d -p 3306:3306 --name prod-db brainbackdoor/data-subway:0.0.1
+         ```
   
 ### 2. 개발 환경 구성하기
   * [ ] 설정 파일 나누기 
