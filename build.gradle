@@ -45,3 +45,16 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "https://sonar.honbabzone.com/"
+        property "sonar.login", "81877df83834e024aa3f564ae190325e47ffbabf"        // 로그인 id 또는 인증토큰
+        property "sonar.password", ""    // 인증토큰 사용시는 공백으로
+        property "sonar.projectKey", "nextstep"
+        property "sonar.projectName", "nextstep"
+        property "sonar.projectVersion", "1.0"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.sources", "src/main/java"
+    }
+}
