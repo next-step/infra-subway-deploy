@@ -8,9 +8,9 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: migration
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: subway
+      MYSQL_USER: localuser
+      MYSQL_PASSWORD: local
       TZ: Asia/Seoul
     volumes:
       - ./db/mysql/data:/var/lib/mysql
