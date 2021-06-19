@@ -24,7 +24,7 @@ dependencies {
 
     // log
     implementation 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
-    compile group: 'org.bgee.log4jdbc-log4j2',name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 
     // jgraph
     implementation 'org.jgrapht:jgrapht-core:1.0.1'

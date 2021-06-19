@@ -65,25 +65,29 @@
         </springProfile>
     </root>
     
-     <springProfile name="local">
+    <logger name="jdbc" level="OFF"/>
+    
+    <springProfile name="local">
         <logger name="org.springframework.jdbc" level="error" additivity="false">
             <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
         </logger>
         <logger name="jdbc.sqlonly" level="info" additivity="false">
             <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
         </logger>
-        <logger name="jdbc.resulttable" level="info" additivity="false">
+        <logger name="jdbc.sqltiming" level="info" additivity="false">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+        </logger>
+        <logger name="jdbc.resulttable" level="error" additivity="false">
              <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
         </logger>
     </springProfile>
-    
     
      <springProfile name="prod">
         <logger name="org.springframework.jdbc" level="error" additivity="false">
             <appender-ref ref="ERROR_FILE_POLICY"/>
         </logger>
         <logger name="jdbc.sqlonly" level="error" additivity="false">
-        <appender-ref ref="ERROR_FILE_POLICY"/>
-    </logger>
+            <appender-ref ref="ERROR_FILE_POLICY"/>
+        </logger>
     </springProfile>
 </configuration>
