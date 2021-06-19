@@ -154,7 +154,7 @@ npm run dev
   
     a. DB 컨테이너 생성 
     ```
-    web $ docker run -d -p 3306:3306 brainbackdoor/data-subway:0.0.1
+    web $  docker run -d -p 3306:3306 --name prod-db brainbackdoor/data-subway:0.0.1
     ```
   
 ### 2. 개발 환경 구성하기
