@@ -136,7 +136,20 @@ npm run dev
        ![img_4.png](img_4.png)
     
 
-  * [ ] Reverse Proxy에 TLS 설정
+  * [X] Reverse Proxy에 TLS 설정
+        
+    a. 외부망 보안그룹 인바운드 규칙 수정 
+        
+    * 전체 대역 : 443 포트 오픈 
+      
+    b. `nginx.conf` 및 `Dockerfile` 수정 
+    
+    c. 새로운 도커 이미지(`nextstep/reverse-proxy:1.0.0`) 및 컨테이너 생성
+    ```
+    web $ docker build -t nextstep/reverse-proxy:1.0.0 .
+    web $ docker run -d -p 80:80 -p 443:443 --name proxy nextstep/reverse-proxy:1.0.0
+    ```  
+    
   *[ ] 운영 데이터베이스 구성하기
   
 ### 2. 개발 환경 구성하기
