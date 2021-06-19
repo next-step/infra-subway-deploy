@@ -69,7 +69,73 @@ npm run dev
 ### 1. 운영환경 구성하기 
 
 *[ ] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기 
-  * [ ] 외부망에 Nginx로 Reverse Proxy를 구성
+  * [x] 외부망에 Nginx로 Reverse Proxy를 구성
+
+    → 외부망에 있던 기존 web service용 서버 내에 도커를 이용하여 구성 
+      1. 외부망 보안그룹 인바운드 규칙 수정 
+         * 전체 대역 : 80포트 오픈 
+          * 8080 포트 삭제 (Nginx를 통해서 80 포트를 통해 요청이 들어올 것!)
+      1. **web $** Docker 설치
+      2. **web $** Nginx용 이미지 생성을 위한 `nginx.conf` 파일 생성 
+         ```dockerfile
+         events {}
+         
+         # 1. http 트래픽에 대한 설정
+         http {
+            # 5. upstream : nginx 서버에 들어온 요청을 전달해줄 application server 정의 
+            upstream app {  
+                # 6. 아래 location에 의해서 들어온 요청을 아래 정의된 server들에 분배한다. 
+                # (현재는 server가 1개만 정의되어 있지만 여러개일 수 있다)
+                server 172.17.0.1:8080; 
+            }
+            
+            # 2. http 트래픽에 대한 요청을 처리할 서버 1번 (또 다른 server 블록을 생성할 수도 있다)
+            server {
+                # 3. 80번 포트와 연결되어 있음
+                listen 80;
+            
+                # 4. uri '/'로 들어온 요청은 모두 app(upstream)로 중계할 것
+                location / {
+                proxy_pass http://app;
+                }
+            }
+         }
+         ```
+      3. **web $** `Dockerfile` 생성
+         ```dockerfile
+         # FROM : 이미지를 만들 때 기반이 되는 이미지 선언
+         FROM nginx 
+         
+         # COPY 문법
+         # 용도 : Host 환경의 파일을 컨테이너 이미지 안으로 복사
+         # 사용법 : 
+         # - COPY <복사할 파일 경로> <이미지에서 파일이 위치할 경로>
+         # - <복사할 파일 경로> → 컨텍스트 아래(아마 루트)를 기준으로 작성
+         # - 즉, 아래 문법은, nginx 저장소의 이미지로부터 새로운 이미지를 만들 때, 
+         # Host 환경의 nginx.conf 파일을 /etc/nginx/nginx.conf에 덮어쓴다는 의미   
+         COPY nginx.conf /etc/nginx/nginx.conf
+         ```
+         
+    4. **web $** `Dockerfile` 통해서 이미지 빌드 
+       ```
+        web $ docker build -t nextstep/reverse-proxy .
+       ```
+       → 실행결과
+        ![img_1.png](img_1.png)
+       
+    5. **web $** `Dockerfile` 통해서 컨테이너 생성 및 작동    
+       ```
+        # -d 옵션 : 백그라운드로 실행
+        # -p 옵션 : Host의 포트로 들어온 정보를 컨테이너의 포트로 전달하는 옵션 (앞 포트가 Host의 포트)
+        web $ docker run -d -p 80:80 nextstep/reverse-proxy
+       ```
+       → 실행결과
+        ![img_3.png](img_3.png)
+        
+        → host환경에서 http://localhost 접속 시 응답코드
+       ![img_4.png](img_4.png)
+    
+
   * [ ] Reverse Proxy에 TLS 설정
   *[ ] 운영 데이터베이스 구성하기
   
