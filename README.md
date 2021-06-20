@@ -44,14 +44,14 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
-bbbnam-subnet-admin     10.11.1.0/27
-bbbnam-subnet-private   10.11.1.32/27
-bbbnam-subnet-public1   10.11.1.64/26
-bbbnam-subnet-public2   10.11.1.128/26
+bbbnam-subnet-admin     192.168.79.0/27
+bbbnam-subnet-private   192.168.79.32/27
+bbbnam-subnet-public1   192.168.79.64/26
+bbbnam-subnet-public2   192.168.79.128/26
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://www.bbbnam-public.kro.kr/
+- URL : http://bbbnam-public.kro.kr/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 bbbnam-keypair.pem 올렸습니다.
