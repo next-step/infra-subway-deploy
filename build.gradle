@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'org.flywaydb.flyway' version '6.0.4'
 	id 'java'
 }
 
@@ -31,12 +32,26 @@ dependencies {
 	// jwt
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
+	implementation("org.hibernate:hibernate-java8")
+
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation("org.assertj:assertj-core:3.12.2")
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 
 	runtimeOnly 'com.h2database:h2'
+	runtimeOnly("mysql:mysql-connector-java:8.0.17")
+	runtimeOnly("org.flywaydb:flyway-core:5.2.0")
 }
 
 test {
 	useJUnitPlatform()
+}
+
+flyway {
+	url = 'jdbc:mysql://localhost:13306/archive?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8'
+	user = 'user'
+	password = 'password'
+	schemas = 'migration'
 }
