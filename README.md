@@ -200,5 +200,5 @@ npm run dev
     * [X] `build.gradle` 디펜던시 추가
     * [X] resource/db/migration 경로 생성
     * [X] `V1__insert_data.sql` 파일 생성
-  * [ ] SonarLint 설정하기
-  * [ ] MultiRun 설정하기
+  * [X] SonarLint 설정하기
+  * [X] MultiRun 설정하기
