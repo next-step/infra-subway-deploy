@@ -1,7 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+    id "org.sonarqube" version "3.0"
 }
 
 group = 'nextstep'
@@ -9,34 +10,51 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
-	maven { url 'https://repo.spring.io/snapshot' }
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {
-	// spring
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-	// handlebars
-	implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
+    // handlebars
+    implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
 
-	// log
-	implementation 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
+    // log
+    implementation 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 
-	// jgraph
-	implementation 'org.jgrapht:jgrapht-core:1.0.1'
+    // jgraph
+    implementation 'org.jgrapht:jgrapht-core:1.0.1'
 
-	// jwt
-	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    // jwt
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
-	testImplementation 'io.rest-assured:rest-assured:3.3.0'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	runtimeOnly 'com.h2database:h2'
+    testImplementation 'io.rest-assured:rest-assured:3.3.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'org.flywaydb:flyway-core:5.2.0'
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "https://sonar.honbabzone.com/"
+        property "sonar.login", "81877df83834e024aa3f564ae190325e47ffbabf"        // 로그인 id 또는 인증토큰
+        property "sonar.password", ""    // 인증토큰 사용시는 공백으로
+        property "sonar.projectKey", "nextstep"
+        property "sonar.projectName", "nextstep"
+        property "sonar.projectVersion", "1.0"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.sources", "src/main/java"
+    }
 }

@@ -1,0 +1,20 @@
+version: '3'
+services:
+  local-db:
+    image: library/mysql:5.7
+    container_name: local-db
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "subway"
+      MYSQL_USER: "subway"
+      MYSQL_PASSWORD: "subway"
+      TZ: Asia/Seoul
+    command:
+      - --character-set-server=utf8
+      - --collation-server=utf8_unicode_ci
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql
+      - ./db/mysql/init:/docker-entrypoint-initdb.d

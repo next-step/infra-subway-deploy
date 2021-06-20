@@ -1,0 +1,1 @@
+ALTER TABLE subway.`member` ADD name varchar(100) NULL;
