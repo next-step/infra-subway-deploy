@@ -43,7 +43,7 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java:'
 
 	// flyway
-	//runtimeOnly 'org.flywaydb:flyway-core:5.2.0'
+	runtimeOnly 'org.flywaydb:flyway-core:5.2.0'
 }
 
 test {

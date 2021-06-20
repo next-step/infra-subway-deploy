@@ -195,7 +195,10 @@ npm run dev
           > 1. 프로젝트 경로/docker/db/mysql/data 아래에 생성된 파일을 싹 다 삭제한다
           > 2. ```$ docker-compose down -v ``` 실행
 
-      * [X] Prod : 운영 DB를 사용하도록 설정
-  * [ ] 데이터베이스 테이블 스키마 버전 관리
+    * [X] Prod : 운영 DB를 사용하도록 설정
+  * [X] 데이터베이스 테이블 스키마 버전 관리 → flyway 이용
+    * [X] `build.gradle` 디펜던시 추가
+    * [X] resource/db/migration 경로 생성
+    * [X] `V1__insert_data.sql` 파일 생성
   * [ ] SonarLint 설정하기
   * [ ] MultiRun 설정하기
