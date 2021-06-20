@@ -14,6 +14,12 @@ repositories {
 	maven { url 'https://repo.spring.io/snapshot' }
 }
 
+processResources {
+	from ('config/') {
+		into '.'
+	}
+}
+
 dependencies {
 	// spring
 	implementation 'org.springframework.boot:spring-boot-starter-web'
