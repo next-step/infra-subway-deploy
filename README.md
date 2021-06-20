@@ -63,3 +63,7 @@ npm run dev
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : https://sojeong-subway.n-e.kr/
+
+2. 서브모듈 추가
+- path = src/main/resources/config
+- url = https://github.com/sojeong-park/infra-config-subway-deploy.git
