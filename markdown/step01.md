@@ -268,9 +268,9 @@
         - [ ] 4-5-3.관리망
             - [ ] 4-5-3-1.자신의 공인 IP : 22번 포트 오픈
     - [ ] 4-6.서버 생성
-        - [ ] 4-6-1.외부망에 웹 서비스용도의 EC2 생성
-        - [ ] 4-6-2.내부망에 데이터베이스용도의 EC2 생성
-        - [ ] 4-6-3.관리망에 베스쳔 서버용도의 EC2 생성
+        - [x] 4-6-1.외부망에 웹 서비스용도의 EC2 생성
+        - [x] 4-6-2.내부망에 데이터베이스용도의 EC2 생성
+        - [x] 4-6-3.관리망에 베스쳔 서버용도의 EC2 생성
         - [ ] 4-6-4.베스쳔 서버에 Session Timeout 600s 설정
         - [ ] 4-6-5.베스쳔 서버에 Command 감사로그 설정
 - [ ] 5.테스트
@@ -325,6 +325,23 @@
 ![routing-table-05](../documents/step1/capture/routing-table-05.jpg)
 ![routing-table-06](../documents/step1/capture/routing-table-06.jpg)
 ![routing-table-07](../documents/step1/capture/routing-table-07.jpg)
+
+#### 4-6.서버 생성
+
+##### 4-6-1~3. EC2 생성
+
+![ec2-01](../documents/step1/capture/ec2-01.jpg)
+![ec2-02](../documents/step1/capture/ec2-02.jpg)
+![ec2-03](../documents/step1/capture/ec2-03.jpg)
+![ec2-04](../documents/step1/capture/ec2-04.jpg)
+![ec2-05](../documents/step1/capture/ec2-05.jpg)
+![ec2-06](../documents/step1/capture/ec2-06.jpg)
+![ec2-07](../documents/step1/capture/ec2-07.jpg)
+![ec2-08](../documents/step1/capture/ec2-08.jpg)
+![ec2-09](../documents/step1/capture/ec2-09.jpg)
+![ec2-10](../documents/step1/capture/ec2-10.jpg)
+![ec2-11](../documents/step1/capture/ec2-11.jpg)
+![ec2-12](../documents/step1/capture/ec2-12.jpg)
 
 
 ## 3. 인수인계
