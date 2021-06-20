@@ -250,14 +250,14 @@
 - [x] 3.분석 및 설계
     - [x] 3-1.step01.md 초안 작성
 - [ ] 4.구현
-    - [ ] 4-1.VPC 생성
-        - [ ] 4-1-1.CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
-    - [ ] 4-2.Subnet 생성
-        - [ ] 4-2-1.외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
-        - [ ] 4-2-2.내부망으로 사용할 Subnet : 32개씩 1개
-        - [ ] 4-2-3.관리용으로 사용할 Subnet : 32개씩 1개
-    - [ ] 4-3.Internet Gateway 연결
-    - [ ] 4-4.Route Table 생성
+    - [x] 4-1.VPC 생성
+        - [x] 4-1-1.CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
+    - [x] 4-2.Subnet 생성
+        - [x] 4-2-1.외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+        - [x] 4-2-2.내부망으로 사용할 Subnet : 32개씩 1개
+        - [x] 4-2-3.관리용으로 사용할 Subnet : 32개씩 1개
+    - [x] 4-3.Internet Gateway 연결
+    - [x] 4-4.Route Table 생성
     - [ ] 4-5.Security Group 설정
         - [ ] 4-5-1.외부망
             - [ ] 4-5-1-1.전체 대역 : 8080 포트 오픈
@@ -284,6 +284,48 @@
         - [ ] 6-1-1.step1를 gregolee/atdd-subway-admin로 push : `git push origin step1`
         - [ ] 6-1-2.pull request(PR) 작성
     - [ ] 6-3.Slack을 통해 merge가 되는지 확인한 후에 미션 종료
+
+### 2.3.적용 과정
+
+#### 4-1.VPC
+
+![vpc-01](../documents/step1/capture/vpc-01.jpg)
+![vpc-02](../documents/step1/capture/vpc-02.jpg)
+![vpc-03](../documents/step1/capture/vpc-03.jpg)
+![vpc-04](../documents/step1/capture/vpc-04.jpg)
+
+#### 4-2.Subnet
+
+![subnet-01](../documents/step1/capture/subnet-01.jpg)
+![subnet-02](../documents/step1/capture/subnet-02.jpg)
+![subnet-03](../documents/step1/capture/subnet-03.jpg)
+
+#### 4-3.Internet Gateway
+
+![internet-gateway-01](../documents/step1/capture/internet-gateway-01.jpg)
+![internet-gateway-02](../documents/step1/capture/internet-gateway-02.jpg)
+![internet-gateway-03](../documents/step1/capture/internet-gateway-03.jpg)
+![internet-gateway-04](../documents/step1/capture/internet-gateway-04.jpg)
+![internet-gateway-05](../documents/step1/capture/internet-gateway-05.jpg)
+![internet-gateway-06](../documents/step1/capture/internet-gateway-06.jpg)
+![internet-gateway-07](../documents/step1/capture/internet-gateway-07.jpg)
+![internet-gateway-08](../documents/step1/capture/internet-gateway-08.jpg)
+![internet-gateway-09](../documents/step1/capture/internet-gateway-09.jpg)
+![internet-gateway-10](../documents/step1/capture/internet-gateway-10.jpg)
+![internet-gateway-11](../documents/step1/capture/internet-gateway-11.jpg)
+![internet-gateway-12](../documents/step1/capture/internet-gateway-12.jpg)
+
+
+#### 4-4.Route Table
+
+![routing-table-01](../documents/step1/capture/routing-table-01.jpg)
+![routing-table-02](../documents/step1/capture/routing-table-02.jpg)
+![routing-table-03](../documents/step1/capture/routing-table-03.jpg)
+![routing-table-04](../documents/step1/capture/routing-table-04.jpg)
+![routing-table-05](../documents/step1/capture/routing-table-05.jpg)
+![routing-table-06](../documents/step1/capture/routing-table-06.jpg)
+![routing-table-07](../documents/step1/capture/routing-table-07.jpg)
+
 
 ## 3. 인수인계
 
