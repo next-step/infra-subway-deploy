@@ -1,0 +1,1 @@
+INSERT INTO subway.station(name) value('서울역');
