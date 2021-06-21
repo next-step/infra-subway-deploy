@@ -63,4 +63,142 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://applemango2021.kro.kr/ 
+
+---
+## 요구사항
+### 1. 운영환경 구성하기 
+
+*[X] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기 
+  * [x] 외부망에 Nginx로 Reverse Proxy를 구성
+
+    → 외부망에 있던 기존 web service용 서버 내에 도커를 이용하여 구성 
+      1. 외부망 보안그룹 인바운드 규칙 수정 
+         * 전체 대역 : 80포트 오픈 
+          * 8080 포트 삭제 (Nginx를 통해서 80 포트를 통해 요청이 들어올 것!)
+      1. **web $** Docker 설치
+      2. **web $** Nginx용 이미지 생성을 위한 `nginx.conf` 파일 생성 
+         ```dockerfile
+         events {}
+         
+         # 1. http 트래픽에 대한 설정
+         http {
+            # 5. upstream : nginx 서버에 들어온 요청을 전달해줄 application server 정의 
+            upstream app {  
+                # 6. 아래 location에 의해서 들어온 요청을 아래 정의된 server들에 분배한다. 
+                # (현재는 server가 1개만 정의되어 있지만 여러개일 수 있다)
+                server 172.17.0.1:8080; 
+            }
+            
+            # 2. http 트래픽에 대한 요청을 처리할 서버 1번 (또 다른 server 블록을 생성할 수도 있다)
+            server {
+                # 3. 80번 포트와 연결되어 있음
+                listen 80;
+            
+                # 4. uri '/'로 들어온 요청은 모두 app(upstream)로 중계할 것
+                location / {
+                proxy_pass http://app;
+                }
+            }
+         }
+         ```
+      3. **web $** `Dockerfile` 생성
+         ```dockerfile
+         # FROM : 이미지를 만들 때 기반이 되는 이미지 선언
+         FROM nginx 
+         
+         # COPY 문법
+         # 용도 : Host 환경의 파일을 컨테이너 이미지 안으로 복사
+         # 사용법 : 
+         # - COPY <복사할 파일 경로> <이미지에서 파일이 위치할 경로>
+         # - <복사할 파일 경로> → 컨텍스트 아래(아마 루트)를 기준으로 작성
+         # - 즉, 아래 문법은, nginx 저장소의 이미지로부터 새로운 이미지를 만들 때, 
+         # Host 환경의 nginx.conf 파일을 /etc/nginx/nginx.conf에 덮어쓴다는 의미   
+         COPY nginx.conf /etc/nginx/nginx.conf
+         ```
+         
+    4. **web $** `Dockerfile` 통해서 이미지 빌드 
+       ```
+        web $ docker build -t nextstep/reverse-proxy .
+       ```
+       → 실행결과
+        ![img_1.png](img_1.png)
+       
+    5. **web $** `Dockerfile` 통해서 컨테이너 생성 및 작동    
+       ```
+        # -d 옵션 : 백그라운드로 실행
+        # -p 옵션 : Host의 포트로 들어온 정보를 컨테이너의 포트로 전달하는 옵션 (앞 포트가 Host의 포트)
+        web $ docker run -d -p 80:80 nextstep/reverse-proxy
+       ```
+       → 실행결과
+        ![img_3.png](img_3.png)
+        
+        → host환경에서 http://localhost 접속 시 응답코드
+       ![img_4.png](img_4.png)
+    
+
+  * [X] Reverse Proxy에 TLS 설정
+        
+    a. 외부망 보안그룹 인바운드 규칙 수정 
+        
+    * 전체 대역 : 443 포트 오픈 
+      
+    b. `nginx.conf` 및 `Dockerfile` 수정 
+    
+    c. 새로운 도커 이미지(`nextstep/reverse-proxy:1.0.0`) 및 컨테이너 생성
+    ```
+    web $ docker build -t nextstep/reverse-proxy:1.0.0 .
+    web $ docker run -d -p 80:80 -p 443:443 --name proxy nextstep/reverse-proxy:1.0.0
+    ```  
+    
+*[X] 📍운영 데이터베이스 구성하기
+ 1. 내부망용 서브넷 라우팅 테이블 임시로 변경
+    - internal용 라우팅 테이블 사용시 key 등록을 위한 최초 접속이 불가능함)
+    - 이후부터는 bastion 서버만을 통해 접속할 것이기 때문에 internal 라우팅 테이블로 변경하였으나 
+      docker install등을 위해 다시 기본 라우팅 테이블로 변경함
+     
+ 2. **db $** Docker 설치
+ 3. **db $** DB 컨테이너 구동
+    ```
+    db $  docker run -d -p 3306:3306 --name prod-db brainbackdoor/data-subway:0.0.1
+    ```
+
+### 2. 개발 환경 구성하기
+  * [X] 설정 파일 나누기 
+      * [x] JUnit : H2 
+        
+        → 스프링부트 내장 H2 데이터베이스 사용
+        * [X] `application-test.properties` 작성
+      * [X] Local : docker(mysql)
+        
+        →  로컬PC에 도커 설치 후, docker-compose.yml를 통해 DB 컨테이너 접속
+        * [X] 윈도우 도커 설치 
+        * [X] 프로젝트 루트 아래에 docker 폴더 및 `docker-compose.yml` 작성 
+          
+            → 꼭 루트 아래에 생성해야 하는 것인지는 모르겠으나, 일반적으로 이렇게 많이 하는 것 같음
+        * [X] `application-local.properties` 작성    
+        * [X] `init.sql` 작성 : 파일 위치는 `docker-compose.yml`에 명시한 곳에 있어야 한다. 이때
+    중요한 건, 서버를 올리는 최초 한번만 실행이 된다!!! 처음 도커 컨테이너 띄우기 전에 작성하는 것을 추천!!
+          
+            > ✏  `docker-compose.yml` 파일이 있는 위치로 이동하여 해당 파일을 실행시켜서 
+          DB 컨테이너를 띄운 이후에, `SubwayApplication.java`를 실행시켜 개발
+            > ```
+            > 로컬 프로젝트디렉토리 $ cd docker
+            > 로컬 프로젝트디렉토리 $ docker-compose up -d
+            > ```
+          
+            > ✏  `docker-compose.yml 파일`을 사용하는 이유 
+            > 1. 컨테이너를 여러 개 띄워서 개발하는 경우, 모든 컨테이너를 실행시키기 번거롭다.
+            > 2. 컨테이너에 대한 설정들이 문서화 되어 있기 때문에, 신규 인력이 들어왔을 때 이를 공유하기가 편하다.
+
+          > ✏  만에 하나 `init.sql`을 작성하지 않고 컨테이너를 최초 실행해버렸거나, `init.sql`을 수정하고 싶다면
+          > 1. 프로젝트 경로/docker/db/mysql/data 아래에 생성된 파일을 싹 다 삭제한다
+          > 2. ```$ docker-compose down -v ``` 실행
+
+    * [X] Prod : 운영 DB를 사용하도록 설정
+  * [X] 데이터베이스 테이블 스키마 버전 관리 → flyway 이용
+    * [X] `build.gradle` 디펜던시 추가
+    * [X] resource/db/migration 경로 생성
+    * [X] `V1__insert_data.sql` 파일 생성
+  * [X] SonarLint 설정하기
+  * [X] MultiRun 설정하기
