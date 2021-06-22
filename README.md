@@ -43,11 +43,16 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 : 111.111.0.0/24
+    + public1 : 222.222.222.0/26
+    + public2 : 222.222.222.64/26
+    + private : 222.222.222.128/27
+    + manage : 222.222.222.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://yjs2952.kro.kr:8080/
+    + http://3.36.73.166:8080/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
