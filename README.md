@@ -9,7 +9,6 @@
   </a>
   <img alt="GitHub" src="https://img.shields.io/github/license/next-step/atdd-subway-service">
 </p>
-
 <br>
 
 # 인프라공방 샘플 서비스 - 지하철 노선도
@@ -95,4 +94,47 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://yzzzzun.kro.kr
+
+### 운영 환경 구성하기
+
+- [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+  - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+  - [x] Reverse Proxy에 TLS 설정
+- [x] 운영 데이터베이스 구성하기
+
+### 개발 환경 구성하기
+
+- [x] 설정 파일 나누기
+  -  Unit: h2, Local : docker(mysql), Prod: 운영 DB를 사용하도록 설정
+- [x] 데이터베이스 테이블 스키마 버전 관리
+- [x] SonarLint 설정하기
+- [x] MultiRun 설정하기
+
+---
+
+### Submodule configuration 분리내용
+
+- local
+
+```properties
+security.jwt.token.secret-key= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
+security.jwt.token.expire-length= 3600000
+
+spring.datasource.url=jdbc:mysql://localhost:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.password=root
+spring.datasource.username=root
+```
+
+- prod
+
+```properties
+security.jwt.token.secret-key= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
+security.jwt.token.expire-length= 3600000
+
+spring.datasource.url=jdbc:mysql://3.34.131.121:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=masterpw
+```
