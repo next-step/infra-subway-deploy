@@ -111,3 +111,30 @@ npm run dev
 - [x] SonarLint 설정하기
 - [x] MultiRun 설정하기
 
+---
+
+### Submodule configuration 분리내용
+
+- local
+
+```properties
+security.jwt.token.secret-key= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
+security.jwt.token.expire-length= 3600000
+
+spring.datasource.url=jdbc:mysql://localhost:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.password=root
+spring.datasource.username=root
+```
+
+- prod
+
+```properties
+security.jwt.token.secret-key= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
+security.jwt.token.expire-length= 3600000
+
+spring.datasource.url=jdbc:mysql://3.34.131.121:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=masterpw
+```
