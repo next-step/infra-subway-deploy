@@ -5,3 +5,5 @@ spring:
       jdbc-url: jdbc:mysql://10.10.0.132:3306/subway?characterEncoding=utf-8
       username: root
       password: masterpw
+  flyway:
+    enabled: false
