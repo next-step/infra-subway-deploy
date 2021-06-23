@@ -1,0 +1,3 @@
+[submodule "config"]
+	path = config
+	url = https://github.com/jordy-torvalds/infra-subway-deploy-secrets.git
