@@ -89,5 +89,19 @@ npm run dev
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
+- URL : https://chae-yh-domain.kro.kr/
 
-- URL : 
+#### 요구사항
+* 운영 환경 구성
+    * 웹 애플리케이션 앞단에 Reverse Proxy 구성
+        * 외부망에 Nginx로 Reverse Proxy를 구성 [O] -> chae-yh-ec2-public-4-reverseproxy
+        * Reverse Proxy에 TLS 설정 [O]
+    * 운영 데이터베이스 구성하기 [O] -> chae-yh-ec2-private-1-db(docker)
+* 개발 환경 구성하기
+    * 설정 파일 분리
+        * JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정 [O]
+    * 데이터베이스 테이블 스키마 버전 관리 [O] -> flyway 사용 / tset, local 반영. prod 미반영
+    * SonarLint 설정하기 [O] -> critical 로 나온 소스 수정하여 커밋
+    * MultiRun 설정하기 [O]
+    * 설정 별도 관리 [O]
+
