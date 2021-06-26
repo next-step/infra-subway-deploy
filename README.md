@@ -43,15 +43,17 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 192.168.26.0/26 (chajs226-a 외부)
-        192.168.26.64/26 (chajs226-b 외부)
-        192.168.26.128/27 (chajs226-c 내부)
-        192.168.26.160/27 (chajs226-d 관리)
+- 대역 : 
+    * VPC CIDR : 192.168.26.0/24
+    * chajs226-pubilcA: 192.168.26.0/26
+    * chajs226-publicB: 192.168.26.64/26
+    * chajs226-private: 192.168.26.128/27
+    * chajs226-admin: 192.168.26.160/27
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 - URL : http://www.woo-test-service.kro.kr:8080/
         http://52.79.177.154:8080/
         
-
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
    chajs226-keypair.pem
 ---
