@@ -6,8 +6,6 @@
 
 #### 1.1.1. 요구사항
 
-![mission-description](../documents/step1/acceptance-intro.png)
-
 - 웹 서비스를 운영할 네트워크 망 구성하기
 - 웹 애플리케이션 배포하기
 
@@ -249,7 +247,7 @@
     - [x] 2-1.infra 강의 듣기
 - [x] 3.분석 및 설계
     - [x] 3-1.step01.md 초안 작성
-- [ ] 4.구현
+- [x] 4.구현
     - [x] 4-1.VPC 생성
         - [x] 4-1-1.CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
     - [x] 4-2.Subnet 생성
@@ -258,21 +256,24 @@
         - [x] 4-2-3.관리용으로 사용할 Subnet : 32개씩 1개
     - [x] 4-3.Internet Gateway 연결
     - [x] 4-4.Route Table 생성
-    - [ ] 4-5.Security Group 설정
-        - [ ] 4-5-1.외부망
-            - [ ] 4-5-1-1.전체 대역 : 8080 포트 오픈
-            - [ ] 4-5-1-2.관리망 : 22번 포트 오픈
-        - [ ] 4-5-2.내부망
-            - [ ] 4-5-2-1.외부망 : 3306 포트 오픈
-            - [ ] 4-5-2-2.관리망 : 22번 포트 오픈
-        - [ ] 4-5-3.관리망
-            - [ ] 4-5-3-1.자신의 공인 IP : 22번 포트 오픈
-    - [ ] 4-6.서버 생성
+    - [x] 4-5.Security Group 설정
+        - [x] 4-5-1.외부망
+            - [x] 4-5-1-1.전체 대역 : 8080 포트 오픈
+            - [x] 4-5-1-2.관리망 : 22번 포트 오픈
+        - [x] 4-5-2.내부망
+            - [x] 4-5-2-1.외부망 : 3306 포트 오픈
+            - [x] 4-5-2-2.관리망 : 22번 포트 오픈
+        - [x] 4-5-3.관리망
+            - [x] 4-5-3-1.자신의 공인 IP : 22번 포트 오픈
+    - [x] 4-6.서버 생성
         - [x] 4-6-1.외부망에 웹 서비스용도의 EC2 생성
         - [x] 4-6-2.내부망에 데이터베이스용도의 EC2 생성
         - [x] 4-6-3.관리망에 베스쳔 서버용도의 EC2 생성
-        - [ ] 4-6-4.베스쳔 서버에 Session Timeout 600s 설정
-        - [ ] 4-6-5.베스쳔 서버에 Command 감사로그 설정
+        - [x] 4-6-4.베스쳔 서버에 Session Timeout 600s 설정
+        - [x] 4-6-5.베스쳔 서버에 Command 감사로그 설정
+    - [x] 4-7.명령어
+        - [x] 4-7-1.`nohup java -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar  1> ./logs/infra-subway-deploy-20210628.log 2>&1  &`
+        - [x] 4-7-2.root password : qwerty123456
 - [ ] 5.테스트
     - [ ] 5-1.요구사항 조건들 충족했는지 확인
     - [ ] 5-2.서버 확인
@@ -325,6 +326,16 @@
 ![routing-table-05](../documents/step1/capture/routing-table-05.jpg)
 ![routing-table-06](../documents/step1/capture/routing-table-06.jpg)
 ![routing-table-07](../documents/step1/capture/routing-table-07.jpg)
+
+#### 4-5.Security Group 설정
+
+![security-01](../documents/step1/capture/security-01.jpg)
+![security-02](../documents/step1/capture/security-02.jpg)
+![security-03](../documents/step1/capture/security-03.jpg)
+![security-04](../documents/step1/capture/security-04.jpg)
+![security-05](../documents/step1/capture/security-05.jpg)
+![security-06](../documents/step1/capture/security-06.jpg)
+![security-07](../documents/step1/capture/security-07.jpg)
 
 #### 4-6.서버 생성
 
