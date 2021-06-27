@@ -45,12 +45,24 @@ npm run dev
 
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+    - gregolee-public-a : 10.100.10.0/26
+    - gregolee-public-b : 10.100.10.64/26
+    - gregolee-private : 10.100.10.128/27
+    - gregolee-admin : 10.100.10.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
+    - public-01 : http://15.165.236.201:8080/
+    - public-02 : http://13.125.251.82:8080/
 
-3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing) 에 업로드해주세요
+
+- file : gregolee-keypair.pem
+- connect : `ssh -i gregolee-keypair.pem ubuntu@54.180.116.69`
+    - public-01 : ssh gregolee-public-a
+    - public-02 : ssh gregolee-public-b
+    - private : ssh gregolee-private
 
 ---
 
