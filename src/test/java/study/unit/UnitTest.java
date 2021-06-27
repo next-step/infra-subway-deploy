@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("단위 테스트")
-public class UnitTest {
+class UnitTest {
     @DisplayName("단위 테스트 1")
     @Test
     void update() {
