@@ -62,4 +62,4 @@ subnet-0c3ad0d3555980a41 / jaewanlee-subnet-admin :	192.168.6.160/27
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL :  https://proxy.jaewanlee-tech-cours.n-e.kr/
