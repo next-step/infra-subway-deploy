@@ -1,0 +1,3 @@
+[submodule "src/main/resources/submodule"]
+	path = src/main/resources/submodule
+	url = https://github.com/ttuop/subway-db.git
