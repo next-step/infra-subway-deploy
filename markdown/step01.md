@@ -271,9 +271,12 @@
         - [x] 4-6-3.관리망에 베스쳔 서버용도의 EC2 생성
         - [x] 4-6-4.베스쳔 서버에 Session Timeout 600s 설정
         - [x] 4-6-5.베스쳔 서버에 Command 감사로그 설정
-    - [x] 4-7.명령어
-        - [x] 4-7-1.`nohup java -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar  1> ./logs/infra-subway-deploy-20210628.log 2>&1  &`
-        - [x] 4-7-2.root password : qwerty123456
+    - [x] 4-7.웹 애플리케이션 배포
+        - [x] 4-7-1.외부망에 웹 애플리케이션을 배포
+        - [x] 4-7-2.DNS 설정
+    - [x] 4-8.명령어
+        - [x] 4-8-1.`nohup java -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar  1> ./logs/infra-subway-deploy-20210628.log 2>&1  &`
+        - [x] 4-8-2.root password : qwerty123456
 - [x] 5.테스트
     - [x] 5-1.요구사항 조건들 충족했는지 확인
     - [x] 5-2.서버 확인
