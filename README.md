@@ -85,9 +85,12 @@ npm run dev
     - [v] 자신의 공인 IP : 22번 포트 오픈
     - kht2199-sg-bastion
 - [ ] 서버 생성
-  - [ ] 외부망에 웹 서비스용도의 EC2 생성
-  - [ ] 내부망에 데이터베이스용도의 EC2 생성
-  - [ ] 관리망에 베스쳔 서버용도의 EC2 생성
+  - [v] 외부망에 웹 서비스용도의 EC2 생성
+    - kht2199-was-public i-02a55c46da45cf323
+  - [v] 내부망에 데이터베이스용도의 EC2 생성
+    - kht2199-db-private i-0c18dce161ad425d2
+  - [v] 관리망에 베스쳔 서버용도의 EC2 생성
+    - kht2199-bastion
   - [ ] 베스쳔 서버에 Session Timeout 600s 설정
   - [ ] 베스쳔 서버에 Command 감사로그 설정
 
