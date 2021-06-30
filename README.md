@@ -91,8 +91,16 @@ npm run dev
     - kht2199-db-private i-0c18dce161ad425d2
   - [v] 관리망에 베스쳔 서버용도의 EC2 생성
     - kht2199-bastion
-  - [ ] 베스쳔 서버에 Session Timeout 600s 설정
+  - [v] 베스쳔 서버에 Session Timeout 600s 설정
+    - .bash_profile에 추가
   - [ ] 베스쳔 서버에 Command 감사로그 설정
+  
+```
+# .bash_profile Session Timeout 설정
+HISTTIMEFORMAT="%F %T -- "    ## history 명령 결과에 시간값 추가
+export HISTTIMEFORMAT
+export TMOUT=600              ## 세션 타임아웃 설정
+``` 
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
