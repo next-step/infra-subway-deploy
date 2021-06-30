@@ -44,14 +44,32 @@ npm run dev
 ## 요구사항
 
 ### 망 구성
+계산을 위한 참고  
+```
+2^8 => 00000000 => 256  
+2^7 => X0000000 => 128  
+2^6 => XX000000 =>  64
+```
 - [v] VPC 생성
   - [v] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
+    - VPC : kht2199-vpc, 192.168.1.0/24
 - [v] Subnet 생성
   - [v] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+    - 외부망 Subnet(kht2199-public-1, ap-northeast-2a) : 00XXXXXX => 192.168.1.0/26
+    - 외부망 Subnet(kht2199-public-2, ap-northeast-2b) : 01XXXXXX => 192.168.1.64/26
   - [v] 내부망으로 사용할 Subnet : 32개씩 1개
+    - 내부망 Subnet(kht2199-private-1, ap-northeast-2a) : 100XXXXX => 192.168.1.128/27
   - [v] 관리용으로 사용할 Subnet : 32개씩 1개
-- [ ] Internet Gateway 연결
-- [ ] Route Table 생성
+    - 관리용 Subnet(kht2199-bastion-1) : 110XXXXX => 192.168.1.192/27
+- [v] Internet Gateway 연결
+  - Name: kht2199-igw, ID: igw-09263aaae713425e0
+- [v] Route Table 생성
+  - kht2199-routing-table-external
+    - subnet-090068b6612f357b9 / kht2199-public-2
+    - subnet-0a7a9e74b38c73b3e / kht2199-public-1
+  - kht2199-routing-table-internal
+    - subnet-0e91c99d8e915d2a1 / kht2199-private-1
+    - subnet-0c5b292490d57d435 / kht2199-bastion-1
 - [ ] Security Group 설정
   - [ ] 외부망
     - 전체 대역 : 8080 포트 오픈
@@ -69,16 +87,8 @@ npm run dev
   - [ ] 베스쳔 서버에 Command 감사로그 설정
 
 ### 1단계 - 망 구성하기
-2^8 => 00000000 => 256
-2^7 => X0000000 => 128
-2^6 => XX000000 =>  64
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
-  - VPC : 192.168.1.0/24
-  - 외부망 Subnet(kht2199-public-1, ap-northeast-2a) : 00XXXXXX => 192.168.1.0/26
-  - 외부망 Subnet(kht2199-public-2, ap-northeast-2b) : 01XXXXXX => 192.168.1.64/26
-  - 내부망 Subnet(kht2199-private-1, ap-northeast-2a) : 100XXXXX => 192.168.1.128/27
-  - 관리용 Subnet(kht2199-manage-1) : 110XXXXX => 192.168.1.192/27
+- 대역 :
   
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
