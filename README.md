@@ -65,11 +65,13 @@ npm run dev
   - Name: kht2199-igw, ID: igw-09263aaae713425e0
 - [v] Route Table 생성
   - kht2199-routing-table-external
+    - 0.0.0.0/0	igw-09263aaae713425e0
     - subnet-090068b6612f357b9 / kht2199-public-2
     - subnet-0a7a9e74b38c73b3e / kht2199-public-1
-  - kht2199-routing-table-internal
-    - subnet-0e91c99d8e915d2a1 / kht2199-private-1
     - subnet-0c5b292490d57d435 / kht2199-bastion-1
+  - kht2199-routing-table-internal
+    - 0.0.0.0/0	igw-09263aaae713425e0
+    - subnet-0e91c99d8e915d2a1 / kht2199-private-1
 - [ ] Security Group 설정
   - [ ] 외부망
     - 전체 대역 : 8080 포트 오픈
