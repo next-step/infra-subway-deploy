@@ -44,12 +44,12 @@ npm run dev
 ## 요구사항
 
 ### 망 구성
-- [ ] VPC 생성
-  - [ ] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
-- [ ] Subnet 생성
-  - [ ] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
-  - [ ] 내부망으로 사용할 Subnet : 32개씩 1개
-  - [ ] 관리용으로 사용할 Subnet : 32개씩 1개
+- [v] VPC 생성
+  - [v] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
+- [v] Subnet 생성
+  - [v] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+  - [v] 내부망으로 사용할 Subnet : 32개씩 1개
+  - [v] 관리용으로 사용할 Subnet : 32개씩 1개
 - [ ] Internet Gateway 연결
 - [ ] Route Table 생성
 - [ ] Security Group 설정
@@ -69,8 +69,17 @@ npm run dev
   - [ ] 베스쳔 서버에 Command 감사로그 설정
 
 ### 1단계 - 망 구성하기
+2^8 => 00000000 => 256
+2^7 => X0000000 => 128
+2^6 => XX000000 =>  64
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 192.168.1.0/24
+- 대역 : 
+  - VPC : 192.168.1.0/24
+  - 외부망 Subnet(kht2199-public-1, ap-northeast-2a) : 00XXXXXX => 192.168.1.0/26
+  - 외부망 Subnet(kht2199-public-2, ap-northeast-2b) : 01XXXXXX => 192.168.1.64/26
+  - 내부망 Subnet(kht2199-private-1, ap-northeast-2a) : 100XXXXX => 192.168.1.128/27
+  - 관리용 Subnet(kht2199-manage-1) : 110XXXXX => 192.168.1.192/27
+  
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
