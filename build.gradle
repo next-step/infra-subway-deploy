@@ -31,6 +31,12 @@ dependencies {
 	// jwt
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
+	// mysql
+	runtimeOnly 'mysql:mysql-connector-java:8.0.17'
+
+	// flyway
+	runtimeOnly 'org.flywaydb:flyway-core:5.2.0'
+
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
