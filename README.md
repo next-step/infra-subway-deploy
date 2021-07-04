@@ -53,7 +53,7 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
-    - public-01 : http://infla.gregolee.kro.kr:8080/
+    - public-01 : http://infra.gregolee.kro.kr:8080/ ===> 보안 그룹에서 정책 변경으로 접속하지 못하도록 함
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing) 에 업로드해주세요
 
@@ -67,4 +67,4 @@ npm run dev
 ### 2단계 - 배포하기 : [markdown 보기](./markdown/step02.md)
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://infra.gregolee.kro.kr/ (Production 환경으로 설정해둠)
