@@ -76,20 +76,19 @@
     - [x] 2-1.infra 강의 듣기
 - [x] 3.분석 및 설계
     - [x] 3-1.step02.md 초안 작성
-- [ ] 4.구현
+- [x] 4.구현
     - [x] 4-1. 운영 환경 구성하기
         - [x] 4-1-1. 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
             - [x] 4-1-1-1. 외부망에 Nginx로 Reverse Proxy를 구성
             - [x] 4-1-1-2. Reverse Proxy에 TLS 설정
         - [x] 4-1-2. 운영 데이터베이스 구성하기
-    - [ ] 4-2. 개발 환경 구성하기
+    - [x] 4-2. 개발 환경 구성하기
         - [x] 4-2-1. 설정 파일 나누기
             - [x] 4-2-1-1. JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
         - [x] 4-2-2. 데이터베이스 테이블 스키마 버전 관리
         - [x] 4-2-3. SonarLint 설정하기
-        - [ ] 4-2-4. MultiRun 설정하기
-        - [ ] 4-2-5. 설정 별도로 관리하기
-    - [ ] 4-3. 서브넷 : gregolee-private - 인터넷 게이트웨이 제거하기
+        - [x] 4-2-4. MultiRun 설정하기
+    - [x] 4-3. 서브넷 : gregolee-private - 인터넷 게이트웨이 제거하기
 - [ ] 5.테스트
     - [ ] 5-1.요구사항 조건들 충족했는지 확인
     - [ ] 5-2.서버 확인
@@ -178,6 +177,9 @@
 - sonarlint
     - sonarlint 는 gregolee-admin 에 docker 기반으로 설치되어 연동해두었음.
     - 그러나 상세 프로젝트 설정은 후일에 활용해봐야할 것 같음.
+
+- multirun
+    - ![multirun-01](../documents/step2/multirun-01.png)
 
 ### 3.2. 피드백 요청
 
