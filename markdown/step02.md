@@ -167,7 +167,14 @@
         - ![windows10-ssh-connect-putty-07.jpg](../documents/step2/windows10-ssh-connect-putty-07.jpg)
         - ![windows10-ssh-connect-putty-08.jpg](../documents/step2/windows10-ssh-connect-putty-08.jpg)
         - ![windows10-ssh-connect-putty-09.jpg](../documents/step2/windows10-ssh-connect-putty-09.jpg)
-        
+
+- 명령어
+    - 실행
+        - test(h2) : `nohup java -Dspring.profiles.active=test -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar  1> ./logs/infra-subway-deploy-20210628.log 2>&1  &`
+        - local(mysql) : `nohup java -Dspring.profiles.active=local -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar  1> ./logs/infra-subway-deploy-20210628.log 2>&1  &`
+        - prod(mysql) : `nohup java -Dspring.profiles.active=prod -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar  1> ./logs/infra-subway-deploy-20210628.log 2>&1  &`
+    - root password : qwerty123456
+    
 ### 3.2. 피드백 요청
 
 - 
