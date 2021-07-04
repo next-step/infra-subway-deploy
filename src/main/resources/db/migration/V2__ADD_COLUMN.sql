@@ -1,0 +1,1 @@
+ALTER TABLE flyway_test ADD COLUMN active BOOLEAN;
