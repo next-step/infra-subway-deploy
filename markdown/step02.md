@@ -86,7 +86,7 @@
         - [x] 4-2-1. 설정 파일 나누기
             - [x] 4-2-1-1. JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
         - [x] 4-2-2. 데이터베이스 테이블 스키마 버전 관리
-        - [ ] 4-2-3. SonarLint 설정하기
+        - [x] 4-2-3. SonarLint 설정하기
         - [ ] 4-2-4. MultiRun 설정하기
         - [ ] 4-2-5. 설정 별도로 관리하기
     - [ ] 4-3. 서브넷 : gregolee-private - 인터넷 게이트웨이 제거하기
@@ -175,6 +175,10 @@
         - prod(mysql) : `nohup java -Dspring.profiles.active=prod -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar  1> ./logs/infra-subway-deploy-20210628.log 2>&1  &`
     - root password : qwerty123456
     
+- sonarlint
+    - sonarlint 는 gregolee-admin 에 docker 기반으로 설치되어 연동해두었음.
+    - 그러나 상세 프로젝트 설정은 후일에 활용해봐야할 것 같음.
+
 ### 3.2. 피드백 요청
 
 - 
