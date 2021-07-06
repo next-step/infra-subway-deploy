@@ -89,17 +89,18 @@
         - [x] 4-2-3. SonarLint 설정하기
         - [x] 4-2-4. MultiRun 설정하기
     - [x] 4-3. 서브넷 : gregolee-private - 인터넷 게이트웨이 제거하기
-- [x] 5.테스트
-    - [x] 5-1.요구사항 조건들 충족했는지 확인
-    - [x] 5-2.서버 확인
-- [x] 6.인수인계
-    - [x] 6-1.소감 및 피드백 정리
-        - [x] 6-1-1.느낀점 & 배운점 작성
-        - [x] 6-1-2.피드백 요청 정리
-    - [x] 6-2.코드리뷰 요청 및 피드백
-        - [x] 6-1-1.step2를 gregolee/infra-subway-deploy로 push : `git push origin step2`
-        - [x] 6-1-2.pull request(PR) 작성
-    - [x] 6-3.Slack을 통해 merge가 되는지 확인한 후에 미션 종료
+    - [x] 4-4. 서브모듈 기능 적용
+- [ ] 5.테스트
+    - [ ] 5-1.요구사항 조건들 충족했는지 확인
+    - [ ] 5-2.서버 확인
+- [ ] 6.인수인계
+    - [ ] 6-1.소감 및 피드백 정리
+        - [ ] 6-1-1.느낀점 & 배운점 작성
+        - [ ] 6-1-2.피드백 요청 정리
+    - [ ] 6-2.코드리뷰 요청 및 피드백
+        - [ ] 6-1-1.step2를 gregolee/infra-subway-deploy로 push : `git push origin step2`
+        - [ ] 6-1-2.pull request(PR) 작성
+    - [ ] 6-3.Slack을 통해 merge가 되는지 확인한 후에 미션 종료
 
 ## 3. 인수인계
 
@@ -180,6 +181,26 @@
 
 - multirun
     - ![multirun-01](../documents/step2/multirun-01.png)
+
+- SSL 적용기
+    - 수많은 시행착오 끝에 도달했다. (별의별 뻘짓을 다했었다.)
+    - SSL이 적용되지 않았던 이유
+        - 정확한 도메인의 SSL인증서를 발급하지 않았던 것.
+        - 여태까지 `gregolee.n-e.kr`의 인증서만 발급받아서 `infra.gregolee.n-e.kr`는 인증되지 않았던 것이다.
+        ![ssl-error-01](../documents/step2/ssl-error-01.jpg)
+    - 정확하게 다시 받아보자.
+        - `-d 'gregolee.n-e.kr'` ===> `-d 'infra.gregolee.n-e.kr'` 
+        ```
+        docker run -it --rm --name certbot \
+          -v '/etc/letsencrypt:/etc/letsencrypt' \
+          -v '/var/lib/letsencrypt:/var/lib/letsencrypt' \
+          certbot/certbot certonly -d 'infra.gregolee.n-e.kr' --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+        ```
+        ![ssl-error-02](../documents/step2/ssl-error-02.jpg)
+        ![ssl-error-03](../documents/step2/ssl-error-03.jpg)
+    - 나머지는 힌트에서 나온 내용과 동일하게 진행한다.
+        [힌트로 이동](https://edu.nextstep.camp/s/ffeVDScX/ls/iYZi0uIQ)
+        
 
 ### 3.2. 피드백 요청
 

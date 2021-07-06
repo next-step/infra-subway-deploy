@@ -67,4 +67,4 @@ npm run dev
 ### 2단계 - 배포하기 : [markdown 보기](./markdown/step02.md)
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : https://infra.gregolee.kro.kr/ (Production 환경으로 설정해둠)
+- URL : https://infra.gregolee.n-e.kr/ (Production 환경으로 설정해둠)
