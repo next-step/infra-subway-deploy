@@ -93,14 +93,14 @@
 - [x] 5.테스트
     - [x] 5-1.요구사항 조건들 충족했는지 확인
     - [x] 5-2.서버 확인
-- [ ] 6.인수인계
-    - [ ] 6-1.소감 및 피드백 정리
-        - [ ] 6-1-1.느낀점 & 배운점 작성
-        - [ ] 6-1-2.피드백 요청 정리
-    - [ ] 6-2.코드리뷰 요청 및 피드백
-        - [ ] 6-1-1.step2를 gregolee/infra-subway-deploy로 push : `git push origin step2`
-        - [ ] 6-1-2.pull request(PR) 작성
-    - [ ] 6-3.Slack을 통해 merge가 되는지 확인한 후에 미션 종료
+- [x] 6.인수인계
+    - [x] 6-1.소감 및 피드백 정리
+        - [x] 6-1-1.느낀점 & 배운점 작성
+        - [x] 6-1-2.피드백 요청 정리
+    - [x] 6-2.코드리뷰 요청 및 피드백
+        - [x] 6-1-1.step2를 gregolee/infra-subway-deploy로 push : `git push origin step2`
+        - [x] 6-1-2.pull request(PR) 작성
+    - [x] 6-3.Slack을 통해 merge가 되는지 확인한 후에 미션 종료
 
 ## 3. 인수인계
 
