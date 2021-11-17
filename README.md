@@ -43,13 +43,21 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 :
+
+|subnet name|IPv4 CIDR|
+|-----------|---------| 
+|kelicia91-subnet-public-a|192.168.100.0/26| 
+|kelicia91-subnet-public-c|192.168.100.64/26|
+|kelicia91-subnet-private-a|192.168.100.128/27|
+|kelicia91-subnet-admin-c|192.168.100.160/27|
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
+   - URL : 3.38.168.221:8080 (http://kelicia91.kro.kr:8080/)
 
-- URL : 
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+   - 업로드한 파일명: `kelicia91-nextstep-woowahan-pro3.pem`
 
 ---
 
