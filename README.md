@@ -44,12 +44,18 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - 외부망1(tyranotyrano-subnet-public1) 198.168.100.0/26
+  - 외부망2(tyranotyrano-subnet-public2) 198.168.100.64/26
+  - 내부망(tyranotyrano-subnet-private) 198.168.100.128/27
+  - 관리용-bastion(tyranotyrano-subnet-admin) 198.168.100.160/27
+
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : 3.36.66.191:8080 (www.tyranotyrano-subway.kro.kr:8080)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+- 파일이름 : tyranotyrano-web1.pem
 
 ---
 
