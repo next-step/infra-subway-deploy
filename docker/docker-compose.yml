@@ -1,8 +1,8 @@
 version: '3'
 services:
-  local-db:
+  subway-db:
     image: library/mysql:5.7
-    container_name: local-db
+    container_name: subway-db
     restart: always
     ports:
       - 13306:3306
@@ -11,7 +11,7 @@ services:
       MYSQL_DATABASE: subway
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-      TZ: Asia/Seoul
+      TZ: UTC
     volumes:
       - ./db/mysql/data:/var/lib/mysql
       - ./db/mysql/init:/docker-entrypoint-initdb.d
