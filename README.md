@@ -44,13 +44,17 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
-
+  - 외부 - 1 ungseokchoi-public-a (172.30.0.0/26)
+  - 외부 - 2 ungseokchoi-public-c (172.30.0.64/26)
+  - 내부 - 3 ungseokchoi-private-a (172.30.0.128/27)
+  - 관리 - 1 ungseokchoi-bastion-a (172.30.0.160/27)
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : [배포 접속 정보 외부1](http://dev.ungseokchoi.kro.kr:8080/)
+- URL : [배포 접속 정보 외부2](http://prod.ungseokchoi.kro.kr:8080/)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+   - "KEY-ungseokchoi.pem"
 ---
 
 ### 2단계 - 배포하기
