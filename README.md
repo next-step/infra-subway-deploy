@@ -43,13 +43,20 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+
+- 대역
+  - 외부망1: 192.168.50.0/26 (jsyang-dev-public-a)
+  - 외부망2: 192.168.50.64/26 (jsyang-dev-public-c)
+  - 내부망: 192.168.50.128/27 (jsyang-dev-private-a)
+  - 관리용: 192.168.50.160/27 (jsyang-dev-admin-c)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL: 3.38.168.221 (jsyang-dev.kro.kr)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+
+- pem키: jsyang-dev-key.pem
 
 ---
 
