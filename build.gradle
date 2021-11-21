@@ -2,6 +2,8 @@ plugins {
 	id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id "org.flywaydb.flyway" version "8.0.5"
+
 }
 
 group = 'nextstep'
@@ -35,6 +37,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
+	implementation 'org.flywaydb:flyway-core:6.4.2'
+
 }
 
 test {
