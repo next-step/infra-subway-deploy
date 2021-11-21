@@ -1,6 +1,7 @@
 package nextstep.subway.utils;
 
 import com.google.common.base.CaseFormat;
+import nextstep.subway.member.domain.Member;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.ActiveProfiles;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,5 +41,10 @@ public class DatabaseCleanup implements InitializingBean {
         }
 
         entityManager.createNativeQuery("SET REFERENTIAL_INTEGRITY TRUE").executeUpdate();
+    }
+
+    public boolean isDeleted(){
+        int count = entityManager.createQuery("select count(m.id) from Member m").getFirstResult();
+        return count == 0;
     }
 }

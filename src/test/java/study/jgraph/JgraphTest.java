@@ -11,9 +11,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class JgraphTest {
+class JgraphTest {
     @Test
-    public void getDijkstraShortestPath() {
+    void getDijkstraShortestPath() {
         String source = "v3";
         String target = "v1";
         WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
@@ -31,7 +31,7 @@ public class JgraphTest {
     }
 
     @Test
-    public void getKShortestPaths() {
+    void getKShortestPaths() {
         String source = "v3";
         String target = "v1";
 
