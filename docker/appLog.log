@@ -1,0 +1,304 @@
+nohup: ignoring input
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::       (v2.4.0-SNAPSHOT)
+
+2021-11-21 04:57:25.022  INFO 32298 --- [           main] nextstep.subway.SubwayApplication        : Starting SubwayApplication using Java 11.0.11 on ip-222-100-0-8 with PID 32298 (/home/ubuntu/service/infra-subway-deploy/docker/app.jar started by ubuntu in /home/ubuntu/service/infra-subway-deploy/docker)
+2021-11-21 04:57:25.029  INFO 32298 --- [           main] nextstep.subway.SubwayApplication        : The following profiles are active: local
+2021-11-21 04:57:26.630  INFO 32298 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-21 04:57:26.809  INFO 32298 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 149 ms. Found 4 JPA repository interfaces.
+2021-11-21 04:57:28.135  INFO 32298 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsHelpersAutoConfiguration' of type [pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsHelpersAutoConfiguration$$EnhancerBySpringCGLIB$$4fef9a5e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-21 04:57:28.174  INFO 32298 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'handlebars.resolver-pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsValueResolversProperties' of type [pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsValueResolversProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-21 04:57:28.209  INFO 32298 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'handlebars-pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsProperties' of type [pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-21 04:57:28.211  INFO 32298 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsAutoConfiguration$HandlebarsViewResolverConfiguration' of type [pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsAutoConfiguration$HandlebarsViewResolverConfiguration$$EnhancerBySpringCGLIB$$62d6c4fc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-21 04:57:28.462  INFO 32298 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'handlebarsViewResolver' of type [com.github.jknack.handlebars.springmvc.HandlebarsViewResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-21 04:57:29.131  INFO 32298 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-21 04:57:29.160  INFO 32298 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-21 04:57:29.160  INFO 32298 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-11-21 04:57:29.338  INFO 32298 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-21 04:57:29.339  INFO 32298 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4130 ms
+2021-11-21 04:57:30.153  INFO 32298 --- [           main] n.r.s.b.l.access.LogbackAccessContext    : Configured the Logback-access: context=[default], config=[classpath:logback-access.xml]
+2021-11-21 04:57:30.510  INFO 32298 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-21 04:57:31.014  INFO 32298 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-21 04:57:31.160  INFO 32298 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-21 04:57:31.306  INFO 32298 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.23.Final
+2021-11-21 04:57:31.689  INFO 32298 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-21 04:57:32.019  INFO 32298 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: 
+    
+    drop table if exists favorite CASCADE 
+Hibernate: 
+    
+    drop table if exists line CASCADE 
+Hibernate: 
+    
+    drop table if exists member CASCADE 
+Hibernate: 
+    
+    drop table if exists section CASCADE 
+Hibernate: 
+    
+    drop table if exists station CASCADE 
+Hibernate: 
+    
+    create table favorite (
+       id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        member_id bigint,
+        source_station_id bigint,
+        target_station_id bigint,
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table line (
+       id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        color varchar(255),
+        name varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table member (
+       id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        age integer,
+        email varchar(255),
+        password varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table section (
+       id bigint generated by default as identity,
+        distance integer not null,
+        down_station_id bigint,
+        line_id bigint,
+        up_station_id bigint,
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table station (
+       id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        name varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    alter table line 
+       add constraint UK_9ney9davbulf79nmn9vg6k7tn unique (name)
+Hibernate: 
+    
+    alter table station 
+       add constraint UK_gnneuc0peq2qi08yftdjhy7ok unique (name)
+Hibernate: 
+    
+    alter table section 
+       add constraint FKtecjgrtoxbeeqpymapva62xfw 
+       foreign key (down_station_id) 
+       references station
+Hibernate: 
+    
+    alter table section 
+       add constraint FKlfhpg8lrvyr948juittt221ux 
+       foreign key (line_id) 
+       references line
+Hibernate: 
+    
+    alter table section 
+       add constraint FK18bw17tb86fh1igov96s9i6he 
+       foreign key (up_station_id) 
+       references station
+2021-11-21 04:57:33.874  INFO 32298 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-21 04:57:33.894  INFO 32298 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-21 04:57:35.310  WARN 32298 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-21 04:57:35.600  INFO 32298 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-11-21 04:57:35.811  INFO 32298 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-11-21 04:57:36.313  INFO 32298 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-21 04:57:36.337  INFO 32298 --- [           main] nextstep.subway.SubwayApplication        : Started SubwayApplication in 12.629 seconds (JVM running for 13.955)
+2021-11-21 06:19:10.425  INFO 32298 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-21 06:19:10.425  INFO 32298 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-21 06:19:10.430  INFO 32298 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+GET /config/getuser?index=0 HTTP/1.1
+host: 3.34.94.4:8080
+user-agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+accept-language: en-GB,en;q=0.5
+accept-encoding: gzip, deflate
+connection: close
+upgrade-insecure-requests: 1
+
+
+
+HTTP/1.1 404 Not Found
+Connection: close
+Vary: Origin
+Content-Length: 286
+Content-Language: en-GB
+Date: Sun, 21 Nov 2021 06:19:10 GMT
+Content-Type: text/html;charset=UTF-8
+
+
+
+GET / HTTP/1.1
+host: 3.34.94.4:8080
+user-agent: Mozilla/5.0 (Windows NT 5.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36
+accept: */*
+accept-encoding: gzip
+
+
+
+HTTP/1.1 200 OK
+Content-Length: 1000
+Content-Language: en
+Date: Sun, 21 Nov 2021 06:30:18 GMT
+Content-Type: text/html;charset=UTF-8
+
+
+
+GET / HTTP/1.0
+user-agent: masscan/1.3 (https://github.com/robertdavidgraham/masscan)
+accept: */*
+
+
+
+HTTP/1.1 200 OK
+Connection: close
+Content-Length: 1000
+Content-Language: en
+Date: Sun, 21 Nov 2021 06:46:15 GMT
+Content-Type: text/html;charset=UTF-8
+
+
+
+2021-11-21 06:51:34.250  INFO 32298 --- [nio-8080-exec-5] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in the HTTP protocol [HTTP/1.10x0aHost:]
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:559) ~[tomcat-embed-core-9.0.39.jar!/:9.0.39]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:261) ~[tomcat-embed-core-9.0.39.jar!/:9.0.39]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.39.jar!/:9.0.39]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) ~[tomcat-embed-core-9.0.39.jar!/:9.0.39]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) ~[tomcat-embed-core-9.0.39.jar!/:9.0.39]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.39.jar!/:9.0.39]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.39.jar!/:9.0.39]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+GET /manager/html null
+
+
+
+HTTP/1.1 400 Bad Request
+Connection: close
+Content-Length: 435
+Content-Language: en
+Date: Sun, 21 Nov 2021 06:51:34 GMT
+Content-Type: text/html;charset=utf-8
+
+
+
+GET /manager/html null
+
+
+
+HTTP/1.1 400 Bad Request
+Connection: close
+Content-Length: 435
+Content-Language: en
+Date: Sun, 21 Nov 2021 07:07:11 GMT
+Content-Type: text/html;charset=utf-8
+
+
+
+GET / HTTP/1.1
+host: 3.34.94.4:8080
+user-agent: Mozilla/5.0 zgrab/0.x
+accept: */*
+accept-encoding: gzip
+
+
+
+HTTP/1.1 200 OK
+Content-Length: 1000
+Content-Language: en
+Date: Sun, 21 Nov 2021 07:19:36 GMT
+Content-Type: text/html;charset=UTF-8
+
+
+
+GET / HTTP/1.1
+host: 3.34.94.4:8080
+user-agent: Mozilla/5.0 zgrab/0.x
+accept: */*
+accept-encoding: gzip
+
+
+
+HTTP/1.1 200 OK
+Content-Length: 1000
+Content-Language: en
+Date: Sun, 21 Nov 2021 07:22:24 GMT
+Content-Type: text/html;charset=UTF-8
+
+
+
+GET /js/main.js HTTP/1.1
+host: nhs0912-subway-infra.kro.kr:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36
+dnt: 1
+accept: */*
+referer: http://nhs0912-subway-infra.kro.kr:8080/
+accept-encoding: gzip, deflate
+accept-language: ko,en-US;q=0.9,en;q=0.8,ko-KR;q=0.7
+if-modified-since: Fri, 19 Nov 2021 14:27:24 GMT
+
+
+
+HTTP/1.1 304 Not Modified
+Keep-Alive: timeout=60
+Connection: keep-alive
+Vary: Origin
+Last-Modified: Fri, 19 Nov 2021 14:27:24 GMT
+Date: Sun, 21 Nov 2021 08:21:36 GMT
+
+
+
+GET /js/vendors.js HTTP/1.1
+host: nhs0912-subway-infra.kro.kr:8080
+connection: keep-alive
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36
+dnt: 1
+accept: */*
+referer: http://nhs0912-subway-infra.kro.kr:8080/
+accept-encoding: gzip, deflate
+accept-language: ko,en-US;q=0.9,en;q=0.8,ko-KR;q=0.7
+
+
+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Keep-Alive: timeout=60
+Connection: keep-alive
+Vary: Origin
+Last-Modified: Fri, 19 Nov 2021 14:27:24 GMT
+Content-Length: 2176047
+Date: Sun, 21 Nov 2021 08:21:36 GMT
+Content-Type: application/javascript
+
+
+

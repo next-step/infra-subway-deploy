@@ -1,0 +1,167 @@
+nohup: ignoring input
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::       (v2.4.0-SNAPSHOT)
+
+2021-11-18 15:23:10.415  INFO 29650 --- [           main] nextstep.subway.SubwayApplication        : Starting SubwayApplication using Java 11.0.11 on ip-222-100-0-8 with PID 29650 (/home/ubuntu/service/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar started by ubuntu in /home/ubuntu/service/infra-subway-deploy)
+2021-11-18 15:23:10.424  INFO 29650 --- [           main] nextstep.subway.SubwayApplication        : The following profiles are active: local
+2021-11-18 15:23:12.286  INFO 29650 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-18 15:23:12.502  INFO 29650 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 196 ms. Found 4 JPA repository interfaces.
+2021-11-18 15:23:13.820  INFO 29650 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsHelpersAutoConfiguration' of type [pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsHelpersAutoConfiguration$$EnhancerBySpringCGLIB$$4fef9a5e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-18 15:23:13.851  INFO 29650 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'handlebars.resolver-pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsValueResolversProperties' of type [pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsValueResolversProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-18 15:23:13.876  INFO 29650 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'handlebars-pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsProperties' of type [pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-18 15:23:13.890  INFO 29650 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsAutoConfiguration$HandlebarsViewResolverConfiguration' of type [pl.allegro.tech.boot.autoconfigure.handlebars.HandlebarsAutoConfiguration$HandlebarsViewResolverConfiguration$$EnhancerBySpringCGLIB$$62d6c4fc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-18 15:23:14.154  INFO 29650 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'handlebarsViewResolver' of type [com.github.jknack.handlebars.springmvc.HandlebarsViewResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-18 15:23:14.785  INFO 29650 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-18 15:23:14.811  INFO 29650 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-18 15:23:14.812  INFO 29650 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-11-18 15:23:14.968  INFO 29650 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-18 15:23:14.968  INFO 29650 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4361 ms
+2021-11-18 15:23:15.730  INFO 29650 --- [           main] n.r.s.b.l.access.LogbackAccessContext    : Configured the Logback-access: context=[default], config=[classpath:logback-access.xml]
+2021-11-18 15:23:16.094  INFO 29650 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-18 15:23:16.626  INFO 29650 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-18 15:23:16.784  INFO 29650 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-18 15:23:16.913  INFO 29650 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.23.Final
+2021-11-18 15:23:17.282  INFO 29650 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-18 15:23:17.593  INFO 29650 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: 
+    
+    drop table if exists favorite CASCADE 
+Hibernate: 
+    
+    drop table if exists line CASCADE 
+Hibernate: 
+    
+    drop table if exists member CASCADE 
+Hibernate: 
+    
+    drop table if exists section CASCADE 
+Hibernate: 
+    
+    drop table if exists station CASCADE 
+Hibernate: 
+    
+    create table favorite (
+       id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        member_id bigint,
+        source_station_id bigint,
+        target_station_id bigint,
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table line (
+       id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        color varchar(255),
+        name varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table member (
+       id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        age integer,
+        email varchar(255),
+        password varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table section (
+       id bigint generated by default as identity,
+        distance integer not null,
+        down_station_id bigint,
+        line_id bigint,
+        up_station_id bigint,
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table station (
+       id bigint generated by default as identity,
+        created_date timestamp,
+        modified_date timestamp,
+        name varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    alter table line 
+       add constraint UK_9ney9davbulf79nmn9vg6k7tn unique (name)
+Hibernate: 
+    
+    alter table station 
+       add constraint UK_gnneuc0peq2qi08yftdjhy7ok unique (name)
+Hibernate: 
+    
+    alter table section 
+       add constraint FKtecjgrtoxbeeqpymapva62xfw 
+       foreign key (down_station_id) 
+       references station
+Hibernate: 
+    
+    alter table section 
+       add constraint FKlfhpg8lrvyr948juittt221ux 
+       foreign key (line_id) 
+       references line
+Hibernate: 
+    
+    alter table section 
+       add constraint FK18bw17tb86fh1igov96s9i6he 
+       foreign key (up_station_id) 
+       references station
+2021-11-18 15:23:19.112  INFO 29650 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-18 15:23:19.124  INFO 29650 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-18 15:23:20.526  WARN 29650 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-18 15:23:20.808  INFO 29650 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-11-18 15:23:21.025  INFO 29650 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-11-18 15:23:21.387  WARN 29650 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2021-11-18 15:23:21.390  INFO 29650 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-11-18 15:23:21.395  INFO 29650 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-18 15:23:21.396  INFO 29650 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+Hibernate: 
+    
+    drop table if exists favorite CASCADE 
+Hibernate: 
+    
+    drop table if exists line CASCADE 
+Hibernate: 
+    
+    drop table if exists member CASCADE 
+Hibernate: 
+    
+    drop table if exists section CASCADE 
+Hibernate: 
+    
+    drop table if exists station CASCADE 
+2021-11-18 15:23:21.426  INFO 29650 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-11-18 15:23:21.437  INFO 29650 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-11-18 15:23:21.439  INFO 29650 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-11-18 15:23:21.469  INFO 29650 --- [           main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-11-18 15:23:21.594 ERROR 29650 --- [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
