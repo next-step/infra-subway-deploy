@@ -1,0 +1,3 @@
+[submodule "src/main/resources/properties"]
+	path = src/main/resources/properties
+	url = https://github.com/nhs0912/spring.properties
