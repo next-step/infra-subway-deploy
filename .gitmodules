@@ -1,3 +1,4 @@
 [submodule "infra-subway-submodule"]
-	path = infra-subway-submodule
+	path = src/main/resources-env/prod
 	url = https://github.com/LuneChaser/infra-subway-submodule.git
+    branch = main
