@@ -35,8 +35,16 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'org.flywaydb:flyway-core:5.2.0'
 }
 
 test {
 	useJUnitPlatform()
+}
+
+def profileType = (!project.hasProperty('profile') || !profile) ? 'test' : profile
+
+sourceSets {
+    main.resources.srcDirs = ["src/main/resources", "src/main/resources-env/${profileType}"]
 }
