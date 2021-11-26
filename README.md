@@ -54,13 +54,26 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 
 - 대역 :
+    - VPC :
+        - 192.168.111.0/24
+    - 외부망 1: moonjuhyeon-subnet-public-a
+        - 192.168.111.0/26
+    - 외부망 2: moonjuhyeon-subnet-public-b
+        - 192.168.111.64/26
+    - 내부망: moonjuhyeon-subnet-private
+        - 192.168.111.128/27
+    - 관리망: moonjuhyeon-subnet-manage
+        - 192.168.111.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL :
+- URL : http://moonjuhyeon-utc.kro.kr:8080
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에
    업로드해주세요
+
+-
+FILE : [moonjuhyeon-manage-key-pair.pem](https://drive.google.com/file/d/1NVC7AWCaGsdhXbAhkfxk5mUpzGisCIGH/view?usp=sharing)
 
 ---
 
