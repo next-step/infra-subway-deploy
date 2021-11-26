@@ -44,14 +44,16 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역
-    - bgpark82-public-a : 192.168.200.0/26
-    - bgpark82-public-b : 192.168.200.64/26
-    - bgpark82-admin : 192.168.200.160/27
-    - bgpark82-private : 192.168.200.128/27
+  - bgpark82-public-a : 192.168.0.0/26
+  - bgpark82-public-b : 192.168.0.64/26
+  - bgpark82-admin : 192.168.0.128/27
+  - bgpark82-private : 192.168.0.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 3.37.67.193
+- URL : 
+  - 3.36.230.192:8080
+  - 15.165.216.112:8080
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
@@ -60,4 +62,4 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : https://bgpark.p-e.kr/
+- 
