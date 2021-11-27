@@ -44,10 +44,16 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+    * VPC : wookeeeeeee-vpc (192.168.87.0/24)
+    * 외부망1 : wookeeeeeee-subnet-external-1
+ (192.168.87.0/26)
+    * 외부망2 : wookeeeeeee-subnet-external-2 (192.168.87.64/26)
+    * 내부망: wookeeeeeee-subnet-internal (192.168.87.128/27)
+    * 관리망: wookeeeeeee-subnet-management (192.168.87.160/27)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://wook-subway.o-r.kr
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
