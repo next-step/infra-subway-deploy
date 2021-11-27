@@ -55,6 +55,8 @@ npm run dev
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
   - key filename :  `changsubkwak-key.pem`
 
+   - key filename :  `changsubkwak-key.pem`
+
 ---
 
 ### 2단계 - 배포하기
