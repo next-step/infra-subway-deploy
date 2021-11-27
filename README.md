@@ -43,14 +43,19 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 : vpc -  192.168.10.0/24
+        public1 -   192.168.10.0/26
+        public2 -   192.168.10.64/26
+        private -   192.168.10.128/27
+        manage  -   1921.68.10.160/27  
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : public1 - http://3.36.209.24:8080 (http://haedoang.o-r.kr)
+        public2 - http://3.36.233.76:8080 (http://haedoang.n-e.kr)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+- 파일명 : haedoang.pem
 ---
 
 ### 2단계 - 배포하기
