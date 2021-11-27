@@ -9,11 +9,15 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL57Dialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
   datasource:
     url: jdbc:mysql://localhost:3306/subway?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
     username: root
     password: masterpw
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 1
 
 logging:
   level:

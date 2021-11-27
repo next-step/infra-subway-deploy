@@ -6,7 +6,8 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-
+    hibernate:
+      ddl-auto: create
 logging:
   level:
     org:
