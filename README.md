@@ -62,3 +62,17 @@ npm run dev
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : 
+
+
+### step2 요구사항
+- [ ] 운영 환경 구성
+  - [ ] Reverse Proxy 구성
+    - [ ] 외부망에 Nginx로 Reverse Proxy 구성
+    - [ ] Reverse Proxy에 TLS 설정
+  - [ ] 운영 데이터베이스 구성
+
+- [ ] 개발 환경 구성
+  - [ ] 설정 파일 나누기
+    - [ ] Junit - h2 사용
+    - [ ] Local - docker(mysql)
+    - [ ] Prod - 운영 DB 사용
