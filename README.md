@@ -98,16 +98,22 @@ npm run dev
     - [x] 내부망
         - [x] y2o2u2n-internal-rt : y2o2u2n-a, y2o2u2n-b, y2o2u2n-c, y2o2u2n-d
 - [ ] Security Group 설정
-    - [ ] 외부망
-        - [ ] 전체 대역 : 8080 포트 오픈
+    - [ ] 외부망 `SG-y2o2u2n-external`
+        - [x] 전체 대역 : 8080 포트 오픈
         - [ ] 관리망 : 22번 포트 오픈
-    - [ ] 내부망
+    - [ ] 내부망 `SG-y2o2u2n-internal`
         - [ ] 외부망 : 3306 포트 오픈
         - [ ] 관리망 : 22번 포트 오픈
-    - [ ] 관리망
+    - [ ] 관리망 `SG-y2o2u2n-admin`
         - [ ] 자신의 공인 IP : 22번 포트 오픈
 - [ ] 서버 생성
     - [ ] 외부망에 웹 서비스용도의 EC2 생성
+      - [x] AMI : Ubuntu Server 20.04 LTS (HVM), SSD Volume Type - ami-0f8b8babb98cc66d0
+      - [x] 인스턴스 : t2.medium
+      - [x] VPC : y2o2u2n-vpc
+      - [x] 서브넷 : 각각 y2o2u2n-a, y2o2u2n-b
+      - [x] 태그 : EC2-y2o2u2n
+      - [x] 보안 그룹 : SG-y2o2u2n-external
     - [ ] 내부망에 데이터베이스용도의 EC2 생성
     - [ ] 관리망에 베스쳔 서버용도의 EC2 생성
     - [ ] 베스쳔 서버에 Session Timeout 600s 설정
