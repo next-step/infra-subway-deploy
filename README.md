@@ -108,21 +108,21 @@ npm run dev
         - [ ] 자신의 공인 IP : `22` 포트 오픈
 - [ ] 서버 생성
     - [x] 외부망에 웹 서비스용도의 EC2 생성
-        - [x] AMI : `Ubuntu Server 20.04 LTS (HVM), SSD Volume Type - ami-0f8b8babb98cc66d0`
+        - [x] AMI : `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type`
         - [x] 인스턴스 : `t2.medium`
         - [x] VPC : `y2o2u2n-vpc`
         - [x] 서브넷 : 각각 `y2o2u2n-a`, `y2o2u2n-b`
         - [x] 태그 : `EC2-y2o2u2n`
         - [x] 보안 그룹 : `SG-y2o2u2n-external`
     - [x] 내부망에 데이터베이스용도의 EC2 생성
-        - [x] AMI : `Ubuntu Server 20.04 LTS (HVM), SSD Volume Type - ami-0f8b8babb98cc66d0`
+        - [x] AMI : `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type`
         - [x] 인스턴스 : `t2.medium`
         - [x] VPC : `y2o2u2n-vpc`
         - [x] 서브넷 : `y2o2u2n-c`
         - [x] 태그 : `EC2-y2o2u2n`
         - [x] 보안 그룹 : `SG-y2o2u2n-internal`
-    - [ ] 관리망에 베스쳔 서버용도의 EC2 생성
-        - [x] AMI : `Ubuntu Server 20.04 LTS (HVM), SSD Volume Type - ami-0f8b8babb98cc66d0`
+    - [x] 관리망에 베스쳔 서버용도의 EC2 생성
+        - [x] AMI : `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type`
         - [x] 인스턴스 : `t2.medium`
         - [x] VPC : `y2o2u2n-vpc`
         - [x] 서브넷 : `y2o2u2n-d`
