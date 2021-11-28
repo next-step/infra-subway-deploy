@@ -106,7 +106,7 @@ npm run dev
         - [ ] 관리망 : `22` 포트 오픈
     - [ ] 관리망 `SG-y2o2u2n-bastion`
         - [ ] 자신의 공인 IP : `22` 포트 오픈
-- [ ] 서버 생성
+- [x] 서버 생성
     - [x] 외부망에 웹 서비스용도의 EC2 생성
         - [x] AMI : `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type`
         - [x] 인스턴스 : `t2.medium`
@@ -128,7 +128,7 @@ npm run dev
         - [x] 서브넷 : `y2o2u2n-d`
         - [x] 태그 : `EC2-y2o2u2n`
         - [x] 보안 그룹 : `SG-y2o2u2n-bastion`
-    - [ ] 베스쳔 서버에 Session Timeout 600s 설정
+    - [x] 베스쳔 서버에 Session Timeout 600s 설정
     - [ ] 베스쳔 서버에 Command 감사로그 설정
 
 ##### 웹 애플리케이션 배포
