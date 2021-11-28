@@ -82,11 +82,11 @@ npm run dev
 - [x] Subnet 생성
     - [x] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
         - [x] `y2o2u2n-a` : `ap-northeast-2a`, `192.168.222.0/26`
-        - [x] `y2o2u2n-b` : `ap-northeast-2b`, `192.168.222.64/26`
+        - [x] `y2o2u2n-b` : `ap-northeast-2c`, `192.168.222.64/26`
     - [x] 내부망으로 사용할 Subnet : 32개씩 1개
         - [x] `y2o2u2n-c` : `ap-northeast-2a`, `192.168.222.128/27`
     - [x] 관리용으로 사용할 Subnet : 32개씩 1개
-        - [x] `y2o2u2n-d` : `ap-northeast-2b`, `192.168.222.160/27`
+        - [x] `y2o2u2n-d` : `ap-northeast-2c`, `192.168.222.160/27`
 - [ ] Internet Gateway 연결
     - [x] 외부망
         - [x] `y2o2u2n-igw` 생성
@@ -104,7 +104,7 @@ npm run dev
     - [ ] 내부망 `SG-y2o2u2n-internal`
         - [x] 외부망 : `3306` 포트 오픈
         - [ ] 관리망 : `22` 포트 오픈
-    - [ ] 관리망 `SG-y2o2u2n-admin`
+    - [ ] 관리망 `SG-y2o2u2n-bastion`
         - [ ] 자신의 공인 IP : `22` 포트 오픈
 - [ ] 서버 생성
     - [x] 외부망에 웹 서비스용도의 EC2 생성
@@ -122,6 +122,12 @@ npm run dev
         - [x] 태그 : `EC2-y2o2u2n`
         - [x] 보안 그룹 : `SG-y2o2u2n-internal`
     - [ ] 관리망에 베스쳔 서버용도의 EC2 생성
+        - [x] AMI : `Ubuntu Server 20.04 LTS (HVM), SSD Volume Type - ami-0f8b8babb98cc66d0`
+        - [x] 인스턴스 : `t2.medium`
+        - [x] VPC : `y2o2u2n-vpc`
+        - [x] 서브넷 : `y2o2u2n-d`
+        - [x] 태그 : `EC2-y2o2u2n`
+        - [x] 보안 그룹 : `SG-y2o2u2n-bastion`
     - [ ] 베스쳔 서버에 Session Timeout 600s 설정
     - [ ] 베스쳔 서버에 Command 감사로그 설정
 
