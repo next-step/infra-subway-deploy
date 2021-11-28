@@ -95,25 +95,27 @@ npm run dev
         - [x] `y2o2u2n-c` : `ap-northeast-2a`, `192.168.222.128/27`
     - [x] 관리용으로 사용할 Subnet : 32개씩 1개
         - [x] `y2o2u2n-d` : `ap-northeast-2c`, `192.168.222.160/27`
-- [ ] Internet Gateway 연결
+- [x] Internet Gateway 연결
+    - [x] `y2o2u2n-igw` 생성
+    - [x] `y2o2u2n-vpc` 연결
+    - [x] `y2o2u2n-external-rt` 내 라우팅 편집에서 `0.0.0.0/0` 에는 `y2o2u2n-igw` 연결
+- [x] Route Table 생성
     - [x] 외부망
-        - [x] `y2o2u2n-igw` 생성
-        - [x] `y2o2u2n-vpc` 연결
-        - [x] `y2o2u2n-external-rt` 내 라우팅 편집에서 `0.0.0.0/0` 에는 `y2o2u2n-igw` 연결
-- [ ] Route Table 생성
-    - [x] 외부망
-        - [x] `y2o2u2n-external-rt` : `y2o2u2n-a`, `y2o2u2n-b`
+        - [x] `y2o2u2n-external-rt` : `y2o2u2n-a`, `y2o2u2n-b`, `y2o2u2n-d`
     - [x] 내부망
-        - [x] `y2o2u2n-internal-rt` : `y2o2u2n-a`, `y2o2u2n-b`, `y2o2u2n-c`, `y2o2u2n-d`
-- [ ] Security Group 설정
-    - [ ] 외부망 `SG-y2o2u2n-external`
+        - [x] `y2o2u2n-internal-rt` : `y2o2u2n-c`
+- [x] Security Group 설정
+    - [x] 외부망 `SG-y2o2u2n-external`
         - [x] 전체 대역 : `8080` 포트 오픈
         - [ ] 관리망 : `22` 포트 오픈
-    - [ ] 내부망 `SG-y2o2u2n-internal`
+        - [x] 전체 대역 : ICMP 오픈
+    - [x] 내부망 `SG-y2o2u2n-internal`
         - [x] 외부망 : `3306` 포트 오픈
-        - [ ] 관리망 : `22` 포트 오픈
-    - [ ] 관리망 `SG-y2o2u2n-bastion`
-        - [ ] 자신의 공인 IP : `22` 포트 오픈
+        - [x] 관리망 : `22` 포트 오픈
+        - [x] 전체 대역 : ICMP 오픈
+    - [x] 관리망 `SG-y2o2u2n-bastion`
+        - [x] 자신의 공인 IP : `22` 포트 오픈
+        - [x] 전체 대역 : ICMP 오픈
 - [x] 서버 생성
     - [x] 외부망에 웹 서비스용도의 EC2 생성
         - [x] AMI : `Ubuntu Server 18.04 LTS (HVM), SSD Volume Type`
