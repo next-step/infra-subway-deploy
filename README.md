@@ -77,7 +77,8 @@ npm run dev
 ##### 망 구성
 
 - [x] VPC 생성
-    - [x] CIDR은 C class(192.168.222.0/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
+    - [x] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
+        - [x] y2o2u2n-vpc, 192.168.222.0/24
 - [x] Subnet 생성
     - [x] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
         - [x] y2o2u2n-a, ap-northeast-2a, 192.168.222.0/26
@@ -87,7 +88,13 @@ npm run dev
     - [x] 관리용으로 사용할 Subnet : 32개씩 1개
         - [x] y2o2u2n-d, ap-northeast-2b, 192.168.222.160/27
 - [ ] Internet Gateway 연결
+    - [x] 외부망
+        - [x] y2o2u2n-igw 생성
+        - [x] y2o2u2n-vpc 연결
+        - [x] y2o2u2n-external-rt 내 라우팅 편집에서 0.0.0.0/0 에는 y2o2u2n-igw 연결
 - [ ] Route Table 생성
+    - [x] 외부망
+        - [x] y2o2u2n-external-rt : y2o2u2n-a, y2o2u2n-b
 - [ ] Security Group 설정
     - [ ] 외부망
         - [ ] 전체 대역 : 8080 포트 오픈
