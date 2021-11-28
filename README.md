@@ -85,6 +85,8 @@ npm run dev
     - [x] 관리망에 베스쳔 서버용도의 EC2 생성
         - `EC2-doyoung0205-bastion`
         - `t2.micro`
+        - DB 접속 : `ssh db`
+        - 웹 접속 : `ssh web1`
     - [x] 베스쳔 서버에 Session Timeout 600s 설정
     - [x] 베스쳔 서버에 Command 감사로그 설정
 
