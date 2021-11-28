@@ -62,7 +62,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://keepbang-woocamp.p-e.kr
 
 ## 작업 목록
 - [X] VPC 생성
@@ -91,3 +91,15 @@ npm run dev
     
 - [X] 외부망에 웹애플리케이션 배포
 - [X] dns설정
+
+- [X] 운영 환경 구성하기
+    - [X] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+        - [X] 외부망에 Nginx로 Reverse Proxy를 구성
+        - [X] Reverse Proxy에 TLS 설정
+    - [X] 운영 데이터베이스 구성하기
+    - [X] 운영환경 배포
+- [X] 개발 환경 구성하기
+    - [X] 설정 파일 나누기
+        - JUnit: h2, Local: docker(mysql), Prod: 운영 DB를 사용하도록 설정
+    - [X] 데이터베이스 테이블 스키마 버전 관리
+
