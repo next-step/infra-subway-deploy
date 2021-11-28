@@ -136,6 +136,8 @@ npm run dev
 - [x] Elastic IP 생성
     - [x] EIP-y2o2u2n-service-a : 서비스 용도 EC2 첫번째 인스턴스에 연결
     - [x] EIP-y2o2u2n-service-b : 서비스 용도 EC2 두번째 인스턴스에 연결
+    - [x] EIP-y2o2u2n-database : 데이터베이스 용도 EC2 인스턴스에 연결
+    - [x] EIP-y2o2u2n-bastion : 베스쳔 용도 EC2 인스턴스에 연결
 
 ##### 웹 애플리케이션 배포
 
