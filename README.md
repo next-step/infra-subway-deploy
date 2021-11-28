@@ -131,6 +131,8 @@ npm run dev
     - [x] 베스쳔 서버에 Session Timeout 600s 설정
     - [x] 베스쳔 서버에 쉘 프롬프트 변경
     - [x] 베스쳔 서버에 Command 감사로그 설정
+    - [ ] 베스천 서버에서 서비스용 서버에 ssh 연결 설정
+    - [x] 베스천 서버에서 다른 서버로 접근이 용이하도록 별칭 설정
 - [x] Elastic IP 생성
     - [x] EIP-y2o2u2n-service-a : 서비스 용도 EC2 첫번째 인스턴스에 연결
     - [x] EIP-y2o2u2n-service-b : 서비스 용도 EC2 두번째 인스턴스에 연결
