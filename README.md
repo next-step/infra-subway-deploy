@@ -92,9 +92,11 @@ npm run dev
         - [x] y2o2u2n-igw 생성
         - [x] y2o2u2n-vpc 연결
         - [x] y2o2u2n-external-rt 내 라우팅 편집에서 0.0.0.0/0 에는 y2o2u2n-igw 연결
-- [ ] Route Table 생성
+- [x] Route Table 생성
     - [x] 외부망
         - [x] y2o2u2n-external-rt : y2o2u2n-a, y2o2u2n-b
+    - [x] 내부망
+        - [x] y2o2u2n-internal-rt : y2o2u2n-a, y2o2u2n-b, y2o2u2n-c, y2o2u2n-d
 - [ ] Security Group 설정
     - [ ] 외부망
         - [ ] 전체 대역 : 8080 포트 오픈
