@@ -59,7 +59,8 @@ npm run dev
 
 - URL :
 
-3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에
+   업로드해주세요
 
 ---
 
@@ -77,10 +78,14 @@ npm run dev
 
 - [x] VPC 생성
     - [x] CIDR은 C class(192.168.222.0/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
-- [ ] Subnet 생성
-    - [ ] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
-    - [ ] 내부망으로 사용할 Subnet : 32개씩 1개
-    - [ ] 관리용으로 사용할 Subnet : 32개씩 1개
+- [x] Subnet 생성
+    - [x] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+        - [x] y2o2u2n-a, ap-northeast-2a, 192.168.222.0/26
+        - [x] y2o2u2n-b, ap-northeast-2b, 192.168.222.64/26
+    - [x] 내부망으로 사용할 Subnet : 32개씩 1개
+        - [x] y2o2u2n-c, ap-northeast-2a, 192.168.222.128/27
+    - [x] 관리용으로 사용할 Subnet : 32개씩 1개
+        - [x] y2o2u2n-d, ap-northeast-2b, 192.168.222.160/27
 - [ ] Internet Gateway 연결
 - [ ] Route Table 생성
 - [ ] Security Group 설정
