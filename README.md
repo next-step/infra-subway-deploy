@@ -51,7 +51,7 @@ npm run dev
 - URL : webservice(3.37.97.223), db(13.125.19.77), baston(3.37.125.135)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+eedys1234.pem 입니다.
 ---
 
 ### 2단계 - 배포하기
