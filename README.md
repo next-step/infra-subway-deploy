@@ -53,11 +53,19 @@ npm run dev
 
 1. 구성한 망의 서브넷 대역을 알려주세요
 
-- 대역 :
+- 외부망
+    - `y2o2u2n-a` : `ap-northeast-2a`, `192.168.222.0/26`
+    - `y2o2u2n-b` : `ap-northeast-2c`, `192.168.222.64/26`
+- 내부망
+    - `y2o2u2n-c` : `ap-northeast-2a`, `192.168.222.128/27`
+- 관리용
+    - `y2o2u2n-d` : `ap-northeast-2c`, `192.168.222.160/27`
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL :
+- 서비스 용도 EC2 첫번째 인스턴스 URL : http://3.37.179.45:8080/
+- 서비스 용도 EC2 두번째 인스턴스 URL : http://54.180.71.34:8080/
+- 서비스 용도 EC2 첫번째 인스턴스에 도메인 적용한 URL : http://y2o2u2n.p-e.kr:8080/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에
    업로드해주세요
