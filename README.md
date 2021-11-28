@@ -130,7 +130,7 @@ npm run dev
         - [x] 보안 그룹 : `SG-y2o2u2n-bastion`
     - [x] 베스쳔 서버에 Session Timeout 600s 설정
     - [x] 베스쳔 서버에 쉘 프롬프트 변경
-    - [ ] 베스쳔 서버에 Command 감사로그 설정
+    - [x] 베스쳔 서버에 Command 감사로그 설정
 
 ##### 웹 애플리케이션 배포
 
