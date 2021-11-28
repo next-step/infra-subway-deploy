@@ -92,7 +92,7 @@ npm run dev
         - [x] `y2o2u2n-igw` 생성
         - [x] `y2o2u2n-vpc` 연결
         - [x] `y2o2u2n-external-rt` 내 라우팅 편집에서 `0.0.0.0/0` 에는 `y2o2u2n-igw` 연결
-- [x] Route Table 생성
+- [ ] Route Table 생성
     - [x] 외부망
         - [x] `y2o2u2n-external-rt` : `y2o2u2n-a`, `y2o2u2n-b`
     - [x] 내부망
@@ -131,6 +131,9 @@ npm run dev
     - [x] 베스쳔 서버에 Session Timeout 600s 설정
     - [x] 베스쳔 서버에 쉘 프롬프트 변경
     - [x] 베스쳔 서버에 Command 감사로그 설정
+- [x] Elastic IP 생성
+    - [x] EIP-y2o2u2n-service-a : 서비스 용도 EC2 첫번째 인스턴스에 연결
+    - [x] EIP-y2o2u2n-service-b : 서비스 용도 EC2 두번째 인스턴스에 연결
 
 ##### 웹 애플리케이션 배포
 
