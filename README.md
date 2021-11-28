@@ -51,8 +51,8 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : public1 - http://3.36.209.24:8080 (http://haedoang.o-r.kr)
-        public2 - http://3.36.233.76:8080 (http://haedoang.n-e.kr)
+- URL : public1 - http://3.36.209.24:8080 (http://haedoang.o-r.kr:8080)
+        public2 - http://3.36.233.76:8080 (http://haedoang.n-e.kr:8080)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 - 파일명 : haedoang.pem
