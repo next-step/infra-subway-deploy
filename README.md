@@ -107,7 +107,7 @@ npm run dev
 - [x] Security Group 설정
     - [x] 외부망 `SG-y2o2u2n-external`
         - [x] 전체 대역 : `8080` 포트 오픈
-        - [ ] 관리망 : `22` 포트 오픈
+        - [x] 관리망 : `22` 포트 오픈
         - [x] 전체 대역 : ICMP 오픈
     - [x] 내부망 `SG-y2o2u2n-internal`
         - [x] 외부망 : `3306` 포트 오픈
@@ -141,7 +141,7 @@ npm run dev
     - [x] 베스쳔 서버에 Session Timeout 600s 설정
     - [x] 베스쳔 서버에 쉘 프롬프트 변경
     - [x] 베스쳔 서버에 Command 감사로그 설정
-    - [ ] 베스천 서버에서 서비스용 서버에 ssh 연결 설정
+    - [x] 베스천 서버에서 서비스용 서버에 ssh 연결 설정
     - [x] 베스천 서버에서 다른 서버로 접근이 용이하도록 별칭 설정
 - [x] Elastic IP 생성
     - [x] EIP-y2o2u2n-service-a : 서비스 용도 EC2 첫번째 인스턴스에 연결
