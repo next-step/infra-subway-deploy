@@ -5,8 +5,8 @@ services:
     image: nextstep/app
     ports:
       - "8080:8080"
-      - "443:443"
   nginx:
     image: nextstep/reverse-proxy
     ports:
       - "80:80"
+      - "443:443"
