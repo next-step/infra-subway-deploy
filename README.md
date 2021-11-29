@@ -174,8 +174,8 @@ npm run dev
             - [x] Nginx 설정에 인증서 파일 추가
     - [x] 운영 데이터베이스 구성하기
         - [x] 컨테이너 실행 : `docker run -d -p 3306:3306 brainbackdoor/data-subway:0.0.1`
-- [ ] 개발 환경 구성하기
+- [x] 개발 환경 구성하기
     - [x] 로컬에 MySQL 실행 : `docker run -d -p 3306:3306 brainbackdoor/data-subway:0.0.1`
     - [x] 설정 파일 나누기
         - [x] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
-    - [ ] 데이터베이스 테이블 스키마 버전 관리
+    - [x] 데이터베이스 테이블 스키마 버전 관리

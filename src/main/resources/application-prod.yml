@@ -3,3 +3,10 @@ spring:
     url: jdbc:mysql://192.168.222.154:3306/subway
     username: root
     password: masterpw
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    generate-ddl: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
