@@ -6,6 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PageController {
+    private Properties properties;
+
+    public PageController(Properties properties) {
+        this.properties = properties;
+    }
+
     @GetMapping(value = {
             "/",
             "/stations",
@@ -18,6 +24,9 @@ public class PageController {
             "/mypage/edit",
             "/favorites"}, produces = MediaType.TEXT_HTML_VALUE)
     public String index() {
-        return "index";
+        String name = properties.getName();
+        String password = properties.getPassword();
+        System.out.printf("user name : %s, password : %s\n", name, password);
+        return "checkIndex : " + name;
     }
 }
