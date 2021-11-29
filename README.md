@@ -43,14 +43,20 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 : vpc -  192.168.118.0/24
+  external1 -   192.168.118.0/26
+  external2 -   192.168.118.64/26
+  internal -   192.168.118.128/27
+  admin  -   192.168.118.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
+  - external1 : http://3.35.48.111:8080/ (http://steadyjin.p-e.kr)
+  - external2 : http://52.79.176.112:8080/ (http://steadyjin.o-r.kr)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+  - 베스천 서버용 pem키 업로드함
 ---
 
 ### 2단계 - 배포하기
