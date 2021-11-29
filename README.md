@@ -168,7 +168,10 @@ npm run dev
             - [x] Nginx와 App의 `Dockerfile` 작성
             - [x] Gradle 빌드 후 Docker 빌드하는 `build.sh` 작성 
             - [x] Nginx와 App을 띄우는 Docker Compose 구성
-        - [ ] Reverse Proxy에 TLS 설정
+        - [x] Reverse Proxy에 TLS 설정
+          - [x] `Let’s Encrypt`로 인증서 생성
+          - [x] DNS TXT 레코드 추가
+          - [x] Nginx 설정에 인증서 파일 추가
     - [x] 운영 데이터베이스 구성하기
         - [x] 컨테이너 실행 : `docker run -d -p 3306:3306 brainbackdoor/data-subway:0.0.1`
 - [ ] 개발 환경 구성하기
