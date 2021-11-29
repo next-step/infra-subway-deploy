@@ -31,6 +31,6 @@ public class PageController {
         String name = properties.getName();
         String password = properties.getPassword();
         log.info("user name : {}, password : {}", name, password);
-        return "checkIndex : " + name;
+        return "index";
     }
 }
