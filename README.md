@@ -156,3 +156,22 @@ npm run dev
 - [x] DNS 설정
     - [x] y2o2u2n.p-e.kr 에 서비스 용도 EC2 첫번째 인스턴스 IP에 연결
         - [x] http://y2o2u2n.p-e.kr:8080/
+
+#### 2단계 - 서비스 배포하기
+
+- [ ] 도커 설치
+    - [ ] 서비스 용도 EC2 2개
+    - [ ] 데이터베이스 용도 EC2 1개
+- [ ] 운영 환경 구성하기
+    - [ ] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+        - [ ] 외부망에 Nginx로 Reverse Proxy를 구성
+            - [ ] Nginx와 App의 `Dockerfile` 작성
+            - [ ] Gradle 빌드 후 Docker 빌드하는 `build.sh` 작성 
+            - [ ] Nginx와 App을 띄우는 Docker Compose 구성
+        - [ ] Reverse Proxy에 TLS 설정
+    - [ ] 운영 데이터베이스 구성하기
+        - [ ] 컨테이너 실행 : `docker run -d -p 3306:3306 brainbackdoor/data-subway:0.0.1`
+- [ ] 개발 환경 구성하기
+    - [ ] 설정 파일 나누기
+        - [ ] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+    - [ ] 데이터베이스 테이블 스키마 버전 관리
