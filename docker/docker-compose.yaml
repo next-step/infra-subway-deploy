@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  app:
+    image: nextstep/app
+    ports:
+      - "8080:8080"
+  nginx:
+    image: nextstep/reverse-proxy
+    ports:
+      - "80:80"

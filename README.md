@@ -164,10 +164,10 @@ npm run dev
     - [x] 데이터베이스 용도 EC2 1개
 - [ ] 운영 환경 구성하기
     - [ ] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
-        - [ ] 외부망에 Nginx로 Reverse Proxy를 구성
-            - [ ] Nginx와 App의 `Dockerfile` 작성
-            - [ ] Gradle 빌드 후 Docker 빌드하는 `build.sh` 작성 
-            - [ ] Nginx와 App을 띄우는 Docker Compose 구성
+        - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+            - [x] Nginx와 App의 `Dockerfile` 작성
+            - [x] Gradle 빌드 후 Docker 빌드하는 `build.sh` 작성 
+            - [x] Nginx와 App을 띄우는 Docker Compose 구성
         - [ ] Reverse Proxy에 TLS 설정
     - [x] 운영 데이터베이스 구성하기
         - [x] 컨테이너 실행 : `docker run -d -p 3306:3306 brainbackdoor/data-subway:0.0.1`
