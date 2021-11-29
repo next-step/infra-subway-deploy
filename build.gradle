@@ -41,9 +41,10 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java:8.0.17'
 
 	// flyway
-	runtimeOnly 'org.flywaydb:flyway-core:5.2.0'
+	implementation("org.flywaydb:flyway-core:6.4.2")
 }
 
 test {
 	useJUnitPlatform()
 }
+
