@@ -76,7 +76,7 @@ npm run dev
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL :
+- URL : https://y2o2u2n.p-e.kr/
 
 ### 요구사항
 
@@ -162,8 +162,8 @@ npm run dev
 - [x] 도커 설치
     - [x] 서비스 용도 EC2 2개
     - [x] 데이터베이스 용도 EC2 1개
-- [ ] 운영 환경 구성하기
-    - [ ] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+- [x] 운영 환경 구성하기
+    - [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
         - [x] 외부망에 Nginx로 Reverse Proxy를 구성
             - [x] Nginx와 App의 `Dockerfile` 작성
             - [x] Gradle 빌드 후 Docker 빌드하는 `build.sh` 작성 
