@@ -62,7 +62,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://subway.lewisseo91.p-e.kr/
 
 ### 1단계 체크 리스트
 
