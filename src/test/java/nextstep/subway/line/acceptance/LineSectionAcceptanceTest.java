@@ -28,6 +28,7 @@ public class LineSectionAcceptanceTest extends AcceptanceTest {
     private StationResponse 양재역;
     private StationResponse 정자역;
     private StationResponse 광교역;
+    private StationResponse 신촌역;
 
     @BeforeEach
     public void setUp() {
@@ -37,6 +38,7 @@ public class LineSectionAcceptanceTest extends AcceptanceTest {
         양재역 = StationAcceptanceTest.지하철역_등록되어_있음("양재역").as(StationResponse.class);
         정자역 = StationAcceptanceTest.지하철역_등록되어_있음("정자역").as(StationResponse.class);
         광교역 = StationAcceptanceTest.지하철역_등록되어_있음("광교역").as(StationResponse.class);
+        신촌역 = StationAcceptanceTest.지하철역_등록되어_있음("신촌역").as(StationResponse.class);
 
         Map<String, String> lineCreateParams;
         lineCreateParams = new HashMap<>();
@@ -66,11 +68,12 @@ public class LineSectionAcceptanceTest extends AcceptanceTest {
         // when
         지하철_노선에_지하철역_등록_요청(신분당선, 강남역, 양재역, 2);
         지하철_노선에_지하철역_등록_요청(신분당선, 정자역, 강남역, 5);
+        지하철_노선에_지하철역_등록_요청(신분당선, 신촌역, 양재역, 2);
 
         // then
         ExtractableResponse<Response> response = LineAcceptanceTest.지하철_노선_조회_요청(신분당선);
         지하철_노선에_지하철역_등록됨(response);
-        지하철_노선에_지하철역_순서_정렬됨(response, Arrays.asList(정자역, 강남역, 양재역, 광교역));
+        지하철_노선에_지하철역_순서_정렬됨(response, Arrays.asList(정자역, 강남역, 신촌역, 양재역, 광교역));
     }
 
     @DisplayName("지하철 노선에 이미 등록되어있는 역을 등록한다.")
