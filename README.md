@@ -74,5 +74,5 @@ npm run dev
 - [ ] 개발 환경 구성
   - [ ] 설정 파일 나누기
     - [X] Junit - h2 사용
-    - [ ] Local - docker(mysql)
+    - [X] Local - docker(mysql)
     - [ ] Prod - 운영 DB 사용
