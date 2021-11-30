@@ -43,10 +43,3 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
-
-flyway {
-	url = 'jdbc:mysql://localhost:13306/archive?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8'
-	user = 'user'
-	password = 'password'
-	schemas = 'migration'
-}

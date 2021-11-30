@@ -12,6 +12,7 @@ public class Favorite extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private Long memberId;
     private Long sourceStationId;
     private Long targetStationId;
