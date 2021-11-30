@@ -53,15 +53,15 @@ npm run dev
 
 1. 구성한 망의 서브넷 대역을 알려주세요
 
-- [ ] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+- [X] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
     - subnet name : `wooobo-service-subnet-2a`
         - `subnet-0f6b330d813295497` : `가용영역: ap-northeast-2a`, `IPv4 CIDR : 192.168.240.0/26`
     - subnet name : `wooobo-service-subnet-2c`
         - `subnet-0190e70fcd0469fe1` : `가용영역: ap-northeast-2c`, `IPv4 CIDR : 192.168.240.64/26`
-- [ ] 내부망으로 사용할 Subnet : 32개씩 1개
+- [X] 내부망으로 사용할 Subnet : 32개씩 1개
     - subnet name : `wooobo-internal-subnet`
         - `subnet-0c9578dd48c53ec7e` : `가용영역: ap-northeast-2a`, `IPv4 CIDR : 192.168.240.128/27`
-- [ ] 관리용으로 사용할 Subnet : 32개씩 1개
+- [X] 관리용으로 사용할 Subnet : 32개씩 1개
     - subnet name : `wooobo-manage-subnet`
         - `subnet-00ee06c1454238765` : `가용영역: ap-northeast-2c`, `IPv4 CIDR : 192.168.240.160/27`
 
