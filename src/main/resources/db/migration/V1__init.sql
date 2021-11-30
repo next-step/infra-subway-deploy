@@ -16,7 +16,7 @@ create table favorite (
                           source_station_id bigint,
                           target_station_id bigint,
                           primary key (id)
-) engine=InnoDB;
+) engine=InnoDB default charset=utf8 collate utf8_general_ci;
 
 create table line (
                       id bigint not null auto_increment,
@@ -25,7 +25,7 @@ create table line (
                       color varchar(255),
                       name varchar(255),
                       primary key (id)
-) engine=InnoDB;
+) engine=InnoDB default charset=utf8 collate utf8_general_ci;
 
 create table member (
                         id bigint not null auto_increment,
@@ -35,7 +35,7 @@ create table member (
                         email varchar(255),
                         password varchar(255),
                         primary key (id)
-) engine=InnoDB;
+) engine=InnoDB default charset=utf8 collate utf8_general_ci;
 
 create table section (
                          id bigint not null auto_increment,
@@ -44,7 +44,7 @@ create table section (
                          line_id bigint,
                          up_station_id bigint,
                          primary key (id)
-) engine=InnoDB;
+) engine=InnoDB default charset=utf8 collate utf8_general_ci;
 
 create table station (
                          id bigint not null auto_increment,
@@ -52,7 +52,7 @@ create table station (
                          modified_date datetime(6),
                          name varchar(255),
                          primary key (id)
-) engine=InnoDB;
+) engine=InnoDB default charset=utf8 collate utf8_general_ci;
 
 alter table line
     add constraint UK_9ney9davbulf79nmn9vg6k7tn unique (name);
