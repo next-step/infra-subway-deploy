@@ -53,34 +53,26 @@ npm run dev
 
 1. 구성한 망의 서브넷 대역을 알려주세요
 
-- 대역 :
-- [ ] VPC 생성
-- Subnet 생성
-    - [ ] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
-    - [ ] 내부망으로 사용할 Subnet : 32개씩 1개
-    - [ ] 관리용으로 사용할 Subnet : 32개씩 1개
-- [ ] Internet Gateway 연결
-- [ ] Route Table 생성
-- Security Group 설정
-    - [ ] 외부망
-    - [ ] 내부망
-    - [ ] 관리망
-- 서버 생성
-    - [ ] 외부망에 웹 서비스용도의 EC2 생성
-    - [ ] 내부망에 데이터베이스용도의 EC2 생성
-    - [ ] 관리망에 베스쳔 서버용도의 EC2 생성
-    - [ ] 서비스용 서버에 `authorized_keys` 추가
-- [ ] 웹 애플리케이션 배포
-- [ ] DNS 설정
-
+- [ ] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+    - subnet name : `wooobo-service-subnet-2a`
+        - `subnet-0f6b330d813295497` : `가용영역: ap-northeast-2a`, `IPv4 CIDR : 192.168.240.0/26`
+    - subnet name : `wooobo-service-subnet-2c`
+        - `subnet-0190e70fcd0469fe1` : `가용영역: ap-northeast-2c`, `IPv4 CIDR : 192.168.240.64/26`
+- [ ] 내부망으로 사용할 Subnet : 32개씩 1개
+    - subnet name : `wooobo-internal-subnet`
+        - `subnet-0c9578dd48c53ec7e` : `가용영역: ap-northeast-2a`, `IPv4 CIDR : 192.168.240.128/27`
+- [ ] 관리용으로 사용할 Subnet : 32개씩 1개
+    - subnet name : `wooobo-manage-subnet`
+        - `subnet-00ee06c1454238765` : `가용영역: ap-northeast-2c`, `IPv4 CIDR : 192.168.240.160/27`
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL :
+    - http://wooobo.p-e.kr/
+    - 웹 서비스 서버 고정 IP : 3.38.13.29
 
-3. 베스천 서버에 접속을 위한
-   pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에
-   업로드해주세요
+3. 베스천 서버에 접속을 위한  
+   pem 파일 이름 : wooobo-nextstep.pem
 
 ---
 
@@ -88,4 +80,4 @@ npm run dev
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL :
