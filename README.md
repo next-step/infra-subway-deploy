@@ -65,11 +65,11 @@ npm run dev
 
 
 ### step2 요구사항
-- [ ] 운영 환경 구성
-  - [ ] Reverse Proxy 구성
-    - [ ] 외부망에 Nginx로 Reverse Proxy 구성
-    - [ ] Reverse Proxy에 TLS 설정
-  - [ ] 운영 데이터베이스 구성
+- [X] 운영 환경 구성
+  - [X] Reverse Proxy 구성
+    - [X] 외부망에 Nginx로 Reverse Proxy 구성
+    - [X] Reverse Proxy에 TLS 설정
+  - [X] 운영 데이터베이스 구성
 
 - [ ] 개발 환경 구성
   - [ ] 설정 파일 나누기
