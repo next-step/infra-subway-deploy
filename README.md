@@ -73,11 +73,12 @@ npm run dev
    업로드해주세요
 
 -
+
 FILE : [moonjuhyeon-manage-key-pair.pem](https://drive.google.com/file/d/1NVC7AWCaGsdhXbAhkfxk5mUpzGisCIGH/view?usp=sharing)
 
 ---
 
-### 2단계 - 배포하기
+### [2단계 - 배포하기](./docs/2step.md)
 
 1. TLS가 적용된 URL을 알려주세요
 
