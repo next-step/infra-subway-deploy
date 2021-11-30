@@ -82,4 +82,4 @@ FILE : [moonjuhyeon-manage-key-pair.pem](https://drive.google.com/file/d/1NVC7AW
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://moonjuhyeon-utc.n-e.kr/
