@@ -71,8 +71,8 @@ npm run dev
     - [X] Reverse Proxy에 TLS 설정
   - [X] 운영 데이터베이스 구성
 
-- [ ] 개발 환경 구성
-  - [ ] 설정 파일 나누기
+- [X] 개발 환경 구성
+  - [X] 설정 파일 나누기
     - [X] Junit - h2 사용
     - [X] Local - docker(mysql)
-    - [ ] Prod - 운영 DB 사용
+    - [X] Prod - 운영 DB 사용
