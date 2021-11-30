@@ -7,15 +7,7 @@ drop table if exists member;
 drop table if exists section;
 
 drop table if exists station;
-create table testtest (
-                          id bigint not null auto_increment,
-                          created_date datetime(6),
-                          modified_date datetime(6),
-                          member_id bigint,
-                          source_station_id bigint,
-                          target_station_id bigint,
-                          primary key (id)
-) engine=InnoDB;
+
 create table favorite (
                           id bigint not null auto_increment,
                           created_date datetime(6),
