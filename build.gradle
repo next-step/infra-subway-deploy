@@ -8,6 +8,17 @@ group = 'nextstep'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'dev' : profile
+
+
+sourceSets {
+	main {
+		resources {
+			srcDirs "src/main/resources", "src/main/resources/application-${profile}"
+		}
+	}
+}
+
 repositories {
 	mavenCentral()
 	maven { url 'https://repo.spring.io/milestone' }
@@ -34,7 +45,9 @@ dependencies {
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'org.flywaydb:flyway-core'
+	testRuntimeOnly 'com.h2database:h2'
 }
 
 test {
