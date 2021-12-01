@@ -1,0 +1,1 @@
+alter table member modify column email varchar(250) null;

@@ -1,0 +1,1 @@
+alter table line modify column color varchar(250) null;
