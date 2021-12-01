@@ -13,7 +13,7 @@ spring:
         format_sql: true
         show_sql: true
   profiles:
-    active: local
+    active: test
 logging:
   level:
     org:
