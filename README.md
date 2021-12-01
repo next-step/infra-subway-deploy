@@ -43,13 +43,20 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 : `192.168.11.0/24`
+    - A. 외부망1: `192.168.11.0/26`
+    - B. 외부망2: `192.168.11.64/26`
+    - C. 내부망: `192.168.11.128/27`
+    - D. 관리망: `192.168.11.160/27`
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
+  - http://13.209.211.203:8080
+  - http://infra-subway-deploy.p-e.kr
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+- KEY-livedetuc-RSA.pem 업로드 완료!
 
 ---
 
