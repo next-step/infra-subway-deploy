@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+  flyway:
+    enabled: false
