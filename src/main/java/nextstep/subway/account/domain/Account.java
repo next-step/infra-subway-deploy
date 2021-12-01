@@ -11,6 +11,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private int age;
 
     public Account() {
     }
@@ -25,5 +26,9 @@ public class Account {
 
     public String getName() {
         return name;
+    }
+
+    public int getAge() {
+        return age;
     }
 }
