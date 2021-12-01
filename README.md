@@ -68,3 +68,7 @@ npm run dev
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : https://infra.arasia.kro.kr
+
+2. Git Submodule
+
+- URL : https://github.com/arasia/infra-subway-deploy-config
