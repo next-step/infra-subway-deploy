@@ -43,14 +43,21 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역
+  - 외부망1 : codingknowjam-externalA - 192.168.77.0/26
+  - 외부망2 : codingknowjam-externalB - 192.168.77.64/26
+  - 관리망  : codingknowjam-admin     - 192.168.77.128/27
+  - 내부망  : codingknowjam-internal  - 192.168.77.160/27
+
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://52.78.64.56:8080/
+- DNS : coding-knowjam.kro.kr:8080/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+ <br>
+ : 넵 업로드 했습니다.
 ---
 
 ### 2단계 - 배포하기
