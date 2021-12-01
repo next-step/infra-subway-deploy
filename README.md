@@ -80,7 +80,7 @@ npm run dev
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL :
+- URL : https://wooobo.p-e.kr
 
 ### 미션 수행 작성
 
@@ -138,3 +138,36 @@ npm run dev
     - shell prompt 변경하기
 - [X] 웹 애플리케이션 배포
 - [X] DNS 설정
+
+#### 2단계 - 서비스 배포하기
+
+- [X] 운영 환경 구성하기
+- [X] 개발 환경 구성하기
+- [X] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+    - [X] 외부망에 Nginx로 Reverse Proxy를 구성
+    - [X] Reverse Proxy에 TLS 설정
+- [X] 운영 데이터베이스 구성하기
+
+- 개발 환경 구성하기
+    - [X] 설정 파일 나누기
+        - [X]  JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+    - [X] 데이터베이스 테이블 스키마 버전 관리
+
+##### properties git submodule 커멘드
+```shell
+$ git submodule add git@github.com:wooobo/wooobo-nextstep-private-repo.git ./src/main/resources/config
+$ git clone --recurse-submodules git@github.com:wooobo/wooobo-nextstep-private-repo.git
+$ git submodule update --init
+```
+#### 서버 실행
+```shell
+# 빌드
+./gradlew clean build
+# jar파일을 찾아본다.
+$ find ./* -name "*jar"
+# 서버시작 : 
+$ java -jar -Dspring.profiles.active=prod  ./build/libs/subway-0.0.1-SNAPSHOT.jar &
+# 서버백그라운드 실행 :
+$ nohup java -jar -Dspring.profiles.active=prod  ./build/libs/subway-0.0.1-SNAPSHOT.jar  1> ../nohup.log 2>&1  &
+
+```

@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    cap_add:
+      - SYS_NICE
+    container_name: subway-db
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      TZ: UTC
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: subway
+      MYSQL_USER: user
+      MYSQL_PASSWORD: masterpw
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql
+      - ./db/mysql/init:/docker-entrypoint-initdb.d

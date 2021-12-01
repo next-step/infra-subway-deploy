@@ -3,7 +3,7 @@ package nextstep.subway.auth.acceptance;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
-import nextstep.subway.AcceptanceTest;
+import nextstep.subway.Acceptance;
 import nextstep.subway.auth.dto.TokenResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import java.util.Map;
 import static nextstep.subway.member.MemberAcceptanceTest.회원_생성을_요청;
 import static nextstep.subway.member.MemberAcceptanceTest.회원_정보_조회됨;
 
-public class AuthAcceptanceTest extends AcceptanceTest {
+public class AuthAcceptanceTest extends Acceptance {
     private static final String EMAIL = "email@email.com";
     private static final String PASSWORD = "password";
     private static final Integer AGE = 20;

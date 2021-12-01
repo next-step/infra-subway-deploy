@@ -3,7 +3,7 @@ package nextstep.subway.line.acceptance;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
-import nextstep.subway.AcceptanceTest;
+import nextstep.subway.Acceptance;
 import nextstep.subway.line.dto.LineResponse;
 import nextstep.subway.station.StationAcceptanceTest;
 import nextstep.subway.station.dto.StationResponse;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("지하철 노선에 역 등록 관련 기능")
-public class LineSectionAcceptanceTest extends AcceptanceTest {
+public class LineSectionAcceptanceTest extends Acceptance {
     private LineResponse 신분당선;
     private StationResponse 강남역;
     private StationResponse 양재역;

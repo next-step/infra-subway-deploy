@@ -3,7 +3,7 @@ package nextstep.subway.favorite;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
-import nextstep.subway.AcceptanceTest;
+import nextstep.subway.Acceptance;
 import nextstep.subway.auth.dto.TokenResponse;
 import nextstep.subway.line.acceptance.LineAcceptanceTest;
 import nextstep.subway.line.dto.LineResponse;
@@ -24,7 +24,7 @@ import static nextstep.subway.line.acceptance.LineSectionAcceptanceTest.지하�
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("즐겨찾기 관련 기능")
-public class FavoriteAcceptanceTest extends AcceptanceTest {
+public class FavoriteAcceptanceTest extends Acceptance {
     public static final String EMAIL = "email@email.com";
     public static final String PASSWORD = "password";
 
