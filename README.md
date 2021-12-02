@@ -49,7 +49,7 @@ npm run dev
     * sungwooson-subnet-internal-1 : 192.168.8.160/27
     * sungwooson-subnet-management-1: 192.168.8.128/27
 
-2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요   122.40.77.161/32
+2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
 
