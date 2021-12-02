@@ -19,22 +19,30 @@
 ## 🚀 Getting Started
 
 ### Install
+
 #### npm 설치
+
 ```
 cd frontend
 npm install
 ```
+
 > `frontend` 디렉토리에서 수행해야 합니다.
 
 ### Usage
+
 #### webpack server 구동
+
 ```
 npm run dev
 ```
+
 #### application 구동
+
 ```
 ./gradlew clean build
 ```
+
 <br>
 
 ## 미션
@@ -59,8 +67,8 @@ npm run dev
 
    | Type | Address |
    |------|---------|
-   | web-a | 52.78.40.49:8080 |
-   | web-b | 52.79.216.111:8080 |
+   | web-a | http://52.78.40.49:8080 |
+   | web-b | http://52.79.216.111:8080 |
    | URL | http://www.subway-deploy.kro.kr |
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에
