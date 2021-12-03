@@ -43,14 +43,19 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역
+* 192.168.17.0/26 (smpark1020-external-a)
+* 192.168.17.64/26 (smpark1020-external-b)
+* 192.168.17.128/27 (smpark1020-internal)
+* 192.168.17.160/27 (smpark1020-bastion)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
+- URL
+* smpark1020.p-e.kr (http://52.78.183.152:8080)
+* smpark1020.o-r.kr (http://52.78.156.163:8080)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+* smpark1020-key.pem
 ---
 
 ### 2단계 - 배포하기
