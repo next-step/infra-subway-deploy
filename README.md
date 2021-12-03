@@ -57,18 +57,18 @@ npm run dev
 
   | Security Group | Subnet name | IPv4 CIDR |
   | -------------- |-------------|-----------|
-  | 외부망 | pageprologue-subnet-a | 192.168.7.0/26 |
-  | 외부망 | pageprologue-subnet-b | 192.168.7.64/26 |
-  | 내부망(DB) | pageprologue-subnet-d | 192.168.7.160/27 |
-  | 관리용(Bastion) | pageprologue-subnet-c | 192.168.7.128/27 |
+  | 외부망 | pageprologue-public-web1 | 192.168.7.0/26 |
+  | 외부망 | pageprologue-public-web2 | 192.168.7.64/26 |
+  | 내부망(DB) | pageprologue-admin | 192.168.7.160/27 |
+  | 관리용(Bastion) | pageprologue-private-db | 192.168.7.128/27 |
 
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
    | Type | Address |
    |------|---------|
-   | web-a | http://52.78.40.49:8080 |
-   | web-b | http://52.79.216.111:8080 |
+   | web1 | http://52.78.40.49 |
+   | web2 | http://52.79.216.111 |
    | URL | http://www.subway-deploy.kro.kr |
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에
