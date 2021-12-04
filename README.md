@@ -63,3 +63,5 @@ npm run dev
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : 
+ - external1 : https://steadyjin.p-e.kr
+ - external2 : https://steadyjin.o-r.kr
