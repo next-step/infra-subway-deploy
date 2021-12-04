@@ -61,4 +61,4 @@ jennie267-subnet-admin      : 192.168.16.160/27
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://jennie267.kro.kr/
