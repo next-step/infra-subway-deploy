@@ -60,3 +60,9 @@ npm run dev
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : https://lsm7179.kro.kr (3.36.26.21)
+
+#### 공부 정리
+* @ActiveProfiles
+  * 참고자료 : https://bepoz-study-diary.tistory.com/371
+  * @ActiveProfiles는 무엇일까? 바로 테스트 수행 시에 어떤 profile을 사용할 것인지 정해주는 어노테이션이다.
+  * @ActiveProfiles("test")라고 붙여주면 test profiles로 돌리게 된다.(바깥에서 주입한 profile보다 우선순위가 더 높음)
