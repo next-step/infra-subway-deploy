@@ -46,15 +46,15 @@ npm run dev
 - 대역
     * sungwooson-external-subnet-1 : 192.168.8.0/26
     * sungwooson-external-subnet-2 : 192.168.8.64/26
-    * sungwooson-subnet-internal-1 : 192.168.8.160/27
-    * sungwooson-subnet-management-1: 192.168.8.128/27
+    * sungwooson-subnet-internal-1 : 192.168.8.128/27
+    * sungwooson-subnet-management-1: 192.168.8.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://3.36.133.60:8080/ (sungwoo.nextstep.p-e.kr)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-KEY_sungwooson.pem
+- KEY_sungwooson.cer
    
 ---
 
