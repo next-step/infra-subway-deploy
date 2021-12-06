@@ -43,13 +43,17 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 192.168.14.0/26(chaeyun17-public-1)
+- 192.168.14.64/26(chaeyun17-public-2)
+- 192.168.14.128/27(chaeyun17-internal)
+- 192.168.14.160/27(chaeyun17-manage)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
+- URL : [http://chaeyun17.p-e.kr:8080](http://chaeyun17.p-e.kr:8080)
+- 공인 IP: [http://13.125.64.39:8080](http://13.125.64.39:8080)
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+- KEY-chaeyun17.pem
 
 ---
 
