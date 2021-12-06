@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'org.flywaydb.flyway' version '6.0.4'
 	id 'java'
 }
 
@@ -31,10 +32,14 @@ dependencies {
 	// jwt
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
+	// flyway
+	runtimeOnly("org.flywaydb:flyway-core")
+
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	runtimeOnly 'com.h2database:h2'
+	testImplementation 'com.h2database:h2'
+	implementation 'mysql:mysql-connector-java'
 }
 
 test {
