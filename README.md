@@ -54,6 +54,9 @@ npm run dev
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
     - KEY-lights93.pem
 
+#### 리뷰사항
+- [ ] 내부망의 서버가 라이브러리 설치 등을 위해 외부망에 접속해야 할 때는 Nat Gateway를 활용
+
 ---
 
 ### 2단계 - 배포하기
