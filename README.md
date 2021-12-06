@@ -47,7 +47,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : www.codeleesh-subway.kro.kr:8080
+- URL : https://www.codeleesh.r-e.kr
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 - KEY 이름 : codeleesh-key.pem
@@ -82,13 +82,40 @@ npm run dev
   - [X] 베스쳔 서버에 Command 감사로그 설정
 - DNS 설정
   - [X] 외부망에 DNS 설정
-    - 이름 : www.codeleesh-subway.kro.kr:8080
+    - 이름 : https://www.codeleesh.r-e.kr
 
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://www.codeleesh.r-e.kr
 
-
+#### 진행 내용 체크
+- 운영 환경 구성하기
+  - 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+      - [X] 도커 설치
+        - [X] Dockerfile 파일 생성
+        - [X] nginx.conf 파일 생성
+        - [X] 도커 빌드
+        - [X] 도커 실행
+      - [X] TLS 설정
+        - [X] letsencrypt 발급
+        - [X] DNS TXT 레코드 추가
+        - [X] ReverseProxy TLS 설정
+        - [X] Dockerfile 파일 수정
+        - [X] nginx.conf 파일 수정
+        - [X] 도커 중지 및 제거
+        - [X] 도커 재빌드 및 실행
+  - 운영 데이터베이스 구성하기
+    - [X] 컨테이너로 운영 DB 사용
+    - [X] application-prod 프로퍼티 파일 생성
+- 개발 환경 구성하기
+  - 설정 파일 나누기
+    - [X] application-test 프로퍼티 파일 생성
+    - [X] application-local 프로퍼티 파일 생성
+    - [X] github private 저장소 생성 [(repository link)](https://github.com/codeleesh/config-infra-subway-deploy)
+  - 데이터베이스 테이블 스키마 버전 관리
+    - [X] 로컬 Docker 설치
+    - [X] 기존 Database 존재 시 flyway 옵션 적용
+    - [X] V2__로 sql 파일 생성
