@@ -63,3 +63,16 @@ npm run dev
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : 
+- external1 : https://steadyjin.p-e.kr
+- external2 : https://steadyjin.o-r.kr
+
+- 요구사항
+- 운영 환경 구성하기
+  - 외부망 external1과 external2에 Reverse Proxy(docker nginx)를 구성
+  - Reverse Proxy에 TLS 설정
+  - 내부망 internal에 운영 mysql DB 구성하기(도커 mysql)
+  - 외부망 external1에 flyway 적용 후 배포, 운영 mysql에서 flyway_schema_history 테이블 생성 확인
+
+- 개발 환경 구성하기
+  - 설정파일 나누기
+  - 데이터베이스 스키마 버전 관리(flyway) 적용
