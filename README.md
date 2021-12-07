@@ -61,4 +61,9 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://nextstep-proxy.p-e.kr/
+
+내도메인 한국 계정
+* ID : ssw0418
+* PW : nextstep1!
+
