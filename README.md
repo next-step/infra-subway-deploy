@@ -55,7 +55,7 @@ npm run dev
     - KEY-lights93.pem
 
 #### 리뷰사항
-- [ ] 내부망의 서버가 라이브러리 설치 등을 위해 외부망에 접속해야 할 때는 Nat Gateway를 활용
+- [X] 내부망의 서버가 라이브러리 설치 등을 위해 외부망에 접속해야 할 때는 Nat Gateway를 활용
 
 ---
 
@@ -66,10 +66,10 @@ npm run dev
 
 #### 요구사항
 - 운영 환경 구성하기
-    - [ ] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
-        - [ ] 외부망에 Nginx로 Reverse Proxy를 구성
-        - [ ] Reverse Proxy에 TLS 설정
-    - 운영 데이터베이스 구성하기
+    - [X] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+        - [X] 외부망에 Nginx로 Reverse Proxy를 구성
+        - [X] Reverse Proxy에 TLS 설정
+    - [X] 운영 데이터베이스 구성하기
     
 - 개발 환경 구성하기
     - [ ] 설정 파일 나누기
