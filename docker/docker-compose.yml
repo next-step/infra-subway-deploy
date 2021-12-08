@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  mysql:
+    image: brainbackdoor/data-subway:0.0.1
+    restart: always
+    container_name: subway_mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: masterpw
+      MYSQL_DATABASE: subway
