@@ -1,4 +1,6 @@
 spring:
+  flyway:
+    enabled: false
   datasource:
     url: jdbc:mysql://192.168.7.187:3306/subway
     username: root
