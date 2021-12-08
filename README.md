@@ -50,14 +50,15 @@ npm run dev
   - 관리망  : 192.168.33.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- public1 URL : http://15.164.72.205:8080/
-- public2 URL : http://3.34.188.56:8080/
+~~- public1 URL : http://15.164.72.205:8080/~~
+~~- public2 URL : http://3.34.188.56:8080/~~
+  - https://wootech-jdragon.kro.kr/
 
-3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+4. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 - pem키 : KEY-koola97620-woo.pem
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://wootech-jdragon.kro.kr/
