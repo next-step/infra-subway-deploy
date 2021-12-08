@@ -56,7 +56,7 @@ npm run dev
 - 대역
 
   | Security Group | Subnet name | IPv4 CIDR |
-                              | -------------- |-------------|-----------|
+  | -------------- |-------------|-----------|
   | 외부망 | pageprologue-public-web1 | 192.168.7.0/26 |
   | 외부망 | pageprologue-public-web2 | 192.168.7.64/26 |
   | 내부망(DB) | pageprologue-admin | 192.168.7.160/27 |
