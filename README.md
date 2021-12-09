@@ -50,8 +50,7 @@ npm run dev
   - admin-1: 192.168.88.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : http://www.subway-mnonm.kro.kr:8080/
+- URL : http://mnonm-subway.kro.kr:8080/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 - mnonm-aws-key.pem
@@ -61,4 +60,18 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://mnonm-subway.kro.kr/
+
+
+### step2 요구사항
+- [X] 운영 환경 구성
+  - [X] Reverse Proxy 구성
+    - [X] 외부망에 Nginx로 Reverse Proxy 구성
+    - [X] Reverse Proxy에 TLS 설정
+  - [X] 운영 데이터베이스 구성
+
+- [X] 개발 환경 구성
+  - [X] 설정 파일 나누기
+    - [X] Junit - h2 사용
+    - [X] Local - docker(mysql)
+    - [X] Prod - 운영 DB 사용
