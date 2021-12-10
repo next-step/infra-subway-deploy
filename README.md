@@ -47,6 +47,8 @@ npm run dev
 - parkchanghyuk-subnet-public-b : 192.168.140.64/26
 - parkchanghyuk-subnet-private : 192.168.140.128/27
 - parkchanghyuk-subnet-bastion : 192.168.140.160/27
+  - ssh ubuntu@webserver
+  - ssh ubuntu@private
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
