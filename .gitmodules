@@ -1,0 +1,6 @@
+[submodule "docker/src/main/resources/config"]
+	path = docker/src/main/resources/config
+	url = https://github.com/pageprologue/infra-subway-deploy-private.git
+[submodule "src/main/resources/config"]
+	path = src/main/resources/config
+	url = https://github.com/pageprologue/infra-subway-deploy-private.git
