@@ -77,4 +77,7 @@ npm run dev
         - [X] local(docker-mysql) 환경 구성
         - [X] prod(운영 DB) 구성
     - [X] 데이터베이스 테이블 스키마 버전 관리
+    
+#### 리뷰 사항
+- [ ] 지하철 역 애플리케이션의 스키마를 관리하도록 flyway 개선
 
