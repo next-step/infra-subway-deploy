@@ -54,9 +54,30 @@ npm run dev
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
     - KEY-lights93.pem
 
+#### 리뷰사항
+- [X] 내부망의 서버가 라이브러리 설치 등을 위해 외부망에 접속해야 할 때는 Nat Gateway를 활용
+
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://lights93.o-r.kr/
+
+#### 요구사항
+- 운영 환경 구성하기
+    - [X] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+        - [X] 외부망에 Nginx로 Reverse Proxy를 구성
+        - [X] Reverse Proxy에 TLS 설정
+    - [X] 운영 데이터베이스 구성하기
+    
+- 개발 환경 구성하기
+    - [X] 설정 파일 나누기
+        - [X] test(h2) 환경 구성
+        - [X] local(docker-mysql) 환경 구성
+        - [X] prod(운영 DB) 구성
+    - [X] 데이터베이스 테이블 스키마 버전 관리
+    
+#### 리뷰 사항
+- [ ] 지하철 역 애플리케이션의 스키마를 관리하도록 flyway 개선
+
