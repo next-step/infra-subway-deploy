@@ -45,7 +45,7 @@ test {
 	useJUnitPlatform()
 }
 flyway {
-	url = 'jdbc:mysql://localhost:3306/subway?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8'
+	url = 'jdbc:mysql://192.168.140.146:3306/subway?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8'
 	user = 'root'
 	password = 'masterpw'
 	schemas = 'migration'
