@@ -1,0 +1,3 @@
+[submodule "src/main/resources/config"]
+	path = src/main/resources/config
+	url = git@github.com:daehyun0/woowacourse-service1-config.git
