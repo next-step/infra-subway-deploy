@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
 	compile 'mysql:mysql-connector-java'
+	compile 'org.flywaydb:flyway-core'
 
 	// spring
 	implementation 'org.springframework.boot:spring-boot-starter-web'
