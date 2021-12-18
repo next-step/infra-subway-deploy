@@ -1,0 +1,3 @@
+[submodule "src/main/resources/config2"]
+	path = src/main/resources/config2
+	url = https://github.com/SungwooSon/submodule2
