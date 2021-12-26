@@ -46,6 +46,11 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : `192.168.126.0/24`
 
+2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
+- URL : `https://anydomainpro.kro.kr/`
+
+3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+
 #### 요구사항
 - [x] VPC 생성
     - [x] CIDR 은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
@@ -97,12 +102,6 @@ npm run dev
     - [x] 베스쳔 서버에 Session Timeout 600s 설정
     - [x] 베스쳔 서버에 Command 감사로그 설정
 - [x] 모든 리소스는 태그를 작성합니다. 이 때 자신의 계정을 Prefix로 붙입니다. (예: brainbackdoor-public)
-
-2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
-
-3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 ---
 
