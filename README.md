@@ -107,5 +107,13 @@ npm run dev
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
+- URL : `https://anydomainpro.kro.kr/`
 
-- URL : 
+#### 요구사항
+- [] 운영 환경 구성하기
+    - [] ALB, ACM, WAF 구성하기
+    - [] 운영 데이터베이스 구성하기
+- [] 개발 환경 구성하기
+    - [] 설정 파일 나누기
+        - [] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+    - [] 데이터베이스 테이블 스키마 버전 관리
