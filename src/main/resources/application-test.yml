@@ -7,3 +7,5 @@ spring:
   h2:
     console:
       enabled: true
+  flyway:
+    enabled: false

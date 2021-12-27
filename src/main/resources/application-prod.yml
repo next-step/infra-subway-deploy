@@ -7,4 +7,8 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
+    generate-ddl: false
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 1
