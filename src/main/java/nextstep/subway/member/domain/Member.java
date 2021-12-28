@@ -17,6 +17,7 @@ public class Member extends BaseEntity {
     private String email;
     private String password;
     private Integer age;
+    private String name;
 
     public Member() {
     }
