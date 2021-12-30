@@ -46,9 +46,9 @@ npm run dev
 - 대역 : 192.168.55.0/24
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- URL : http://hyunahiia.xn--yq5b.xn--3e0b707e:8080/
+- URL : [http://hyunahiia.웹.한국:8080](http://hyunahiia.xn--yq5b.xn--3e0b707e:8080/)
 
-3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing) 에 업로드해주세요
 - hyunahiia-nsp3.pem 업로드했습니다
 
 ---
@@ -56,4 +56,10 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : [https://hyunahiia.웹.한국](https://hyunahiia.xn--yq5b.xn--3e0b707e/)
+
+#### 세부 작업
+- [x] 실행환경별 설정파일 구성
+  - [x] local 실행환경 구성
+  - [x] prod 실행환경 구성
+- [x] 데이터베이스 테이블 스키마 버전 관리
