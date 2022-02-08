@@ -54,6 +54,10 @@ npm run dev
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
  - KEY-dbeod2.pem
+
+# 2022-02-08 수정 내역 
+  1. 베스천 서버 외부망으로 생성
+  2. 보안 그룹 설정 요구사항에 알맞게 수정
 ---
 
 ### 2단계 - 배포하기
