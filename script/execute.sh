@@ -24,8 +24,11 @@ if [ -z "$CURRENT_PID" ]; then
   echo "> 구동중인 애플리케이션 없음"
 else
   echo "> kill $CURRENT_PID"
-  kill -2 $CURRENT_PID sleep 5
+  kill $CURRENT_PID
+  sleep 5
 fi
 
+mv $JAR_NAME ~/subway/$JAR_NAME
+
 echo "> Jar Name: $JAR_NAME"
-nohup java -Djava.security.egd=file:/dev/./urandom -jar -Dspring.profiles.active=prod subway.jar 1> subway.log 2>&1  &
+nohup java -Djava.security.egd=file:/dev/./urandom -jar -Dspring.profiles.active=prod ./subway/subway.jar 1> ./subway/subway.log 2>&1  &
