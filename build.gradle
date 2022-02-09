@@ -46,11 +46,6 @@ task projectClean {
 
 projectClean.finalizedBy(projectBuild)
 
-
-
-//deploy.dependsOn build
-//build.dependsOn clean
-
 group = 'nextstep'
 sourceCompatibility = '1.8'
 
