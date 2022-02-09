@@ -2,10 +2,56 @@ plugins {
 	id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'org.hidetake.ssh' version '2.10.1'
 }
 
+remotes {
+	webServer {
+		host = '15.165.36.164'
+		user = 'ubuntu'
+		identity = file("${System.getProperty('user.home')}/.ssh/parkeeseul.pem")
+	}
+}
+
+task deploy {
+	dependsOn "projectClean"
+
+	doLast {
+		ssh.run {
+			session(remotes.webServer) {
+				put from: "${System.getProperty( 'user.dir' )}/build/libs/subway.jar", into: '.'
+				put from: "${System.getProperty( 'user.dir' )}/script/execute.sh", into: '.'
+				execute 'scp subway.jar ubuntu@192.168.2.37:~'
+				execute 'scp execute.sh ubuntu@192.168.2.37:~'
+				execute 'sudo rm -r subway.jar'
+				execute 'sudo rm -r execute.sh'
+			}
+		}
+	}
+}
+
+task projectBuild {
+	dependsOn 'build'
+	doLast {
+		println 'build success'
+	}
+}
+
+task projectClean {
+	dependsOn 'clean'
+	doLast {
+		println 'clean!!!'
+	}
+}
+
+projectClean.finalizedBy(projectBuild)
+
+
+
+//deploy.dependsOn build
+//build.dependsOn clean
+
 group = 'nextstep'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
