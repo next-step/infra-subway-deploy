@@ -46,8 +46,8 @@ npm run dev
 - 대역 : 
   1. 192.168.10.0/26 (giyeon95-public-a)
   2. 192.168.10.64/26 (giyeon95-public-b)
-  3. 192.168.10.128/27 (giyeon95-internal-a)
-  4. 192.168.10.160/27 (giyeon95-internal-b)
+  3. 192.168.10.128/27 (giyeon95-internal)
+  4. 192.168.10.160/27 (giyeon95-bastion)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
