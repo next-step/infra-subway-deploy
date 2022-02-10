@@ -10,6 +10,7 @@ txtgra='\033[1;30m' # Gray
 
 PROJECT_NAME='infra-subway-deploy'
 JAR_NAME='subway.jar'
+BRANCH='step3'
 
 function git_pull() {
   git pull origin step3
@@ -24,7 +25,7 @@ function build() {
 }
 
 function restart() {
-  read -p "Are you sure you want to restart the app❓[Y/N] > " RESPONSE
+#  read -p "Are you sure you want to restart the app❓[Y/N] > " RESPONSE
 
   if [ "$RESPONSE" == "Y" ]; then
     kill_process;
@@ -59,8 +60,8 @@ function start_process() {
 
 function check_df() {
   git fetch
-  master=$(git rev-parse $BRANCH > /dev/null 2>&1)
-  remote=$(git rev-parse origin/$BRANCH > /dev/null 2>&1)
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
 
   if [[ $master == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
@@ -77,7 +78,7 @@ cd ~/$PROJECT_NAME
 check_df;
 
 ## 저장소 pull
-gitPull;
+git_pull;
 
 ## build
 build;
