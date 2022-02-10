@@ -27,13 +27,13 @@ function build() {
 function restart() {
 #  read -p "Are you sure you want to restart the app❓[Y/N] > " RESPONSE
 
-  if [ "$RESPONSE" == "Y" ]; then
+#  if [ "$RESPONSE" == "Y" ]; then
     kill_process;
     start_process;
     echo "> restarted subway!! 🚀"
-  else
-    echo "> bye bye 🖐🖐 !! "
-  fi
+#  else
+#    echo "> bye bye 🖐🖐 !! "
+#  fi
 }
 
 function kill_process() {
