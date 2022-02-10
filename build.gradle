@@ -30,6 +30,18 @@ task deploy {
 	}
 }
 
+task uploadScript {
+	doLast {
+		ssh.run {
+			session(remotes.webServer) {
+				put from: "${System.getProperty( 'user.dir' )}/script/deploy.sh", into: '.'
+				execute 'scp deploy.sh ubuntu@192.168.2.37:~'
+				execute 'sudo rm -r deploy.sh'
+			}
+		}
+	}
+}
+
 task projectBuild {
 	dependsOn 'build'
 	doLast {
