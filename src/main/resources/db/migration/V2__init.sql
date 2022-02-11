@@ -1,0 +1,1 @@
+ALTER TABLE member ADD COLUMN name VARCHAR ( 255 ) NULL;
