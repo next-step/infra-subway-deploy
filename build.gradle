@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'org.flywaydb.flyway' version '6.0.4'
 }
 
 group = 'nextstep'
@@ -34,9 +35,17 @@ dependencies {
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	runtimeOnly 'org.flywaydb:flyway-core:5.2.0'
+	runtimeOnly 'mysql:mysql-connector-java:8.0.17'
 	runtimeOnly 'com.h2database:h2'
 }
 
 test {
 	useJUnitPlatform()
 }
+// flyway {
+// 	url = 'jdbc:mysql://localhost:13306/archive?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8'
+// 	user = 'user'
+// 	password = 'password'
+// 	schemas = 'migration'
+// }
