@@ -43,14 +43,19 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 
+  - youngerjesus-public-a: 192.168.111.0/26
+  - youngerjesus-public-b: 192.168.111.64/26
+  - youngerjesus-internal-a: 192.168.111.128/27
+  - youngerjesus-bastion-a: 192.168.111.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://youngerjesus.kro.kr:8080/ , http://13.124.230.125:8080
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
+- youngerjesus.pem 으로 업로드 했습니다. 
 ---
 
 ### 2단계 - 배포하기
