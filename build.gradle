@@ -31,10 +31,16 @@ dependencies {
 	// jwt
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
+	// mysql
+	runtimeOnly 'mysql:mysql-connector-java:8.0.28'
+
+	// jdbc
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.6.3'
+
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	runtimeOnly 'com.h2database:h2'
+//	runtimeOnly 'com.h2database:h2'
 }
 
 test {
