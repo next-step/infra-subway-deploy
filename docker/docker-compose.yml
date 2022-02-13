@@ -5,7 +5,7 @@ services:
     container_name: local-db
     restart: always
     ports:
-      - 3306:3306
+      - 13306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: migration
@@ -15,3 +15,4 @@ services:
     volumes:
       - ./db/mysql/data:/var/lib/mysql
       - ./db/mysql/init:/docker-entrypoint-initdb.d
+    platform: linux/x86_64
