@@ -19,6 +19,7 @@ dependencies {
 	// spring
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
 	// handlebars
 	implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
@@ -36,6 +37,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	runtimeOnly 'org.flywaydb:flyway-core:5.2.0'
+	implementation 'org.hibernate:hibernate-java8'
 	runtimeOnly 'mysql:mysql-connector-java:8.0.17'
 	runtimeOnly 'com.h2database:h2'
 }
@@ -43,9 +45,9 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
-// flyway {
-// 	url = 'jdbc:mysql://localhost:13306/archive?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8'
-// 	user = 'user'
-// 	password = 'password'
-// 	schemas = 'migration'
-// }
+flyway {
+	url = 'jdbc:mysql://localhost:13306/archive?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8'
+	user = 'user'
+	password = 'password'
+	schemas = 'migration'
+}
