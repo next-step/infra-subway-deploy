@@ -43,13 +43,19 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 :
+    1) zeroooooowest-a: 192.168.255.0/26
+    2) zeroooooowest-b: 192.168.255.64/26
+    3) zeroooooowest-c: 192.168.255.128/27
+    4) zeroooooowest-d: 192.168.255.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : 52.79.253.55:8080 , zeroooooowest.kro.kr
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+
+네
 
 ---
 
