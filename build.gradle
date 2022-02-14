@@ -19,6 +19,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+
+	implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '8.4.4'
+
 	// handlebars
 	implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
 
