@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: local, env
+  jpa:
+    show-sql: true
+
+handlebars:
+  enabled: true
+  suffix: .html
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
