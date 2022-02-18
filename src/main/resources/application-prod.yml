@@ -6,3 +6,6 @@ spring:
     url: jdbc:mysql://192.168.15.135:3306/subway
     username: root
     password: masterpw
+  flyway:
+    enabled: true
+    baseline-on-migrate: true

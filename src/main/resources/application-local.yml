@@ -6,3 +6,6 @@ spring:
     url: jdbc:mysql://localhost:3306/local-db
     username: root
     password: 1234
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
