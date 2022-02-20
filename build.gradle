@@ -22,6 +22,12 @@ dependencies {
 	// handlebars
 	implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
 
+	//mysql
+	implementation 'mysql:mysql-connector-java'
+
+	//flyway
+	implementation 'org.flywaydb:flyway-core:6.4.2'
+
 	// log
 	implementation 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
 
