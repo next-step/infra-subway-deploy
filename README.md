@@ -52,7 +52,8 @@ guswnt-public-a  192.168.88.0/26
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : guswnt.p-e.kr , 13.124.13.60
+- URL : 13.124.13.60 
+
 
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요  
@@ -62,7 +63,7 @@ guswnt-public-a  192.168.88.0/26
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : guswnt.p-e.kr
 
 ---
 
