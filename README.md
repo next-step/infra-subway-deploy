@@ -42,6 +42,9 @@ npm run dev
 * 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
 
 ### 1단계 - 망 구성하기
+
+![image](https://user-images.githubusercontent.com/10750614/158056234-01af01ab-6fb8-4010-ae47-715da39ddd3c.png)
+
 1. 구성한 망의 서브넷 대역을 알려주세요
 - vpc : 192.168.55.0/24 
 - public subnet1 : 192.168.55.0/26
