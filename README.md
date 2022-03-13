@@ -43,14 +43,20 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- vpc : 192.168.55.0/24 
+- public subnet1 : 192.168.55.0/26
+- public subnet2 : 192.168.55.64/26
+- internal subnet : 192.168.55.128/27
+- bastion subnet : 192.168.55.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://infra.jdragon.r-e.kr:8080/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+- 
+- koola97620-infra-key.pem
+- koola97620-infra-ssh-key.ppk
 ---
 
 ### 2단계 - 배포하기
