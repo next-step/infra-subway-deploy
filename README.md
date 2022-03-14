@@ -63,6 +63,10 @@ npm run dev
 ---
 
 ### 2단계 - 배포하기
+
+Nginx 구성 입니다.
+![image](https://user-images.githubusercontent.com/10750614/158216304-d08860ab-0eba-43de-b02d-bb8dbb292952.png)
+
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : 
