@@ -43,14 +43,20 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 :
+- darkant99-public1 = 192.168.177.0/26
+- darkant99-public2 = 192.168.177.64/26
+- darkant99-internal = 192.168.177.128/27
+- darkant99-bastion = 192.168.177.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL :
+- EC2-darkant99-public1 = 13.125.20.173 / public1.infra-darkant99.p-e.kr
+- EC2-darkant99-public2 = 13.209.52.219 / public2.infra-darkant99.p-e.kr
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+   😇
 ---
 
 ### 2단계 - 배포하기
