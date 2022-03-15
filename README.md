@@ -69,7 +69,7 @@ Nginx 구성 입니다.
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://jdragon.r-e.kr/
 
 ---
 
