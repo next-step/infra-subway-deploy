@@ -66,7 +66,7 @@ internal 서버 nat 게이트웨이 연결
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://rkdals213.p-e.kr/
 
 ---
 
