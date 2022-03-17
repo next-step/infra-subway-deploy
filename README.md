@@ -44,13 +44,20 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+- com8599-public1 = 192.168.100.0/26
+- com8599-public2 = 192.168.100.64/26
+- com8599-internal = 192.168.100.128/27
+- com8599-bastion = 192.168.100.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
+- EC2-com8599-public1 = 3.38.252.66 / http://public1.com8599.p-e.kr:8080/
+- EC2-com8599-public2 = 15.164.174.39 /http://public2.com8599.p-e.kr:8080/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
+넹
 ---
 
 ### 2단계 - 배포하기
