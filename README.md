@@ -56,12 +56,17 @@ npm run dev
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 rkdals213.pem 으로 업로드하였습니다
+
+### 추가작업
+internal 서버 nat 게이트웨이 연결
+애플리케이션 nohub으로 빌드
+
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://rkdals213.p-e.kr/
 
 ---
 
