@@ -63,9 +63,13 @@ npm run dev
 ---
 
 ### 2단계 - 배포하기
+
+Nginx 구성 입니다.
+![image](https://user-images.githubusercontent.com/10750614/158430759-faffa6d5-b77d-4dac-94e2-7b2c185327e8.png)
+
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://jdragon.r-e.kr/
 
 ---
 

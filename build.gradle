@@ -35,6 +35,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	runtimeOnly 'com.h2database:h2'
+
+	runtimeOnly("mysql:mysql-connector-java:8.0.17")
+
+	runtimeOnly("org.flywaydb:flyway-core:5.2.0")
 }
 
 test {
