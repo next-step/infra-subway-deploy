@@ -34,6 +34,9 @@ dependencies {
 	// mysql
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
 
+	// flyway
+	implementation group: 'org.flywaydb', name: 'flyway-core', version: '8.5.4'
+
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
