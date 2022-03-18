@@ -31,15 +31,14 @@ dependencies {
 	// jwt
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
-	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
-	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.27'
-
-	implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '8.4.4'
-
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	runtimeOnly 'com.h2database:h2'
+
+	runtimeOnly 'mysql:mysql-connector-java'
+
+	implementation('org.flywaydb:flyway-core')
 }
 
 test {
