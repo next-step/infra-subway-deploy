@@ -43,11 +43,22 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역
+  - public-1 : 192.168.98.0/26
+  - public-2 : 192.168.98.64/26
+  - internal-1 : 192.168.98.128/27
+  - bastion-1 : 192.168.98.160/27
+
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL
+  - 3.37.197.136:8080
+    - http://public-1.donggeon0908-infra.kro.kr:8080/
+
+  - 52.79.178.32:8080
+    - http://public-2.donggeon0908-infra.kro.kr:8080/
+
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
