@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://10.84.84.139:3306/subway
+    username: root
+    password: masterpw
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    ddl-auto: validate
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    show-sql: true
+    open-in-view: false
