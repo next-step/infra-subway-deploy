@@ -79,7 +79,69 @@ Nginx 구성 입니다.
 
 ```shell
 
-echo ''
+#!/bin/bash
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+BRANCH=$1
+PROFILE=$2
+
+if [[ $# -ne 2 ]]
+then
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 🧐 >> $0      ${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} BRANCH:${BRANCH} PROFILE:${PROFILE}   "
+    echo -e "${txtylw}=======================================${txtrst}"
+
+fi
+
+function search_pid() {
+        echo `jps | grep subway | awk '{print $1}'`
+}
+
+function stop_app() {
+        PID=$(search_pid)
+        if [ -n "${PID}" ]
+        then
+                echo "kill app - pid:${PID}"
+                kill -9 ${PID}
+        else
+                echo "APPLICATION IS NOT START"
+        fi
+}
+
+function check_df() {
+        cd /home/ubuntu/infra-subway-deploy
+        git fetch
+        master=$(git rev-parse ${BRANCH} > /dev/null 2>&1)
+        remote=$(git rev-parse origin ${BRANCH} > /dev/null 2>&1)
+
+        if [[ $master == $remote ]]; then
+                echo -e "[$(date)] Nothing to do!!! 😫"
+                exit 0
+        fi
+}
+
+function pull() {
+        echo -e ">> Pull ♂️ "
+        cd /home/ubuntu/infra-subway-deploy
+        git pull origin ${BRANCH}
+}
+
+function start_app() {
+        nohup java -jar -Dspring.profiles.active=${PROFILE} /home/ubuntu/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar > /home/ubuntu/logs/infra_deploy.log 2>&1 &
+}
+
+check_df
+pull
+stop_app
+start_app
 
 ```
 
