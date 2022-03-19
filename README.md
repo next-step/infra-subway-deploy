@@ -68,10 +68,41 @@ internal 서버 nat 게이트웨이 연결
 
 - URL : https://rkdals213.p-e.kr/
 
+### 추가작업
+certbot * 제거하여 적용!
+
 ---
 
 ### [추가] 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+# 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+## 저장소 pull
+./pull.sh
+## gradle build
+./gradlew clean build
+## 프로세스 pid를 찾는 명령어
+VAR1=$(pgrep -f java)
+## 프로세스를 종료하는 명령어
+echo ${VAR1}
+kill -9 ${VAR1}
+##
+nohup java -jar -Dspring.profiles.active=prod ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> ./build/libs/rkdals213_logs 2>&1  &
+
+./slack.sh 배포가진행되었습니다
+
 
 2. cronjob 설정을 공유해주세요.
