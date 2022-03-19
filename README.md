@@ -146,3 +146,4 @@ start_app
 ```
 
 3. cronjob 설정을 공유해주세요.
+- */30 * * * * /home/ubuntu/infra-subway-deploy/deploy.sh step2 prod >> /home/ubuntu/cronlogs/infra_deploy_cron.log 2>&1 &
