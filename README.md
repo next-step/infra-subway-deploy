@@ -73,6 +73,7 @@ Nginx 구성 입니다.
 
 ---
 
+
 ### [추가] 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.  
@@ -151,6 +152,7 @@ stop_app
 start_app
 
 ```
+
 
 2. cronjob 설정을 공유해주세요.
 - */30 * * * * /home/ubuntu/infra-subway-deploy/deploy.sh step2 prod >> /home/ubuntu/cronlogs/infra_deploy_cron.log 2>&1 &
