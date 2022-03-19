@@ -91,7 +91,7 @@ txtgra='\033[1;30m' # Gray
 BRANCH=$1
 PROFILE=$2
 
-if [[ $# -ne 2 ]]
+if [[ $# -ne 1 ]]
 then
     echo -e "${txtylw}=======================================${txtrst}"
     echo -e "${txtgrn}  << 스크립트 🧐 >> $0      ${txtrst}"
@@ -101,11 +101,29 @@ then
 
 fi
 
+function check_df() {
+        echo -e "[$(date)] Start Check Diff Git Changes!!!"
+
+        cd /home/ubuntu/infra-subway-deploy
+        git fetch
+        master=$(git rev-parse ${BRANCH})
+        remote=$(git rev-parse origin/${BRANCH})
+
+        echo "master:${master}"
+        echo "remote:${remote}"
+
+        if [[ $master == $remote ]]; then
+                echo -e "[$(date)] Nothing to do!!! 😫"
+                exit
+        fi
+}
+
 function search_pid() {
         echo `jps | grep subway | awk '{print $1}'`
 }
 
 function stop_app() {
+        echo -e "[$(date)] Stop Application..."
         PID=$(search_pid)
         if [ -n "${PID}" ]
         then
@@ -116,25 +134,14 @@ function stop_app() {
         fi
 }
 
-function check_df() {
-        cd /home/ubuntu/infra-subway-deploy
-        git fetch
-        master=$(git rev-parse ${BRANCH} > /dev/null 2>&1)
-        remote=$(git rev-parse origin ${BRANCH} > /dev/null 2>&1)
-
-        if [[ $master == $remote ]]; then
-                echo -e "[$(date)] Nothing to do!!! 😫"
-                exit 0
-        fi
-}
-
 function pull() {
-        echo -e ">> Pull ♂️ "
+        echo -e "[$(date)] Pull!!! 😫"
         cd /home/ubuntu/infra-subway-deploy
         git pull origin ${BRANCH}
 }
 
 function start_app() {
+        echo -e "[$(date)] Start Application!!! 😫"
         nohup java -jar -Dspring.profiles.active=${PROFILE} /home/ubuntu/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar > /home/ubuntu/logs/infra_deploy.log 2>&1 &
 }
 
@@ -145,5 +152,5 @@ start_app
 
 ```
 
-3. cronjob 설정을 공유해주세요.
+2. cronjob 설정을 공유해주세요.
 - */30 * * * * /home/ubuntu/infra-subway-deploy/deploy.sh step2 prod >> /home/ubuntu/cronlogs/infra_deploy_cron.log 2>&1 &
