@@ -1,6 +1,6 @@
 spring:
+  config:
+    import: classpath:config/prod-db.yml
   datasource:
     url: jdbc:mysql://192.168.81.144:3306/subway
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${datasource.username}
-    password: ${datasource.password}
