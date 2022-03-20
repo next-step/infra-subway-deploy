@@ -72,7 +72,8 @@ npm run dev
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : https://jongyun.kro.kr
+- URL : 
+    https://jongyun.kro.kr
 
 ---
 
