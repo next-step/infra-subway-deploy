@@ -73,8 +73,86 @@ Nginx 구성 입니다.
 
 ---
 
+
 ### [추가] 배포 스크립트 작성하기
 
-1. 작성한 배포 스크립트를 공유해주세요.
+1. 작성한 배포 스크립트를 공유해주세요.  
+
+```shell
+
+#!/bin/bash
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+BRANCH=$1
+PROFILE=$2
+
+if [[ $# -ne 1 ]]
+then
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 🧐 >> $0      ${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} BRANCH:${BRANCH} PROFILE:${PROFILE}   "
+    echo -e "${txtylw}=======================================${txtrst}"
+
+fi
+
+function check_df() {
+        echo -e "[$(date)] Start Check Diff Git Changes!!!"
+
+        cd /home/ubuntu/infra-subway-deploy
+        git fetch
+        master=$(git rev-parse ${BRANCH})
+        remote=$(git rev-parse origin/${BRANCH})
+
+        echo "master:${master}"
+        echo "remote:${remote}"
+
+        if [[ $master == $remote ]]; then
+                echo -e "[$(date)] Nothing to do!!! 😫"
+                exit
+        fi
+}
+
+function search_pid() {
+        echo `jps | grep subway | awk '{print $1}'`
+}
+
+function stop_app() {
+        echo -e "[$(date)] Stop Application..."
+        PID=$(search_pid)
+        if [ -n "${PID}" ]
+        then
+                echo "kill app - pid:${PID}"
+                kill -9 ${PID}
+        else
+                echo "APPLICATION IS NOT START"
+        fi
+}
+
+function pull() {
+        echo -e "[$(date)] Pull!!! 😫"
+        cd /home/ubuntu/infra-subway-deploy
+        git pull origin ${BRANCH}
+}
+
+function start_app() {
+        echo -e "[$(date)] Start Application!!! 😫"
+        nohup java -jar -Dspring.profiles.active=${PROFILE} /home/ubuntu/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar > /home/ubuntu/logs/infra_deploy.log 2>&1 &
+}
+
+check_df
+pull
+stop_app
+start_app
+
+```
+
 
 2. cronjob 설정을 공유해주세요.
+- */30 * * * * /home/ubuntu/infra-subway-deploy/deploy.sh step2 prod >> /home/ubuntu/cronlogs/infra_deploy_cron.log 2>&1 &
