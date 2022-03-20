@@ -76,8 +76,50 @@ certbot * 제거하여 적용!
 ### [추가] 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-# 변수 설정
 
+### checkdf.sh
+
+BRANCH=$1
+
+function check_df() {
+    echo -e "[$(date)] Start Check Diff Git Changes!!!"
+    cd /home/ubuntu/nextstep/infra-subway-deploy
+    git fetch
+    master=$(git rev-parse ${BRANCH})
+    remote=$(git rev-parse origin/${BRANCH})
+    echo "master:${master}"
+    echo "remote:${remote}"
+    if [[ $master == $remote ]]; then
+        echo -e "[$(date)] Nothing to do!!! 😫"
+        exit
+    else
+        ./deploy.sh
+    fi
+}
+
+check_df
+
+### pull.sh
+function pull() {
+    echo -e ""
+    echo -e ">> Pull Request 🏃♂️ "
+    git pull
+    git submodule foreach git pull origin main
+}
+
+pull;
+
+###
+SLACK_MESSAGE=$1
+SLACK_URL=https://hooks.slack.com/services/**************************
+
+function send_slack() {
+curl -X POST --data "payload={\"text\": \"${SLACK_MESSAGE}\"}" ${SLACK_URL}
+}
+
+send_slack
+
+### deploy.sh
 txtrst='\033[1;37m' # White
 txtred='\033[1;31m' # Red
 txtylw='\033[1;33m' # Yellow
@@ -99,10 +141,11 @@ VAR1=$(pgrep -f java)
 ## 프로세스를 종료하는 명령어
 echo ${VAR1}
 kill -9 ${VAR1}
-##
+## 배포
 nohup java -jar -Dspring.profiles.active=prod ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> ./build/libs/rkdals213_logs 2>&1  &
 
 ./slack.sh 배포가진행되었습니다
 
 
 2. cronjob 설정을 공유해주세요.
+*/1 * * * * bash /home/ubuntu/nextstep/infra-subway-deploy/checkdf.sh rkdals213-additional
