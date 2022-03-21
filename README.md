@@ -62,7 +62,7 @@ https://drive.google.com/file/d/1KIGG_1u9PE6hWcf8bSL74C7sTWy_i65O/view?usp=shari
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://gracegoose.kro.kr/
 
 ---
 
