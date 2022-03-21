@@ -67,6 +67,104 @@ infra-workshop-3 에 KEY-yunhalee05.pem의 이름으로 업로드 하였습니�
 
 ### [추가] 배포 스크립트 작성하기
 
+
 1. 작성한 배포 스크립트를 공유해주세요.
+#!/bin/bash
+
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+PROJECT_NAME=infra-subway-deploy
+BRANCH="$1"
+CASE="$2"
+SLACK_MESSAGE="Deployed New App Successfully!"
+SLACK_URL="https://app.slack.com/"
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+function check_df() {
+  git fetch 
+  master=$(git rev-parse $BRANCH > /dev/null 2>&1)
+  remote=$(git rev-parse origin $BRANCH > /dev/null 2>&1)
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 0
+  fi
+}
+
+## 저장소 pull
+function pull() {
+  echo -e ""
+  echo -e ">> Pull Request 🏃♂️ "
+  git pull origin yunhalee05
+}
+
+## 프로세스 pid를 찾는 명령어
+function findProcess() {
+  CURRENT_PID=$(pgrep -f java.*.jar)
+  echo -e ""
+  echo -e ">> Current pid 📡 : $CURRENT_PID"
+}
+
+## 프로세스를 종료하는 명령어
+function killProcess() {
+  if [ -z "$CURRENT_PID" ]; then
+    echo -e ">> There's no running app."
+  else
+    echo -e ">> Kill Process 🪓"
+    kill -15 $CURRENT_PID
+    sleep 5
+  fi
+}
+
+## gradle build
+function gradleBuild() {
+  echo -e ">> Build Gradle... ⌛️"
+  ./gradlew clean build
+}
+
+## 새 어플리케이션 배포 
+function deployNewApp() {
+  JAR_FILE=$(./build/libs/subway-0.0.1-SNAPSHOT.jar)
+  echo -e ">>"
+  nohup java -jar -Dspring.profiles.active=prod &
+}
+
+function send_slack() {
+  curl -X POST --data "payload={\"text\": \"${SLACK_MESSAGE}\"}" ${SLACK_URL}
+
+}
+
+function deploy(){
+  cd $PROJECT_NAME
+  pull;
+  findProcess;
+  killProcess;
+  gradleBuild;
+  deployNewApp; 
+  send_slack;
+}
+
+check_df;
+
+case $CASE in
+  -f) deploy; exit 0;;
+esac
+
+echo -e  ">> ${txtred} Are you sure to deploy new APP 🤔? ${txtrst} [Y/N] "
+read react 
+case $react in
+  [Yy]* ) deploy; exit 0;;
+esac
+
 
 2. cronjob 설정을 공유해주세요.
+45 5 * * 5 /home/ubuntu/deploy.sh
