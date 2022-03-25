@@ -52,8 +52,8 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
-- EC2-com8599-public1 = 3.38.252.66 / http://public1.com8599.p-e.kr:8080/
-- EC2-com8599-public2 = 15.164.174.39 /http://public2.com8599.p-e.kr:8080/
+- EC2-com8599-public1 = 3.38.252.66 / http://public1.com8599.p-e.kr/
+- EC2-com8599-public2 = 15.164.174.39 / http://public2.com8599.p-e.kr/
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
@@ -63,7 +63,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://com8599.p-e.kr/
 
 ---
 
