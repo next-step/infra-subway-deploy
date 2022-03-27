@@ -71,4 +71,76 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+```shell
+#!/bin/bash
+
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+## 저장소 pull
+function pull() {
+  echo -e ""
+  echo -e ">> Pull Request 🏃♂️ "
+
+  branch=$1
+  git checkout ${branch}
+  git pull origin ${branch}
+}
+
+## gradle build
+function build() {
+  echo -e ""
+  echo -e ">> Gradle Build 🏃♂️ "
+
+  ./gradlew clean build
+}
+
+## 프로세스 pid를 찾아 종료하는 명령어
+function terminate_process() {
+  echo -e ""
+  echo -e ">> Terminate Process 🏃♂️ "
+
+  pid=$(ps -ef | grep java | awk '{print $2}' | head -1)
+  kill -9 ${pid}
+}
+
+## 프로세스를 시작하는 명령어
+function start_process() {
+  echo -e ""
+  echo -e ">> Start Process 🏃♂️ "
+
+  working_directory=$1
+  project_directory=$2
+  nohup java -jar -Dspring.profiles.active=prod ${working_directory}/${project_directory}/build/libs/subway-0.0.1-SNAPSHOT.jar 1> ${working_directory}/weblog/$(date +%Y%m%d_%H%M).log 2>&1 &
+}
+
+
+working_directory='/home/ubuntu'
+project_directory=$1
+branch=$2
+
+cd ${working_directory}/${project_directory}
+pull ${branch}
+build
+
+terminate_process
+start_process ${working_directory} ${project_directory}
+
+```
+
 2. cronjob 설정을 공유해주세요.
+
+```shell
+0 * * * * /home/ubuntu/deploy.sh nextstep step2 > /home/ubuntu/deploylog/$(date +%Y%m%d_%H%M).log
+```
