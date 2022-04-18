@@ -41,6 +41,13 @@ npm run dev
 
 * 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
 
+### 🚀 0단계 - pem 키 생성하기
+1. 생성한 pem키를 알려주세요.
+  - KEY-loopstudy
+
+2. 생성한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1RoA4f-90wqbKCpp9cpXtBAzcT_y83A4M)에 업로드해주세요
+![img.png](img.png)
+
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
