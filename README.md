@@ -57,7 +57,7 @@ KEY-exemeedys.pem
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://exemeedys.xn--yq5b.xn--3e0b707e:8080/
+- URL : http://13.125.197.187:8080/
 
 
 
