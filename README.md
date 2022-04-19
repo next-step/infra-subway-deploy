@@ -51,10 +51,15 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - 외부망 
+    - 1 : tmdgusya-external (192.168.1.0/26):ap-northeast-2a
+    - 2 : tmdgusya-external-2 (192.168.1.128/26):ap-northeast-2b
+  - 내부망 : tmdgusya-internal (192.168.1.64/27):ap-northeast-2a
+  - 어드민 : tmdgusya-admin (192.168.1.96/27):ap-northeast-2a
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://www.roach.p-e.kr:8080/
 
 
 
