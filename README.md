@@ -53,11 +53,17 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 : 192.168.0.0/24 (devrunner21-vpc)
+   - 외부망
+      - 1 : 192.168.0.0/26 ( devrunner21-public-a ) : ap-northeast-2b
+      - 2 : 192.168.0.64/26 ( devrunner21-public-b ) : ap-northeast-2c
+   - 내부망 : 192.168.0.128/27 ( devrunner21-db ) : ap-northeast-2a
+   - 관리망 : 192.168.0.160/27 ( devrunner21-bastion ) : ap-northeast-2a
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : devrunner21.kro.kr:8080
+
 
 
 
