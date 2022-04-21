@@ -52,10 +52,16 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - VPC(gongzza-vpc): 192.168.22.0/24 ap-northeast-2
+  - 관리망(gongzza-subnet-bastion): 192.168.22.0/27 ap-northeast-2a
+  - 내부망(gongzza-subnet-private): 192.168.22.32/27 ap-northeast-2b
+  - 외부망1(gongzza-subnet-public-a): 192.168.22.64/26 ap-northeast-2a
+  - 외부망2(gongzza-subnet-public-b): 192.168.22.128/26 ap-northeast-2b
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- 공인 IP: 3.39.36.66
+- URL : infraworkshop5.us.to
 
 
 
