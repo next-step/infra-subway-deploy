@@ -51,6 +51,14 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 192.168.10.0/24
 
+| 구분  | 서브넷 이름                | 가용 영역(AZ)       | IPv4 CIDR 블록      |
+|-----|-----------------------|-----------------|-------------------|
+|외부망| tonyjev93-external-01 | ap-northeast-2a | 192.168.10.0/26   |
+|외부망| tonyjev93-external-02 | ap-northeast-2c | 192.168.10.64/26  |
+|내부망| tonyjev93-internal-01 | ap-northeast-2a | 192.168.10.128/27 |
+|관리용| tonyjev93-admin-01 | ap-northeast-2c | 192.168.10.160/27 |
+
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 52.78.72.73([www.tonyjev93.kro.kr](http://www.tonyjev93.kro.kr:8080))
