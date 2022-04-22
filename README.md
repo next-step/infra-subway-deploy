@@ -48,16 +48,60 @@ npm run dev
 2. 생성한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1RoA4f-90wqbKCpp9cpXtBAzcT_y83A4M)에 업로드해주세요
 ![img.png](img.png)
 
-### 1단계 - 망 구성하기
+## 1단계 - 망 구성하기
+### 요구사항
+#### 망 구성
+- [x] VPC 생성 
+  - [x] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
+- [x] Subnet 생성
+  - [x] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+  - [x] 내부망으로 사용할 Subnet : 32개씩 1개
+  - [x] 관리용으로 사용할 Subnet : 32개씩 1개
+- [x] Internet Gateway 연결
+  - [x] VPC 연결 
+- [x] Route Table 생성 
+  - [x] IGW 연결용 라우팅 테이블 - 외부망 Subnet
+  - [x] 내부망 라우팅 테이블 - 내부망 Subnet, 관리망 Subnet 
+- [x] Security Group 설정
+    - [x] 외부망 public
+      - 전체 대역 : 8080 포트 오픈
+      - 관리망 : 22번 포트 오픈 (관리망에 접근해야함)
+    - [x] 내부망 internal
+      - 외부망 : 3306 포트 오픈 (관리망과 외부망에서 접근)
+      - 관리망 : 22번 포트 오픈 (관리망에 접근해야함)
+    - [x] 관리망 bastion
+      - 자신의 공인 IP : 22번 포트 오픈
+- [x] 서버 생성 
+  - [x] 외부망에 웹 서비스용도의 EC2 생성 
+  - [x] 내부망에 데이터베이스용도의 EC2 생성
+  - [x] 관리망에 베스쳔 서버용도의 EC2 생성 
+    - [x] 내부망 접근을 위한 KEY 파일 복사  
+  - [x] 베스쳔 서버에 Session Timeout 600s 설정
+    - ~/.profile로 로그인한 유저만 설정하기
+    - 서버 구분 추가 ~/.bashrc
+  - [x] 베스쳔 서버에 Command 감사로그 설정 
+
+#### 웹 애플리케이션 배포
+- [x] 외부망에 웹 애플리케이션을 배포
+  - [x] 외부망 a,b 환경세팅
+  - [x] 외부망 a,b 깃허브 레포지토리 클론 및 빌드
+  - [x] 애플리케이션 실행 확인
+  - [x] 애플리케이션 로그 확인
+- [x] DNS 설정
+  - [x] 내도메인.한국으로 도메인 생성
+  - [x] 외부망 연결 및 접속 확인 
+
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 외부망1 : 192.168.8.0/26   (loopstudy-public-a)
+- 외부망2 : 192.168.8.64/26  (loopstudy-public-b)
+- 내부망  : 192.168.8.128/27 (loopstudy-private-db-a)
+- 관리망  : 192.168.8.160/27 (loopstudy-bastion-a)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
+- URL : http://www.loopstudy.p-e.kr:8080
 
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+- KEY-loopstudy
 ---
 
 ### 2단계 - 배포하기
