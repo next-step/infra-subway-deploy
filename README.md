@@ -51,10 +51,17 @@ KEY-jiwonkwon.pem
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+vpc : 192.168.12.0/24
+jiwonkwon-public-a : 192.168.12.0/26
+jiwonkwon-public-b : 192.168.12.64/26
+jiwonkwon-private : 192.168.12.128/27
+jiwonkwon-bastion : 192.168.12.160/27
+
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://jiwonkwon-infra.p-e.kr:8080/
+- 공인IP : http://52.78.197.234:8080/
 
 
 
@@ -63,7 +70,7 @@ KEY-jiwonkwon.pem
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://jiwonkwon-infra.p-e.kr/
 
 ---
 
