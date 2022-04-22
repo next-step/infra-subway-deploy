@@ -70,7 +70,7 @@ jiwonkwon-bastion : 192.168.12.160/27
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://jiwonkwon-infra.p-e.kr/
 
 ---
 
