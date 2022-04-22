@@ -24,8 +24,8 @@ then
     echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
     echo -e "${txtylw}=======================================${txtrst}"
     echo "git branch 입력: "
-    read branch
-    echo "git branch: $branch"
+    read BRANCH
+    echo "git branch: $BRANCH"
 fi
 
 cd ~/nextstep/infra-subway-deploy/
