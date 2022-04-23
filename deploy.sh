@@ -27,8 +27,29 @@ PROJECT_NAME=subway
 #  fi
 #}
 
+function check_df() {
+  echo -e ""
+  echo -e "<< Git Repo에서 Fetch 된 내용이 있는지 Check하기 >>"
+  echo -e ""
+  echo -e "${txtgrn}> step1: Repository로 이동${txtrst}"
+  echo -e ""
+  cd $REPOSITORY/$PROJECT_DIR_NAME
+  echo -e ""
+  echo -e "${txtgrn}> step2: Fetch 할 내용이 있는지 확인${txtrst}"
+  echo -e ""
+  git fetch
+  master=$(git rev-parse $BRANCH > /dev/null 2>&1)
+  remote=$(git rev-parse origin $BRANCH > /dev/null 2>&1)
+
+  if [[ $master == $remote ]]; then
+    echo -e "${txtylw}>> [$(date)] Nothing to do!!! 😫"
+    exit 0
+  fi
+}
+
 ## 저장소 pull
 function pull() {
+  echo -e ""
   echo -e "<< Git Repo에서 Pull 받기 >>"
   echo -e ""
   echo -e "${txtgrn}> step1: Repository로 이동${txtrst}"
@@ -80,7 +101,7 @@ function check_running_process() {
   echo -e ""
 
   if [ -z $CURRENT_PID ]; then
-      echo -e "${txtred}>> 현재 구동 중인 애플리케이션이 없으므로 종료하지 않습니다.${txtrst}"
+      echo -e "${txtgrn}>> 현재 구동 중인 애플리케이션이 없으므로 종료하지 않습니다.${txtrst}"
       echo -e ""
 
   else
@@ -114,6 +135,8 @@ function deploy_new_app() {
   nohup java -jar -Dspring.profiles.active=$PROFILE $REPOSITORY/$JAR_NAME 1> appplication-log 2>&1 &
 }
 
+
+
 if [[ $# -ne 2 ]]
   then
       echo -e "${txtylw}=======================================${txtrst}"
@@ -124,6 +147,7 @@ if [[ $# -ne 2 ]]
       exit
 fi
 
+check_df;
 pull;
 build;
 copy_to_jar;
