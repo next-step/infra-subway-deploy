@@ -134,6 +134,7 @@ if [[ $# -ne 2 ]]
       exit
 fi
 
+## 전체 프로세스 진행
 check_df;
 pull;
 build;
