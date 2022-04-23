@@ -14,19 +14,6 @@ REPOSITORY=/home/ubuntu/nextstep
 PROJECT_DIR_NAME=infra-subway-deploy
 PROJECT_NAME=subway
 
-## 쉘 실행 커멘드 체크
-#function check_shell_run_command() {
-#  if [[ $# -ne 2 ]]
-#  then
-#      echo -e "${txtylw}=======================================${txtrst}"
-#      echo -e "${txtgrn}  << 실행 스크립트를 다시 입력해주세요. 🧐 >>${txtrst}"
-#      echo -e ""
-#      echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }${txtrst}"
-#      echo -e "${txtylw}=======================================${txtrst}"
-#      exit
-#  fi
-#}
-
 function check_df() {
   echo -e ""
   echo -e "<< Git Repo에서 Fetch 된 내용이 있는지 Check하기 >>"
