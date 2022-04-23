@@ -72,5 +72,88 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```shell
+#!/bin/bash
 
+## 변수 설정
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+BRANCH=$1
+PROFILE=$2
+
+## 조건 설정
+if [[ $# -ne 2 ]]
+then
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
+    echo -e "${txtylw}=======================================${txtrst}"
+    exit
+fi
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 배포 열차 출발 칙칙폭폭🚂 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+function moveToRepository() {
+  cd `find ~/* -name ${REPOSITORY_NAME}`
+
+  if [ $? -ne 0 ]; then
+        echo -e ${txtred}">> Fail to Move Directory "${txtrst}
+        exit
+  fi
+}
+
+function pull() {
+  echo -e ""
+  echo -e ">> Pull recent changes 🎣 "
+  git pull origin ${BRANCH}
+}
+
+function build() {
+  echo -e ""
+  echo -e ">> Build project 🏗  "
+  ./gradlew clean build
+
+  if [ $? -ne 0 ]; then
+        echo -e ${txtred}">> Fail to Build "${txtrst}
+        exit
+  fi
+}
+
+function lookupAndKillServerProcess() {
+  echo -e ""
+  serverPID=`lsof -t -i :${SERVER_PORT}`
+
+  if [ -z "$serverPID" ]
+  then
+          echo -e ">> There is no server running on port ${SERVER_PORT}."
+  else
+          echo -e ">> There is a server already running on port ${SERVER_PORT}."
+          echo -e ">> The server would be down.."
+          kill -2 ${serverPID}
+  fi
+}
+
+function serverUp() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${txtgrn}  서버를 실행합니다. 🥳 ${txtrst}"
+  echo -e ""
+  echo -e "${txtylw}=======================================${txtrst}"
+  jarDir=`find ./* -name *jar`
+  nohup java -Dspring.profiles.active=${PROFILE} -Dserver.port=${SERVER_PORT} -jar ${jarDir} 1> ~/logfile 2>&1 &
+}
+
+moveToRepository;
+pull;
+build;
+lookupAndKillServerProcess;
+serverUp;
+                            
+```
 
