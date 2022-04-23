@@ -50,11 +50,21 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+* 대역 : 192.168.47.0/24 (songsimo-vpc)
+
+```
+1. 외부망 : 192.168.47.0/26 ( songsimo-sb-a-public ) : ap-northeast-2a
+
+2. 외부망 : 92.168.47.64/26 ( songsimo-sb-b-public ) : ap-northeast-2c
+
+3. 내부망 : 192.168.47.128/27 ( songsimo-sb-c-private ) : ap-northeast-2a
+
+4. 관리망 : 192.168.47.160/27 ( songsimo-sb-d-admin ) : ap-northeast-2c
+```
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://songsimo.kro.kr:8080/
 
 
 
