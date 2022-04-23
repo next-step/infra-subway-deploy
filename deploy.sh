@@ -14,6 +14,18 @@ REPOSITORY=/home/ubuntu/nextstep
 PROJECT_DIR_NAME=infra-subway-deploy
 PROJECT_NAME=subway
 
+function check_shell_run_command() {
+  if [[ $# -ne 2 ]]
+  then
+      echo -e "${txtylw}=======================================${txtrst}"
+      echo -e "${txtgrn}  << 실행 스크립트를 다시 입력해주세요. 🧐 >>${txtrst}"
+      echo -e ""
+      echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }${txtrst}"
+      echo -e "${txtylw}=======================================${txtrst}"
+      exit
+  fi
+}
+
 function check_df() {
   echo -e ""
   echo -e "<< Git Repo에서 Fetch 된 내용이 있는지 Check하기 >>"
@@ -24,9 +36,13 @@ function check_df() {
   echo -e ""
   echo -e "${txtgrn}> step2: Fetch 할 내용이 있는지 확인${txtrst}"
   echo -e ""
+
   git fetch
-  master=$(git rev-parse $BRANCH > /dev/null 2>&1)
-  remote=$(git rev-parse origin/$BRANCH > /dev/null 2>&1)
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+
+  echo -e "${txtgrn}>> $BRANCH Revision = $master ${txtrst}"
+  echo -e "${txtgrn}>> origin/$BRANCH Revision = $remote ${txtrst}"
 
   if [[ $master == $remote ]]; then
     echo -e "${txtylw}>> [$(date)] Nothing to do!!! 😫"
@@ -122,19 +138,8 @@ function deploy_new_app() {
   nohup java -jar -Dspring.profiles.active=$PROFILE $REPOSITORY/$JAR_NAME 1> appplication-log 2>&1 &
 }
 
-
-
-if [[ $# -ne 2 ]]
-  then
-      echo -e "${txtylw}=======================================${txtrst}"
-      echo -e "${txtgrn}  << 실행 스크립트를 다시 입력해주세요. 🧐 >>${txtrst}"
-      echo -e ""
-      echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }${txtrst}"
-      echo -e "${txtylw}=======================================${txtrst}"
-      exit
-fi
-
 ## 전체 프로세스 진행
+check_shell_run_command $BRANCH $PROFILE;
 check_df;
 pull;
 build;
