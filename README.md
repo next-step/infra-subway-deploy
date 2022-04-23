@@ -52,9 +52,14 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+  - [public-1](https://ap-northeast-2.console.aws.amazon.com/vpc/home?region=ap-northeast-2#SubnetDetails:subnetId=subnet-0ece9de76d2860188): 192.168.7.0/26  
+  - [public-2](https://ap-northeast-2.console.aws.amazon.com/vpc/home?region=ap-northeast-2#SubnetDetails:subnetId=subnet-038d4e9579b7cd0b1): 192.168.7.64/26  
+  - [private](https://ap-northeast-2.console.aws.amazon.com/vpc/home?region=ap-northeast-2#vpcs:VpcId=vpc-01c1ad116a37b0230): 192.168.7.128/27  
+  - [terminal](https://ap-northeast-2.console.aws.amazon.com/vpc/home?region=ap-northeast-2#SubnetDetails:subnetId=subnet-017cb4cb4a033270f): 192.168.7.160/27  
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : 13.209.92.9([seokhyoenchoi.kro.kr](seokhyoenchoi.kro.kr))
 
 
 
