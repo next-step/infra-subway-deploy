@@ -46,23 +46,29 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
+- `KEY-ljh0326.pem` 입니다.
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
-
+- 외부망
+    - 1 : ljh0326-a (public) (192.168.1.0/26):ap-northeast-2a
+    - 2 : ljh0326-b (public) (192.168.1.64/26):ap-northeast-2c
+    - 내부망 : ljh0326-c (private) (192.168.1.128/27):ap-northeast-2a
+    - 어드민 : ljh0326-d (bastion) (192.168.1.160/27):ap-northeast-2c
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
-
-
-
+- URL : http://ljh0326.p-e.kr:8080/
+        http://13.209.16.124:8080/
+  
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : ljh0326.p-e.kr
+```
+힌트에 나온데로 docker proxy 적용을 한것 같은데 ssh랑 80이 먹지를 않네요 ㅜ
+```
 
 ---
 
