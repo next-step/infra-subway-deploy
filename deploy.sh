@@ -26,7 +26,7 @@ function check_df() {
   echo -e ""
   git fetch
   master=$(git rev-parse $BRANCH > /dev/null 2>&1)
-  remote=$(git rev-parse origin $BRANCH > /dev/null 2>&1)
+  remote=$(git rev-parse origin/$BRANCH > /dev/null 2>&1)
 
   if [[ $master == $remote ]]; then
     echo -e "${txtylw}>> [$(date)] Nothing to do!!! 😫"
