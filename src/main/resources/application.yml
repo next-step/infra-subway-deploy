@@ -3,7 +3,7 @@ spring:
     active: local
   datasource:
     hikari:
-      jdbc-url: jdbc:mysql://${db_host}:13306/subway?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+      jdbc-url: jdbc:mysql://${db_host}/subway?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
       driver-class-name: org.mariadb.jdbc.Driver
       max-lifetime: 50000
       idle-timeout: 10000
