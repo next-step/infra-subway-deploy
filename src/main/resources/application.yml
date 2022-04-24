@@ -1,0 +1,34 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://${db_host}:13306/subway?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+      driver-class-name: org.mariadb.jdbc.Driver
+      max-lifetime: 50000
+      idle-timeout: 10000
+      connection-timeout: 10000
+      validation-timeout: 10000
+    url: jdbc:mysql://
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show_sql: true
+        format_sql: true
+
+handlebars:
+  suffix: .html
+  enabled: true
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace
+
+security:
+  jwt:
+    token:
+      secret-key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
+      expire-length: 3600000

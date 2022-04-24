@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    hikari:
+      username: ${db_username}
+      password: ${db_password}
