@@ -46,7 +46,6 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 - 업로드 하였습니다.
 2. 업로드한 pem키는 무엇인가요.
-- [KEY-tonyjev93.pem](https://drive.google.com/file/d/1K6XzVej_PP46VbMkBigCqOzFzIUc5yxS/view?usp=sharing)
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
@@ -81,4 +80,23 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+- 실행 script
+```shell
+$ ./buildAndStart.sh
+```
 
+- 모든 스크립트 파일은 `./script` 폴더내에 위치시켰습니다.
+- **./script** 폴더 구조
+    - `common`
+        - script 실행 시 필요한 공통적인 변수 및 함수 선언
+    - `func`
+        - Step 별 함수 구현
+    - `main.sh`
+        - `func` 폴더 내 함수를 순차적으로 진행
+
+```
+## 작업 순서
+# 1. Pull Request
+# 2. Gradle Build
+# 3. Server Restart
+```
