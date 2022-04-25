@@ -74,4 +74,184 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+#### public-a (nginx / jvm 서버)
 
+- start-server.sh
+```sh
+#!/bin/bash
+
+start_jvm() {
+        SERVER_PID=$(ps -ef | grep subway-0.0.1-SNAPSHOT.jar | grep -v grep | awk '{print $2}')
+
+        if [ -n "$SERVER_PID" ]; then
+                echo 'server process already exist!'
+                exit 0
+        fi
+
+        nohup java -jar -Dspring.profiles.active=prod /home/ubuntu/nextstep/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar 1>/home/ubuntu/nextstep/infra-subway-deploy/log.out 2>&1 &
+}
+
+validate_jvm() {
+        CNT=0
+        curl localhost:8080
+        while [ $? -ne 0 -a $CNT -le 5 ]
+        do
+                echo "validation count : $CNT"
+                sleep 3
+                CNT=$(($CNT + 1))
+                curl localhost:8080
+        done
+
+        if [ $CNT -eq 6 ]; then
+                echo 'jvm process not ready!!'
+                exit 1
+        fi
+
+        echo 'jvm process ready!!'
+}
+
+start_nginx() {
+        docker start proxy
+}
+
+## 1. jvm process start
+start_jvm
+
+## 2. wait until spring started
+validate_jvm
+
+## 3. nginx container start
+start_nginx
+```
+
+- stop-server.sh
+```sh
+#!/bin/bash
+
+stop_apache() {
+        docker stop proxy
+}
+
+stop_jvm() {
+        SERVER_PID=$(ps -ef | grep subway-0.0.1-SNAPSHOT.jar | grep -v grep | awk '{print $2}')
+
+        if [ -z "$SERVER_PID" ]; then
+                echo 'server process already down!'
+                exit 0
+        fi
+
+        kill -15 $SERVER_PID
+
+        CNT=0
+        while [ -n "$(ps -ef | grep subway-0.0.1-SNAPSHOT.jar | grep -v grep | awk '{print $2}')" -a $CNT -le 5 ]
+        do
+                CNT=$(($CNT + 1))
+                sleep 2
+        done
+
+        if [ $CNT -eq 6 ]; then
+                echo 'fail to stop jvm!!'
+                exit 1
+        fi
+
+        echo 'server process successfully down!'
+}
+
+## 1. nginx apache down
+stop_apache
+
+## 2. jvm process down
+stop_jvm
+```
+
+- rebuild-server.sh
+```sh
+#!/bin/bash
+
+cd /home/ubuntu/nextstep/infra-subway-deploy
+git pull
+/home/ubuntu/nextstep/infra-subway-deploy/gradlew clean build
+```
+
+- restart-server.sh
+```sh
+#!/bin/bash
+
+## 1. stop server
+sh /home/ubuntu/stop-server.sh
+
+## 2. rebuild jar
+ARG1=$1
+
+if [ "$ARG1" = "rebuild" ]; then
+        echo "rebuild jar!"
+        sh /home/ubuntu/rebuild-server.sh
+fi
+
+## 3. start server
+sh /home/ubuntu/start-server.sh
+```
+
+#### private-db : 내부망 mysql 서버
+
+- start-db.sh
+```sh
+#!/bin/bas
+
+docker start mysql_subway
+```
+
+- stop-db.sh
+```sh
+#!/bin/bash
+
+docker stop mysql_subway
+```
+
+- restart-db.sh
+```sh
+#!/bin/bash
+
+sh /home/ubuntu/stop-db.sh
+
+sh /home/ubuntu/start-db.sh
+```
+
+#### admin : 어드민 서버
+
+- init-service.sh
+```sh
+#!/bin/bash
+
+# 1. start db
+if [ -z "$(ssh ubuntu@private-db docker ps | grep mysql_subway)" ]; then
+        ssh ubuntu@private-db /home/ubuntu/start-db.sh
+fi
+
+
+# 2. start nginx & jvm
+if [ -z "$(ssh ubuntu@public-a ps -ef | grep subway-0.0.1-SNAPSHOT.jar)" ]; then
+        ssh ubuntu@public-a /home/ubuntu/start-server.sh
+fi
+```
+
+- restart-service.sh
+```sh
+#!/bin/bash
+
+## 1. nginx & jvm stop
+ssh ubuntu@public-a /home/ubuntu/restart-server.sh $1
+```
+
+#### 사용법
+
+```
+어드민 서버에서 웹서버 재시작
+./restart-service.sh
+
+어드민 서버에서 웹서버 현재브랜치 최신 반영 & 재빌드 & 재시작
+./restart-service.sh rebuild
+
+서버군 전체 처음 켜졌을때 (start-server / start-db)
+./init-service.sh
+```
