@@ -75,4 +75,14 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+- script/deploy.sh
+    ./script/deploy.sh {profile}
+    ex) ./script/deploy.sh prod
+- script/log.sh
+    crontab으로 매일 23시 59분 (지금 설정된 서버시간으로 14:59) 에
+    서버로그 백업하고 subway_20220425_145901, 새로 만드는걸로 했습니다. (nohup rotation)
+    ```shell
+    ubuntu@ip-192-168-123-60:~/nextstep/infra-subway-deploy$ crontab -l
+    59 14 * * * /home/ubuntu/nextstep/infra-subway-deploy/script/log.sh
+    ```
 
