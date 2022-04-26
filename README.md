@@ -105,13 +105,27 @@ npm run dev
 ---
 
 ### 2단계 - 배포하기
+### 요구사항
+#### 운영 환경 구성하기
+- [x] 도커 설치
+- [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+  - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+  - [x] Reverse Proxy에 TLS 설정
+    - [x] 인증서 생성 
+- [x] 운영 데이터베이스 구성하기
+  - [x] 도커 컨테이너 사용하기
+
+####  개발 환경 구성하기
+- [x] 설정 파일 나누기
+  - [x] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://loopstudy.p-e.kr
 
----
+--- 
 
-### [추가] 배포 스크립트 작성하기
+### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
