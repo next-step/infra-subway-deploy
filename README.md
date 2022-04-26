@@ -77,7 +77,8 @@ npm run dev
 
 - script/deploy.sh
     ./script/deploy.sh {profile}
-    ex) ./script/deploy.sh prod
+    profile 기본값 prod
+    ex) ./script/deploy.sh local
 - script/log.sh
     crontab으로 매일 23시 59분 (지금 설정된 서버시간으로 14:59) 에
     서버로그 백업하고 subway_20220425_145901, 새로 만드는걸로 했습니다. (nohup rotation)
