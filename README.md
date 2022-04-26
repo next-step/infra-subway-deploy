@@ -58,7 +58,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://eden.just-hazard.p-e.kr:8080 (3.39.184.31:8080)
+- URL : http://just-hazard.p-e.kr:8080 (3.39.184.31:8080)
 
 
 
@@ -67,7 +67,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://just-hazard.p-e.kr
 
 ---
 
