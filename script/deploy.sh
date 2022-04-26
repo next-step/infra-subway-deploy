@@ -11,7 +11,7 @@ txtgra='\033[1;30m' # Gray
 
 DATE_TIME=`date +'%y%m%d_%H%M%S'`
 REPOSITORY=/home/ubuntu/nextstep/infra-subway-deploy
-PROFILE=$0
+PROFILE=$1
 SERVER_NAME=subway
 
 function start() {
