@@ -74,5 +74,104 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+  - 사용법 : `./script.sh vista0212`
+```shell
+## script.sh
+## 메인 실행 파일
+#!/bin/bash
 
+BRANCH=$1
 
+function pull() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${BRANCH} 브랜치 작업내용 당겨오기"
+  echo -e" ${txtylw}=======================================${txtrst}"
+
+  git pull origin ${BRANCH}
+}
+
+pull;
+```
+```shell
+## checkout.sh
+## git checkout 명령어 실행 스크립트
+#!/bin/bash
+
+BRANCH=$1
+
+function checkout() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "    ${BRANCH} 브랜치로 checkout 합니다   "
+  echo -e "${txtylw}=======================================${txtrst}"
+
+  git checkout ${BRANCH}
+}
+
+checkout ${BRANCH}
+```
+```shell
+## pull.sh
+## 리모트 브랜치로부터 작업 내용 PULL
+#!/bin/bash
+
+BRANCH=$1
+
+function pull() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${BRANCH} 브랜치 작업내용 당겨오기"
+  echo -e" ${txtylw}=======================================${txtrst}"
+
+  git pull origin ${BRANCH}
+}
+
+pull;
+```
+```shell
+## build.sh
+## 빌드 실행하는 스크립트 실행
+#!/bin/bash
+
+function build() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "./gradlew clean build 실행"
+  echo -e "${txtylw}=======================================${txtrst}"
+
+  ./gradlew clean build
+}
+
+build;
+```
+```shell
+## killport.sh
+## 서버 실행 전 기존 포트 kill하는 스크립트 실행
+#!bin/bash
+
+function killport() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "kill port 8080"
+  echo -e "${txtylw}=======================================${txtrst}"
+
+  fuser -k 8080/tcp
+}
+
+killport;
+```
+```shell
+## server.sh
+## 서버 실행 스크립트
+#!/bin/bash
+
+JAR_PATH=$(find ./* -name "*jar")
+
+function server() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "인프라 공방 / 지하철 노선도 서버를 실행합니다."
+  echo -e "${txtylw}=======================================${txtrst}"
+
+  echo -e ${JAR_PATH}
+
+  java -jar -Dspring.profiles.active=prod ${JAR_PATH}
+}
+
+server;
+```
