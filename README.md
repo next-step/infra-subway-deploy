@@ -73,5 +73,75 @@ KEY-exemeedys.pem
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+`
+#!/bin/bash
 
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+REPOSITORY=$1
+BRANCH=$2
+PROFILE=$3
+
+if [ $# -ne 3 ]; then
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn}  브랜치이름 ${txtred}{ prod | dev }"
+    echo -e "${txtylw}=======================================${txtrst}"
+    exit
+fi
+
+move_to_repository() {
+  repositoryDir=`find ./* -name ${REPOSITORY}`  
+  cd ${repositoryDir}
+}
+
+pull() {
+  echo -e ""
+  echo -e ">> Pull Request 🏃♂️"
+  git pull origin ${BRANCH}
+}
+
+build() {
+  ./gradlew clean build --exclude-task test
+}
+
+service_start() {
+  echo -e "${txtylw}==================================${txtrst}"
+  echo -e "${txtgrn}        서버를 실행합니다.        ${txtrst}"
+  echo -e ""
+  echo -e "${txtylw}==================================${txtrst}"
+
+  jarDir=`find ./* -name *jar | grep -v gradle`
+  nohup java -jar ${jarDir} --spring.profiles.active=${PROFILE} 1> ./log_file 2>&1 &
+}
+
+service_stop() {	
+
+  jarDir=`find ./* -name *jar | grep -v gradle`
+  pid=`ps -ef | grep ${jarDir} | grep -v 'grep' | awk '{print $2}'`
+  if [ -z "$pid" ] 
+  then
+   echo -e "${txtylw}==================================${txtrst}"
+   echo -e "${txtgrn}  there is no running on server   ${txtrst}"
+   echo -e ""
+   echo -e "${txtylw}==================================${txtrst}"
+  else 
+    echo -e "${txtylw}==================================${txtrst}"
+    echo -e "${txtgrn} ${pid} 서버를 종료합니다.        ${txtrst}"
+    echo -e ""
+    echo -e "${txtylw}==================================${txtrst}"
+    echo -e ""
+    kill -15 ${pid}
+  fi
+}
+
+`
 
