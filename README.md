@@ -110,7 +110,7 @@ pull() {
 }
 
 build() {
-  ./gradlew clean build --exclude-task test
+  ./gradlew clean build
 }
 
 service_start() {
