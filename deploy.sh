@@ -1,7 +1,6 @@
 #!/bin/bash
 
-BRANCH=$1
-PROFILE=$2
+PROFILE=$1
 
 REPOSITORY=/home/ubuntu/infra-subway-deploy
 JAR_FILE=${REPOSITORY}/build/libs
@@ -14,7 +13,7 @@ function move() {
 
 function pull() {
         echo "before pull()"
-        git pull origin
+        git pull origin mincheolkk
         echo "after pull()"
 }
 
@@ -27,6 +26,7 @@ function build() {
 function findPid() {
         echo "before findPid()"
         PID=$(pgrep -f java)
+        echo ${PID}
         if [ $PID ]; then
                 kill -2 $PID
                 sleep 3
@@ -37,8 +37,12 @@ function findPid() {
 function deploy() {
         echo "before deploy()"
         cd $JAR_FILE
-        jarNmae=`find ./* -name *jar`
+        jarName=`find ./* -name *jar`
+        pwd
+        echo ${jarName}
         nohup java -jar -Dspring.profiles.active=${PROFILE} -jar ${jarName} 1> infra_log 2>&1 &
+        PID=$(pgrep -f java)
+        echo ${PID}
         echo "after deploy()"
 }
 
