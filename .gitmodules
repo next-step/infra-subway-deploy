@@ -1,0 +1,6 @@
+[submodule "src/main/resources/infra_submodule"]
+	path = src/main/resources/infra_submodule
+	url = https://github.com/mincheolkk/infra_submodule.git
+[submodule "src/main/resources/config"]
+	path = src/main/resources/config
+	url = https://github.com/mincheolkk/infra_submodule.git
