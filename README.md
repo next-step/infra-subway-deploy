@@ -58,7 +58,7 @@ npm run dev
     - 어드민 : ljh0326-d (bastion) (192.168.1.160/27):ap-northeast-2c
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 - URL : http://ljh0326.p-e.kr:8080/
-        http://13.209.16.124:8080/
+        http://3.37.186.68:8080/
   
 ---
 
