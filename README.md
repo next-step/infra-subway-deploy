@@ -81,3 +81,6 @@ npm run dev
 - 프로퍼티 [properties.sh](scripts/properties.sh)
 - Argument 파서 [setup_args.sh](scripts/setup_args.sh)
 - 변경 감지 시 배포 스크립트 [cd.sh](scripts/cd.sh)
+
+2. 사용법
+- startup.sh JAVA_RUN_ARGS="-Dspring.profiles.active={env} -Ddb_host={host} -Ddb_username={user} -Ddb_password={password}"
