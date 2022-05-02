@@ -16,7 +16,7 @@ function deploy_if_changed() {
   cd "${EXECUTION_PATH}"
   git fetch
   MASTER=$(git rev-parse "${BRANCH_NAME}")
-  REMOTE=$(git rev-parse "${REMOTE_NAME}" "${BRANCH_NAME}")
+  REMOTE=$(git rev-parse "${REMOTE_NAME}"/"${BRANCH_NAME}")
 
   if [[ "${MASTER}" == "${REMOTE}" ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
