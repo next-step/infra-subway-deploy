@@ -3,12 +3,6 @@
 function kill_java_process() {
   PIDS=($(pgrep -f "${MODULE_NAME}*"))
 
-  if [[ "${#PIDS[@]}" -lt 1 ]] || [[ -z "${PIDS[0]}" ]]
-  then
-    echo -e "There's No Java Process"
-    exit 0
-  fi
-
   for PID in ${PIDS}
   do
     if [[ -n "${PIDS[0]}" ]]
@@ -32,5 +26,7 @@ function deploy_if_changed() {
   "${SHELL_SCRIPT_PATH}"/startup.sh "${@}"
 }
 
-source "$(pwd)"/setup_args.sh "${@}"
+SHELL_SCRIPT_PATH=$(pwd)
+
+source "${SHELL_SCRIPT_PATH}"/setup_args.sh "${@}"
 deploy_if_changed "${@}"
