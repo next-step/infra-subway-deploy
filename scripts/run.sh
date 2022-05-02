@@ -19,6 +19,6 @@ function run_java() {
   echo -e ""
   echo -e "${txtgrn}>> Run java(${EXECUTION_PATH}/build/libs/${MODULE_NAME}-0.0.1-SNAPSHOT.jar) 🏃 ${txtrst}"
   cd "${EXECUTION_PATH}"
-  nohup java -jar ${JAVA_RUN_ARGS} ./build/libs/"${MODULE_NAME}"-0.0.1-SNAPSHOT.jar &
+  nohup java -jar ${JAVA_RUN_ARGS} ./build/libs/"${MODULE_NAME}"-0.0.1-SNAPSHOT.jar >| "${HOME}"/log/app.log 2>&1 &
   echo -e "${txtgrn}>> Run java(${EXECUTION_PATH}/build/libs/${MODULE_NAME}-0.0.1-SNAPSHOT.jar) done️ ${txtrst}"
 }
