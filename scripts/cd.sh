@@ -28,6 +28,7 @@ function deploy_if_changed() {
   ./startup.sh "${@}"
 }
 
+
 SHELL_SCRIPT_PATH=$(pwd)
 source "${SHELL_SCRIPT_PATH}"/setup_args.sh "${@}"
 deploy_if_changed "${@}"
