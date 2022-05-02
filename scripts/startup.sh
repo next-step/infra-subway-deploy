@@ -6,6 +6,6 @@ function startup() {
   run_java
 }
 
-source setup_args.sh "${@}"
-source run.sh
+source "${SHELL_SCRIPT_PATH}"/setup_args.sh "${@}"
+source "${SHELL_SCRIPT_PATH}"/run.sh
 startup

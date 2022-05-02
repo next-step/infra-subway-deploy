@@ -29,8 +29,8 @@ function deploy_if_changed() {
   fi
 
   kill_java_process
-  ./startup.sh "${@}"
+  "${SHELL_SCRIPT_PATH}"/startup.sh "${@}"
 }
 
-source setup_args.sh "${@}"
+source "$(pwd)"/setup_args.sh "${@}"
 deploy_if_changed "${@}"

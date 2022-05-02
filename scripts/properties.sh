@@ -16,3 +16,6 @@ PROPERTIES=(
 "txtgrn,'\033[1;32m'" # Green
 "txtgra,'\033[1;30m'" # Gray
 )
+
+
+echo
