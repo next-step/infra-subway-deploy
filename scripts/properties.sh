@@ -3,7 +3,7 @@
 PROPERTIES=(
 "EXECUTION_PATH,$(dirname "$(pwd)")"
 "SHELL_SCRIPT_PATH,$(dirname "$0")"
-"MODULE_NAME,infra-subway-deploy"
+"MODULE_NAME,subway"
 "REMOTE_NAME,origin"
 "BRANCH_NAME,seokhyoenchoi"
 "ENVIRONMENT,prod"
