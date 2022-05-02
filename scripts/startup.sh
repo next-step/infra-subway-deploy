@@ -7,7 +7,8 @@ function startup() {
 }
 
 SHELL_SCRIPT_PATH=$(pwd)
+cd "${SHELL_SCRIPT_PATH}"
 
-source "${SHELL_SCRIPT_PATH}"/setup_args.sh "${@}"
-source "${SHELL_SCRIPT_PATH}"/run.sh
+source ./setup_args.sh "${@}"
+source ./run.sh
 startup

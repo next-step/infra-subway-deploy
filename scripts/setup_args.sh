@@ -38,7 +38,8 @@ function setup_java_args() {
     fi
 }
 
-source "${SHELL_SCRIPT_PATH}"/properties.sh
+cd "${SHELL_SCRIPT_PATH}"
+source ./properties.sh
 parse_arguments "${@}"
 set_default_if_empty "${PROPERTIES[@]}"
 setup_java_args

@@ -13,6 +13,7 @@ function kill_java_process() {
 }
 
 function deploy_if_changed() {
+  cd "${EXECUTION_PATH}"
   git fetch
   MASTER=$(git rev-parse "${BRANCH_NAME}")
   REMOTE=$(git rev-parse "${REMOTE_NAME}" "${BRANCH_NAME}")
@@ -23,7 +24,8 @@ function deploy_if_changed() {
   fi
 
   kill_java_process
-  "${SHELL_SCRIPT_PATH}"/startup.sh "${@}"
+  cd "${SHELL_SCRIPT_PATH}"
+  ./startup.sh "${@}"
 }
 
 SHELL_SCRIPT_PATH=$(pwd)
