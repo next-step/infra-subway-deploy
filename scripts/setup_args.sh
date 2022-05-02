@@ -26,6 +26,19 @@ function set_default_if_empty() {
   done
 }
 
+function setup_java_args() {
+    if [[ -f "${TEMP_FILE_NAME}" ]]; then
+      cd "${SHELL_SCRIPT_PATH}"
+      source "${JAVA_ARGS_FILE}"
+    fi
+
+    if [[ -n "${JAVA_RUN_ARGS}" ]]; then
+      cd "${SHELL_SCRIPT_PATH}"
+      echo "${JAVA_RUN_ARGS}" >| "${JAVA_ARGS_FILE}"
+    fi
+}
+
 source properties.sh
 parse_arguments "${@}"
 set_default_if_empty "${PROPERTIES[@]}"
+setup_java_args

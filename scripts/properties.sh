@@ -7,6 +7,7 @@ PROPERTIES=(
 "REMOTE_NAME,origin"
 "BRANCH_NAME,seokhyoenchoi"
 "ENVIRONMENT,prod"
+"JAVA_ARGS_FILE,java_args.sh"
 
 "txtrst,'\033[1;37m'" # White
 "txtred,'\033[1;31m'" # Red

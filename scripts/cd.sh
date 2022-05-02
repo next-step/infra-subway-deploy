@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function kill_java_process() {
-  PIDS=$(pgrep java)
+  PIDS=($(pgrep -f "${MODULE_NAME}*"))
 
   if [[ "${#PIDS[@]}" -lt 1 ]] || [[ -z "${PIDS[0]}" ]]
   then
@@ -9,7 +9,7 @@ function kill_java_process() {
     exit 0
   fi
 
-  for PID in "${PIDS[@]}"
+  for PID in ${PIDS}
   do
     if [[ -n "${PIDS[0]}" ]]
     then
@@ -21,7 +21,7 @@ function kill_java_process() {
 function deploy_if_changed() {
   git fetch
   MASTER=$(git rev-parse "${BRANCH_NAME}")
-  REMOTE=$(git rev-parse "${REMOTE_NAME}"/"${BRANCH_NAME}")
+  REMOTE=$(git rev-parse "${REMOTE_NAME}" "${BRANCH_NAME}")
 
   if [[ "${MASTER}" == "${REMOTE}" ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
