@@ -76,4 +76,8 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
-
+- 배포 스크립트 [startup.sh](scripts/startup.sh)
+- Pull, Build, Run 함수 [run.sh](scripts/run.sh)
+- 프로퍼티 [properties.sh](scripts/properties.sh)
+- Argument 파서 [setup_args.sh](scripts/setup_args.sh)
+- 변경 감지 시 배포 스크립트 [cd.sh](scripts/cd.sh)
