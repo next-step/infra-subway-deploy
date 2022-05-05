@@ -1,3 +1,5 @@
+#!/bin/sh
+
 txtrst='\033[1;37m' # White
 txtred='\033[1;31m' # Red
 txtylw='\033[1;33m' # Yellow
