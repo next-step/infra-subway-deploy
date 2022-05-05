@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 txtrst='\033[1;37m' # White
 txtred='\033[1;31m' # Red
