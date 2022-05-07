@@ -82,6 +82,7 @@ vpc - sadocode-rt (외부망1, 외부망2, 관리망), sadocode-rt-internal (내
 
 > 2) bastion 서버의 설정변경 권한 질문입니다. /etc/hosts 파일의 권한이 644라 권한이 없다는데, root권한은 수강생이 없으니까 이건 실습에서 수정 불가능한건가요? 미션 중에 Command 감사로그 설정도 root 권한이 없어서 수정이 안 될 것 같습니다. 제가 잘못 알고 있는거면 답변 부탁드립니다!
 
+> 3) git 사용 질문입니다. next-step/nextstep-docs repo의 코드리뷰요청 방법 문서를 참고해서 과제를 제출 중인데요. 우아한형제들에서는 이렇게 git을 사용하는지 궁금합니다. 음.. 메인 repo (next-step/infra-subway-deploy)를 두고, 개인별로 메인 repo를 fork해 개인 repo를 만든  후, 본인 로컬에서 매 기능 개발마다 branch를 (예 - step1, step2 등등) 생성해서 작업하는지 궁금해요. 제가 다니는 회사는 거의 main branch 하나만 두고 작업을 하고 있는데요. 신기하기도 하고 좋은 것 같아서 질문드립니다.
 
 
 ---
