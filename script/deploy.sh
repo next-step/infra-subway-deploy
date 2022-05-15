@@ -40,12 +40,12 @@ function check_df() {
   fi
 }
 
-## 저장소 pull
-check_df;
-git pull origin $BRANCH
-
 ## repository dir로 이동
 cd $REPOSITORY
+
+## 저장소 pull
+# check_df;
+git pull origin $BRANCH
 
 ## gradle build
 ./gradlew clean build
@@ -74,5 +74,5 @@ nohup java -jar $JAR_DIRECTORY/$JAR_NAME $PROFILE 1> out.log 2>&1 &
 cd $DOCKERFILE_DIRECTORY
 echo "> reverse-proxy 실행"
 sudo docker build -t reverse-proxy:0.0.2 .
-sudo docker run -d -p 80:80 -p 443:443 --name proxy reverse-proxy:0.0.2
+sudo docker run -d -p 80:80 -p 443:443 -v /var/log/nginx:/var/log/nginx --name proxy reverse-proxy:0.0.2
 sudo docker start proxy
