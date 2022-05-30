@@ -44,16 +44,28 @@ npm run dev
 ### 0단계 - pem 키 생성하기
 
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
+```text
+네 알겠습니다.
+```
 2. 업로드한 pem키는 무엇인가요.
-
+```text 
+mannue-aws.pem 으로 업로드 하였습니다.
+```
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
-
+```text
+ VPC : 10.252.100.0/24
+ Subnet 
+   - external a 존 : 10.252.100.64/26
+   - external c 존 : 10.252.100.128/26
+   - internal normal : 10.252.100.0/27
+   - internal admin : 10.252.100.32/27
+ 
+```
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://3.36.95.172:8080
 
 
 
