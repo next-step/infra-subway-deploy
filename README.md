@@ -44,16 +44,21 @@ npm run dev
 ### 0단계 - pem 키 생성하기
 
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-
 2. 업로드한 pem키는 무엇인가요.
+   - [mond-page-keypair.pem](https://drive.google.com/file/d/1R5r7Sxn7r4uhnb8mnoOt4R7rV4vKQy5R/view?usp=sharing)
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+   - 외부망으로 사용할 Subnet
+     - **mond-page-public-subnet-01(192.168.255.192/26), mond-page-public-subnet-02(192.168.255.128/26)**
+   - 내부망으로 사용할 Subnet
+     - **mond-page-private-subnet-01(192.168.255.96/27)**
+   - 관리용으로 사용할 Subnet
+     - **mond-page-manage-subnet-01(192.168.255.5/27)**
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
+- IP : 3.35.132.101:8080
+- URL : http://subway.mond.page:8080/
 
 
 
