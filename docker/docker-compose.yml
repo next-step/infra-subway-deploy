@@ -1,0 +1,15 @@
+version: '1'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=subway
+    ports:
+      - 13306:3306
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./db_volume:/var/lib/mysql
