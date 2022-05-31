@@ -60,10 +60,15 @@ pem key name : cyr9210.pem
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL :
+public1: 
 52.78.215.182:8080
 http://nextstep.devbong.com:8080
 
+
+public2:
+3.38.186.131:8080
+http://nextstep2.devbong.com:8080
 ---
 
 ### 2단계 - 배포하기
