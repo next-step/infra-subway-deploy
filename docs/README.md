@@ -261,27 +261,4 @@ $ history
 5. DNS 설정
    - 무료 도메인 사이트 들을 활용하여 DNS 설정을 합니다.
    - 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
-   
-### 0단계 - pem 키 생성하기
-- [x] 서버에 접속을 위한 pem키를 구글드라이브에 업로드해주세요
-- [x] 업로드한 pem키는 무엇인가요.
-kwonyongil-key.pem 입니다.
 
-### 1단계 - 망 구성하기
-- 구성한 망의 서브넷 대역을 알려주세요
-- [x] 대역 :
-- kwonyongil-subnet-public1-ap-northeast-2a : 192.168.6.0/26
-- kwonyongil-subnet-public2-ap-northeast-2b : 192.168.6.64/26
-- kwonyongil-subnet-private1-ap-northeast-2a : 192.168.6.128/27
-- kwonyongil-subnet-private2-ap-northeast-2b : 192.168.6.160/27
-
-- 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- [x] URL : http://kwonyongil-infra.kro.kr
-- http://kwonyongil-infra.kro.kr:8080
-
-### 2단계 - 배포하기
-- TLS가 적용된 URL을 알려주세요
-- [] URL :
-
-### 3단계 - 배포 스크립트 작성하기
-- [] 작성한 배포 스크립트를 공유해주세요.
