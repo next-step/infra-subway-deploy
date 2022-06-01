@@ -1,0 +1,13 @@
+version: '3'
+services:
+  local-db:
+    platform: linux/x86_64
+    image: mysql:5.7
+    container_name: local_db
+    restart: always
+    ports:
+      - 13306:3306
+    env_file: .env
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql
+      - ./db/mysql/init:/docker-entrypoint-initdb.d
