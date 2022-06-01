@@ -68,7 +68,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : https://www.ssonsh-next-step.p-e.kr/
+- URL : https://ssonsh-next-step.p-e.kr/
 
 **진행 내용**
 - [X] 설정 파일 나누기 (local, prod, test)
