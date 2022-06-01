@@ -57,8 +57,8 @@ npm run dev
 - june2-subnet-private2-ap-northeast-2b : 192.168.1.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- IP : 3.34.43.236
-- URL : june2-nextstep.kro.kr 
+- IP : 3.34.43.236:8080
+- URL : june2-nextstep.kro.kr:8080 
 
 
 
