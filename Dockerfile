@@ -5,6 +5,7 @@ COPY gradle gradle
 COPY build.gradle .
 COPY settings.gradle .
 COPY src src
+VOLUME ["/var/log"]
 RUN chmod +x ./gradlew
 RUN ./gradlew bootJar
 
