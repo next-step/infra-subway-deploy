@@ -1,0 +1,89 @@
+spring:
+  profiles:
+    active: prod
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+        show_sql: true
+        format_sql: true
+
+
+handlebars:
+  suffix: .html
+  enabled: true
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace
+
+security:
+  jwt:
+    token:
+      secret-key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
+      expire-length: 3600000
+
+---
+
+spring:
+  profiles: local
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/subway?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: masterpw
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    url: jdbc:mysql://localhost:13306/subway?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    user: root
+    password: masterpw
+
+account:
+  name: localuser
+  password: local
+
+---
+
+spring:
+  profiles: prod
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql-db-server:3306/subway?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: masterpw
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    url: jdbc:mysql://mysql-db-server:3306/subway?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    user: root
+    password: masterpw
+
+account:
+  name: produser
+  password: prod
+
+---
+
+spring:
+  profiles: test
+
+  datasource:
+    url: jdbc:h2:~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+  h2:
+    console:
+      enabled: true
+
+  flyway:
+    enabled: false
+
+account:
+  name: testuser
+  password: test
