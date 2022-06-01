@@ -269,9 +269,15 @@ kwonyongil-key.pem 입니다.
 
 ### 1단계 - 망 구성하기
 - 구성한 망의 서브넷 대역을 알려주세요
-- [] 대역 :
+- [x] 대역 :
+- kwonyongil-subnet-public1-ap-northeast-2a : 192.168.6.0/26
+- kwonyongil-subnet-public2-ap-northeast-2b : 192.168.6.64/26
+- kwonyongil-subnet-private1-ap-northeast-2a : 192.168.6.128/27
+- kwonyongil-subnet-private2-ap-northeast-2b : 192.168.6.160/27
+
 - 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- [] URL :
+- [x] URL : http://kwonyongil-infra.kro.kr
+- http://kwonyongil-infra.kro.kr:8080
 
 ### 2단계 - 배포하기
 - TLS가 적용된 URL을 알려주세요
