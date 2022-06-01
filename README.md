@@ -70,6 +70,10 @@ npm run dev
 
 - URL : https://www.ssonsh-next-step.p-e.kr/
 
+**진행 내용**
+- [X] 설정 파일 나누기 (local, prod, test)
+
+
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
