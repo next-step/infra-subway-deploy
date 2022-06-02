@@ -41,7 +41,8 @@ ps -ef | grep java
 
 # 프로세스 종료하기
 echo -e "\n${txtgrn} >>  실행중인 프로세스를 종료하였습니다. \n${txtrst}"
-kill -2 `pgrep -f java`
+#kill -2 `pgrep -f java`
+killall -9 java
 
 # 실행하기
 echo -e "\n${txtgrn} >> 서버를 실행합니다. \n${txtrst}"
