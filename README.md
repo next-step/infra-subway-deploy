@@ -44,7 +44,6 @@ npm run dev
 ### 0단계 - pem 키 생성하기
 
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
-넵!
 2. 업로드한 pem키는 무엇인가요.
    kwonyongil-key.pem 입니다.
 
