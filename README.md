@@ -54,11 +54,11 @@ npm run dev
 - Public(ap-northeast-2a) : 192.168.33.0/26
 - Public(ap-northeast-2b) : 192.168.33.64/26
 - Private(ap-northeast-2a) : 192.168.33.128/27
-- Private(ap-northeast-2b) : 192.168.33.160/27 (local PC에서 bastion으로의 접속을 위해 라우팅 테이블에 igw를 연결하였음)
+- Private(ap-northeast-2b) : 192.168.33.160/27 
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- Public(ap-northeast-2a) : http://3.39.111.179:8080/
-- Public(ap-northeast-2b) : http://43.200.42.199:8080/
+- Public(ap-northeast-2a) : http://www.mmtos.shop/
+- Public(ap-northeast-2b) : http://mmtos.shop/
 
 ---
 
@@ -72,5 +72,3 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-
-
