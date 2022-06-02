@@ -53,7 +53,7 @@ npm run dev
 - kwonyongil-subnet-public1-ap-northeast-2a : 192.168.6.0/26
 - kwonyongil-subnet-public2-ap-northeast-2b : 192.168.6.64/26
 - kwonyongil-subnet-private1-ap-northeast-2a : 192.168.6.128/27
-- kwonyongil-subnet-private2-ap-northeast-2b : 192.168.6.160/27
+- kwonyongil-subnet-manager-ap-northeast-2b : 192.168.6.160/27
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : http://kwonyongil-infra.kro.kr
