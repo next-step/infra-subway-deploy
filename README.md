@@ -53,8 +53,8 @@ npm run dev
 - VPC : 192.168.1.0/24
 - june2-subnet-public1-ap-northeast-2a : 192.168.1.0/26
 - june2-subnet-public2-ap-northeast-2b : 192.168.1.64/26
-- june2-subnet-private1-ap-northeast-2a : 192.168.1.128/27
-- june2-subnet-private2-ap-northeast-2b : 192.168.1.160/27
+- june2-subnet-private-ap-northeast-2a : 192.168.1.128/27
+- june2-subnet-admin-ap-northeast-2b   : 192.168.1.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 - IP : 3.34.43.236:8080
