@@ -82,3 +82,4 @@ npm run dev
 1. 작성한 배포 스크립트를 공유해주세요.
 
 - {프로젝트 루트 경로}/script/infra-subway-deploy.sh
+- {프로젝트 루트 경로}/script/infra-subway-deploy-cron.sh
