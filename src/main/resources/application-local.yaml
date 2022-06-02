@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/subway?serverTimezone=Asia/Seoul&useSSL=false
+    username: mond
+    password: mondpw
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace
