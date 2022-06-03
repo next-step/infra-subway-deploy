@@ -3,6 +3,7 @@ services:
   subway:
     build:
       context: .
+    image: subway
     container_name: subway
     restart: always
     environment:

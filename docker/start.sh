@@ -5,6 +5,10 @@ if [ "$(docker ps -q)" ]; then
     docker rm $(docker ps -a -q)
 fi
 
+if [ "$(docker images 'subway' -a -q)" ]; then
+    docker rmi $(docker images 'subway' -a -q)
+fi
+
 DOCKER_PATH=$(dirname "$0")
 
 if [ -z "$1" ]
@@ -31,5 +35,4 @@ cd "$DOCKER_PATH"/../
 cp build/libs/*.jar docker/application.jar
 
 cd docker
-ls -al
 docker-compose up -d
