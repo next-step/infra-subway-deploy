@@ -6,10 +6,10 @@ services:
     container_name: subway
     restart: always
     environment:
-      - VIRTUAL_HOST=test.com
+      - VIRTUAL_HOST={DOMAIN}
       - VIRTUAL_PORT=8080
-      - LETSENCRYPT_HOST=test.com
-      - LETSENCRYPT_EMAIL=test@test.com
+      - LETSENCRYPT_HOST={DOMAIN}
+      - LETSENCRYPT_EMAIL={EMAIL}
     networks:
       - nginx-proxy
 
