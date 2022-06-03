@@ -46,28 +46,29 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
-  - mmtos-key.pem
+- mmtos-key.pem
+
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- VPC : 192.168.33.0/24
+- Public(ap-northeast-2a) : 192.168.33.0/26
+- Public(ap-northeast-2b) : 192.168.33.64/26
+- Private(ap-northeast-2a) : 192.168.33.128/27
+- Private(ap-northeast-2b) : 192.168.33.160/27 
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
-
-
+- Public(ap-northeast-2a) : http://www.mmtos.shop/
+- Public(ap-northeast-2b) : http://mmtos.shop/
 
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL :
 
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-
-
