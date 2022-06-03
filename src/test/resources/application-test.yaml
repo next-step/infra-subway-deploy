@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: test
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database: h2
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: debug
