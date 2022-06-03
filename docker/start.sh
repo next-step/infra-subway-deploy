@@ -31,7 +31,7 @@ sed -i "s/{EMAIL}/$2/g" $DOCKER_PATH/docker-compose.yml
 sed -i "s/{ENV}/$3/g" $DOCKER_PATH/Dockerfile
 
 cd "$DOCKER_PATH"/../
-./gradlew build
+SPRING_PROFILE_ACTIVE=test ./gradlew clean build
 cp build/libs/*.jar docker/application.jar
 
 cd docker
