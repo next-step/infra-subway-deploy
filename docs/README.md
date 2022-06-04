@@ -584,5 +584,9 @@ function check_df() {
 - crontab을 활용해봅니다.
 - 매 분마다 동작하도록한 후 log를 확인해보세요.
 - crontab과 /etc/crontab의 차이에 대해 학습해봅니다.
-- [x] 관리자 권한이 있다면 /etc/crontab 사용자 명시가 가능하다.
+1. crontab -e
+2. vi /etc/crontab
+- 관리자 권한이 있다면 /etc/crontab 
+- /etc/crontab 사용자 명시가 가능하다.
+- /etc/crontab 시스템 전반에 관여하는 크론탭
 
