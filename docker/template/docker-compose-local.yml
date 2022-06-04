@@ -1,0 +1,30 @@
+version: '3.6'
+services:
+  subway:
+    build:
+      context: .
+    image: subway
+    container_name: subway
+    restart: always
+    ports:
+      - "80:8080"
+    networks:
+      - local
+
+  db:
+    image: mysql
+    container_name: db
+    volumes:
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
+    env_file: ./mysql/.env
+    restart: always
+    ports:
+      - "3306:3306"
+    networks:
+      - local
+
+networks:
+  local:
+    name: local
