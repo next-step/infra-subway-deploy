@@ -44,7 +44,7 @@ function build() {
 function find_pid() {
   echo -e ""
   echo -e ">> find PID 🏃..."
-  PID=`ps -ef | grep -v "grep" | grep "subway" | awk '{print $2}'`
+  PID=`ps -ef | grep -v "grep" | jps | grep "subway" | awk '{print $1}'`
 }
 
 
