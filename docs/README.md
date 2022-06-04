@@ -591,4 +591,5 @@ function check_df() {
 - 관리자 권한이 있다면 /etc/crontab 
 - /etc/crontab 사용자 명시가 가능하다.
 - /etc/crontab 시스템 전반에 관여하는 크론탭
+3. 변경된 버전이 있을 pull 하도록 스크립트 작성 
 
