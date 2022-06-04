@@ -118,8 +118,10 @@ function buildGradle() {
 ## 해당 포트 KILL 함수
 function pidKill() {
         echo -e "${txtpur}========== PID KILL 시작 ==========${txtrst}"
-        sudo lsof -i:${EXECUTION_PORT}
-        sudo kill $(sudo lsof -ti:${EXECUTION_PORT})
+        local pid=`sudo lsof -i:${EXECUTION_PORT}`
+        if [[ -n ${pid} ]]; then
+                sudo kill $(sudo lsof -ti:${EXECUTION_PORT})
+        fi
         echo -e "${txtpur}========== PID KILL 종료 ==========${txtrst}"
 }
 
