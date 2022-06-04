@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/subway?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: user
+    password: password
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace
