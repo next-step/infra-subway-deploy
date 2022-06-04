@@ -262,3 +262,238 @@ $ history
    - 무료 도메인 사이트 들을 활용하여 DNS 설정을 합니다.
    - 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
 
+
+## 2단계 서비스 배포하기
+- [x] 운영 환경 구성하기
+- [x] 개발 환경 구성하기
+
+### 요구사항 설명
+#### 운영 환경 구성하기
+- [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+- [x] 외부망에 Nginx로 Reverse Proxy를 구성
+- [x] Reverse Proxy에 TLS 설정
+- [x] 운영 데이터베이스 구성하기
+- [x] 개발 환경 구성하기
+- [x] 설정 파일 나누기
+- JUnit : h2, 
+- Local : docker(mysql), 
+- Prod : 운영 DB를 사용하도록 설정
+
+#### 힌트
+- 도커 설치
+
+```shell
+$ sudo apt-get update && \
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common && \
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
+sudo apt-key fingerprint 0EBFCD88 && \
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && \
+sudo apt-get update && \
+sudo apt-get install -y docker-ce && \
+sudo usermod -aG docker ubuntu && \
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
+sudo chmod +x /usr/local/bin/docker-compose && \
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+### 1. REVERSE PROXY
+- a. Dockerfile
+```editorconfig
+FROM nginx
+
+COPY nginx.conf /etc/nginx/nginx.conf  
+```
+
+- b. nginx.conf
+```editorconfig
+events {}
+
+http {
+    upstream app {
+        server 172.17.0.1:8080;
+    }
+
+    server {
+    listen 80;
+    
+        location / {
+          proxy_pass http://app;
+        }
+    }
+}
+```
+```shell
+$ docker build -t nextstep/reverse-proxy .
+$ docker run -d -p 80:80 nextstep/reverse-proxy
+```
+
+### 2. TLS 설정
+- 서버의 보안과 별개로 서버와 클라이언트간 통신상의 암호화가 필요합니다. 
+- 평문으로 통신할 경우, 패킷을 스니핑할 수 있기 때문입니다.
+
+📌 letsencrypt를 활용하여 무료로 TLS 인증서를 사용할 수 있어요.
+```shell
+$ docker run -it --rm --name certbot \
+-v '/etc/letsencrypt:/etc/letsencrypt' \
+-v '/var/lib/letsencrypt:/var/lib/letsencrypt' \
+certbot/certbot certonly -d 'yourdomain.com' --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+```
+📌 인증서 생성 후 유효한 URL인지 확인을 위해 DNS TXT 레코드로 추가합니다.
+
+```shell
+$ dig -t txt _acme-challenge.example.com +short
+```
+DNS를 설정하는 사이트에서 DNS TXT 레코드를 추가한 후, 제대로 반영되었는지 dig 명령어로 확인한 후에 인증서 설정 진행을 계속합니다.
+
+
+📌 생성한 인증서를 활용하여 Reverse Proxy에 TLS 설정을 해봅시다. 우선 인증서를 현재 경로로 옮깁니다.
+
+```shell
+$ cp /etc/letsencrypt/live/[도메인주소]/fullchain.pem ./
+$ cp /etc/letsencrypt/live/[도메인주소]/privkey.pem ./
+```
+
+📌 Dockerfile 을 아래와 같이 수정합니다.
+
+```editorconfig
+FROM nginx
+
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY fullchain.pem /etc/letsencrypt/live/[도메인주소]/fullchain.pem
+COPY privkey.pem /etc/letsencrypt/live/[도메인주소]/privkey.pem
+```
+
+📌 nginx.conf 파일을 아래와 같이 수정합니다.
+```editorconfig
+events {}
+
+http {       
+    upstream app {
+        server 172.17.0.1:8080;
+    }
+
+    # Redirect all traffic to HTTPS
+    server {
+    listen 80;
+    return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl;  
+        ssl_certificate /etc/letsencrypt/live/[도메인주소]/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/[도메인주소]/privkey.pem;
+        
+        # Disable SSL
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    
+        # 통신과정에서 사용할 암호화 알고리즘
+        ssl_prefer_server_ciphers on;
+        ssl_ciphers ECDH+AESGCM:ECDH+AES256:ECDH+AES128:DH+3DES:!ADH:!AECDH:!MD5;
+    
+        # Enable HSTS
+        # client의 browser에게 http로 어떠한 것도 load 하지 말라고 규제합니다.
+        # 이를 통해 http에서 https로 redirect 되는 request를 minimize 할 수 있습니다.
+        add_header Strict-Transport-Security "max-age=31536000" always;
+    
+        # SSL sessions
+        ssl_session_cache shared:SSL:10m;
+        ssl_session_timeout 10m;      
+    
+        location / {
+          proxy_pass http://app;    
+        }
+    }
+}
+```
+📌 방금전에 띄웠던 도커 컨테이너를 중지 & 삭제하고 새로운 설정을 반영하여 다시 띄워봅시다.
+
+```shell
+$ docker stop proxy && docker rm proxy
+$ docker build -t nextstep/reverse-proxy:0.0.2 .
+$ docker run -d -p 80:80 -p 443:443 --name proxy nextstep/reverse-proxy:0.0.2
+```
+
+### 3. 컨테이너로 운영 DB 사용하기
+- 일반적으로, 실제 운영환경에서 컨테이너로 데이터베이스의 영속성 데이터를 다루지 않습니다. 
+- 컨테이너의 철학과 데이터베이스의 영속성은 다소 배치되는 부분이 있다고 생각합니다. 
+- 여기서는 원활한 실습을 위해 제가 미리 push해둔 컨테이너를 활용합니다.
+
+id : root / password: masterpw
+```shell
+$ docker run -d -p 3306:3306 brainbackdoor/data-subway:0.0.1
+```
+
+
+### 4. 설정 파일 나누기
+- 실제로 배포를 하려다보면, JUnit을 활용한 test 단계와 local 환경에서 직접 애플리케이션을 확인할 때, 
+- 그리고 실제로 배포할 때 등 각 상황에 맞춰 설정을 다르게 적용할 필요성이 생깁니다.
+- 예제 코드를 통해 test와 local, prod에서 다른 설정을 사용하는 방법을 익혀봅시다.
+- -Dspring.profiles.active=prod 옵션을 추가하여 실행하면 application-prod.properties의 설정을 사용합니다.
+
+```shell
+$ java -jar -Dspring.profiles.active=prod [jar파일명]
+```
+
+### [추가] 데이터베이스 테이블 스키마 버전관리
+- 운영중인 서비스의 경우 JPA 등 ORM을 사용하여 기존의 테이블을 변경하는 것은 데이터 유실 우려, 참조 무결성 제약 등으로 인해 어려움이 있습니다. 
+- 그리고 데이터베이스 테이블 스키마도 버전관리를 할 필요가 있습니다. 
+- 그럴 때 로컬에서 개발 중일 때는 h2 등 in-memory 형태의 데이터베이스를 사용하여 빠르게 개발하고, 
+- 운영 DB는 점진적으로 migration 해가는 전략이 유용합니다.
+
+예제 코드를 통해 데이터베이스 스키마 관리 전략을 확인해봅니다.
+예제코드를 실행하기에 앞서, 도커를 다운로드하세요.
+
+- docker/db/mysql/init에 dump 파일을 넣은 상태로 실행하면 자동으로 초기 데이터를 INSERT할 수 있어요.
+- flyway는 V__[변경이력].sql의 형태로 resources/db/migration/ 경로에서 관리합니다. 
+- 그리고 flyway_schema_history 테이블에 버전별로 checksum 값을 관리하므로 기존 sql 문을 수정해서는 안됩니다.
+터미널에서 docker-compose.yml이 있는 위치로 이동한다.
+```shell
+$ cd docker
+$ docker-compose up -d
+```
+
+* 기존 Database 존재시 flyway 적용 방법
+```editorconfig
+application.properties
+spring.flyway.baseline-on-migrate=true
+spring.flyway.baseline-version=2
+```
+이전에 database가 존재할 경우 baseline 옵션을 활용하면 특정 버전(V2__xx.sql 파일) 내용부터 적용이 가능해요.
+
+
+### [추가] 설정 별도로 관리하기
+- 키, 계정 정보, 접속 URL 등의 설정 정보를 소스코드와 함께 형상관리할 경우 보안 이슈가 발생할 수 있어 따로 관리할 것이 권장됩니다. 
+- 보통 Jenkins / Travis CI 등의 배포 서버에 파라미터를 지정하거나, 
+- Spring Cloud Config / AWS Service Manager 등의 외부 서비스를 활용하는 방안 등이 활용됩니다. 
+- 여기서는 저장소를 분리하여 private repository에서 설정을 관리하도록 합니다.
+
+- a. 우선, github private 저장소를 생성한 후 application.properties 등의 설정 파일을 올립니다.
+- b. git의 서브모듈 기능을 활용하여 특정 경로에 private repository를 참조하도록 설정합니다
+```shell
+$ git submodule add [자신의 private 저장소] ./src/main/resources/config
+```
+#### 이후에 소스코드를 받을 떄는 서브모듈까지 clone해야 합니다.
+```shell
+$ git clone --recurse-submodules [자신의 프로젝트 저장소]
+```
+- c. 설정 파일의 내용이 변경된 경우
+```shell
+git submodule foreach git pull origin main
+
+git submodule foreach git add .
+
+git submodule foreach git commit -m "commit message"
+
+git submodule foreach git push origin main
+```
+
+### [추가] 정적테스트(SonarLint)
+- Sonarqube / ESLint 등 정적 테스트, Maven / Gradle 등을 활용한 Build, JUnit 등을 활용한 동적 테스트 등을 통해 Code로 인해 발생하는 문제를 조기에 발견할 수 있습니다. 
+- 어떻게 하면 테스트 비용을 줄일 수 있을지 늘 고민해봅니다.
+- SonarLint를 활용하면 정적테스트 구축비용을 줄일 수 있습니다.
+- 정적 테스트를 통해 Coding Convention, 중복코드, 소스코드의 복잡도, 잠재적으로 버그 발생 가능성이 있는 코드, 테스트 커버리지 등을 파악할 수 있습니다.
+
+### [추가] 로컬테스트(MultiRun)
+- 로컬에서 서버를 띄울 때, IntelliJ의 Multirun 플러그인을 활용하면 보다 손 쉽게 서버를 띄울 수 있습니다.
+
+
+
