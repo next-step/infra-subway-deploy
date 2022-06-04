@@ -585,6 +585,8 @@ function check_df() {
 - 매 분마다 동작하도록한 후 log를 확인해보세요.
 - crontab과 /etc/crontab의 차이에 대해 학습해봅니다.
 1. crontab -e
+- 에디터를 고르라고 나온다.
+- nano 에디터를 주로 편집하는 경우가 많다.
 2. vi /etc/crontab
 - 관리자 권한이 있다면 /etc/crontab 
 - /etc/crontab 사용자 명시가 가능하다.
