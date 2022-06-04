@@ -10,6 +10,6 @@
 
 - 설정 나누기
 - [x] application.yaml
-- [ ] application-local.yaml
-- [ ] application-prod.yaml
-- [ ] application-test.yaml
+- [x] application-local.yaml
+- [x] application-prod.yaml
+- [x] application-test.yaml
