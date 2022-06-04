@@ -13,7 +13,7 @@ function check_df() {
     echo -e "[$(date)] Nothing to do!!! 😫"
     exit 0
   else
-    source /home/ubuntu/nextstep/infra-subway-deploy/deploy.sh ${BRANCH} ${PROFILE}
+    source /home/ubuntu/nextstep/infra-subway-deploy/subway_deploy.sh ${BRANCH} ${PROFILE}
   fi
 }
 cd /home/ubuntu/nextstep/infra-subway-deploy
