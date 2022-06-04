@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:h2:~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: debug
