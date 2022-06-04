@@ -9,7 +9,7 @@
 - [x] private ec2 운영 db (mysql) 설치
 
 - 설정 나누기
-- [ ] application.yaml
+- [x] application.yaml
 - [ ] application-local.yaml
 - [ ] application-prod.yaml
 - [ ] application-test.yaml
