@@ -14,6 +14,8 @@ SHELL_SCRIPT_PATH=$(dirname $0)
 BRANCH=$1
 PROFILE=$2
 
+cd $SHELL_SCRIPT_PATH
+
 ## 조건 설정
 if [[ $# -ne 2 ]]
 then
@@ -30,9 +32,9 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 function check_df() {
-  $SHELL_SCRIPT_PATH/git fetch
-  master=$($SHELL_SCRIPT_PATH/git rev-parse $BRANCH)
-  remote=$($SHELL_SCRIPT_PATH/git rev-parse origin/$BRANCH)
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
 
   if [[ $master == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
@@ -45,11 +47,11 @@ check_df;
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
-  $SHELL_SCRIPT_PATH/git pull origin $BRANCH
-  $SHELL_SCRIPT_PATH/git submodule init
-  $SHELL_SCRIPT_PATH/git submodule update
+  git pull origin $BRANCH
+  git submodule init
+  git submodule update
 }
 pull;
 
 ## 실행
-$SHELL_SCRIPT_PATH/startup.sh $PROFILE
+./startup.sh $PROFILE
