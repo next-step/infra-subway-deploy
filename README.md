@@ -63,18 +63,16 @@ pem key name : cyr9210.pem
 - URL :
 public1: 
 52.78.215.182:8080
-http://nextstep.devbong.com:8080
-
 
 public2:
 3.38.186.131:8080
-http://nextstep2.devbong.com:8080
+http://nextsteptest.p-e.kr:8080/
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://nextsteptest.p-e.kr/
 
 ---
 
