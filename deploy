@@ -62,6 +62,6 @@ if [[ -n "$PID" ]]; then
   kill -9 $PID
 fi
 
-## 프로세스를 실행
+## 프로세스를 실행!
 JARFILE=`find $SHELL_SCRIPT_PATH/build/libs/* -name "*jar"`
 nohub java -jar -Dspring.profiles.active=$PROFILE $JARFILE 1> ~/subway.log 2>&1 &
