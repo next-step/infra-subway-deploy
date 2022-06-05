@@ -58,7 +58,7 @@ npm run dev
   
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://lakey001.kro.kr/ (http://3.39.6.93:8080/)
+- URL : http://lakey001.kro.kr:8080/ (http://3.39.6.93:8080/)
 
 
 
