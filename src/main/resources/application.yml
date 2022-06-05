@@ -1,0 +1,55 @@
+handlebars:
+  suffix: .html
+  enabled: true
+
+spring.jpa.properties.hibernate:
+  show_sql: true
+  format_sql: true
+
+security.jwt.token:
+  secret-key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
+  expire-length: 3600000
+
+---
+
+spring:
+  config.activate.on-profile: test
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: create-drop
+    properties.hibernate.show_sql: true
+  h2.console:
+    enabled: true
+    path: /h2-console
+
+logging.level.org.hibernate.type.descriptor.sql: trace
+
+---
+
+spring:
+  config.activate.on-profile: local
+  datasource:
+    url: jdbc:mysql://db:3306/subway?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: local
+    password: 1234
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 2
+
+---
+
+spring:
+  config.activate.on-profile: prod
+  datasource:
+    url: jdbc:mysql://192.168.16.46:3306/subway?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: masterpw
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
