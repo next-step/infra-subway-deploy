@@ -16,7 +16,8 @@ function check_df() {
       echo "Something Changes Detected Deploy Start"
       source ${BASE_DIR}/deploy.sh ${BRANCH} ${PROFILE}
   fi
-
-  echo "cron script $0"
-  check_df
 }
+echo "Cron script $0 Start"
+check_df
+echo "Cron script $0 Finish"
+
