@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.38.52:3306/subway?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: masterpw
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: info
