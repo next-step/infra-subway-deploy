@@ -18,7 +18,7 @@ PROFILE=$2
 BASE_DIR=/home/ubuntu/nextstep/infra-subway-deploy
 
 function check_arguments() {
-  if [ $# -ne 2 ] || [ $1 -e "-h" ] || [ $1 -e "--help" ]; then
+  if [ ${INPUT_ARGS_CNT} -ne ${ARGS_CNT} ]; then
       echo "Arguments Are Not Enough"
       help_message
       exit
@@ -40,8 +40,9 @@ function pull() {
 ## gradle build
 function gradle_build() {
   echo -e ""
-  echo -e ">> Gradle Build 🏃♂️ "
+  echo -e "cd ${BASE_DIR}"
   cd ${BASE_DIR}
+  echo -e ">> Gradle Build 🏃♂️ "
   ./gradlew clean build -x test
 }
 
@@ -53,14 +54,13 @@ function get_pid() {
 ## 프로세스를 종료
 
 function kill_app() {
-  PID="$1"
+  local pid="$1"
   echo -e ""
-  if [[ -z ${PID} ]]; then
+  if [[ -z ${pid} ]]; then
     echo ">> Not Exist PID "
-    exit
   else
-    echo "Kill Application PID: ${PID}"
-    kill -15 ${PID}
+    echo "Kill Application PID: ${pid}"
+    kill -15 ${pid}
   fi
 }
 
@@ -81,9 +81,13 @@ function start_app() {
           2>&1 \
           &
 }
+
+check_arguments
 pull
 gradle_build
 PID=$(get_pid)
-echo $PID
+kill_app "$PID"
 APP_NAME=$(find_app_name)
-echo $APP_NAME
+start_app "$APP_NAME"
+
+echo -e "Deploy Finished"
