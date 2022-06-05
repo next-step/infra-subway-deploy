@@ -9,7 +9,8 @@ txtpur='\033[1;35m' # Purple
 BRANCH=$1
 PROFILE=$2
 
-BASE_PATH="/home/ubuntu/nextstep/infra-subway-deploy"
+BASE_PATH="/home/ubuntu/nextstep"
+DEPLOY_PATH="/infra-subway-deploy"
 
 function check_input() {
   if [ "$BRANCH" != "main" ]; then
@@ -59,9 +60,9 @@ function kill_process() {
 function deploy() {
   echo -e ""
   echo -e "${txtpur}>> Deploy Application ${txtpur}"
-  JAR_PATH=$(find "$BASE_PATH"/build/libs/* -name "*.jar")
+  JAR_PATH=$(find "$DEPLOY_PATH"/build/libs/* -name "*.jar")
   # shellcheck disable=SC2086
-  nohup java -jar -Dspring.profiles.active=$PROFILE  "$JAR_PATH" 1> $EXECUTION_PATH/app.log 2>&1 &
+  nohup java -jar -Dspring.profiles.active=$PROFILE  "$JAR_PATH" 1> $BASE_PATH/app.log 2>&1 &
 }
 
 if [[ $# -eq 2 ]]; then
