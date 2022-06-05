@@ -496,4 +496,101 @@ git submodule foreach git push origin main
 - 로컬에서 서버를 띄울 때, IntelliJ의 Multirun 플러그인을 활용하면 보다 손 쉽게 서버를 띄울 수 있습니다.
 
 
+## 3단계 배포 스크립트 작성하기
+### 요구사항
+
+- [x] 반복적으로 사용하는 명령어를 Script로 작성해봅니다.
+```shell  
+#!/bin/bash
+```
+
+- 변수 설정
+```shell
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+```
+
+```shell
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+```
+
+- 저장소 pull
+- gradle build
+-  프로세스 pid를 찾는 명령어
+-  프로세스를 종료하는 명령어
+-  ...
+
+
+- [x] 기능 단위로 함수로 만들어봅니다.
+```shell  
+function pull() {
+  echo -e ""
+  echo -e ">> Pull Request 🏃♂️ "
+  git pull origin master
+}
+
+pull;
+```
+
+- [x] 스크립트 실행시 파라미터를 전달해봅니다.
+```shell
+#!/bin/bash
+
+## ...
+
+EXECUTION_PATH=$(pwd)
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
+```
+
+- [x] 조건 설정
+```shell
+if [[ $# -ne 2 ]]
+then
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e ""
+echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
+echo -e "${txtylw}=======================================${txtrst}"
+exit
+fi
+
+## ...
+```
+- 실행시 파라미터를 전달하도록 하여 범용성 있는 스크립트를 작성해봅니다.
+- read 명령어를 활용하여 사용자의 Y/N 답변을 받도록 할 수도 있어요.
+
+- [x] 반복적으로 동작하는 스크립트를 작성해봅니다.
+- [x] github branch 변경이 있는 경우에 스크립트가 동작하도록 작성해봅니다.
+```shell
+function check_df() {
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin $BRANCH)
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 0
+  fi
+}
+``` 
+- crontab을 활용해봅니다.
+- 매 분마다 동작하도록한 후 log를 확인해보세요.
+- crontab과 /etc/crontab의 차이에 대해 학습해봅니다.
+1. crontab -e
+- 에디터를 고르라고 나온다.
+- nano 에디터를 주로 편집하는 경우가 많다.
+2. vi /etc/crontab
+- 관리자 권한이 있다면 /etc/crontab 
+- /etc/crontab 사용자 명시가 가능하다.
+- /etc/crontab 시스템 전반에 관여하는 크론탭
+
+- [x] 변경된 버전이 있을때 배포 스크립트가 동작 하도록 스크립트 작성 
 
