@@ -54,4 +54,4 @@ function pull() {
 pull;
 
 ## 실행
-./startup.sh $PROFILE
+bash ./startup.sh $PROFILE
