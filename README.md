@@ -163,11 +163,12 @@ function check_df() {
     exit 0
   else
     echo -e "[$(date)] Changed !!!"
-    sh ./deploy.sh
+    source $DIRECTORY/deploy.sh
   fi
 }
 
 cd $DIRECTORY
 
 check_df
+
 ```
