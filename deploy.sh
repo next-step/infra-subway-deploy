@@ -30,9 +30,9 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 function check_df() {
-  git fetch
-  master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin/$BRANCH)
+  $SHELL_SCRIPT_PATH/git fetch
+  master=$($SHELL_SCRIPT_PATH/git rev-parse $BRANCH)
+  remote=$($SHELL_SCRIPT_PATH/git rev-parse origin/$BRANCH)
 
   if [[ $master == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
@@ -45,11 +45,11 @@ check_df;
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
-  git pull origin $BRANCH
-  git submodule init
-  git submodule update
+  $SHELL_SCRIPT_PATH/git pull origin $BRANCH
+  $SHELL_SCRIPT_PATH/git submodule init
+  $SHELL_SCRIPT_PATH/git submodule update
 }
 pull;
 
 ## 실행
-bash $SHELL_SCRIPT_PATH/startup.sh $PROFILE
+$SHELL_SCRIPT_PATH/startup.sh $PROFILE
