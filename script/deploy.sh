@@ -49,10 +49,10 @@ function build() {
 
 function kill_process() {
   PID=$(lsof -t -i :8080 -s TCP:LISTEN)
-  if [ "$PID" -gt 0 ]; then
+  if [[ $PID -gt 0 ]]; then
     echo -e ""
     echo -e "${txtpur}>> Kill $PID ${txtpur}"
-    sudo kill -2 "$PID"
+    sudo kill $PID
     sleep 5
   fi
 }
@@ -93,5 +93,4 @@ else
   echo -e "두개의 입력값이 필요합니다. 😫"
   exit 0
 fi
-
 
