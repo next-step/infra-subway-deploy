@@ -163,7 +163,7 @@ function check_df() {
     exit 0
   else
     echo -e "[$(date)] Changed !!!"
-    source $DIRECTORY/deploy.sh
+    source $DIRECTORY/deploy.sh step3
   fi
 }
 
