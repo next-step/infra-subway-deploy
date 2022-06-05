@@ -6,11 +6,10 @@ txtred='\033[1;31m' # Red
 txtylw='\033[1;33m' # Yellow
 txtpur='\033[1;35m' # Purple
 
-EXECUTION_PATH=$(pwd)
 BRANCH=$1
 PROFILE=$2
 
-BASE_PATH="$EXECUTION_PATH/infra-subway-deploy"
+BASE_PATH="/home/ubuntu/nextstep/infra-subway-deploy"
 
 function check_input() {
   if [ "$BRANCH" != "main" ]; then
