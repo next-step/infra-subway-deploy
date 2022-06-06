@@ -128,6 +128,10 @@ npm run dev
 - [x] 실행 프로그램
     - [x] 외부망 : NginX(Docker) / SpringBoot  
     - [x] 내부망 : MySQL(Docker)
+    
+- [x] 설정 별도로 관리하기 (리뷰를 위한 private 아닌 public 저장소로 생성...)
+    - [x] 서브 모듈 : https://github.com/handh0413/infra-subway-deploy-config.git
+    - [x] 이후에 저장소를 가져올 때 서브 모듈까지 클론 (git clone --recurse-submodules)
 
 ---
 
