@@ -117,7 +117,7 @@ npm run dev
 - [x] DB 연계 환경
     - [x] JUnit : h2
     - [x] Local : docker(mysql)
-    - [x] Prod : 운영 DB
+    - [x] Prod : docker(mysql)
     
 - [x] 설정 파일 나누기
     - [x] 공통 : application.properties
