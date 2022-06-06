@@ -36,7 +36,7 @@ dependencies {
 
 	//db
 	runtimeOnly 'mysql:mysql-connector-java'
-	testRuntimeOnly 'com.h2database:h2'
+	runtimeOnly 'com.h2database:h2'
 }
 
 test {
