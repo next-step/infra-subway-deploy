@@ -60,8 +60,7 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
-  - ec2-3-39-237-36.ap-northeast-2.compute.amazonaws.com
-  - ec2-3-39-225-101.ap-northeast-2.compute.amazonaws.com
+  - http://aws.coffee-con.xyz:8080/
 
 ---
 
