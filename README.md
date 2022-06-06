@@ -26,13 +26,13 @@
 - [x] 웹 어플리케이션 배포
     - [x] 외부망에 웹 어플리케이션 배포
     - [x] DNS 설정
-- [ ] 운영 환경 구성하기
-    - [ ] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
-        - [ ] 외부망에 Nginx로 Reverse Proxy를 구성
-        - [ ] Reverse Proxy에 TLS 설정
-        - [ ] 운영 데이터베이스 구성하기
-- [ ] 개발 환경 구성하기
-    - [ ] 설정 파일 나누기
+- [x] 운영 환경 구성하기
+    - [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+        - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+        - [x] Reverse Proxy에 TLS 설정
+        - [x] 운영 데이터베이스 구성하기
+- [x] 개발 환경 구성하기
+    - [x] 설정 파일 나누기
         - JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정 
 ---
 ### 0단계 - pem 키 생성하기
@@ -57,8 +57,8 @@
 - URL: http://subway.iamjunsulee.kro.kr:8080/
 ---
 ### 2단계 - 배포하기
-1. TLS가 적용된 URL을 알려주세요
-- URL : 
+1. TLS 가 적용된 URL 을 알려주세요
+- URL : https://subway-iamjunsulee.p-e.kr/
 ---
 
 
