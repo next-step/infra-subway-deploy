@@ -60,8 +60,12 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
-  - ip address : 3.35.238.29:8080
-  - domain name : http://kmmin78-infra-subway.p-e.kr:8080/
+  - A_SERVER
+    - ip address : 3.35.238.29:8080
+    - domain name : http://kmmin78-infra-subway.p-e.kr:8080/
+  - B_SERVER
+    - ip address : 43.200.69.208:8080
+    - domain name : not assigned
 
 
 
