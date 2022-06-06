@@ -136,16 +136,17 @@ function check_df() {
         git fetch
         master=$(git rev-parse $BRANCH)
         remote=$(git rev-parse origin/$BRANCH)
+        echo -e $master
+        echo -e $remote
         if [[ $master == $remote ]]; then
-                exit 0
+                IS_CHANGE=0
         else
-                exit 1
+                IS_CHANGE=1
         fi
 }
 
 function execute() {
-        IS_CHANGE=$1
-        if [[ $1 == 1 ]]; then
+        if [[ $IS_CHANGE == 1 ]]; then
                 echo -e "isChange!"
                 pull;
                 build;
@@ -163,4 +164,5 @@ function execute() {
 ## 프로세스 pid를 찾는 명령어
 ## 프로세스를 종료하는 명령어
 ## 배포
-execute check_df
+check_df;
+execute;
