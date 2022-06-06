@@ -56,8 +56,8 @@ npm run dev
     - 관리망 : 192.168.30.160/27 (handh0413-management-c)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- URL : http://www.handh0413.kro.kr/
-- IP : 13.209.85.216
+- URL : http://www.handh0413.kro.kr:8080/
+- IP : 15.164.66.164
 
 3. EC2 인스턴스
 - APPLICATION : handh0413-public-application01-EC2
