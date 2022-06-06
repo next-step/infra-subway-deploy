@@ -72,3 +72,77 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+
+```bash
+#!/bin/bash
+
+GIT_BRANCH=$1
+SPRING_PROFILE=$2
+subwayHome=/home/ubuntu/nextstep/infra-subway-deploy
+
+## 변경사항 확인
+function check_df(){
+    git fetch origin $GIT_BRANCH
+    local=$(git rev-parse $GIT_BRANCH)
+    remote=$(git rev-parse origin/$GIT_BRANCH)
+
+    if [[ $local == $remote ]]
+    then
+        echo -e "[$(date)] Nothing changed!"
+        return 1
+    fi
+    return 0
+}
+
+## pull
+function pull(){
+  echo -e "PULL BRANCH : $GIT_BRANCH"
+  git switch $GIT_BRANCH
+  git pull
+  return $?
+}
+
+## 프로세스 재시작
+function process_restart(){
+    kill $(ps -ef | grep jar | grep subway | awk '{print $2}')
+    jarName=$(find $subwayHome/build/* -name "*jar")
+    java -jar -Dspring.profiles.active=$SPRING_PROFILE $jarName > /dev/null &
+}
+
+## 파라미터 체크
+if [[ $# -ne 2 ]]
+then
+    echo -e "===THIS SCRIPT NEED TWO PARAMETER==="
+    echo -e "EXAMPLE : $0 브랜치이름 {prod | local} "
+    exit
+fi
+
+echo -e "SUBWAY_HOME : $subwayHome"
+
+check_df
+if [[ $? -eq 1 ]]
+then
+  exit
+fi 
+
+pull
+if [[ $? -eq 1 ]]
+then
+  exit
+fi 
+
+$subwayHome/gradlew clean build
+
+if [[ $? -eq 0 ]]
+then
+    echo -e "빌드 성공"
+    process_restart
+fi
+exit 0
+```
+
+2. 크론탭 적용
+```console
+crontab -e 
+0 */2 * * * /home/ubuntu/nextstep/infra-subway-deploy/deploy.sh mmtos prod 
+```
