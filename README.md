@@ -113,7 +113,7 @@ npm run dev
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
-- URL : 
+- URL : https://mins99-subway.kro.kr
 
 ### 요구사항
 - [x] 운영 환경 구성하기
