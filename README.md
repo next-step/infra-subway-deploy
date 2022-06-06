@@ -54,7 +54,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://sangholee-dev.p-e.kr:8080/
 
 
 
@@ -104,6 +104,6 @@ npm run dev
     - [X] 베스쳔 서버에 Session Timeout 600s 설정
     - [X] 베스쳔 서버에 Command 감사로그 설정
 
-- [ ] 웹 애플리케이션 배포
-  - [ ] 외부망에 웹 애플리케이션을 배포
-  - [ ] DNS 설정
+- [X] 웹 애플리케이션 배포
+  - [X] 외부망에 웹 애플리케이션을 배포
+  - [X] DNS 설정
