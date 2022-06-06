@@ -114,10 +114,21 @@ npm run dev
 
 3. 개발 환경 구성하기
 
-- [x] 설정 파일 나누기
+- [x] DB 연계 환경
     - [x] JUnit : h2
     - [x] Local : docker(mysql)
     - [x] Prod : 운영 DB
+    
+- [x] 설정 파일 나누기
+    - [x] 공통 : application.properties
+    - [x] 로컬 : application-local.properties
+    - [x] 운영 : application-prod.properties
+    - [x] Junit 테스트 : application-test.properties
+    
+- [x] 실행 프로그램
+    - [x] 외부망 : NginX(Docker) / SpringBoot  
+    - [x] 내부망 : MySQL(Docker)
+
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
