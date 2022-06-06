@@ -106,7 +106,7 @@ function pull(){
 function process_restart(){
     kill $(ps -ef | grep jar | grep subway | awk '{print $2}')
     jarName=$(find $subwayHome/build/* -name "*jar")
-    java -jar -Dspring.profiles.active=$SPRING_PROFILE $jarName > /dev/null &
+    nohup java -jar -Dspring.profiles.active=$SPRING_PROFILE $jarName > /dev/null &
 }
 
 ## 파라미터 체크
