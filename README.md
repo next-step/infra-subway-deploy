@@ -137,16 +137,30 @@ function check_df() {
         master=$(git rev-parse $BRANCH)
         remote=$(git rev-parse origin/$BRANCH)
         if [[ $master == $remote ]]; then
-                echo -e "[$(date)] Nothing to do!!! 😫"
                 exit 0
         else
-                killPid;
-                deploy;
+                exit 1
         fi
 }
 
-pull;
-build;
-findPid;
-check_df;
+function execute() {
+        IS_CHANGE=$1
+        if [[ $1 == 1 ]]; then
+                echo -e "isChange!"
+                pull;
+                build;
+                findPid;
+                killPid;
+                deploy;
+        else
+                echo -e "[$(date)] Nothing to do!!! 😫"
+        fi
+}
 
+## check
+## 저장소 pull
+## gradle build
+## 프로세스 pid를 찾는 명령어
+## 프로세스를 종료하는 명령어
+## 배포
+execute check_df
