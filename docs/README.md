@@ -1,14 +1,14 @@
 ## 🚀 1단계 - 서비스 구성하기
 ### 요구사항
-- [ ] 웹 서비스를 운영할 네트워크 망 구성하기
-  - [ ] VPC 생성
-    - [ ] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
-  - [ ] Subnet 생성
-    - [ ] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
-    - [ ] 내부망으로 사용할 Subnet : 32개씩 1개
-    - [ ] 관리용으로 사용할 Subnet : 32개씩 1개
-  - [ ] Internet Gateway 연결
-  - [ ] Route Table 생성
+- [x] 웹 서비스를 운영할 네트워크 망 구성하기
+  - [x] VPC 생성
+    - [x] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
+  - [x] Subnet 생성
+    - [x] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+    - [x] 내부망으로 사용할 Subnet : 32개씩 1개
+    - [x] 관리용으로 사용할 Subnet : 32개씩 1개
+  - [x] Internet Gateway 연결
+  - [x] Route Table 생성
   - [ ] Security Group 설정
     - [ ] 외부망
       - [ ] 전체 대역 : 8080 포트 오픈
