@@ -35,7 +35,7 @@ public class AuthService {
 
         String email = jwtTokenProvider.getPayload(credentials);
         Member member = memberRepository.findByEmail(email).orElseThrow(RuntimeException::new);
-        /* 배포 테스트1 */
+        /* 배포 테스트2 */
         return new LoginMember(member.getId(), member.getEmail(), member.getAge());
     }
 }
