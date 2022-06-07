@@ -53,8 +53,8 @@ npm run dev
 - 대역
  [v] public - a : 192.168.27.0/26
  [v] public - c : 192.168.27.64/26
- [v] private - a : 192.168.27.128/27
- [v] private - c : 192.168.27.160/27
+ [v] private(internal)) - a : 192.168.27.128/27
+ [v] bastion - c : 192.168.27.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
  [v] - URL : http://yong2ss.kro.kr:8080/
@@ -74,6 +74,8 @@ npm run dev
 3) Internet Gateway 연결
 
     [v]Route Table 생성
+        - rt : 외부망 서브넷 2개, Bastion(관리용) 1개
+        - internal-rt : 내부망 서브넷 1개
 
 4) Security Group 설정
 
