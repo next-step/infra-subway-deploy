@@ -54,4 +54,14 @@ public class Member extends BaseEntity {
             throw new AuthorizationException();
         }
     }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
