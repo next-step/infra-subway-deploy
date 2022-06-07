@@ -41,14 +41,19 @@ npm run dev
 
 * 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
 
+<details>
+	<summary>🚀 0단계 - pem 키 생성하기</summary>
+
 ### 0단계 - pem 키 생성하기
 
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
 + key-mins99.pem
+</details>
 
----
+<details>
+	<summary>🚀 1단계 - 망 구성하기</summary>
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
@@ -104,13 +109,23 @@ npm run dev
   + [x] 로그 확인
   + [x] 프로세스 pid 찾아서 종료하기
 + [x] DNS 추가 후 로드밸런서로 포트 포워딩
-
----
+</details>
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
+- URL : https://mins99-subway.kro.kr
 
-- URL : 
+### 요구사항
+- [x] 운영 환경 구성하기
+  - [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+    - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+    - [x] Reverse Proxy에 TLS 설정
+  - [x] 운영 데이터베이스 구성하기
+- [x] 개발 환경 구성하기
+  - [x] 설정 파일 나누기
+    - [x] JUnit : h2
+    - [x] Local : docker(mysql)
+    - [x] Prod : 운영 DB
 
 ---
 
