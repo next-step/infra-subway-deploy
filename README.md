@@ -130,7 +130,7 @@ npm run dev
     - [x] Local : docker(mysql)
     - [x] Prod : 운영 DB
 </details>
-
+ 
 ### 3단계 - 배포 스크립트 작성하기
 1. 작성한 배포 스크립트를 공유해주세요.
 - deploy.sh
