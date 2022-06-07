@@ -79,5 +79,101 @@ http://nextsteptest.p-e.kr:8080/
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+#!/bin/bash
+
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
 
 
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+CURRENT_PID=0
+BRANCH=cyr9210
+
+function input() {
+        echo -e "deploy.sh {branchName}"
+        if [[ $1 != "" ]]; then
+                BRANCH=$1
+        fi
+        echo -e $BRANCH
+}
+
+function pull() {
+        echo -e ""
+        echo -e ">> Pull Request."
+        git pull origin $BRANCH
+}
+
+function build() {
+        echo -e ""
+        echo -e ">> build."
+        ./gradlew clean build
+}
+
+function findPid() {
+        echo -e ""
+        echo -e ">> findPid."
+        CURRENT_PID=$(pgrep -f subway)
+        echo -e $CURRENT_PID
+}
+
+function killPid() {
+        if [[ $CURRENT_PID == 0 ]]; then
+                echo -e "nothing"
+        else
+                echo -e ""
+                echo -e ">> kill."
+                kill -15 $CURRENT_PID
+        fi
+}
+
+function deploy() {
+        echo -e ""
+        echo -e ">> deploy."
+        nohup java -jar -Dspring.profiles.active=prod /home/ubuntu/nextstep/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar 1> /home/ubuntu/nextstep/infra-subway-deploy/build/libs/subway.log 2>&1 &
+}
+
+function check_df() {
+        git fetch
+        master=$(git rev-parse $BRANCH)
+        remote=$(git rev-parse origin/$BRANCH)
+        echo -e $master
+        echo -e $remote
+        if [[ $master == $remote ]]; then
+                IS_CHANGE=0
+        else
+                IS_CHANGE=1
+        fi
+}
+
+function execute() {
+        if [[ $IS_CHANGE == 1 ]]; then
+                echo -e "isChange!"
+                pull;
+                build;
+                findPid;
+                killPid;
+                deploy;
+        else
+                echo -e "[$(date)] Nothing to do!!! 😫"
+        fi
+}
+
+## check
+## 저장소 pull
+## gradle build
+## 프로세스 pid를 찾는 명령어
+## 프로세스를 종료하는 명령어
+## 배포
+input;
+git checkout $BRANCH
+check_df;
+execute;
