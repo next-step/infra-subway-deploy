@@ -59,8 +59,8 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 * URL : http://bgc8214-subway.kro.kr:8080/
-* IP : 3.36.92.191
-  
+* IP : 3.36.120.213
+
 
 
 
