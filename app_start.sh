@@ -9,12 +9,12 @@ txtgra=‘\033[1;30m’ # Gray
 JAR_FILE_PATH=/home/ubuntu/nextstep/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar
 DSPRING=prod
 echo -e “${txtylw}=======================================${txtrst}”
-echo -e “${txtgrn}  << 스크립트 :단안경을_쓴_얼굴: >>${txtrst}”
+echo -e “${txtgrn}  << 스크립트 :: >>${txtrst}”
 echo -e “${txtylw}=======================================${txtrst}”
 ## 저장소 pull
 function pull() {
   echo -e “”
-  echo -e “>> Pull Request :주자::남성_기호: ”
+  echo -e “>> Pull Request”
   git pull
   git submodule update
 }
