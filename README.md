@@ -96,7 +96,16 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 CURRENT_PID=0
-BRANCH=$1
+BRANCH=cyr9210
+
+function input() {
+        echo -e "deploy.sh {branchName}"
+        if [[ $1 != "" ]]; then
+                BRANCH=$1
+        fi
+        echo -e $BRANCH
+}
+
 function pull() {
         echo -e ""
         echo -e ">> Pull Request."
@@ -129,7 +138,7 @@ function killPid() {
 function deploy() {
         echo -e ""
         echo -e ">> deploy."
-        nohup java -jar -Dspring.profiles.active=prod /home/ubuntu/nextstep/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar &
+        nohup java -jar -Dspring.profiles.active=prod /home/ubuntu/nextstep/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar 1> /home/ubuntu/nextstep/infra-subway-deploy/build/libs/subway.log 2>&1 &
 }
 
 function check_df() {
@@ -164,5 +173,7 @@ function execute() {
 ## 프로세스 pid를 찾는 명령어
 ## 프로세스를 종료하는 명령어
 ## 배포
+input;
+git checkout $BRANCH
 check_df;
 execute;
