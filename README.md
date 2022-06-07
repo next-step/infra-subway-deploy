@@ -56,6 +56,8 @@ npm run dev
 3. 베스천 서버에 접속을 위한 pem키는 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 ssamzag-key.pem 
 
+4. [피드백 반영](https://github.com/next-step/infra-subway-deploy/pull/525) (리뷰어: 민동휘 님)
+
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
