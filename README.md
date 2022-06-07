@@ -47,13 +47,21 @@ npm run dev
 
 2. 업로드한 pem키는 무엇인가요.
 
+    `key-chj1768.pem` 입니다.
+
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 :
+```
+chj1768-subnet-private-01 192.168.9.128/27	
+chj1768-subnet-public-01 192.168.9.0/26	
+chj1768-subnet-public-02 192.168.9.64/26
+chj1768-admin-subnet-private-01 192.168.9.160/27
+```
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://nextstep.chj1768.kro.kr:8080
 
 
 
