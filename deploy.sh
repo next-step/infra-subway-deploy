@@ -20,7 +20,7 @@ echo -e "${txtylw}=======================================${txtrst}"
 
 ## github branch 변경 체크
 function check_dff() {
-  git fetch
+  git fetch origin $BRANCH
   master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin/$BRANCH)
 
