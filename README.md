@@ -111,6 +111,9 @@ npm run dev
 + [x] DNS 추가 후 로드밸런서로 포트 포워딩
 </details>
 
+<details>
+	<summary>🚀 2단계 - 배포하기</summary>
+
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 - URL : https://mins99-subway.kro.kr
@@ -126,11 +129,8 @@ npm run dev
     - [x] JUnit : h2
     - [x] Local : docker(mysql)
     - [x] Prod : 운영 DB
-
----
-
+</details>
+ 
 ### 3단계 - 배포 스크립트 작성하기
-
 1. 작성한 배포 스크립트를 공유해주세요.
-
-
+- deploy.sh
