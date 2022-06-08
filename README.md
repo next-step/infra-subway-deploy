@@ -43,17 +43,22 @@ npm run dev
 
 ### 0단계 - pem 키 생성하기
 
-1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요   
+넵
 
-2. 업로드한 pem키는 무엇인가요.
+2. 업로드한 pem키는 무엇인가요.   
+ttungga.pem
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 :
+    - ttungga-public-a: 192.168.137.128/26
+    - ttungga-public-b: 192.168.137.192/26
+    - ttungga-private-a: 192.168.137.96/27
+    - ttungga-admin-a: 192.168.137.64/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
+- URL : http://ttungga.r-e.kr:8080/
 
 
 
