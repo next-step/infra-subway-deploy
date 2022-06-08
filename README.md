@@ -33,7 +33,8 @@
         - [x] 운영 데이터베이스 구성하기
 - [x] 개발 환경 구성하기
     - [x] 설정 파일 나누기
-        - JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정 
+        - JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+- [ ] 배포 스크립트 작성하기 
 ---
 ### 0단계 - pem 키 생성하기
 1. 서버에 접속을 위한 pem 키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
@@ -60,6 +61,7 @@
 1. TLS 가 적용된 URL 을 알려주세요
 - URL : https://subway-iamjunsulee.p-e.kr/
 ---
-
+### 3단계 - 배포 스크립트 작성하기
+1. 작성한 배포 스크립트를 공유해주세요.
 
 
