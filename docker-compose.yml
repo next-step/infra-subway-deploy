@@ -4,4 +4,4 @@ services:
   db:
     image: brainbackdoor/data-subway:0.0.1
     ports:
-      - "3306:3306"
+     - "10225:3306"

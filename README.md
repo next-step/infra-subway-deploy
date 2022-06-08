@@ -140,7 +140,7 @@ npm run dev
   - [X] Reverse Proxy에 TLS 설정
   - [X] 운영 데이터베이스 구성하기
 
-- [ ] 개발 환경 구성하기
+- [X] 개발 환경 구성하기
   - 설정 파일 나누기
     JUnit(test) : h2, 
     Local : docker(mysql)
