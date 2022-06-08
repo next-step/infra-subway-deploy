@@ -37,7 +37,7 @@ findProcessId() {
 
 shutDownProcess() {
   echo -e ""
-  if [ "${PID}" -gt 0 ]
+  if [ -n "${PID}" ]
   then
       echo -e "${txtred}>> KILL PID(${PID}) 🚫 ${txtrst}"
       kill -2 "${PID}"
