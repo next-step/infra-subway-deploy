@@ -56,8 +56,8 @@ npm run dev
     - 관리망 : 192.168.30.160/27 (handh0413-management-c)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- URL : http://www.handh0413.kro.kr/
-- IP : 13.209.85.216
+- URL : https://handh.kro.kr
+- IP : 15.164.66.164
 
 3. EC2 인스턴스
 - APPLICATION : handh0413-public-application01-EC2
@@ -103,7 +103,35 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://handh.kro.kr
+
+2. 운영 환경 구성하기
+
+- [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+    - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+    - [x] Reverse Proxy에 TLS 설정
+- [x] 운영 데이터베이스 구성하기
+
+3. 개발 환경 구성하기
+
+- [x] DB 연계 환경
+    - [x] JUnit : h2
+    - [x] Local : docker(mysql)
+    - [x] Prod : docker(mysql)
+    
+- [x] 설정 파일 나누기
+    - [x] 공통 : application.properties
+    - [x] 로컬 : application-local.properties
+    - [x] 운영 : application-prod.properties
+    - [x] Junit 테스트 : application-test.properties
+    
+- [x] 실행 프로그램
+    - [x] 외부망 : NginX(Docker) / SpringBoot  
+    - [x] 내부망 : MySQL(Docker)
+    
+- [x] 설정 별도로 관리하기 (리뷰를 위한 private 아닌 public 저장소로 생성...)
+    - [x] 서브 모듈 : https://github.com/handh0413/infra-subway-deploy-config.git
+    - [x] 이후에 저장소를 가져올 때 서브 모듈까지 클론 (git clone --recurse-submodules)
 
 ---
 
