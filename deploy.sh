@@ -67,6 +67,20 @@ deploy() {
   java -jar -Dspring.profiles.active="${PROFILE}" "${JAR_PATH}"
 }
 
+function check_df() {
+  git fetch
+  master=$(git rev-parse "${BRANCH}")
+  remote=$(git rev-parse origin/"${BRANCH}")
+
+  if [[ "${master}" == "${remote}" ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 0
+  fi
+}
+
+## 변경 확인
+check_df;
+
 ## 저장소 pull
 pull;
 
@@ -81,3 +95,7 @@ shutDownProcess;
 
 ## 배포
 deploy;
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 배포 스크립트 종료 😄 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
