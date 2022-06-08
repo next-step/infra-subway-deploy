@@ -64,10 +64,10 @@ deploy() {
   findJarPath;
   echo -e ""
   echo -e "${txtgrn}>> Deploy 🏁 ${txtrst}"
-  nohub java -jar -Dspring.profiles.active="${PROFILE}" "${JAR_PATH}" > "${EXECUTION_PATH}"/build/libs/deploy.log 2>&1 &
+  nohup java -jar -Dspring.profiles.active="${PROFILE}" "${JAR_PATH}" > "${EXECUTION_PATH}"/build/libs/deploy.log 2>&1 &
 }
 
-function check_df() {
+check_df() {
   git fetch
   master=$(git rev-parse "${BRANCH}")
   remote=$(git rev-parse origin/"${BRANCH}")
