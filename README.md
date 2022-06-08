@@ -75,3 +75,5 @@ npm run dev
 - [deploy.sh](./deploy.sh)
 - submodule(=git private repo) 자동 배포를 위한 추가 설정
   - `git config --global credential.helper store`
+- crontab 설정 추가
+  - `0 2 * * * ubuntu /home/ubuntu/nextstep/infra-subway-deploy/deploy.sh main prod`
