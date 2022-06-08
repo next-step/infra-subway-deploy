@@ -72,7 +72,7 @@ check_df() {
   master=$(git rev-parse "${BRANCH}")
   remote=$(git rev-parse origin/"${BRANCH}")
 
-  if [[ "${master}" == "${remote}" ]]; then
+  if [ "${master}" == "${remote}" ]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
     exit 0
   fi
