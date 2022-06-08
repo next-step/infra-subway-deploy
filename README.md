@@ -93,8 +93,14 @@ npm run dev
 - [x] 프로세스 pid 찾기
 - [x] 프로세스 종료
 - [x] 실행
-- [ ] branch 변경 시 스크립트 동작
-- [ ] crontab 적용
+- [x] branch 변경 시 스크립트 동작
+- [x] crontab 적용
+
+```
+crontab -e
+
+* * * * * /home/ubuntu/nextstep/infra-subway-deploy/check_diff_and_deploy.sh >> /home/ubuntu/nextstep/check_diff_and_deploy.log
+```
 
 ## 미션
 
