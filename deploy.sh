@@ -32,7 +32,7 @@ echo -e "${txtylw}=======================================${txtrst}"
 findProcessId() {
   echo -e ""
   echo -e "${txtgrn}>> Find PID ⌛ ${txtrst}"
-  PID=$(psgrep -f subway)
+  PID=$(pgrep -f subway)
 }
 
 shutDownProcess() {
