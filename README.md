@@ -84,6 +84,18 @@ npm run dev
 - [x] 설정 파일 나누기
 - JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
 
+## 3단계 요구사항
+
+### 배포 스크립트
+
+- [ ] 저장소 pull
+- [ ] gradle build
+- [ ] 프로세스 pid 찾기
+- [ ] 프로세스 종료
+- [ ] 실행
+- [ ] branch 변경 시 스크립트 동작
+- [ ] crontab 적용
+
 ## 미션
 
 - 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
