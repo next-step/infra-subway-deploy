@@ -46,14 +46,21 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
+* bgc8214-key.pem
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+* 대역
+  * public A : 192.168.109.0/26
+  * public B : 192.168.109.64/26
+  * private A : 192.168.109.128/27
+  * manage A : 192.168.109.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+* URL : http://bgc8214-subway.kro.kr
+* IP : 3.36.120.213
+
 
 
 
