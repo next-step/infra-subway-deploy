@@ -37,8 +37,11 @@ findProcessId() {
 
 shutDownProcess() {
   echo -e ""
-  echo -e "${txtred}>> KILL PID ${PID} 🚫 ${txtrst}"
-  kill -2 "${PID}"
+  if [ "${PID}" -gt 0 ]
+  then
+      echo -e "${txtred}>> KILL PID(${PID}) 🚫 ${txtrst}"
+      kill -2 "${PID}"
+  fi
 }
 
 pull() {
@@ -60,7 +63,7 @@ findJarPath() {
 deploy() {
   findJarPath;
   echo -e ""
-  echo -e "${txtgrn}>> Deploy ${txtrst}"
+  echo -e "${txtgrn}>> Deploy 🏁 ${txtrst}"
   java -jar -Dspring.profiles.active="${PROFILE}" "${JAR_PATH}"
 }
 
@@ -78,7 +81,3 @@ shutDownProcess;
 
 ## 배포
 deploy;
-
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 배포 스크립트 종료 😄 >>${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
