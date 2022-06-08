@@ -37,7 +37,10 @@ dependencies {
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	runtimeOnly 'com.h2database:h2'
+	//h2
+	implementation 'com.h2database:h2'
+	//mysql
+	implementation 'mysql:mysql-connector-java'
 }
 
 test {
