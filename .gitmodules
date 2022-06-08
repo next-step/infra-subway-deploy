@@ -1,3 +1,0 @@
-[submodule "src/main/resources/config"]
-	path = src/main/resources/config
-	url = https://github.com/kmmin78/infra-subway-deploy-private.git
