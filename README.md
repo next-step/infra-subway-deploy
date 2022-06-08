@@ -73,3 +73,5 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 - [deploy.sh](./deploy.sh)
+- submodule(=git private repo) 자동 배포를 위한 추가 설정
+  - `git config --global credential.helper store`

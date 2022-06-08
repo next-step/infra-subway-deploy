@@ -9,6 +9,7 @@ txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
 SUBWAY_PATH="/home/ubuntu/nextstep/infra-subway-deploy"
+CONFIG_PATH="/home/ubuntu/nextstep/infra-subway-deploy/src/main/resources/config"
 LOG_PATH="/home/ubuntu/nextstep/log"
 BRANCH=$1
 PROFILE=$2
@@ -18,15 +19,15 @@ echo -e "${txtgrn}  << 배포 스크립트 시작 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 ## github branch 변경 체크
-function check_df() {
-  echo -e ">> Check dff"
+function check_dff() {
   git fetch
   master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin/$BRANCH)
 
   if [[ $master == $remote ]]; then
-    echo -e "[$(date)] Nothing changed!!"
-    exit 0
+    echo 0
+  else
+    echo 1
   fi
 }
 
@@ -63,10 +64,29 @@ function deploy() {
   nohup java -jar -Dspring.profiles.active=$PROFILE $JAR_PATH 1> $LOG_PATH/out.log 2>&1  &
 }
 
-## github branch 변경 체크
-check_df;
-## 저장소 pull
-pull;
+## main
+MAIN_DFF=$(check_dff);
+echo -e "MAIN_DFF=$MAIN_DFF"
+if [[ $MAIN_DFF == 1 ]]; then
+  pull;
+fi
+
+## submodule
+cd $CONFIG_PATH
+SUB_DFF=$(check_dff);
+echo -e "SUB_DFF=$SUB_DFF"
+if [[ $SUB_DFF == 1 ]]; then
+  pull;
+fi
+
+ALL_DFF=$(($MAIN_DFF + $SUB_DFF))
+echo -e "ALL_DFF=$ALL_DFF"
+if [[ $ALL_DFF == 0 ]]; then
+  exit 0
+fi
+
+cd $SUBWAY_PATH
+
 ## gradle build
 build;
 ## 프로세스 종료
