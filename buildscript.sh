@@ -38,7 +38,7 @@ function stopAlreadyRunProcess() {
   if [ -n "$PID" ]; then
     echo -e ""
     echo -e ">> stop process ${PID}"
-    kill -2 "${PID}"
+    sudo kill -2 "$PID"
   fi
 }
 stopAlreadyRunProcess
