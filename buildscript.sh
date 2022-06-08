@@ -12,21 +12,18 @@ txtgra='\033[1;30m' # Gray
 BRANCH=$1
 PROFILE=$2
 
-## 저장소 pull
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
   git pull origin "${BRANCH:-msmasd}"
 }
 
-## gradle build
 function gradleBuild() {
   echo -e ""
   echo -e ">> Graldle build️ "
   ./gradlew clean build
 }
 
-## 프로세스 pid를 찾는 명령어
 function stopAlreadyRunProcess() {
   PID=$(pgrep -f ".jar$")
   if [ -n "$PID" ]; then
