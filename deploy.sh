@@ -64,7 +64,7 @@ deploy() {
   findJarPath;
   echo -e ""
   echo -e "${txtgrn}>> Deploy 🏁 ${txtrst}"
-  java -jar -Dspring.profiles.active="${PROFILE}" "${JAR_PATH}"
+  nohub java -jar -Dspring.profiles.active="${PROFILE}" "${JAR_PATH}" > "${EXECUTION_PATH}"/build/libs/deploy.log 2>&1 &
 }
 
 function check_df() {
