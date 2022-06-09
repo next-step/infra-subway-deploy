@@ -1,0 +1,1 @@
+alter table `member` add `test` varchar(10);

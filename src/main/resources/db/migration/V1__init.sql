@@ -1,0 +1,1 @@
+alter table `station` add `test` varchar(10);
