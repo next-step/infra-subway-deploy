@@ -28,7 +28,7 @@ fi
 function pull(){
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
-  git pull origin main
+  git pull origin $BRANCH
 }
 
 ## check df
@@ -53,18 +53,11 @@ function gradle_clean_build(){
 function app_process_kill(){
   kill -9 $(ps -ef | grep build/libs |grep -v grep | awk '{print $2}')
   echo -e "app kill success"
- # $PID = `ps -ef | grep 'build/libs' | awk '{print $2}'`
- # if ["${#PID}"!=0 ]; then
- #   kill -9 $PID
- #   echo -e "$PID kill success"
- # else
- #   echo -e "running proess not found"
- # fi
 }
 
 ## 프로세스를 시작하는 명령어
 function app_process_start(){
-  nohup java -jar -Dspring.profiles.active=$PROFILE $EXECUTION_PATH/build/libs/*.jar 1> subway.log 2>%1 &
+  nohup java -jar -Dspring.profiles.active=$PROFILE $EXECUTION_PATH/build/libs/*.jar 1> subway.log 2>&1 &
 }
 
 
