@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  db:
+    image: brainbackdoor/data-subway:0.0.1
+    ports:
+     - "10225:3306"
