@@ -54,4 +54,5 @@ public class Member extends BaseEntity {
             throw new AuthorizationException();
         }
     }
+
 }

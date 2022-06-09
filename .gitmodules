@@ -1,3 +1,4 @@
 [submodule "src/main/resources/config"]
 	path = src/main/resources/config
 	url = https://github.com/piopoi/infra-subway-deploy-config.git
+	branch = main
