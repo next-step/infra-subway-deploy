@@ -8,7 +8,8 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
-EXECUTION_PATH=$(pwd)
+EXECUTION_PATH=/home/ubuntu/nextstep/infra-subway-deploy
+SHELL_SCRIPT_PATH=$(dirname "$0")
 BRANCH=$1
 PROFILE=$2
 PID=0
@@ -57,14 +58,14 @@ build() {
 }
 
 findJarPath() {
-  JAR_PATH=$(find "${EXECUTION_PATH}"/build/libs/* -name "*.jar")
+  JAR_PATH=$(find "${SHELL_SCRIPT_PATH}"/build/libs/* -name "*.jar")
 }
 
 deploy() {
   findJarPath;
   echo -e ""
   echo -e "${txtgrn}>> Deploy 🏁 ${txtrst}"
-  nohup java -jar -Dspring.profiles.active="${PROFILE}" "${JAR_PATH}" > "${EXECUTION_PATH}"/build/libs/deploy.log 2>&1 &
+  nohup java -jar -Dspring.profiles.active="${PROFILE}" "${JAR_PATH}" > "${SHELL_SCRIPT_PATH}"/build/libs/deploy.log 2>&1 &
 }
 
 check_df() {
@@ -72,11 +73,14 @@ check_df() {
   master=$(git rev-parse "${BRANCH}")
   remote=$(git rev-parse origin/"${BRANCH}")
 
-  if [ "${master}" == "${remote}" ]; then
+  if [ "${master}" -eq "${remote}" ]
+  then
     echo -e "[$(date)] Nothing to do!!! 😫"
     exit 0
   fi
 }
+
+cd $EXECUTION_PATH || { echo "cd $EXECUTION_PATH failed"; exit 0; }
 
 ## 변경 확인
 check_df;
