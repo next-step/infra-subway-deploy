@@ -8,7 +8,6 @@ txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
 REPOSITORY=~/infra-subway-deploy
-CONFIG_DIRECTORY=$REPOSITORY/src/main/resources/config
 CURRENT_PID=0
 
 function printTitle() {
