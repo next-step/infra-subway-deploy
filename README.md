@@ -75,6 +75,7 @@ eaststar1129-rsa.pem
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+deploy.sh
 
 ### 기능요구사항 (step2)
 - [X] 운영 환경 구성하기
@@ -87,7 +88,15 @@ eaststar1129-rsa.pem
 
 ### 배포 스크립트 작성 (step3)
 - [X] 배포 스크립트 작성하기 (반복적으로 실행하더라도 정상적으로 배포하는 스크립트를 작성해봅니다.)
-- [ ] crontab과 /etc/crontab의 차이
-- [ ] 매 분 동작하는 스크립트의 log 확인
+- [X] crontab과 /etc/crontab의 차이
+- [X] 매 분 동작하는 스크립트의 log 확인
+
+### crontab 차이
+/etc/crontab : root 권한 필요, 사용자명 입력
+crontab -e : root권한이 필요하지않은 cron
+참고 : https://cloud-oky.tistory.com/320
+
+### deploy.sh 로그
+/home/ubuntu/infra-subway-deploy/infra-subway-deploy.log
 
 
