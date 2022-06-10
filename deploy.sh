@@ -70,7 +70,7 @@ function shutdown() {
   PID=`lsof -t -i:8080`
   if [ -n $PID ]; then
     `kill -2 $PID`
-	echo -e ""
+    echo -e ""
     echo -e ">> Shutdown Server 🏃♂️ "
   else
     echo -e ">> There is no running server 🏃♂️ "
