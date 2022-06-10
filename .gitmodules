@@ -1,0 +1,4 @@
+[submodule "src/main/resources/config"]
+	path = src/main/resources/config
+	url = https://github.com/rockpro87/infra-subway-deploy-env.git
+	branch = main
