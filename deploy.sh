@@ -78,9 +78,9 @@ function restart() {
 }
 
 welcome;
+move_project_path;
 checkArgumentCount $#;
 check_df;
-move_project_path;
 pull;
 build;
 restart;
