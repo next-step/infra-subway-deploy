@@ -36,7 +36,7 @@ function checkArgumentCount() {
 }
 
 function check_df() {
-    git fetch
+    git fetch origin
     master=$(git rev-parse $BRANCH)
     remote=$(git rev-parse origin/$BRANCH)
 
