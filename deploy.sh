@@ -12,6 +12,7 @@ txtgra='\033[1;30m' # Gray
 EXECUTION_PATH="/home/ubuntu"
 PROJECT_NAME="infra-subway-deploy"
 PROJECT_PATH="$EXECUTION_PATH/$PROJECT_NAME"
+BUILD_NAME="subway-0.0.1-SNAPSHOT.jar"
 BRANCH=$1
 PROFILE=$2
 
@@ -35,14 +36,14 @@ function checkArgumentCount() {
 }
 
 function check_df() {
-  git fetch
-  master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin/$BRANCH)
+    git fetch
+    master=$(git rev-parse $BRANCH)
+    remote=$(git rev-parse origin/$BRANCH)
 
-  if [[ $master == $remote ]]; then
-    echo -e "[$(date)] Nothing to do!!! 😫"
-    exit 0
-  fi
+    if [[ $master == $remote ]]; then
+        echo -e "[$(date)] Nothing to do!!! 😫"
+        exit 0
+    fi
 }
 
 function move_project_path() {
@@ -50,24 +51,30 @@ function move_project_path() {
 }
 
 function pull() {
-  echo -e ""
-  echo -e ">> Pull Request"
-  git pull origin #{BRANCH}
+    echo -e ""
+    echo -e ">> Pull Request"
+    git pull origin #{BRANCH}
 }
 
 function build() {
-  echo -e ""
-  echo -e ">> $PROJECT_NAME build start"
-  git pull origin #{BRANCH}
+    echo -e ""
+    echo -e ">> $PROJECT_NAME build start"
+    git pull origin #{BRANCH}
 }
 
 function restart() {
-    
-  APPLICATION=`find ./* -name "subway-0.0.1-SNAPSHOT.jar"`
+    echo -e ""
+    echo -e ">> $PROJECT_NAME restart"
 
-  echo -e ""
-  echo -e ">> Startup Server 🏃♂️ "
-  `nohup java -jar -Dspring.profiles.active=$PROFILE $APPLICATION 1> application.log 2>&1 &`
+    BUILD_PID=`lsof -t -i:8080`
+    if [ -n $BUILD_PID ]; then
+        kill -2 $BUILD_PID
+        echo -e ""
+        echo -e ">> $PROJECT_NAME ($BUILD_PID) kill"
+    fi
+        
+    BUILD_JAR=$(find ./* -name $BUILD_NAME)
+    nohup java -jar -Dspring.profiles.active=$PROFILE $BUILD_JAR 1> $PROJECT_NAME.log 2>&1 &
 }
 
 welcome;
