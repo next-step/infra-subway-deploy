@@ -122,10 +122,10 @@ npm run dev
 ### to-do list
 
 - [ ] 운영 환경 구성하기
-  - [ ] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+  - [X] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
     - [X] 외부망에 Nginx로 Reverse Proxy를 구성
-    - [ ] Reverse Proxy에 TLS 설정
-- [ ] 운영 데이터베이스 구성하기
+    - [X] Reverse Proxy에 TLS 설정
+  - [ ] 운영 데이터베이스 구성하기
 - [ ] 개발 환경 구성하기
   - [ ] 설정 파일 나누기
     - [ ] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
