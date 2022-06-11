@@ -81,9 +81,9 @@ npm run dev
   - [x] Dockerfile 수정
   - [x] nginx.conf 수정
 
-- [ ] 컨테이너로 운영 DB 사용하기
-  - [ ] Docker 설치(su-hub9-internal-EC2)
-  - [ ] 컨테이너 운영 DB 설치
+- [x] 컨테이너로 운영 DB 사용하기
+  - [x] Docker 설치(su-hub9-internal-EC2)
+  - [x] 컨테이너 운영 DB 설치
 
 - [ ] 설정 파일 나누기
   - [ ] application.properties
