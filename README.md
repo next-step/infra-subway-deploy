@@ -75,5 +75,28 @@ eaststar1129-rsa.pem
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+deploy.sh
+
+### 기능요구사항 (step2)
+- [X] 운영 환경 구성하기
+- [X] 개발 환경 구성하기
+- [X] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+- [X] 외부망에 Nginx로 Reverse Proxy를 구성
+- [X] Reverse Proxy에 TLS 설정
+- [X] 운영 데이터베이스 구성하기
+- [X] 설정 파일 나누기 (JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정)
+
+### 배포 스크립트 작성 (step3)
+- [X] 배포 스크립트 작성하기 (반복적으로 실행하더라도 정상적으로 배포하는 스크립트를 작성해봅니다.)
+- [X] crontab과 /etc/crontab의 차이
+- [X] 매 분 동작하는 스크립트의 log 확인
+
+### crontab 차이
+/etc/crontab : root 권한 필요, 사용자명 입력
+crontab -e : root권한이 필요하지않은 cron
+참고 : https://cloud-oky.tistory.com/320
+
+### deploy.sh 로그
+/home/ubuntu/infra-subway-deploy/infra-subway-deploy.log
 
 
