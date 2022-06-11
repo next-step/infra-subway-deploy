@@ -139,4 +139,7 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+- [x] 배포 스크립트 작성 (deploy.sh) 
+    - cd ~/nextstep
+    - ./deploy.sh step3 prod
 
