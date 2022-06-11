@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ## 변수 설정
 
 txtrst='\033[1;37m' # White
