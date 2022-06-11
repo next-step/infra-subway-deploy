@@ -16,6 +16,7 @@ echo -e "${txtylw}=======================================${txtrst}"
 
 BRANCH=$1
 PROFILE=$2
+SUBWAY_HOME=/home/ubuntu/nextstep/infra-subway-deploy
 
 ## 저장소 pull
 function pull() {
@@ -28,6 +29,7 @@ function pull() {
 function build() {
   echo -e ""
   echo -e ">> Gradle Build 🏃♂️ "
+  cd ${SUBWAY_HOME}
   ./gradlew clean build
 }
 

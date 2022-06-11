@@ -74,5 +74,6 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-
+배포 스크립트: deploy-app.sh
+주기적 실행 스크립트: deploy-app-cron.sh
 
