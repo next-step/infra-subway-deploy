@@ -91,6 +91,13 @@ npm run dev
   - [x] application-prod.properties
   - [x] application-test.properties
 
+- [x] 데이터베이스 테이블 스키마 버전 관리(flyway)
+  - [x] docker-compose.yml 파일 생성
+  - [x] init.sql 파일 생성
+  - [x] flyway dependency 추가
+  - [x] V1__init.sql 작성
+  - [x] 설정 파일 수정
+
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
