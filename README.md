@@ -58,14 +58,45 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://www.su-hub9.kro.kr:8080/ (http://3.39.224.170:8080/)
+- URL : http://www.su-hub9.kro.kr/ (http://3.39.224.170/)
+
+### 1단계 - 리뷰 의견 반영
+- [x] 포트 포워딩(80 -> 8080)
 
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://www.su-hub9.kro.kr/
+
+### 2단계 - 요구사항 구현
+- [x] Reverse Proxy
+  - [x] Docker 설치(su-hub9-public-EC2)
+  - [x] Dockerfile 작성
+  - [x] nginx.conf 작성
+
+- [x] TLS 설정
+  - [x] TLS 인증서 생성
+  - [x] Dockerfile 수정
+  - [x] nginx.conf 수정
+
+- [x] 컨테이너로 운영 DB 사용하기
+  - [x] Docker 설치(su-hub9-internal-EC2)
+  - [x] 컨테이너 운영 DB 설치
+
+- [x] 설정 파일 나누기
+  - [x] application.properties
+  - [x] application-local.properties
+  - [x] application-prod.properties
+  - [x] application-test.properties
+
+- [x] 데이터베이스 테이블 스키마 버전 관리(flyway)
+  - [x] docker-compose.yml 파일 생성
+  - [x] init.sql 파일 생성
+  - [x] flyway dependency 추가
+  - [x] V1__init.sql 작성
+  - [x] 설정 파일 수정
 
 ---
 
