@@ -129,3 +129,13 @@ npm run dev
 - [X] 개발 환경 구성하기
   - [X] 설정 파일 나누기
     - [X] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+
+---
+
+# 3단계 요구사항
+
+* 배포 스크립트 작성하기
+
+### to-do list
+
+- [X] 배포 스크립트 작성하기
