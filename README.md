@@ -60,12 +60,36 @@ npm run dev
 
 - URL : http://www.su-hub9.kro.kr:8080/ (http://3.39.224.170:8080/)
 
+### 1단계 - 리뷰의견 반영
+- [ ] 포트 포워딩(80 -> 8080)
+
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : 
+
+### 2단계 - 요구사항 구현
+- [ ] Reverse Proxy
+  - [ ] Docker 설치(su-hub9-public-EC2)
+  - [ ] Dockerfile 작성
+  - [ ] nginx.conf 작성
+
+- [ ] TLS 설정
+  - [ ] TLS 인증서 생성
+  - [ ] Dockerfile 수정
+  - [ ] nginx.conf 수정
+
+- [ ] 컨테이너로 운영 DB 사용하기
+  - [ ] Docker 설치(su-hub9-internal-EC2)
+  - [ ] 컨테이너 운영 DB 설치
+
+- [ ] 설정 파일 나누기
+  - [ ] application.properties
+  - [ ] application-local.properties
+  - [ ] application-prod.properties
+  - [ ] application-test.properties
 
 ---
 
