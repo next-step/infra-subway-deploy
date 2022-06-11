@@ -37,7 +37,7 @@ function killApp() {
   pid=$(echo ${process} | cut -d " " -f2)
   if [ -n "${pid}" ]
   then
-      result1=$(kill -9 ${pid})
+      result1=$(kill -2 ${pid})
       echo -e ">> Process is killed."
   else
       echo -e ">> Running process not found."
@@ -46,7 +46,7 @@ function killApp() {
 
 ## 애플리케이션 실행
 function startApp() {
-  app=$(find ./* -name "*jar")
+  app=$(find ./* -name "*jar" | grep "subway")
   if [ -n "${app}" ]
   then
       nohup java -jar -Dspring.profiles.active=${PROFILE} ${app} 1> /home/ubuntu/nextstep/log/application.log 2>&1  &
