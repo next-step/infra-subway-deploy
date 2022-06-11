@@ -76,10 +76,10 @@ npm run dev
   - [x] Dockerfile 작성
   - [x] nginx.conf 작성
 
-- [ ] TLS 설정
-  - [ ] TLS 인증서 생성
-  - [ ] Dockerfile 수정
-  - [ ] nginx.conf 수정
+- [x] TLS 설정
+  - [x] TLS 인증서 생성
+  - [x] Dockerfile 수정
+  - [x] nginx.conf 수정
 
 - [ ] 컨테이너로 운영 DB 사용하기
   - [ ] Docker 설치(su-hub9-internal-EC2)
