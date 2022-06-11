@@ -68,7 +68,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://www.su-hub9.kro.kr/
 
 ### 2단계 - 요구사항 구현
 - [x] Reverse Proxy
@@ -85,11 +85,11 @@ npm run dev
   - [x] Docker 설치(su-hub9-internal-EC2)
   - [x] 컨테이너 운영 DB 설치
 
-- [ ] 설정 파일 나누기
-  - [ ] application.properties
-  - [ ] application-local.properties
-  - [ ] application-prod.properties
-  - [ ] application-test.properties
+- [x] 설정 파일 나누기
+  - [x] application.properties
+  - [x] application-local.properties
+  - [x] application-prod.properties
+  - [x] application-test.properties
 
 ---
 
