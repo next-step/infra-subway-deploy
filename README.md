@@ -71,10 +71,10 @@ npm run dev
 - URL : 
 
 ### 2단계 - 요구사항 구현
-- [ ] Reverse Proxy
-  - [ ] Docker 설치(su-hub9-public-EC2)
-  - [ ] Dockerfile 작성
-  - [ ] nginx.conf 작성
+- [x] Reverse Proxy
+  - [x] Docker 설치(su-hub9-public-EC2)
+  - [x] Dockerfile 작성
+  - [x] nginx.conf 작성
 
 - [ ] TLS 설정
   - [ ] TLS 인증서 생성
