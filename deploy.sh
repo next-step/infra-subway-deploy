@@ -53,6 +53,13 @@ function pull() {
   echo -e ">> Pull Request End 🏃♂️ "
 }
 
+function submodule() {
+  echo -e ""
+  echo -e ">> submodule update Start 🏃♂️ "
+  git submodule update --remote
+  echo -e ">> submodule update End 🏃♂️ "
+}
+
 function build() {
   echo -e ""
   echo -e ">> Build Start 🏃♂️ "
