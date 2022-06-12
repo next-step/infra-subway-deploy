@@ -34,7 +34,7 @@ function deploy() {
   echo "> Finish Deploy"
 }
 
-pull()
-build()
-killCurrentPID()
-deploy()
+pull
+build
+killCurrentPID
+deploy
