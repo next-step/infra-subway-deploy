@@ -2,7 +2,6 @@
 
 EXECUTION_PATH=$(pwd)
 HOME_PATH=$(dirname "$0")
-BUILD_FILE_PATH=$(find "${HOME_PATH}"/build/libs -name "*.jar")
 LOG_FILE_NAME="infra-subway-deploy.log"
 PROFILE_TYPE=("prod" "local")
 REPOSITORY_TYPE=("origin" "upstream")
@@ -86,6 +85,7 @@ function shutDownBeforeProcess() {
 
 function deploy() {
   echo -e ">> deploy Start 🏃♂️ "
+  BUILD_FILE_PATH=$(find "${HOME_PATH}"/build/libs -name "*.jar")
   nohup java -jar -Dspring.profiles.active="${PROFILE}" "${BUILD_FILE_PATH}" 1> ${LOG_FILE_NAME} 2>&1 &
   echo -e ">> deploy End 🏃♂️ "
 }
