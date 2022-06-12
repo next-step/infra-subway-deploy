@@ -58,7 +58,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://www.su-hub9.kro.kr/ (http://3.39.224.170/)
+- URL : https://www.su-hub9.kro.kr/ (https://3.39.224.170/)
 
 ### 1단계 - 리뷰 의견 반영
 - [x] 포트 포워딩(80 -> 8080)
