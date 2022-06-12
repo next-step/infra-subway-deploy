@@ -93,7 +93,7 @@ function deploy() {
 function deploy_facade() {
   check_df;
   pull;
-  submodule;
+#  submodule;
   build;
   shutDownBeforeProcess;
   deploy;
