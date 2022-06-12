@@ -112,5 +112,5 @@ npm run dev
   - [x] 프로세스 종료
   - [x] Jar 파일 찾기
   - [x] 어플리케이션 실행
-- [ ] 반복 동작(cron) 스크립트 작성
-  - [ ] git branch 변경 체크
+- [x] 반복 동작(cron) 스크립트 작성
+  - [x] git branch 변경 체크
