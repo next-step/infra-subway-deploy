@@ -39,8 +39,8 @@ function killApp() {
   pid=$(echo ${process} | cut -d " " -f2)
   if [ -n "${pid}" ]
   then
-      result1=$(kill -2 ${pid})
-      echo -e ">> Process is killed."
+      kill -15 ${pid}
+      echo -e ">> Process is killed. ${pid}"
   else
       echo -e ">> Running process not found."
   fi
@@ -64,5 +64,5 @@ build
 killApp
 startApp
 echo -e""
-echo -e ">> Application Deploy Finished 🏃♂️ "
+echo -e ">> Application Deploy Finished"
 
