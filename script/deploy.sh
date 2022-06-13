@@ -3,10 +3,18 @@ REPOSITORY=/home/ubuntu
 PROJECT_NAME=infra-subway-deploy
 CURRENT_PID=$(pgrep -f ${PROJECT_NAME}.*.jar)
 
+function help() {
+  echo "==========================================="
+  echo "Usage : "
+  echo " --branch : branch name "
+  echo " --profiles : profiles "
+  echo "==========================================="
+}
+
 function pull() {
   cd $REPOSITORY/$PROJECT_NAME
   echo "> Git Pull Request"
-  git pull
+  git pull origin ${BRANCH}
 }
 
 function build() {
@@ -30,9 +38,33 @@ function deploy() {
   JAR_NAME=$(find $REPOSITORY/$PROJECT_NAME/build/libs/ -name "*jar")
 
   echo "> Jar Name : $JAR_NAME"
-  nohup java -jar -Dspring.profiles.active=prod $JAR_NAME 1> local0.debug 2>&1 &
+  nohup java -jar -Dspring.profiles.active=${PROFILES} $JAR_NAME 1> local0.debug 2>&1 &
   echo "> Finish Deploy"
 }
+
+if [ $# -ne 2 ] ; then
+  help
+  exit 1
+fi
+
+for i in "$@"; do
+  case $i in
+    --branch=*)
+      BRANCH="${i#*=}"
+      shift # past argument=value
+      ;;
+    --profiles=*)
+      PROFILES="${i#*=}"
+      shift # past argument=value
+      ;;
+    -*|--*)
+      echo "Unknown option $i"
+      exit 1
+      ;;
+    *)
+      ;;
+  esac
+done
 
 pull
 build
