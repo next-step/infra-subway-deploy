@@ -15,7 +15,7 @@ function check_df() {
     else
       echo "> [$(date)] Change history exists️"
       echo "> ️run deploy.sh"
-      source ${REPOSITORY}/${PROJECT_NAME}/script/deploy.sh --deploy=${BRANCH} --profiles=${PROFILES}
+      source ${REPOSITORY}/${PROJECT_NAME}/script/deploy.sh --branch=${BRANCH} --profiles=${PROFILES}
     fi
 }
 
