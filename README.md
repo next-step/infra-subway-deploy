@@ -145,3 +145,15 @@ npm run dev
     JUnit(test) : h2, 
     Local : docker(mysql)
     Prod : 운영 DB를 사용하도록 설정
+
+### 3단계 배포스크립트 작성하기 
+
+- [X] 배포 스크립트 작성하기 
+  1. 저장소 pull
+  2. gradle build
+  3. pid 찾기
+  4. 프로세스 종료하는 명령어
+  5. 재시작 
+- [X] 주기적 배포 
+  - crontab
+  - 매분 배포 
