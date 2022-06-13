@@ -18,6 +18,7 @@ function check_profile() {
   fi
 }
 
+
 function check_branch() {
   git fetch
   git ls-remote --exit-code --heads origin $1
@@ -31,8 +32,6 @@ function check_branch() {
 function check_df() {
   master=$(git rev-parse $1)
   remote=$(git rev-parse origin/$1)
-  echo $master
-  echo $remote
 
   if [[ $master == $remote ]]; then
     echo -e "${txtred} [$(date)] 이미 최신 버전으로 배포할 수 없습니다.! 😫"
@@ -49,7 +48,12 @@ function build_project() {
 }
 
 function process_kill() {
-    kill $(pgrep -f subway)
+    FIND_PID="$(pgrep -f subway)";
+
+    if ! [ $FIND_PID == "" ];
+    then
+      kill -9 $FIND_PID
+    fi
 }
 
 function reStartServer() {
@@ -57,7 +61,6 @@ function reStartServer() {
   jarName=$(find . -name "subway*.jar")
   echo -e "서버 재 시작"
   nohup java -jar ${jarName} --java.security.egd=file:/dev/./urandom --server.port=8080 --spring.profiles.active=${PROFILE} > out.txt 2>&1
-  echo -e "서버 시작 완료"
 }
 
 echo -e "${txtylw}=======================================${txtrst}"
@@ -65,7 +68,6 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 cd ${WROKING_DIR}
-
 read -p "배포할 환경을 입력 하세요(prod or local): " PROFILE
 check_profile ${PROFILE}
 
@@ -74,4 +76,5 @@ check_branch ${BRACNH}
 check_df ${BRACNH}
 
 git checkout ${BRACNH}
+build_project
 reStartServer
