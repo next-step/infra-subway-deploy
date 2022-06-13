@@ -52,13 +52,6 @@ function pull() {
   echo -e ">> Pull Request End 🏃♂️ "
 }
 
-function submodule() {
-  echo -e ""
-  echo -e ">> submodule update Start 🏃♂️ "
-  git submodule update --remote
-  echo -e ">> submodule update End 🏃♂️ "
-}
-
 function build() {
   echo -e ""
   echo -e ">> Build Start 🏃♂️ "
@@ -93,7 +86,6 @@ function deploy() {
 function deploy_facade() {
   check_df;
   pull;
-#  submodule;
   build;
   shutDownBeforeProcess;
   deploy;
