@@ -61,7 +61,7 @@ chj1768-admin-subnet-private-01 192.168.9.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://nextstep.chj1768.kro.kr:8080
+- URL : https://chj1768.p-e.kr
 
 
 
@@ -70,7 +70,7 @@ chj1768-admin-subnet-private-01 192.168.9.160/27
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://chj1768.p-e.kr
 
 ---
 
