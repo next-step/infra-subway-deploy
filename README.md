@@ -58,7 +58,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://www.su-hub9.kro.kr/ (http://3.39.224.170/)
+- URL : https://www.su-hub9.kro.kr/ (https://3.39.224.170/)
 
 ### 1단계 - 리뷰 의견 반영
 - [x] 포트 포워딩(80 -> 8080)
@@ -104,4 +104,13 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
-
+### 3단계 - 요구사항 구현
+- [x] 배포 스크립트 작성
+  - [x] 저장소 pull
+  - [x] gradle build
+  - [x] 프로세스 pid 찾기
+  - [x] 프로세스 종료
+  - [x] Jar 파일 찾기
+  - [x] 어플리케이션 실행
+- [x] 반복 동작(cron) 스크립트 작성
+  - [x] git branch 변경 체크
