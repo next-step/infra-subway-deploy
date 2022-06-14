@@ -68,7 +68,8 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://taeyong-nextstep.p-e.kr/
+  (letsencrypt를 활용하여 무료로 TLS 인증서 발급받는 과정에서 요청 수 초과로 기존 도메인에 대해 발급이 되지 않아 도메인을 변경하였습니다.)
 
 ---
 
