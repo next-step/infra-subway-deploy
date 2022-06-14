@@ -9,6 +9,7 @@ txtgra='\033[1;30m' # Gray
 
 BRANCH=$1
 PROFILE=$2
+LOG_DIR='/home/ubuntu/nextstep/log'
 
 function checkDifference() {
   git fetch
@@ -51,7 +52,7 @@ function killOldProcess() {
 
 function startApplication() {
     echo -e "${txtpur}=== Step4: Start Application [START] ===${txtrst}"
-    java -jar -Dspring.profiles.active=${PROFILE} ${APPLICATION_FILE_PATH} &
+    nohup java -jar -Dspring.profiles.active=${PROFILE} ${APPLICATION_FILE_PATH} 1>${LOG_DIR}/$(date '+%y.%m.%d.%H-%M-%S').log 2>&1 &
     echo -e "${txtgrn}=== Step4: Start Application [COMPLETE] ===${txtrst}"
     echo -e ""
 }
