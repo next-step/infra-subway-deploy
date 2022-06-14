@@ -44,7 +44,7 @@ function check_df() {
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
-  git pull origin master
+  git pull origin "$BRANCH"
 }
 
 
@@ -89,7 +89,7 @@ function deploy() {
 function start() {
  pull;
  check_df;
- build;
+ gradle_build;
  find_pid;
  kill_process;
  deploy;
