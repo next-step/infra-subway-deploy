@@ -75,4 +75,6 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+- 베포 스크립트 : script/deploy.sh
+- crontab을 위한 스크립트 : script/checkdf.sh
 
