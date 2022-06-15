@@ -17,12 +17,14 @@ echo -e "${txtylw}=======================================${txtrst}"
 BRANCH=$1
 PROFILE=$2
 SUBWAY_HOME=/home/ubuntu/nextstep/infra-subway-deploy
+BRANCH_DEFAULT=step3
+PROFILE_DEFAULT=prod
 
 ## 저장소 pull
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
-  git pull origin ${BRANCH}
+  git pull origin ${BRANCH:=${BRANCH_DEFAULT}}
 }
 
 ## gradle build
@@ -51,7 +53,7 @@ function startApp() {
   app=$(find ./* -name "*jar" | grep "subway")
   if [ -n "${app}" ]
   then
-      nohup java -jar -Dspring.profiles.active=${PROFILE} ${app} 1> /home/ubuntu/nextstep/log/application.log 2>&1  &
+      nohup java -jar -Dspring.profiles.active=${PROFILE:=${PROFILE_DEFAULT}} ${app} 1> /home/ubuntu/nextstep/log/application.log 2>&1  &
       echo -e ">> Start Application"
   else
       echo -e ">> jar file is not found."
