@@ -88,7 +88,6 @@ txtgra='\033[1;30m' # Gray
 BRANCH=$1
 PROFILE=$2
 SUBWAY_PATH=/home/ubuntu/infra-subway-deploy
-PID=0
 
 ## 조건 설정
 if [[ $# -ne 2 ]]
@@ -127,21 +126,20 @@ function build() {
 }
 
 function findPid() {
-  echo -e ""
-  echo -e ">> Find Pid"
-  PID=$(lsof -t -i :8080)
-  echo -e "pid : $PID"
+  echo -e $(pgrep -f subway)
 }
 
 function killProcess() {
   echo -e ""
   echo -e ">> Kill Process"
-  if [[ $PID -eq 0 ]]
+  local pid=$(findPid)
+
+  if [[ $pid -eq 0 ]]
   then
     echo -e "not found process"
   else
-    kill -2 $PID
-    echo -e "kill process, pid : $PID"
+    kill -2 $pid
+    echo -e "kill process, pid : $pid"
   fi
 }
 
@@ -162,7 +160,6 @@ function start() {
   check_df;
   pull;
   build;
-  findPid;
   killProcess;
   deploy;
 }
