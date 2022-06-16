@@ -41,7 +41,7 @@ function check_diff() {
   master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin/$BRANCH)
 
-  if [[ master == $remote ]]; then
+  if [[ $master == $remote ]]; then
     echo -e "[$(date)] No changes detected."
     exit 0
   fi
