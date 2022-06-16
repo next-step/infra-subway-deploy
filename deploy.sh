@@ -27,11 +27,18 @@ then
     exit
 fi
 
+function move_working_directory() {
+  echo -e ""
+  echo -e ">> Move 🏃♂️ : $SHELL_SCRIPT_PATH"
+  cd $SHELL_SCRIPT_PATH
+  ls -al
+}
+
 ## 저장소 pull
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
-  git pull origin ${BRANCH}
+  git pull origin $BRANCH
 }
 
 ## gradle build
@@ -43,7 +50,9 @@ function build() {
 
 ## 프로세스 pid를 찾는 명령어
 function find_process_id() {
-  pgrep -f $PROJECT_NAME
+#  crontab 으로 실행시 알 수 없는 pid가 검출됨
+#  pgrep -f $PROJECT_NAME
+  ps -ef | grep subway | grep jar | awk '{print $2}'
 }
 
 ## 프로세스를 종료하는 명령어
@@ -68,7 +77,7 @@ function check_df() {
 }
 
 function find_executable_file() {
-  find . -type f -name '*.jar' | grep $PROJECT_NAME
+  find . -type f -name '*.jar' | grep $PROJECT_NAME | grep -v 'gradle'
 }
 
 function start_process() {
@@ -81,15 +90,12 @@ function start_process() {
 
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e ">> Deploy 🏃♂️ "
-echo -e ">> BRANCH: ${BRANCH} PROFILE : ${PROFILE}"
+echo -e ">> BRANCH: $BRANCH PROFILE : $PROFILE"
 echo -e "${txtylw}=======================================${txtrst}"
 
+move_working_directory
 check_df
-
 pull
-
 build
-
 kill_process
-
 start_process
