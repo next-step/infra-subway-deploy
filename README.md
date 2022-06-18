@@ -103,7 +103,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://www.yong2ss.kro.kr
 
 1)운영 환경 구성하기
 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
