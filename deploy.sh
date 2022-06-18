@@ -45,7 +45,7 @@ function find_pid() {
   echo -e $(pgrep -f subway)
 }
 
-##
+## 기존 프로세스 kill
 function kill_process() {
   echo -e ""
   echo -e ">> Kill Process"
@@ -69,9 +69,9 @@ function find_jar() {
 function run_app() {
   jarFile=$(find_jar)
 
-  echo -e "---------"
-  echo -e ">> jarFile : $jarFile"
-  echo -e "---------"
+  echo -e "==============="
+  echo -e ">> Run JarFile : $jarFile"
+  echo -e "==============="
 
   nohup java -jar -Dspring.profiles.active="$PROFILE" "$jarFile" 1> subway.log 2>&1 &
 }
@@ -82,7 +82,7 @@ then
     echo -e "${txtylw}=======================================${txtrst}"
     echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
     echo -e ""
-    echo -e "${txtgrn} $0 브랜치이름[cold-pumpkin] ${txtred}{ prod | dev }"
+    echo -e "${txtgrn} $0 브랜치이름[step3] ${txtred}{ prod | dev }"
     echo -e "${txtylw}=======================================${txtrst}"
     exit
 fi
