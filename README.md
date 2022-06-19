@@ -10,6 +10,8 @@
   <img alt="GitHub" src="https://img.shields.io/github/license/next-step/atdd-subway-service">
 </p>
 
+
+
 <br>
 
 # 인프라공방 샘플 서비스 - 지하철 노선도
@@ -81,7 +83,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://nextstep-lcjltj.kro.kr/
 
   - [x] 운영 환경 구성 하기
       - [x] 웹 애플리케이션 앞단 Reverse Proxy 구성하기
