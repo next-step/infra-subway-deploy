@@ -1,4 +1,24 @@
 ## 🚀 1단계 - 서비스 구성하기
+
+### 미션
+### 0단계
+- [x] pem 키 생성하기
+- [x] 서버에 접속을 위한 pem키를 구글드라이브에 업로드해주세요
+- [x] 업로드한 pem키는 무엇인가요
+  - => KEY-vvsungho.pem
+
+### 1단계 - 망 구성하기
+- [x] 구성한 망의 서브넷 대역을 알려주세요
+  * 대역 (Nmae / 서브넷 ID, IPv4 CIDR)
+    - vvsungho-public-a / subnet-04fd486bffa762547 / 192.168.17.0/26
+    - vvsungho-public-c / subnet-045480120311be9a3 / 192.168.17.64/26
+    - vvsungho-internal-a / subnet-04fd486bffa762547 / 192.168.17.128/27
+    - vvsungho-internal-a / subnet-09811e0aa39382404 / 192.168.17.160/27
+    
+- [x] 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
+  * => URL : 13.125.118.149 (vvsungho.p-e.kr) 
+
+
 ### 요구사항
 - [x] 웹 서비스를 운영할 네트워크 망 구성하기
   - [x] VPC 생성
