@@ -33,8 +33,6 @@ function check_df() {
   if [[ $master == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
     exit 0
-  else
-    start;
   fi
   echo -e "${txtylw}============check_df end=======================${txtrst}"
 }
@@ -54,7 +52,7 @@ function clean_build() {
 function find_pid() {
   echo -e "${txtylw}============git find_pid exec=======================${txtrst}"
   current_pid=$(pgrep java | head -1)
-  echo $current_pid}
+  echo ${current_pid}
   echo -e "${txtylw}============git find_pid end=======================${txtrst}"
 }
 
@@ -83,3 +81,4 @@ function start() {
 }
 
 check_df;
+start;
