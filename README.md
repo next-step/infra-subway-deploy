@@ -51,10 +51,14 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+- sanhee-public-a: `192.192.192.0/26`
+- sanhee-public-c: `192.192.192.64/26`
+- sanhee-admin-a: `192.192.192.160/27`
+- sanhee-internal-a: `192.192.192.128/27`
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://infra.sanhee.kro.kr:8080/
 
 
 
