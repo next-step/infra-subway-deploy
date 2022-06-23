@@ -58,8 +58,6 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 - URL :  3.39.0.169 (http://www.infra-kivv00ng.kro.kr:8080)
 
-
-
 ---
 
 ### 2단계 - 배포하기
