@@ -51,10 +51,14 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - baekjungho-public-a: 192.168.35.0/26
+  - baekjungho-public-c: 192.168.35.64/26
+  - baekjungho-internal-a: 192.168.35.128/27
+  - baekjungho-bastion-c: 192.168.35.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : 15.164.55.253:8080
 
 
 
