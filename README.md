@@ -46,14 +46,21 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
+- KEY-choiys.pem
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - VPC(choiys-vpc) : 192.168.111.0/24
+  - Subnet
+    - choiys-public-2a : 192.168.111.0/26
+    - choiys-public-2c : 192.168.111.64/26
+    - choiys-private-2a : 192.168.111.128/27
+    - choiys-bastion-2c : 192.168.111.160/27 
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://www.choiys-wootech.kro.kr:8080
 
 
 
