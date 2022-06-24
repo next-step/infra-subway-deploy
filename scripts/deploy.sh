@@ -68,6 +68,8 @@ function start() {
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> 새 애플리케이션 배포 🏃"
   JARFILE=$(ls -tr $REPOSITORY/ | grep jar | tail -n 1)
+  echo -e ${JARFILE}
+  echo -e "-Dspring.profiles.active=${PROFILE}"
   nohup java -jar -Dspring.profiles.active=$PROFILE $JARFILE 1> $REPOSITORY/logs/$PROFILE 2>&1 &
   echo -e "${txtylw}=======================================${txtrst}"
 }
