@@ -61,7 +61,6 @@ function kill() {
     sleep 5
   fi
   echo -e "${txtylw}=======================================${txtrst}"
-
 }
 
 function start() {
