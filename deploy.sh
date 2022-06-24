@@ -27,19 +27,6 @@ function pull() {
   git pull origin "${BRANCH}"
 }
 
-function check_diff() {
-  echo -e ""
-  echo -e "${txtred}Check diff"
-  git fetch
-  master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin $BRANCH)
-
-  if [[ $master == $remote ]]; then
-    echo -e "[$(date)] Nothing to do!!! 😫"
-    exit 1
-  fi
-}
-
 function build() {
   echo -e ""
   echo -e "${txtred}Build"
@@ -51,7 +38,6 @@ function find_pid() {
   echo -e "${txtred} Find running jar process id"
   pid=$(ps -ef | grep 'jar' | grep 'spring.profiles.active' | grep -v 'grep' | awk '{ printf $2 }')
 }
-
 
 function kill_process() {
   echo -e ""
@@ -69,9 +55,21 @@ function deploy() {
   nohup java -jar -Dspring.profiles.active=${PROFILE} $(find $SHELL_SCRIPT_PATH/build -name "*.jar") 1> /dev/null 2>&1 &
 }
 
-pull;
+function check_diff() {
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin $BRANCH)
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 0
+  else
+    pull
+    build
+    find_pid
+    kill_process
+    deploy
+  fi
+}
+
 check_diff;
-build;
-find_pid;
-kill_process;
-deploy;
