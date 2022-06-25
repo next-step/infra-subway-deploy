@@ -51,10 +51,14 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+   - sa46lll-public-a: 192.168.25.0.0/26
+   - sa46lll-public-c: 192.168.25.0.64/26
+   - sa46lll-internal-a: 192.168.25.128/27
+   - sa46lll-bastion-a: 192.168.25.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://sa46lll-subway.kro.kr:8080/
 
 
 
