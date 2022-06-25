@@ -6,4 +6,4 @@ spring:
     password: masterpw
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
