@@ -20,4 +20,5 @@ function check_df() {
   fi
 }
 
+cd $REPOSITORY
 check_df;
