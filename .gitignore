@@ -40,6 +40,3 @@ out/
 frontend/node_modules
 fronted/.prttierrc.js
 fronted/.eslintrc.js
-
-### submodule ###
-src/main/resources/config
