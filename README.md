@@ -50,12 +50,13 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+        kivv00ng-public-a : 192.168.3.0/26
+        kivv00ng-public-c : 192.168.3.64/26
+        kivv00ng-internal-a : 192.168.3.128/27
+        kivv00ng-admin-c : 192.168.3.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
-
-
+- URL :  3.39.0.169 (http://www.infra-kivv00ng.kro.kr:8080)
 
 ---
 
