@@ -2,6 +2,7 @@
 
 PROJECT_NAME=infra-subway-deploy
 REPOSITORY=/home/ubuntu/nextstep/$PROJECT_NAME
+
 BRANCH=$(git branch --show-current)
 
 function check_df() {
