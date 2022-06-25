@@ -175,3 +175,9 @@ function run() {
 run;
 
 ```
+
+2. crontab
+```shell
+# infra-subway-deploy project cron deployment
+* * * * * ubuntu /home/ubuntu/nextstep/infra-subway-deploy/./deploy.sh step4 prod >> /home/ubuntu/nextstep/infra-subway-deploy/log/deploy.sh.log 2>&1
+```
