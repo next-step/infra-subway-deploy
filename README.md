@@ -50,11 +50,22 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역
+```
+1. 외부망
+ejolie-public-a: 211.123.45.0/26
+ejolie-public-b: 211.123.45.64/26
+
+2. 내부망
+ejolie-private-c: 211.123.45.128/27
+
+3. 관리망
+ejolie-admin-c: 211.123.45.192/27
+```
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://nextstep-ejolie.n-e.kr/
 
 
 
