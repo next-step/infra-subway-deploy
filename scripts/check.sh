@@ -16,7 +16,7 @@ function check_df() {
   else
     echo -e "> 리모트 브랜치가 변동되었습니다."
     echo -e "> 로컬 브랜치를 업데이트하고, 다시 배포하겠습니다."
-    bash ./deploy.sh $BRANCH prod
+    bash $REPOSITORY/scripts/deploy.sh $BRANCH prod
   fi
 }
 
