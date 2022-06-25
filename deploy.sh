@@ -58,7 +58,7 @@ function deploy() {
 function check_diff() {
   git fetch
   master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
 
   if [[ $master == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
