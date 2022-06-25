@@ -28,7 +28,6 @@ then
 fi
 
 function pull() {
-  echo -e ""
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> Pull Request 🏃"
   git pull origin $BRANCH
@@ -36,7 +35,6 @@ function pull() {
 }
 
 function build() {
-  echo -e ""
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> Gradle clean build 🏃"
   ./gradlew clean build
@@ -47,7 +45,6 @@ function build() {
 }
 
 function kill() {
-  echo -e ""
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> 현재 구동중인 애플리케이션 pid 확인 🏃"
   CURRENT_PID=$(pgrep -f subway*.jar)
@@ -64,7 +61,6 @@ function kill() {
 }
 
 function start() {
-  echo -e ""
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> 새 애플리케이션 배포 🏃"
   JARFILE=$(ls -tr $REPOSITORY/ | grep jar | tail -n 1)
