@@ -3,3 +3,6 @@ spring:
     url: jdbc:mysql://192.168.2.41:3306/subway?serverTimezone=UTC
     username: root
     password: masterpw
+  jpa:
+    hibernate:
+      ddl-auto: validate
