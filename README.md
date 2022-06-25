@@ -140,8 +140,8 @@ function kill() {
   if [ -z "$CURRENT_PID" ]; then
     echo "> 현재 구동 중인 애플리케이션이 없으므로 종료하지 않습니다."
   else
-    echo "> kill -2 $CURRENT_PID"
-    kill -2 $CURRENT_PID
+    echo "> kill -15 $CURRENT_PID"
+    kill -15 $CURRENT_PID
     sleep 5
   fi
   echo -e "${txtylw}=======================================${txtrst}"
@@ -157,26 +157,6 @@ function start() {
   echo -e "${txtylw}=======================================${txtrst}"
 }
 
-## 프로젝트 디렉토리로 이동
-cd $REPOSITORY
-## 저장소 pull
-pull
-## gradle build
-build
-# 프로세스 pid를 찾고 종료하는 명령어
-kill
-# 프로세스를 시작하는 명령어
-start
-```
-crontab
-```shell
-#!/bin/bash
-
-PROJECT_NAME=infra-subway-deploy
-REPOSITORY=/home/ubuntu/nextstep/$PROJECT_NAME
-
-BRANCH=$(git branch --show-current)
-
 function check_df() {
   git fetch
   master=$(git rev-parse $BRANCH)
@@ -188,9 +168,14 @@ function check_df() {
   else
     echo -e "> 리모트 브랜치가 변동되었습니다."
     echo -e "> 로컬 브랜치를 업데이트하고, 다시 배포하겠습니다."
-    bash $REPOSITORY/scripts/deploy.sh $BRANCH prod
+    pull
+    build
+    kill
+    start
   fi
 }
 
-check_df;
+## 프로젝트 디렉토리로 이동
+cd $REPOSITORY
+check_df
 ```
