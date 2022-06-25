@@ -18,6 +18,8 @@
 ### 주의 사항
 모든 리소스에 자신의 계정을 Prefix로 하는 태그 작성 (e.g. choiys-public)
 
+---
+
 # TODO List
 ### Reverse Proxy 구성
  - Reverse Proxy를 위한 환경 설정
@@ -54,12 +56,9 @@
 ### 설정 파일 분리 
 - [x] application-{profiles} 분리
 - [x] 변경사항 적용
-  - [ ] git clone -b mission-step2 --single-branch https://github.com/choi-ys/infra-subway-deploy.git
-  - [ ] nohup java -jar -Dspring.profiles.active=prod subway-0.0.1-SNAPSHOT.jar 1> infra-subway-deploy-log 2>&1 &
-
+  - [x] git clone -b mission/step2 --single-branch https://github.com/choi-ys/infra-subway-deploy.git
+  - [x] ./gradlew clean build
+  - [x] nohup java -jar -Dspring.profiles.active=prod subway-0.0.1-SNAPSHOT.jar 1> infra-subway-deploy-log 2>&1 &
 
 ---
-
-### 작업 내용
-
 
