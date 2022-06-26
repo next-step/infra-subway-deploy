@@ -60,7 +60,9 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://www.choiys-wootech.kro.kr:8080
+- URL : 
+  - step1 : http://www.choiys-wootech.kro.kr:8080
+  - step2 : http://choiys-wootech.kro.kr
 
 
 
