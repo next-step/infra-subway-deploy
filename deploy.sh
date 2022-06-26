@@ -67,7 +67,7 @@ function run() {
   JAR_FILE=$(find "$EXECUTION_PATH" -name "$PROJECT_NAME*.jar")
   nohup java -jar -Dspring.profiles.active="$PROFILE" "$JAR_FILE" &
 
-  echo "🎉 배포 완료"
+  echo "🎉 배포 완료 🎉"
   echo -e "${txtylw}=======================================${txtrst}"
 }
 
