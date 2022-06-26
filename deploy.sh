@@ -59,9 +59,7 @@ function pull() {
 function build(){
   echo -e ""
   echo -e "${txtgrn}>> [INFO][$(date)] 최신버전 어플리케이션을 빌드합니다. ${txtrst}"
-  echo -e "${txtgrn}>> [INFO][$(date)] cmd : ./gradlew clean test${txtrst}"
   echo -e "${txtgrn}>> [INFO][$(date)] cmd : ./gradlew clean build${txtrst}"
-  ./gradlew clean test
   ./gradlew clean build
 }
 
@@ -85,7 +83,7 @@ function kill(){
 function deploy() {
 	echo -e ""
 	echo -e "${txtgrn}>> [INFO][$(date)] 어플리케이션을 배포합니다. ${txtrst}"
-  nohup java -jar -Dserver.port=8080 -Dspring.profiles.active=$2 $EXECUTION_PATH/build/libs/$JAR_NAME 1> infra-subway-deploy-log-$(date) 2>&1 &
+  nohup java -jar -Dserver.port=8080 -Dspring.profiles.active=$PROFILE $EXECUTION_PATH/build/libs/$JAR_NAME 1> infra-subway-deploy-log-$(date) 2>&1 &
 
   PID=$(pgrep -f ${JAR_NAME})
   echo -e "${txtgrn}>> [INFO][$(date)] 어플리케이션이 시작되었습니다. PID : ${PID} ${txtrst}"
