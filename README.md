@@ -54,6 +54,9 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
+- KEY-jerryk026.pem
+
+- KEY-jerryk026.pem
 
 - KEY-jerryk026.pem
 
