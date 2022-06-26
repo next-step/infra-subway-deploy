@@ -4,12 +4,12 @@ spring:
     url: jdbc:h2:mem:testdb
     username: root
     password: masterpw
-
   jpa:
     hibernate:
       ddl-auto: create-drop
+  flyway:
+    enabled: false
 
 account:
   name: testuser
   password: test
-  

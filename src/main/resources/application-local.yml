@@ -4,10 +4,11 @@ spring:
     url: jdbc:mysql://localhost:3306/subway
     username: root
     password: masterpw
-
   jpa:
     hibernate:
       ddl-auto: create-drop
+  flyway:
+    enabled: false
 
 account:
   name: localuser
