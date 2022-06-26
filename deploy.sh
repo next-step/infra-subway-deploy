@@ -14,36 +14,30 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
-## 조건 설정
-if [[ $# -ne 2 ]]
-then
-    echo -e "${txtylw}=======================================${txtrst}"
-    echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
-    echo -e ""
-    echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
-    echo -e "${txtylw}=======================================${txtrst}"
-    exit
-fi
-
 ## 저장소 pull
 function pull() {
   echo -e ""
+  echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> Git pull start.. 🏃"
   git pull origin "$BRANCH"
   echo -e "✅ Git pull finished!!"
+  echo -e "${txtylw}=======================================${txtrst}"
 }
 
 ## gradle build
 function build() {
   echo -e ""
+  echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> Gradle clean build start.. 🏃"
   ./gradlew clean build
   echo -e "✅ Gradle build finished!!"
+  echo -e "${txtylw}=======================================${txtrst}"
 }
 
 ## 프로세스 pid 를 찾는 명령어
 function find_pid() {
   echo -e ""
+  echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> 실행 중인 pid 조회.. 🏃"
   PID=$(pgrep -f "$PROJECT_NAME")
 }
@@ -60,6 +54,21 @@ function kill_process() {
      kill -2 "$PID"
      echo "✅ 실행 중인 pid 종료"
   fi
+
+  echo -e "${txtylw}=======================================${txtrst}"
+}
+
+## 어플리케이션 실행
+function run() {
+  echo -e ""
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e ">> 어플리케이션 실행.. 🏃"
+
+  JAR_FILE=$(find ./* -name "$PROJECT_NAME*.jar")
+  nohup java -jar -Dspring.profiles.active="$PROFILE" "$JAR_FILE" &
+
+  echo "🎉 배포 완료"
+  echo -e "${txtylw}=======================================${txtrst}"
 }
 
 function check_diff() {
@@ -80,8 +89,9 @@ function deploy() {
   pull
   build
   kill_process
-
-  echo "🎉 배포 완료"
+  run
 }
 
 check_diff
+
+# ./deploy step3 prod
