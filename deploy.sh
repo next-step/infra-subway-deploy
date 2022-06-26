@@ -70,15 +70,16 @@ function kill(){
   echo -e ""
   PID=$(pgrep -f ${JAR_NAME})
 
-  if [[ -z "${PID}" ]]
-  then
-    echo -e "${txtred}>> [WARN][$(date)] 실행중인 ${JAR_NAME}이 없습니다. ${txtrst}"
-  else
-    kill -15 ${PID}
-    sleep 5
-    echo -e "${txtgrn}>> [INFO][$(date)] 실행중인 ${JAR_NAME}이 종료되었습니다. PID : ${PID} ${txtrst}"
+  if [ -z "$PID" ]
+    then
+      echo -e "${txtred}>> [WARN][$(date)] 실행중인 ${JAR_NAME}이 없습니다. ${txtrst}"
+    else
+      #kill -15 ${PID}
+      #sleep 5
+      echo -e "${txtgrn}>> [INFO][$(date)] 실행중인 ${JAR_NAME}이 종료되었습니다. PID : ${PID} ${txtrst}"
   fi
 }
+
 
 ## 어플리케이션 배포
 function deploy() {
