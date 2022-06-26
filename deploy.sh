@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ## 변수 설정
-EXECUTION_PATH=$(pwd)
-SHELL_SCRIPT_PATH=$(dirname $0)
-BRANCH=$1
+EXECUTION_PATH=/home/ubuntu/nextstep/infra-subway-deploy
+LOCAL_BRANCH=main
+REMOTE_BRANCH=$1
 PROFILE=$2
 PROJECT_NAME=subway
 
@@ -15,7 +15,7 @@ function pull() {
   echo -e ""
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> Git pull start.. 🏃"
-  git pull origin "$BRANCH"
+  git pull --rebase origin "$REMOTE_BRANCH"
   echo -e "✅ Git pull finished!!"
   echo -e "${txtylw}=======================================${txtrst}"
 }
@@ -35,7 +35,7 @@ function find_pid() {
   echo -e ""
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> 실행 중인 pid 조회.. 🏃"
-  PID=$(pgrep -f "$PROJECT_NAME")
+  PID=$(jps | grep "$PROJECT_NAME" | awk '{print $1}')
 }
 
 ## 프로세스를 종료하는 명령어
@@ -47,8 +47,8 @@ function kill_process() {
   then
      echo "✅ 실행 중인 pid 가 없음"
   else
-     kill -2 "$PID"
-     echo "✅ 실행 중인 pid 종료"
+     kill -9 "$PID"
+     echo "✅ 실행 중인 pid($PID) 종료"
   fi
 
   echo -e "${txtylw}=======================================${txtrst}"
@@ -68,9 +68,16 @@ function run() {
 }
 
 function check_diff() {
+  cd "$EXECUTION_PATH"
+
+  git checkout "${LOCAL_BRANCH}"
+
+  echo -e "☑️ ${txtrst}current local branch is ${LOCAL_BRANCH}"
+  echo -e "☑️ ${txtrst}current remote branch is ${REMOTE_BRANCH}"
+
   git fetch
-  master=$(git rev-parse "$BRANCH")
-  remote=$(git rev-parse origin/"$BRANCH")
+  master=$(git rev-parse "$LOCAL_BRANCH")
+  remote=$(git rev-parse origin/"$REMOTE_BRANCH")
 
   if [[ $master == $remote ]];
   then
@@ -90,4 +97,4 @@ function deploy() {
 
 check_diff
 
-# ./deploy step3 prod
+# ./deploy.sh step3 prod
