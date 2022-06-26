@@ -74,8 +74,8 @@ function kill(){
     then
       echo -e "${txtred}>> [WARN][$(date)] 실행중인 ${JAR_NAME}이 없습니다. ${txtrst}"
     else
-      #kill -15 ${PID}
-      #sleep 5
+      kill -15 ${PID}
+      sleep 5
       echo -e "${txtgrn}>> [INFO][$(date)] 실행중인 ${JAR_NAME}이 종료되었습니다. PID : ${PID} ${txtrst}"
   fi
 }
@@ -85,7 +85,7 @@ function kill(){
 function deploy() {
 	echo -e ""
 	echo -e "${txtgrn}>> [INFO][$(date)] 어플리케이션을 배포합니다. ${txtrst}"
-  nohup java -jar -Dserver.port=8080 -Dspring.profiles.active=$2 $EXECUTION_PATH/build/libs/$JAR_NAME 1> infra-subway-deploy-log-${date} 2>&1 &
+  nohup java -jar -Dserver.port=8080 -Dspring.profiles.active=$2 $EXECUTION_PATH/build/libs/$JAR_NAME 1> infra-subway-deploy-log-$(date) 2>&1 &
 
   PID=$(pgrep -f ${JAR_NAME})
   echo -e "${txtgrn}>> [INFO][$(date)] 어플리케이션이 시작되었습니다. PID : ${PID} ${txtrst}"
