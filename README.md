@@ -69,6 +69,57 @@ npm run dev
 
 - URL : https://chkim-infra-workshop.kro.kr/
 
+2. 설정 파일 나누기
+- application.yml
+- application-local.yml
+- application-test.yml
+- application-prod.yml (submodule)
+```
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.7.151:3306/subway
+    username: root
+    password: masterpw
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    baselineOnMigrate: true
+    enabled: true
+
+account:
+  name: produser
+  password: prod
+```
+
+- application-auth.yml (submodule)
+```
+security:
+  jwt:
+    token:
+      secret-key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
+      expire-length: 3600000
+```
+
+3. flyway 적용
+- 기존 테이블에 대한 V1__init.sql 작성
+- prod 환경에서만 적용하기 위해 application.yml의 flyway 기본 설정을 false로 변경
+
+4. submodule 적용
+- 운영 DB에 대한 정보가 있는 application-prod.yml
+- jwt token secret-key가 있는 application-auth.yml
+
+5. 정적테스트(SonarLint)
+
+<img width="311" alt="스크린샷 2022-06-26 오후 10 21 34" src="https://user-images.githubusercontent.com/49121847/175816175-275ee162-f889-412f-b7b6-b4060263d883.png">
+
+6. 로컬테스트(MultiRun)
+
+<img width="251" alt="스크린샷 2022-06-26 오후 10 24 06" src="https://user-images.githubusercontent.com/49121847/175816276-921521bf-ac6b-42fb-b90d-bfdd59b99241.png">
+
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
