@@ -109,6 +109,8 @@ check_df() {
   then
     echo -e "${txtpur}[$(date)] 변동 사항 없음.${txtrst}"
     exit 0
+  else
+    git pull
   fi
 }
 
@@ -124,7 +126,7 @@ app_build() {
   ./gradlew clean build
 
   jar_path="$(find ./build/libs/* -name "*jar")"
-  if [ "$jar_path" != "" ]
+  if [ -n "$jar_path" ]
   then
     echo -e "${txtpur}[$(date)] APP 빌드 완료.${txtrst}"
   else
@@ -136,10 +138,10 @@ app_build() {
 # app 시작
 app_start() {
   echo -e "${txtpur}[$(date)] APP 시작.${txtrst}"
-  nohup java -jar -Dspring.profiles.active=$PROFILE $PROJECT_PATH/build/libs/subway-0.0.1-SNAPSHOT.jar > ../log/application.log 2>&1
+  nohup java -jar -Dspring.profiles.active=$PROFILE $PROJECT_PATH/build/libs/subway-0.0.1-SNAPSHOT.jar > ../log/application.log 2>&1 &
 
   java_pid="$(pgrep -f java)"
-  if [ "$java_pid" == "" ]
+  if [ -z "$java_pid" ]
   then
     echo -e "${txtred}[$(date)] APP 시작 실패.${txtrst}"
     exit 1
