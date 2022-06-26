@@ -9,6 +9,9 @@ spring:
         show_sql: true
         format_sql: true
 
+  flyway:
+    enabled: false
+
 logging:
   level:
     org.hibernate.type.descriptor.sql: trace
