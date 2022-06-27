@@ -75,4 +75,99 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+```shell
+#!/bin/bash
+
+PROJECT_PATH=$1
+BRANCH=$2
+PROFILE=$3
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+# Profile 검증
+valid_profile() {
+  if [ "$1" != "prod" -a "$1" != "dev" ]
+  then
+    echo -e "${txtred} PROFILE 값이 잘못 되었습니다..${txtrst}"
+    exit 1
+  fi
+}
+
+# Check Github Data
+check_df() {
+  git checkout $BRANCH
+  git fetch
+  local_branch=$(git rev-parse HEAD)
+  remote=$(git rev-parse --verify origin/$BRANCH)
+
+  if [ "$local_branch" = "$remote" ]
+  then
+    echo -e "${txtpur}[$(date)] 변동 사항 없음.${txtrst}"
+    exit 0
+  else
+    git pull
+  fi
+}
+
+# app 종료
+app_stop() {
+  echo -e "${txtpur}[$(date)] APP 종료.${txtrst}"
+  sudo fuser -n tcp -k 8080
+}
+
+# app 빌드
+app_build() {
+  echo -e "${txtpur}[$(date)] APP 빌드.${txtrst}"
+  ./gradlew clean build
+
+  jar_path="$(find ./build/libs/* -name "*jar")"
+  if [ -n "$jar_path" ]
+  then
+    echo -e "${txtpur}[$(date)] APP 빌드 완료.${txtrst}"
+  else
+    echo -e "${txtred}[$(date)] APP 빌드 실패.${txtrst}"
+    exit 1
+  fi
+}
+
+# app 시작
+app_start() {
+  echo -e "${txtpur}[$(date)] APP 시작.${txtrst}"
+  nohup java -jar -Dspring.profiles.active=$PROFILE $PROJECT_PATH/build/libs/subway-0.0.1-SNAPSHOT.jar > ../log/application.log 2>&1 &
+
+  java_pid="$(pgrep -f java)"
+  if [ -z "$java_pid" ]
+  then
+    echo -e "${txtred}[$(date)] APP 시작 실패.${txtrst}"
+    exit 1
+  fi
+}
+
+## 조건 설정
+if [ $# -eq 3 ]
+then
+  valid_profile "$PROFILE"
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+  echo -e ""
+  echo -e "${txtgrn} 프로젝트 경로 : $1${txtrst}"
+  echo -e "${txtgrn} 브랜치이름 : $2${txtrst}"
+  echo -e "${txtgrn} Profile : $3 ${txtred}{ prod | dev }${txtrst}"
+  echo -e "${txtylw}=======================================${txtrst}"
+
+  cd $PROJECT_PATH
+  check_df
+  app_stop
+  app_build
+  app_start
+  echo ""
+else
+  echo -e "${txtred} 파라메터 개수가 잘못되었습니다.${txtrst}"
+fi
+```
 
