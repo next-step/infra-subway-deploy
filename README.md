@@ -76,4 +76,93 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+``` shell
+#!/bin/bash
 
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+PID=""
+
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
+BUILD="build/libs"
+
+## 조건 설정
+if [[ $# -ne 2 ]]
+then
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e ""
+echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
+echo -e "${txtylw}=======================================${txtrst}"
+exit
+fi
+
+## 브랜치 변경사항 check
+function check_df() {
+git fetch
+master=$(git rev-parse $BRANCH)
+remote=$(git rev-parse origin $BRANCH)
+
+	if [[ $master == $remote ]]; then
+		echo -e "[$(date)] Nothing to do!!! 😫"
+	       	exit 0
+	fi
+}
+
+## 저장소 pull
+function pull() {
+check_df;
+if [[ $? == 0 ]]; then
+echo -e "It is already the latest version."
+else
+echo -e ""
+echo -e ">> Pull Request "
+git pull origin lehdqlsl
+fi
+}
+
+## gradle build
+function build() {
+echo -e ""
+echo -e ">> Build"
+./gradlew build
+}
+
+## 프로세스 pid를 찾는 명령어
+function find_process() {
+echo -e ""
+PID=$(ps -ef|grep subway-0.0.1-SNAPSHOT.jar|grep -v grep|awk '{print $2}')
+echo -e ">> current process $PID"
+}
+
+## 프로세스를 종료하는 명령어
+function exit_process() {
+if [ "$PID" == "" ]; then
+echo "no process exist"
+else
+kill -9 ${PID}
+echo "process id (${PID}) killed"
+fi
+}
+
+## subway 프로그램 실행
+function run_process() {
+echo -e "Run process"
+cd ${BUILD}
+echo -e "$(pwd)"
+nohup java -jar -DSpring.profiles.active=${PROFILE} *.jar 1> spring.log 2>&1 &
+}
+pull;
+build;
+find_process;
+exit_process;
+run_process;
+```
