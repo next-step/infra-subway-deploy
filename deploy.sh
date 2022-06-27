@@ -2,8 +2,7 @@
 
 ## 변수 설정
 EXECUTION_PATH=/home/ubuntu/nextstep/infra-subway-deploy
-LOCAL_BRANCH=main
-REMOTE_BRANCH=$1
+BRANCH=$1
 PROFILE=$2
 PROJECT_NAME=subway
 SERVER_LOG_PATH=$EXECUTION_PATH/server.log
@@ -16,7 +15,7 @@ function pull() {
   echo -e ""
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e ">> Git pull start.. 🏃"
-  git pull --rebase origin "$REMOTE_BRANCH"
+  git pull --rebase origin "$BRANCH"
   echo -e "✅ Git pull finished!!"
   echo -e "${txtylw}=======================================${txtrst}"
 }
@@ -71,14 +70,14 @@ function run() {
 function check_diff() {
   cd "$EXECUTION_PATH"
 
-  git checkout "${LOCAL_BRANCH}"
+  git checkout "${BRANCH}"
 
-  echo -e "☑️ ${txtrst}current local branch is ${LOCAL_BRANCH}"
-  echo -e "☑️ ${txtrst}current remote branch is ${REMOTE_BRANCH}"
+  echo -e "☑️ ${txtrst}current local branch is ${BRANCH}"
+  echo -e "☑️ ${txtrst}current remote branch is ${BRANCH}"
 
   git fetch
-  local=$(git rev-parse "$LOCAL_BRANCH")
-  remote=$(git rev-parse origin/"$REMOTE_BRANCH")
+  local=$(git rev-parse "$BRANCH")
+  remote=$(git rev-parse origin/"$BRANCH")
 
   if [[ $local == $remote ]];
   then
