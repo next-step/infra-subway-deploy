@@ -7,8 +7,7 @@ spring:
         show_sql: true
         format_sql: true
     hibernate:
-      ddl-auto: none
-  #      ddl-auto: update
+      ddl-auto: validate
 
   datasource:
     url: jdbc:mysql://192.172.0.156:3306/subway
