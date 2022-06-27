@@ -76,10 +76,10 @@ function check_diff() {
   echo -e "☑️ ${txtrst}current remote branch is ${REMOTE_BRANCH}"
 
   git fetch
-  master=$(git rev-parse "$LOCAL_BRANCH")
+  local=$(git rev-parse "$LOCAL_BRANCH")
   remote=$(git rev-parse origin/"$REMOTE_BRANCH")
 
-  if [[ $master == $remote ]];
+  if [[ $local == $remote ]];
   then
     echo -e "[$(date)] Nothing to do!!! 😫"
     exit 0
