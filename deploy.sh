@@ -6,6 +6,7 @@ LOCAL_BRANCH=main
 REMOTE_BRANCH=$1
 PROFILE=$2
 PROJECT_NAME=subway
+SERVER_LOG_PATH=$EXECUTION_PATH/server.log
 
 txtrst='\033[1;37m' # White
 txtylw='\033[1;33m' # Yellow
@@ -61,7 +62,7 @@ function run() {
   echo -e ">> 어플리케이션 실행.. 🏃"
 
   JAR_FILE=$(find "$EXECUTION_PATH" -name "$PROJECT_NAME*.jar")
-  nohup java -jar -Dspring.profiles.active="$PROFILE" "$JAR_FILE" &
+  nohup java -jar -Dspring.profiles.active="$PROFILE" "$JAR_FILE" 1> "$SERVER_LOG_PATH" 2>&1 &
 
   echo "🎉 배포 완료 🎉"
   echo -e "${txtylw}=======================================${txtrst}"
