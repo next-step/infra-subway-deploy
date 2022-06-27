@@ -67,7 +67,8 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://dongbin.tk/
+  - freenom에서 발급한 무료 도메인이라.. dns를 추가해줘야 합니다..ㅠㅠ 80.80.80.80
 
 ---
 
