@@ -24,10 +24,6 @@ function check_df() {
     echo -e "${txtred}>> [WARN][$(date)] Repository의 변경 사항이 없습니다.${txtrst}"
     exit 0
   fi
-    pull
-    build
-    kill
-    deploy
 }
 
 ## 저장소 pull
@@ -47,16 +43,15 @@ function build() {
 }
 
 ## 프로세스 종료
-function kill() {
+function kill_pid() {
   echo -e ""
   PID=$(pgrep -f ${JAR_NAME})
 
-  if [ -z "${PID}" ]
+  if [ -z "${PID}" ];
   then
     echo -e "${txtred}>> [WARN][$(date)] 실행중인 ${JAR_NAME}이 없습니다. ${txtrst}"
   else
-    kill -15 ${PID}
-    sleep 5
+    sig_term
     kill_check
   fi
 }
@@ -64,13 +59,19 @@ function kill() {
 ## 이전 프로세스 종료 여부 확인
 function kill_check() {
   # if [ -z target ] -> null : true
-  if [ ! -z "${PID}" ]
+  sleep 5
+  if [ ! -z "${PID}" ];
   then
     sig_kill
     echo -e "${txtgrn}>> [INFO][$(date)] 실행중인 ${JAR_NAME}이 종료되지 않아 강제 종료 합니다. PID : ${PID} ${txtrst}"
   else
     echo -e "${txtgrn}>> [INFO][$(date)] 실행중인 ${JAR_NAME}이 종료되었습니다. PID : ${PID} ${txtrst}"
   fi
+}
+
+## 프로세스 종료
+function sig_term() {
+  kill -15 ${PID}
 }
 
 ## 프로세스 강제 종료
@@ -93,7 +94,7 @@ function process() {
   check_df
   pull
   build
-  kill
+  kill_pid
   deploy
 }
 
