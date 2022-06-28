@@ -70,4 +70,5 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
-
+- 파일명: batch_deploy.sh
+- 파일경로: main/resources/build/batch_deploy.sh
