@@ -61,7 +61,7 @@ function kill_process () {
   then
     echo -e ">> 실행중인 프로세스가 없습니다."
   else
-    sudo kill -2 $$PID
+    sudo kill -2 $PID
     echo -e ">> 실행중인 프로세스를 종료했습니다."
   fi
 }
