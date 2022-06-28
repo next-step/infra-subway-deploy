@@ -34,13 +34,17 @@ fi
 ## 저장소 변경 사항 확인
 function check_df() {
   git fetch
-  local=$(git rev-parse $BRANCH)
+  master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin $BRANCH)
 
   if [[ $master == $remote ]]; then
     echo -e "${txtred}>> [WARN][$(date)] Repository의 변경 사항이 없습니다.${txtrst}"
     exit 0
   fi
+    pull
+    build
+    kill
+    deploy
 }
 
 ## 저장소 pull
@@ -61,31 +65,19 @@ function build(){
   ./gradlew clean build
 }
 
-## 프로세스 종료
+## 프로세스 pid를 찾는 명령어
 function kill(){
   echo -e ""
   PID=$(pgrep -f ${JAR_NAME})
 
-  kill -15 ${PID}
-  sleep 5
-
-  kill_check
-}
-
-## 이전 프로세스 종료 여부 확인
-function kill_check(${PID}) {
-  # if [ -z target ] -> null : true
-  if [ ! -z "${PID}" ]; then
-    sig_kill
-    echo -e "${txtgrn}>> [INFO][$(date)] 실행중인 ${JAR_NAME}이 종료되지 않아 강제 종료 합니다. PID : ${PID} ${txtrst}"
+  if [[ -z "${PID}" ]]
+  then
+    echo -e "${txtred}>> [WARN][$(date)] 실행중인 ${JAR_NAME}이 없습니다. ${txtrst}"
   else
+    kill -15 ${PID}
+    sleep 5
     echo -e "${txtgrn}>> [INFO][$(date)] 실행중인 ${JAR_NAME}이 종료되었습니다. PID : ${PID} ${txtrst}"
   fi
-}
-
-## 프로세스 강제 종료
-function sig_kill() {
-  kill -9 ${PID}
 }
 
 ## 어플리케이션 배포
@@ -98,14 +90,5 @@ function deploy() {
   echo -e "${txtgrn}>> [INFO][$(date)] 어플리케이션이 시작되었습니다. PID : ${PID} ${txtrst}"
 }
 
-## 전체 배포 step 실행
-function process() {
-  check_df
-  pull
-  build
-  kill
-  deploy
-}
-
-process;
+check_df;
 echo -e "${txtylw}=======================================${txtrst}"

@@ -51,28 +51,4 @@ $ kill -l
 
 [Git-도구-리비전-조회하기](https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-%EB%A6%AC%EB%B9%84%EC%A0%84-%EC%A1%B0%ED%9A%8C%ED%95%98%EA%B8%B0)
 
-[/proc/pid/stat docs](https://kb.novaordis.com/index.php//proc/pid/stat)
-```text
-The process state, as character:
-
-R - running
-S - sleeping in an interruptible wait
-D - waiting in uninterruptible disk sleep
-Z - zombie
-T - stopped on a signal or (before 2.6.33) trace stopped
-t - tracing stop (2.6.33 onward)
-W - paging (before 2.6.0)
-X - dead (from 2.6.0 onward)
-x - dead (2.6.33 to 3.13 only)
-K - wakekill (2.6.33-3.13)
-W - waking (2.6.33-3.13)
-P - parked (3.9-3.13)
-```
-```text
-S    Interruptible sleep (waiting for an event to complete)
-For BSD formats and when the stat keyword is used, additional
-characters may be displayed:
-s    is a session leader
-l    is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
-```
 
