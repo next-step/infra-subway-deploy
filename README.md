@@ -56,14 +56,14 @@ npm run dev
         kivv00ng-admin-c : 192.168.3.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- URL :  3.39.0.169 (http://www.infra-kivv00ng.kro.kr:8080)
+- URL :  15.164.186.237 (http://infra-kivv00ng.o-r.kr:8080/)
 
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : http://infra-kivv00ng.o-r.kr:8080/
 
 ---
 
