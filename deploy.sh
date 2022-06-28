@@ -62,7 +62,7 @@ function kill() {
 }
 
 ## 이전 프로세스 종료 여부 확인
-function kill_check(${PID}) {
+function kill_check() {
   # if [ -z target ] -> null : true
   if [ ! -z "${PID}" ]
   then
