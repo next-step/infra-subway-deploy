@@ -189,7 +189,7 @@ function kill_process () {
   then
     echo -e ">> 실행중인 프로세스가 없습니다."
   else
-    sudo kill -2 $$PID
+    sudo kill -2 $PID
     echo -e ">> 실행중인 프로세스를 종료했습니다."
   fi
 }
@@ -219,4 +219,9 @@ else
   kill_process
   run
 fi
+```
+
+2. crontab
+```shell
+*/5 * * * * /home/ubuntu/nextstep/infra-subway-deploy/deploy.sh ch0213 prod >> /home/ubuntu/nextstep/infra-subway-deploy/deploy.log 2>&1
 ```
