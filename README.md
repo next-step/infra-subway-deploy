@@ -73,4 +73,4 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
-
+[deploy.sh](https://github.com/tasklet1579/infra-subway-deploy/blob/step3/deploy.sh)
