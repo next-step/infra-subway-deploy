@@ -54,7 +54,7 @@ function confirm_difference() {
 
   terminate_process
 
-  execute_process
+  run_process
 
   print_execution_time
 }
