@@ -58,6 +58,8 @@ npm run dev
 
 - KEY-jerryk026.pem
 
+- KEY-jerryk026.pem
+
 ### 1단계 - 망 구성하기
 
 1. 구성한 망의 서브넷 대역을 알려주세요
@@ -70,7 +72,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://www.jerrk026-subway.kro.kr:8080/
+- URL : http://www.jerrk026-subway.kro.kr
 
 ---
 
@@ -78,7 +80,7 @@ npm run dev
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL :
+- URL : https://www.jerrk026-subway.kro.kr
 
 ---
 
