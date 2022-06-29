@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PROJECT_PATH=/home/ubuntu/nextstep/infra-subway-deploy
 EXECUTION_PATH=$(pwd)
 SHELL_SCRIPT_PATH=$(dirname $0)
@@ -63,7 +65,7 @@ function kill_pid() {
 function run() {
   echo -e ">> App 시작 🏃♂️ "
   JAR_NAME=$(basename -- build/libs/*.jar)
-  sudo nohup java -jar -Dspring.profiles.active=${PROFILE} ${JAR_NAME} &
+  sudo nohup java -jar -Dspring.profiles.active=${PROFILE} build/libs/${JAR_NAME} &
 }
 
 ## git branch 변경
