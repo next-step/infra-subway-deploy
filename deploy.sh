@@ -23,7 +23,6 @@ function start() {
     echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
     echo -e "${txtgrn}  << 파라미터 확인 >> 브랜치명${BRANCH} PROFILE${PROFILE}${txtrst} "
     echo -e "${txtylw}=======================================${txtrst}"
-    exit
   else
     echo -e "${txtred} 파라미터의 개수가 맞지 않습니다.${txtrst}"
     echo -e "$# 개가 입력되었습니다."
