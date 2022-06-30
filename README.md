@@ -70,5 +70,102 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+#### 배포스크립트
+```shell
+#!/bin/bash
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
 
+EXECUTION_PATH=$(pwd)
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
 
+function check_df() {
+  git fetch origin $BRANCH
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 0
+  fi
+}
+
+function pull() {
+  git rebase origin/$BRANCH
+}
+
+function build() {
+  ./gradlew clean build
+  JAR_NAME=$(ls ./build/libs/*.jar | grep subway)
+  echo "jar: ${JAR_NAME}"
+}
+
+function check_pid() {
+  PID=$(pgrep -f ${JAR_NAME})
+  echo "PID: ${PID}"
+}
+
+function kill_process() {
+  if [ -z ${PID} ]
+  then
+    echo "The process is not running."
+  else
+    kill -15 ${PID}
+    echo "Kill process: ${PID}"
+    sleep 5
+  fi
+}
+
+function run() {
+  echo "Run Application"
+  nohup java -jar -Dspring.profiles.active=${PROFILE} ./build/libs/*.jar 1> ../infra-subway-logs/subway.log 2>&1 &
+}
+
+if [[ $# -ne 2 ]]
+then
+  echo -e "${txtred}Please check the branch and profile."
+  exit
+fi
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e ""
+echo -e "${txtgrn} Script:${txtylw} $0"
+echo -e "${txtgrn} Branch:${txtred} ${BRANCH}"
+echo -e "${txtgrn} Profile:${txtred} ${PROFILE}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+# Move target directory
+cd $SHELL_SCRIPT_PATH/infra-subway-deploy
+
+# Check revision
+check_df;
+
+# Git Pull
+pull;
+
+# Gradle build
+build;
+
+# Check PID
+check_pid;
+
+# Kill process
+kill_process;
+
+# Run application
+run;
+
+exit
+```
+
+#### 크론탭
+```shell
+* * * * * /home/ubuntu/nextstep/deploy.sh main prod >> /home/ubuntu/nextstep/deploy.log
+```
