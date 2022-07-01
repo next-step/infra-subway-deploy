@@ -68,7 +68,7 @@ function start(){
   pull;
   ## gradle build
   build;
-  ## 프로세스를 종료하는 명령어
+  ## 기존 프로세스를 종료하는 명령어
   shutdown_process;
   ## 새 애플리케이션 배포
   deploy;
