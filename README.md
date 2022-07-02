@@ -70,5 +70,102 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+#!/bin/bash
+
+## 변수 설정
+#!/bin/bash
+
+## 변수 설정
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+REPOSITORY=$(pwd)
+PROJECT_NAME=infra-subway-deploy
+BUILD_NAME=subway-0.0.1-SNAPSHOT
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
+
+## 조건 설정
+if [[ $# -ne 2 ]]; then
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
+    echo -e "${txtylw}=======================================${txtrst}"
+    exit
+fi
+
+
+## 브랜치 변경사항 체크
+function check_df() {
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin $BRANCH)
+
+  if [[ $master == $remote ]]; then
+          echo -e "Nothing to do!!! 😫"
+          exit 0
+  else
+        exit 1
+  fi
+}
+
+## 저장소 pull
+function pull() {
+        echo -e ">> Pull Request 🏃♂️ "
+        git pull origin kivv00ng
+}
+
+## gradle build
+function build() {
+echo -e ""
+echo -e ">> Build"
+./gradlew clean build
+}
+
+## 프로세스 pid를 찾는 명령어
+function find_process(){
+echo -e ">> Find PID"
+CURRENT_PID=$(pgrep -f ${BUILD_NAME}.*.jar)
+}
+
+## 프로세스를 종료하는 명령어
+function exit_process(){
+if [[ -z "$CURRENT_PID" ]]; then
+        echo ">> 현재 구동중인 애플리케이션이 없으므로 종료하지 않습니다."
+else
+        echo ">> kill -15 $CURRENT_PID"
+        kill -15 $CURRENT_PID
+        sleep 5
+fi
+}
+
+## 프로그램 실행
+function run(){
+sleep 5
+echo -e ">>Run $PROJECT_NAME"
+nohup java -jar -DSpring.profiles.active=${PROFILE} ./build/libs/*.jar 1> spring.log 2>&1 &
+
+}
+
+## main
+
+check_df
+if [[ $? ==0]]; then
+        exit
+else
+        pull;
+        build;
+        find_process;
+        exit_process;
+        run;
+fi
+
+                                                                                                                                                                                                                         
 
 
