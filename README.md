@@ -60,6 +60,8 @@ npm run dev
 
 - KEY-jerryk026.pem
 
+- KEY-jerryk026.pem
+
 ### 1단계 - 망 구성하기
 
 1. 구성한 망의 서브넷 대역을 알려주세요
