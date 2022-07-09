@@ -33,7 +33,7 @@ function start() {
 function pull() {
   echo -e ""
   echo -e ">> Pull origin ${BRANCH} 🏃♂️ "
-  sudo git pull origin ${BRANCH}
+  sudo -u ubuntu -- git pull origin ${BRANCH}
 }
 
 ## gradle build
@@ -70,9 +70,9 @@ function run() {
 ## git branch 변경
 function check_df(){
   echo -e ">> Git Branch 변경 확인 🏃♂️ "
-  sudo git fetch
-  main=$(sudo git rev-parse ${BRANCH})
-  remote=$(sudo git rev-parse origin/${BRANCH})
+  sudo -u ubuntu -- git fetch
+  main=$(sudo -u ubuntu -- git rev-parse ${BRANCH})
+  remote=$(sudo -u ubuntu -- git rev-parse origin/${BRANCH})
 
   if [[ $main == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!! 😫"
