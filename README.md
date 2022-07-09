@@ -75,4 +75,5 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+- [deploy.sh](./deploy.sh)
 
