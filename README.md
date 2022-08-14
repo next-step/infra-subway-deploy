@@ -41,7 +41,8 @@ npm run dev
 
 * 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
 
-### 0단계 - pem 키 생성하기
+### 0단계 - pem 키 생성하기 
+
 
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
