@@ -50,10 +50,14 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+    - becky-public-a : 192.168.12.0/26	
+    - becky-public-b : 192.168.12.64/26	
+    - becky-internal-a : 192.168.12.128/27	
+    - becky-management-a : 192.168.12.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://www.becky-infra.o-r.kr:8080/
 
 
 
