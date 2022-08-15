@@ -63,6 +63,18 @@ npm run dev
 
 - 대역 :
 
+  - 외부망 subnet
+
+    - 192.168.5.0/26 - 64개 (0 ~ 63) : (writer0713-public-subnet-a)
+    - 192.168.5.64/26 - 64개 (64 ~ 127) : (writer0713-public-subnet-c)
+
+  - 내부망 subnet
+
+    - 192.168.5.128/27 - 32개 (128 ~ 159) : (writer0713-private-subnet-a)
+
+  - 관리용 subnet
+    - 192.168.5.160/27 - 32개 (160 ~ 191) : (writer0713-admin-subnet-c)
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL :
