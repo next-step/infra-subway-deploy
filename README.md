@@ -52,10 +52,10 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 
-- `subnet-chr0m3-public-a`: `192.168.7.0/26`
-- `subnet-chr0m3-public-b`: `192.168.7.64/26`
-- `subnet-chr0m3-internal-a`: `192.168.7.128/27`
-- `subnet-chr0m3-management-a`: `192.168.7.160/27`
+- `chr0m3-public-a-subnet`: `192.168.7.0/26`
+- `chr0m3-public-b-subnet`: `192.168.7.64/26`
+- `chr0m3-internal-a-subnet`: `192.168.7.128/27`
+- `chr0m3-management-a-subnet`: `192.168.7.160/27`
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
