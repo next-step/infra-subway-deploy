@@ -36,6 +36,9 @@ dependencies {
 
 	// db for test profile. testImplementation to reduce the size of built image of the app.
 	testImplementation 'com.h2database:h2'
+
+	// db for runtime profile. i.e. local, prod
+	implementation 'mysql:mysql-connector-java'
 }
 
 test {
