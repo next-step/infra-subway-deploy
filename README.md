@@ -47,13 +47,21 @@ npm run dev
 
 2. 업로드한 pem키는 무엇인가요. : `mand2-nextstep-infra-key.pem`
 
+---
+
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
-
+    - [x]  외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
+        - `mand2-public-subnet-a` 192.168.14.0/26
+        - `mand2-public-subnet-c` 192.168.14.64/26
+    - [x]  내부망으로 사용할 Subnet : 32개씩 1개
+        - `mand2-private-subnet-a` 192.168.14.128/27
+    - [x]  관리용으로 사용할 Subnet : 32개씩 1개
+        - `mand2-bastion-subnet-c` 192.168.14.160/27
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : [`mand2-infra-subway`](http://www.mand2-infra-subway.kro.kr:8080/)
 
 
 
