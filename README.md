@@ -77,7 +77,7 @@ npm run dev
   - [x] Reverse Proxy에 TLS 설정
   - [x] 운영 데이터베이스 구성하기
 - 개발 환경 구성하기
-  - [ ] 설정 파일 나누기
+  - [x] 설정 파일 나누기
     - JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
 
 1. TLS가 적용된 URL을 알려주세요
