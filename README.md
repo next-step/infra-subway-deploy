@@ -50,21 +50,25 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 :
-  - [VPC] `192.168.9.0/24`
-  - [subnet] public-1(stevejkang-subnet-public-1): `192.168.9.0/26`
-  - [subnet] public-2(stevejkang-subnet-public-2): `192.168.9.64/26`
-  - [subnet] private(stevejkang-subnet-private): `192.168.9.128/27`
-  - [subnet] manage(stevejkang-subnet-manage): `192.168.9.160/27`
+
+- 대역 : [
+  '192.168.8.0/26' - public 1,
+  '192.168.8.64/26' - public 2,
+  '192.168.8.128/27' - private,
+  '192.168.8.160/27' - manage
+]
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- URL : http://stevejkang.kro.kr:8080 (http://3.39.130.183:8080)
+
+- URL : sm9171.r-e.kr:8080
+
 
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
-- URL : https://stevejkang.kro.kr/
+
+- URL : https://sm9171.r-e.kr/
 
 ---
 
