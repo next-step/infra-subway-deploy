@@ -51,10 +51,16 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+    - shinseongsu-public-a : 192.168.16.0/26
+    - shinseongsu-public-c: 192.168.16.64/26
+    - shinseongsu-internal-a : 192.168.16.128/27
+    - shinseongsu-manager-c : 192.168.16.160/27
+
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL :  http://15.165.69.249:8080/
+- 도메인 : http://sss-next-step.kro.kr/
 
 
 
