@@ -61,7 +61,7 @@ npm run dev
 ### 1단계 - 망 구성하기
 
 - VPC
-  - "orgojy-vpc" C-class(192.168.17.0/24)
+    - "orgojy-vpc" C-class(192.168.17.0/24)
 - Subnet
     - public (webservice)
         - "orgojy-public-a" ap-northeast-2a 192.168.17.0/26
@@ -71,28 +71,34 @@ npm run dev
     - admin (bastion)
         - "orgojy-admin-a" ap-northeast-2a 192.168.17.160/27
 - Internet Gateway
-  - "orgojy-igw"
+    - "orgojy-igw"
 - NAT Gateway
-  - "orgojy-nat"
+    - "orgojy-nat"
 - Route Table
     - orgojy-public-rt
+        - 0.0.0.0/0 "orgojy-igw"
+        - 192.168.17.0/24 local
     - orgojy-private-rt
+        - 0.0.0.0/0 "orgojy-nat"
+        - 192.168.17.0/24 local
     - orgojy-admin-rt
+        - 0.0.0.0/0 "orgojy-igw"
+        - 192.168.17.0/24 local
 - Security Group
     - 외부망 "SG-orgojy-public"
-        - 전체 대역 : 8080 포트 오픈
-        - 관리망 : 22번 포트 오픈
+        - OPEN: Port 8080, IP Anywhere(0.0.0.0/0)
+        - OPEN: Port 22, IP 관리망(192.168.17.160/27)
     - 내부망 "SG-orgojy-private"
-        - 외부망 : 3306 포트 오픈
-        - 관리망 : 22번 포트 오픈
+        - OPEN: Port 3306, IP 외부망(192.168.17.64/26, 192.168.17.0/26)
+        - OPEN: Port 22, IP 관리망(192.168.17.160/27)
     - 관리망 "SG-orgojy-admin"
-        - 자신의 공인 IP : 22번 포트 오픈
+        - OPEN: Port 22, IP My Public IP
 - EC2 Instance
     - 외부망에 웹 서비스용도의 EC2 생성 "orgojy-public-webservice"
     - 내부망에 데이터베이스용도의 EC2 생성 "orgojy-private-db"
     - 관리망에 베스쳔 서버용도의 EC2 생성 "orgojy-admin-bastion"
-    - 베스쳔 서버에 Session Timeout 600s 설정 in "orgojy-admin-bastion"
-    - 베스쳔 서버에 Command 감사로그 설정 in "orgojy-admin-bastion"
+        - 베스쳔 서버에 Session Timeout 600s 설정
+        - 베스쳔 서버에 Command 감사로그 설정
 
 1. 구성한 망의 서브넷 대역을 알려주세요
 
