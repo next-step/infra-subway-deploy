@@ -60,7 +60,8 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 
-- VPC "orgojy-vpc" C-class(192.168.17.0/24)
+- VPC
+  - "orgojy-vpc" C-class(192.168.17.0/24)
 - Subnet
     - public (webservice)
         - "orgojy-public-a" ap-northeast-2a 192.168.17.0/26
@@ -69,13 +70,15 @@ npm run dev
         - "orgojy-private-a" ap-northeast-2a 192.168.17.128/27
     - admin (bastion)
         - "orgojy-admin-a" ap-northeast-2a 192.168.17.160/27
-- Internet Gateway "orgojy-igw"
-- NAT Gateway "orgojy-nat"
+- Internet Gateway
+  - "orgojy-igw"
+- NAT Gateway
+  - "orgojy-nat"
 - Route Table
     - orgojy-public-rt
     - orgojy-private-rt
     - orgojy-admin-rt
-- Security Group 설정
+- Security Group
     - 외부망 "SG-orgojy-public"
         - 전체 대역 : 8080 포트 오픈
         - 관리망 : 22번 포트 오픈
@@ -84,7 +87,7 @@ npm run dev
         - 관리망 : 22번 포트 오픈
     - 관리망 "SG-orgojy-admin"
         - 자신의 공인 IP : 22번 포트 오픈
-- 서버 생성
+- EC2 Instance
     - 외부망에 웹 서비스용도의 EC2 생성 "orgojy-public-webservice"
     - 내부망에 데이터베이스용도의 EC2 생성 "orgojy-private-db"
     - 관리망에 베스쳔 서버용도의 EC2 생성 "orgojy-admin-bastion"
