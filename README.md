@@ -77,7 +77,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : [https://주스119.메인.한국](https://xn--119-9j6nx7w.xn--h32bi4v.xn--3e0b707e/)
 
 ---
 
