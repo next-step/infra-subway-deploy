@@ -79,7 +79,7 @@ npm run dev
 
 - URL :
   - IP : http://15.165.122.237:8080/
-  - DNS : http://writer0713.kro.kr:8080/
+  - DNS : http://writer0713.o-r.kr:8080/
 
 ---
 
