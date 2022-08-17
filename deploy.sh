@@ -8,24 +8,16 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
-# function 실행인지 확인 (bash specific)
-if declare -f "$1" > /dev/null
-then
-  # call arguments verbatim
-  "$@"
-else
-  echo -e "${txtylw}=======================================${txtrst}"
-  echo -e "${txtgrn}        << 배포 스크립트 🧐 >>${txtrst}"
-  echo -e "${txtylw}=======================================${txtrst}"
-  echo -e "${txtpur} 1. repositoryPull         | 저장소 pull ${txtrst}"
-  echo -e "${txtpur} 2. gradleBuild            | 배포 버전 빌드 ${txtrst}"
-  echo -e "${txtpur} 3. getPid                 | 이전 배포 항목 PID 조회 ${txtrst}"
-  echo -e "${txtpur} 4. killProcess            | PID 로 종료 ${txtrst}"
-  echo -e "${txtpur} 5. checkProcessTerminated | 프로세스 종료 확인 ${txtrst}"
-  echo -e "${txtpur} 6. nohupRun               | 백그라운드에서 빌드된 항목 배포 ${txtrst}"
-  echo -e "${txtylw}=======================================${txtrst}"
-  exit 0
-fi
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}        << 배포 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtpur} 1. repositoryPull         | 저장소 pull ${txtrst}"
+echo -e "${txtpur} 2. gradleBuild            | 배포 버전 빌드 ${txtrst}"
+echo -e "${txtpur} 3. getPid                 | 이전 배포 항목 PID 조회 ${txtrst}"
+echo -e "${txtpur} 4. killProcess            | PID 로 종료 ${txtrst}"
+echo -e "${txtpur} 5. checkProcessTerminated | 프로세스 종료 확인 ${txtrst}"
+echo -e "${txtpur} 6. nohupRun               | 백그라운드에서 빌드된 항목 배포 ${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
 
 function repositoryPull() {
     echo -e "${txtgrn} 저장소 pull 시작... 📥${txtrst}"
@@ -48,8 +40,12 @@ function getPid() {
 
 function killProcess() {
     echo -e "${txtgrn} 프로세스 종료... 🔌${txtrst}"
-    kill -2 "$pid"
-    echo -e "${txtgrn} 프로세스 종료 요청 완료! 😀${txtrst}"
+    if [ -z "$pid" ]; then
+        echo -e "${txtred} 프로세스 pid 없음! 🤔${txtrst}"
+    else
+      kill -2 "$pid"
+      echo -e "${txtgrn} 프로세스 종료 요청 완료! 😀${txtrst}"
+    fi
 }
 
 function checkProcessTerminated() {
@@ -66,3 +62,11 @@ function nohupRun() {
     nohup java -jar -Dspring.profiles.active=prod build/libs/subway-0.0.1-SNAPSHOT.jar 1> logging.log 2>&1 &
     echo -e "${txtgrn} nohup 실행 완료! ⭐️${txtrst}"
 }
+
+repositoryPull;
+gradleBuild;
+getPid;
+killProcess;
+getPid;
+checkProcessTerminated;
+nohupRun;
