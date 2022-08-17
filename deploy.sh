@@ -9,7 +9,14 @@ txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
 echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtgrn}        << 배포 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtpur} 1. repositoryPull         | 저장소 pull ${txtrst}"
+echo -e "${txtpur} 2. gradleBuild            | 배포 버전 빌드 ${txtrst}"
+echo -e "${txtpur} 3. getPid                 | 이전 배포 항목 PID 조회 ${txtrst}"
+echo -e "${txtpur} 4. killProcess            | PID 로 종료 ${txtrst}"
+echo -e "${txtpur} 5. checkProcessTerminated | 프로세스 종료 확인 ${txtrst}"
+echo -e "${txtpur} 6. nohupRun               | 백그라운드에서 빌드된 항목 배포 ${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 function repositoryPull() {
