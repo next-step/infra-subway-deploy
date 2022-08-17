@@ -79,6 +79,10 @@ npm run dev
 
 - URL : [https://주스119.메인.한국](https://xn--119-9j6nx7w.xn--h32bi4v.xn--3e0b707e/)
 
+#### 1주차 - 2단계 아키텍쳐
+
+![2단계 아키텍쳐](/Users/juyeol/study/next-step/infra/infra-subway-deploy/doc/img/2단계 아키텍쳐.jpg)
+
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
