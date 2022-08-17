@@ -51,13 +51,18 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 : web) ingus26-public-a | 192.168.13.0/26
+        web) ingus26-public-c | 192.168.13.64/26
+        db) ingus26-internal-a | 192.168.13.128/27
+        관리망) ingus26-manage-a | 192.168.13.160/27
+
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://3.39.53.16:8080/
+        http://인쿠26.메인.한국:8080/
 
-
+- 서비스 시작 명령어 : nohup java -jar ./nextstep/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar 1> web.log 2>&1
 
 ---
 
