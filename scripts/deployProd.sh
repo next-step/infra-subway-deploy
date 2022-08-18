@@ -40,8 +40,9 @@ echo -e "${txtylw}=======================================${txtrst}"
 
 yesOrNo '배포를 시작하시겠습니까?'
 
-echo -e "${txtgrn}git pull 실행 중 ...."
-git pull origin
+echo -e "${txtgrn}git remote pull 실행 중 ...."
+git fetch --all && \
+git reset $1
 catch 'git remote pull 실패'
 
 echo -e "${txtgrn}Java 설치 확인 중 ...."
@@ -57,7 +58,7 @@ fuser -k 8080/tcp
 
 
 echo -e "${txtgrn}자바 애플리케이션을 실행합니다."
-jarPwd=find ./build/* -name "*jar" | grep subway && \
+jarPwd= find ./build/* -name "*jar" | grep subway && \
 java -jar -Dspring.profiles.active=prod ${jarPwd}
 cath "자바로 애플리케이션 서버 실행 하는데 실패하였습니다"
 
