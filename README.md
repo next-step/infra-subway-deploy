@@ -94,3 +94,10 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+
+- oneshot script:
+  - `scripts/run.sh` 실행하면 됩니다.
+- 그외 :
+  - `scripts/init.sh` : 초기화에 필요한 작업들이 들어갑니다. (ex. 필수 dir 생성)
+  - `scripts/shutdown.sh` : `shutdown` 만 필요할 경우 단독 사용 가능
+  - `scripts/startup.sh` : `startup` 만 필요할 경우 단독 사용 가능
