@@ -53,7 +53,7 @@ npm run dev
 - 대역 : 
   - yinakim-public-a : 192.168.4.0/26
   - yinakim-public-b : 192.168.4.64/26
-  - yinakim-internal-a : 192.168.4.0/26
+  - yinakim-internal-a : 192.168.4.128/27 
   - yinakim-manage-a : 192.168.4.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
