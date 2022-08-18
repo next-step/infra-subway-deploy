@@ -17,7 +17,7 @@ make_logging_dir() {
   
   if [[ ! -d $LOGGING_DIR ]]
   then
-    mkdir LOGGING_DIR
+    mkdir $LOGGING_DIR
   fi
 
   echo ""
