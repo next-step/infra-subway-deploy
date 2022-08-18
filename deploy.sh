@@ -8,6 +8,9 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
+## 스크립트용 변수 설정
+process_term_check_count=0
+
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}        << 배포 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
@@ -54,6 +57,14 @@ function checkProcessTerminated() {
         echo -e "${txtgrn} 프로세스 종료 확인 완료! 🔍${txtrst}"
     else
         echo -e "${txtred} 프로세스 종료 확인 실패! ⚠️${txtrst}"
+        if [ $process_term_check_count -gt 10 ]; then
+            echo -e "${txtred} 프로세스 종료 확인 실패 횟수 초과! ⚠️${txtrst}"
+            exit 1
+        else
+            sleep 1
+            process_term_check_count=$((process_term_check_count++))
+            checkProcessTerminated
+        fi
     fi
 }
 
@@ -63,10 +74,10 @@ function nohupRun() {
     echo -e "${txtgrn} nohup 실행 완료! ⭐️${txtrst}"
 }
 
-repositoryPull;
-gradleBuild;
-getPid;
-killProcess;
-getPid;
-checkProcessTerminated;
-nohupRun;
+repositoryPull
+gradleBuild
+getPid
+killProcess
+getPid
+checkProcessTerminated
+nohupRun
