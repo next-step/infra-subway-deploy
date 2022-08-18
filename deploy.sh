@@ -91,6 +91,18 @@ function nohup_run() {
     fi
 }
 
+function check_diff() {
+    git fetch
+    master=$(git rev-parse "$BRANCH")
+    remote=$(git rev-parse origin/"$BRANCH")
+
+    if [[ $master == "$remote" ]]; then
+      echo -e "[$(date)] Nothing to do!!! 🥳"
+      exit 0
+    fi
+}
+
+check_diff
 repository_pull
 gradle_build
 get_pid
