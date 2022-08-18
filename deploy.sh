@@ -8,29 +8,41 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
+## 스크림트 실행시 전달되는 파라미터
+
+EXECUTION_PATH=${pwd}
+SHELL_SCRIPT_PATH=$(dirname "$0")
+BRANCH=$1
+PROFILE=$2
+
 ## 스크립트용 변수 설정
 process_term_check_count=0
 
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}        << 배포 스크립트 🧐 >>${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtpur} 1. repositoryPull         | 저장소 pull ${txtrst}"
-echo -e "${txtpur} 2. gradleBuild            | 배포 버전 빌드 ${txtrst}"
-echo -e "${txtpur} 3. getPid                 | 이전 배포 항목 PID 조회 ${txtrst}"
-echo -e "${txtpur} 4. killProcess            | PID 로 종료 ${txtrst}"
-echo -e "${txtpur} 5. checkProcessTerminated | 프로세스 종료 확인 ${txtrst}"
-echo -e "${txtpur} 6. nohupRun               | 백그라운드에서 빌드된 항목 배포 ${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
+## 조건 설정
+if [[ $# -ne 2 ]]; then
+    echo -e "${txtred}사용법: ./deploy.sh <branch> <profile>${txtrst}"
+    echo -e "${txtgrn}profile: { local | dev | prod }${txtrst}"
+    exit 0
+else
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}        << 배포 스크립트 🧐 >>${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} $0 $BRANCH ${txtred} <$PROFILE> ${txtrst}"
+    echo -e "${txtylw}=======================================${txtrst}"
+fi
 
 function repositoryPull() {
-    echo -e "${txtgrn} 저장소 pull 시작... 📥${txtrst}"
+    echo -e "${txtgrn} 저장소 $BRANCH pull 시작... 📥${txtrst}"
+    git stash
+    git checkout "$BRANCH"
     git pull
+    git stash pop
     echo -e "${txtgrn} 저장소 pull 완료! 🌈${txtrst}"
 }
 
 function gradleBuild() {
     echo -e "${txtgrn} gradle build 시작... 🐘${txtrst}"
-    ./gradlew clean build
+    "$SHELL_SCRIPT_PATH"/gradlew clean build
     echo -e "${txtgrn} gradle build 완료! 🐣${txtrst}"
 }
 
@@ -69,9 +81,14 @@ function checkProcessTerminated() {
 }
 
 function nohupRun() {
-    echo -e "${txtgrn} nohup 실행... 🎬${txtrst}"
-    nohup java -jar -Dspring.profiles.active=prod build/libs/subway-0.0.1-SNAPSHOT.jar 1> logging.log 2>&1 &
-    echo -e "${txtgrn} nohup 실행 완료! ⭐️${txtrst}"
+    echo -e "${txtgrn} nohup 실행... 프로필: $PROFILE 🎬${txtrst}"
+    if [ "$PROFILE" = "local" -o "$PROFILE" = "dev" -o "$PROFILE" = "prod" ]; then
+        nohup java -jar -Dspring.profiles.active="$PROFILE" "$SHELL_SCRIPT_PATH"/build/libs/subway-0.0.1-SNAPSHOT.jar  1> logging.log 2>&1 &
+        echo -e "${txtgrn} nohup 실행 완료! 🐣${txtrst}"
+    else
+        echo -e "${txtred} 프로필 오류! 🫣${txtrst}"
+        exit 1
+    fi
 }
 
 repositoryPull
