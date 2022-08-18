@@ -54,7 +54,6 @@ git remote update && \
 git pull
 catch 'git remote pull 실패'
 
-echo -e "${txtgrn}Java 설치 확인 중 ...."
 startStep "Java 설치 확인 중 ..."
 java -version
 
