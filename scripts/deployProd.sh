@@ -58,9 +58,9 @@ fuser -k 8080/tcp
 
 
 echo -e "${txtgrn}자바 애플리케이션을 실행합니다."
-jarPwd= find ./build/* -name "*jar" | grep subway && \
-java -jar -Dspring.profiles.active=prod ${jarPwd}
-cath "자바로 애플리케이션 서버 실행 하는데 실패하였습니다"
+jarPwd= find ./build/* -name "*jar" | grep subway
+java -jar -Dspring.profiles.active=prod $jarPwd
+catch "자바로 애플리케이션 서버 실행 하는데 실패하였습니다"
 
 echo '배포를 완료하였습니다!'
 
