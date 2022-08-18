@@ -42,7 +42,7 @@ yesOrNo '배포를 시작하시겠습니까?'
 
 echo -e "${txtgrn}git remote pull 실행 중 ...."
 git fetch --all && \
-git reset $1
+git reset origin/$1
 catch 'git remote pull 실패'
 
 echo -e "${txtgrn}Java 설치 확인 중 ...."
