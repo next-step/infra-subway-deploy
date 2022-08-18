@@ -51,11 +51,18 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - public
+    - "mandykr-public-a" 192.168.18.0/26
+    - "mandykr-public-c" 192.168.18.64/26
+  - internal
+    - "mandykr-internal-a" 192.168.18.128/27
+  - manage
+    - "mandykr-manage-a" 192.168.18.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
-
+- URL : http://mandykr.kro.kr:8080/
+- IP : 43.200.134.8:8080
 
 
 ---
