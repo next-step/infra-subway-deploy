@@ -31,7 +31,7 @@ function installJavaCompile() {
   yesOrNo 'Java 가 설치 되어 있지 않습니다. 설치 하시겠습니까?'
 
   sudo apt update && \
-  sudo apt install default-jr && \
+  sudo apt install default-jre && \
   sudo apt install default-jdk
   catch 'Java 프로그램 설치 실패'
 }
