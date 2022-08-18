@@ -55,7 +55,7 @@ git pull
 catch 'git remote pull 실패'
 
 startStep "Java 설치 확인 중 ..."
-java -version
+java -version || installJavaCompile
 
 
 startStep "빌드 중..."
