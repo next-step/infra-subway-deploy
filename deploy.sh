@@ -46,7 +46,7 @@ function killProcess() {
     if [ -z "$pid" ]; then
         echo -e "${txtred} 프로세스 pid 없음! 🤔${txtrst}"
     else
-      kill -2 "$pid"
+      kill -9 "$pid"
       echo -e "${txtgrn} 프로세스 종료 요청 완료! 😀${txtrst}"
     fi
 }
@@ -61,7 +61,7 @@ function checkProcessTerminated() {
             echo -e "${txtred} 프로세스 종료 확인 실패 횟수 초과! ⚠️${txtrst}"
             exit 1
         else
-            sleep 1
+            sleep 3
             process_term_check_count=$((process_term_check_count++))
             checkProcessTerminated
         fi
