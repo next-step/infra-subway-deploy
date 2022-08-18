@@ -31,7 +31,7 @@ else
     echo -e "${txtylw}=======================================${txtrst}"
 fi
 
-function repositoryPull() {
+function repository_pull() {
     echo -e "${txtgrn} 저장소 $BRANCH pull 시작... 📥${txtrst}"
     git stash
     git checkout "$BRANCH"
@@ -40,20 +40,20 @@ function repositoryPull() {
     echo -e "${txtgrn} 저장소 pull 완료! 🌈${txtrst}"
 }
 
-function gradleBuild() {
+function gradle_build() {
     echo -e "${txtgrn} gradle build 시작... 🐘${txtrst}"
     "$SHELL_SCRIPT_PATH"/gradlew clean build
     echo -e "${txtgrn} gradle build 완료! 🐣${txtrst}"
 }
 
-function getPid() {
+function get_pid() {
     echo -e "${txtgrn} 프로세스 pid 찾기... 🔍${txtrst}"
     pid=$(pgrep -a "java" | grep "subway" | awk '{print $1}')
     echo -e "${txtgrn} 프로세스 pid 찾기 완료! 🔍${txtrst}"
     echo -e "$pid" # for pipeline chaining
 }
 
-function killProcess() {
+function kill_process() {
     echo -e "${txtgrn} 프로세스 종료... 🔌${txtrst}"
     if [ -z "$pid" ]; then
         echo -e "${txtred} 프로세스 pid 없음! 🤔${txtrst}"
@@ -63,7 +63,7 @@ function killProcess() {
     fi
 }
 
-function checkProcessTerminated() {
+function check_process_terminated() {
     echo -e "${txtgrn} 프로세스 종료 확인... 🔍${txtrst}"
     if [ -z "$pid" ]; then
         echo -e "${txtgrn} 프로세스 종료 확인 완료! 🔍${txtrst}"
@@ -75,12 +75,12 @@ function checkProcessTerminated() {
         else
             sleep 3
             process_term_check_count=$((process_term_check_count++))
-            checkProcessTerminated
+            check_process_terminated
         fi
     fi
 }
 
-function nohupRun() {
+function nohup_run() {
     echo -e "${txtgrn} nohup 실행... 프로필: $PROFILE 🎬${txtrst}"
     if [ "$PROFILE" = "local" -o "$PROFILE" = "dev" -o "$PROFILE" = "prod" ]; then
         nohup java -jar -Dspring.profiles.active="$PROFILE" "$SHELL_SCRIPT_PATH"/build/libs/subway-0.0.1-SNAPSHOT.jar  1> logging.log 2>&1 &
@@ -91,10 +91,10 @@ function nohupRun() {
     fi
 }
 
-repositoryPull
-gradleBuild
-getPid
-killProcess
-getPid
-checkProcessTerminated
-nohupRun
+repository_pull
+gradle_build
+get_pid
+kill_process
+get_pid
+check_process_terminated
+nohup_run
