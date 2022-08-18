@@ -10,7 +10,6 @@ txtgra='\033[1;30m' # Gray
 
 ## 스크림트 실행시 전달되는 파라미터
 
-EXECUTION_PATH=${pwd}
 SHELL_SCRIPT_PATH=$(dirname "$0")
 BRANCH=$1
 PROFILE=$2
@@ -92,6 +91,7 @@ function nohup_run() {
 }
 
 function check_diff() {
+    cd "$SHELL_SCRIPT_PATH" || exit 1
     git fetch
     master=$(git rev-parse "$BRANCH")
     remote=$(git rev-parse origin/"$BRANCH")
