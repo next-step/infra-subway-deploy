@@ -50,7 +50,7 @@ java -version
 
 
 echo -e "${txtgrn}빌드 중 ..."
-/gradlew clean build
+./gradlew clean build
 catch 'build 실패'
 
 echo -e "${txtgrn}실행 중인 프로세스를 종료 시킵니다."
