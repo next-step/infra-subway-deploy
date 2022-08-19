@@ -1,10 +1,4 @@
-account:
-  name: localuser
-  password: local
-
 spring:
-  profiles:
-    active: local
   jpa:
     database: h2
     generate-ddl: false
@@ -18,17 +12,12 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb;MODE=MySQL
-    username: localuser
-    password: local
-    initialization-mode: always
+    username: sa
+    password:
 
 logging:
   level:
-    org:
-      hibernate:
-        type:
-          descriptor:
-            sql: trace
+    org.hibernate.type.descriptor.sql: trace
 
 security:
   jwt:
