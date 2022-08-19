@@ -1,0 +1,1026 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="지하철 경로 조회" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-19T17:24:00" hostname="ip-192-168-15-12" time="0.585">
+  <properties/>
+  <testcase name="두 역의 최단 거리 경로를 조회한다." classname="nextstep.subway.path.PathAcceptanceTest" time="0.585"/>
+  <system-out><![CDATA[2022-08-20 02:24:00.177  INFO 16121 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [nextstep.subway.path.PathAcceptanceTest], using SpringBootContextLoader
+2022-08-20 02:24:00.181  INFO 16121 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [nextstep.subway.path.PathAcceptanceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-08-20 02:24:00.182  INFO 16121 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [nextstep.subway.path.PathAcceptanceTest]: PathAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-08-20 02:24:00.185  INFO 16121 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration nextstep.subway.SubwayApplication for test class nextstep.subway.path.PathAcceptanceTest
+2022-08-20 02:24:00.187  INFO 16121 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-08-20 02:24:00.188  INFO 16121 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1d053dec, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@439c2b16, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@55c79c96, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2ee797ef, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1a393582, org.springframework.test.context.transaction.TransactionalTestExecutionListener@385f7948, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@519571f9, org.springframework.test.context.event.EventPublishingTestExecutionListener@435fdccb, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@10996407, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@53cfca65, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@29af735c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@14ab5b26, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4fc9bce8, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@62f8db96]
+Hibernate: 
+    
+SET
+    REFERENTIAL_INTEGRITY FALSE
+Hibernate: 
+    TRUNCATE TABLE section
+Hibernate: 
+    ALTER TABLE section ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE line
+Hibernate: 
+    ALTER TABLE line ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE favorite
+Hibernate: 
+    ALTER TABLE favorite ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE station
+Hibernate: 
+    ALTER TABLE station ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE member
+Hibernate: 
+    ALTER TABLE member ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    
+SET
+    REFERENTIAL_INTEGRITY TRUE
+Request method:	POST
+Request URI:	http://localhost:37811/stations
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "name": "강남역"
+}
+Hibernate: 
+    insert 
+    into
+        station
+        (id, created_date, modified_date, name) 
+    values
+        (null, ?, ?, ?)
+2022-08-20 02:24:00.213 TRACE 16121 --- [o-auto-1-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-08-20T02:24:00.212]
+2022-08-20 02:24:00.213 TRACE 16121 --- [o-auto-1-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-08-20T02:24:00.212]
+2022-08-20 02:24:00.213 TRACE 16121 --- [o-auto-1-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [강남역]
+POST /stations HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 20
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 201 Created
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Location: /stations/1
+Content-Type: application/json
+
+
+
+HTTP/1.1 201 
+Location: /stations/1
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    "id": 1,
+    "name": "강남역",
+    "createdDate": "2022-08-20T02:24:00.212",
+    "modifiedDate": "2022-08-20T02:24:00.212"
+}
+Request method:	POST
+Request URI:	http://localhost:37811/stations
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "name": "양재역"
+}
+Hibernate: 
+    insert 
+    into
+        station
+        (id, created_date, modified_date, name) 
+    values
+        (null, ?, ?, ?)
+2022-08-20 02:24:00.246 TRACE 16121 --- [o-auto-1-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.247 TRACE 16121 --- [o-auto-1-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.247 TRACE 16121 --- [o-auto-1-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [양재역]
+POST /stations HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 20
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 201 Created
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Location: /stations/2
+Content-Type: application/json
+
+
+
+HTTP/1.1 201 
+Location: /stations/2
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    "id": 2,
+    "name": "양재역",
+    "createdDate": "2022-08-20T02:24:00.245",
+    "modifiedDate": "2022-08-20T02:24:00.245"
+}
+Request method:	POST
+Request URI:	http://localhost:37811/stations
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "name": "교대역"
+}
+Hibernate: 
+    insert 
+    into
+        station
+        (id, created_date, modified_date, name) 
+    values
+        (null, ?, ?, ?)
+2022-08-20 02:24:00.302 TRACE 16121 --- [o-auto-1-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.302 TRACE 16121 --- [o-auto-1-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.302 TRACE 16121 --- [o-auto-1-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [교대역]
+POST /stations HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 20
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 201 Created
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Location: /stations/3
+Content-Type: application/json
+
+
+
+HTTP/1.1 201 
+Location: /stations/3
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    "id": 3,
+    "name": "교대역",
+    "createdDate": "2022-08-20T02:24:00.302",
+    "modifiedDate": "2022-08-20T02:24:00.302"
+}
+Request method:	POST
+Request URI:	http://localhost:37811/stations
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "name": "남부터미널역"
+}
+Hibernate: 
+    insert 
+    into
+        station
+        (id, created_date, modified_date, name) 
+    values
+        (null, ?, ?, ?)
+2022-08-20 02:24:00.351 TRACE 16121 --- [o-auto-1-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-08-20T02:24:00.349]
+2022-08-20 02:24:00.352 TRACE 16121 --- [o-auto-1-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-08-20T02:24:00.349]
+2022-08-20 02:24:00.352 TRACE 16121 --- [o-auto-1-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [남부터미널역]
+POST /stations HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 29
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 201 Created
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Location: /stations/4
+Content-Type: application/json
+
+
+
+HTTP/1.1 201 
+Location: /stations/4
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    "id": 4,
+    "name": "남부터미널역",
+    "createdDate": "2022-08-20T02:24:00.349",
+    "modifiedDate": "2022-08-20T02:24:00.349"
+}
+Request method:	POST
+Request URI:	http://localhost:37811/lines
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "color": "bg-red-600",
+    "distance": "10",
+    "name": "신분당선",
+    "downStationId": "2",
+    "upStationId": "1"
+}
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.408 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2022-08-20 02:24:00.409 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.212]
+2022-08-20 02:24:00.409 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.212]
+2022-08-20 02:24:00.410 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [강남역]
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.411 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2022-08-20 02:24:00.412 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.413 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.413 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [양재역]
+Hibernate: 
+    insert 
+    into
+        line
+        (id, created_date, modified_date, color, name) 
+    values
+        (null, ?, ?, ?, ?)
+2022-08-20 02:24:00.431 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-08-20T02:24:00.417]
+2022-08-20 02:24:00.431 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-08-20T02:24:00.417]
+2022-08-20 02:24:00.431 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [bg-red-600]
+2022-08-20 02:24:00.431 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [신분당선]
+Hibernate: 
+    insert 
+    into
+        section
+        (id, distance, down_station_id, line_id, up_station_id) 
+    values
+        (null, ?, ?, ?, ?)
+2022-08-20 02:24:00.434 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [10]
+2022-08-20 02:24:00.434 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [BIGINT] - [2]
+2022-08-20 02:24:00.435 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [1]
+2022-08-20 02:24:00.435 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [1]
+HTTP/1.1 201 
+Location: /lines/1
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    "id": 1,
+    "name": "신분당선",
+    "color": "bg-red-600",
+    "stations": [
+        {
+            "id": 1,
+            "name": "강남역",
+            "createdDate": "2022-08-20T02:24:00.212",
+            "modifiedDate": "2022-08-20T02:24:00.212"
+        },
+        {
+            "id": 2,
+            "name": "양재역",
+            "createdDate": "2022-08-20T02:24:00.245",
+            "modifiedDate": "2022-08-20T02:24:00.245"
+        }
+    ],
+    "createdDate": "2022-08-20T02:24:00.417",
+    "modifiedDate": "2022-08-20T02:24:00.417"
+}
+POST /lines HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 98
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 201 Created
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Location: /lines/1
+Content-Type: application/json
+
+
+
+Request method:	POST
+Request URI:	http://localhost:37811/lines
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "color": "bg-red-600",
+    "distance": "10",
+    "name": "이호선",
+    "downStationId": "1",
+    "upStationId": "3"
+}
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.485 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2022-08-20 02:24:00.486 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.486 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.486 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [교대역]
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.488 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2022-08-20 02:24:00.488 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.212]
+2022-08-20 02:24:00.488 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.212]
+2022-08-20 02:24:00.489 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [강남역]
+Hibernate: 
+    insert 
+    into
+        line
+        (id, created_date, modified_date, color, name) 
+    values
+        (null, ?, ?, ?, ?)
+2022-08-20 02:24:00.490 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-08-20T02:24:00.489]
+2022-08-20 02:24:00.490 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-08-20T02:24:00.489]
+2022-08-20 02:24:00.491 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [bg-red-600]
+2022-08-20 02:24:00.491 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [이호선]
+Hibernate: 
+    insert 
+    into
+        section
+        (id, distance, down_station_id, line_id, up_station_id) 
+    values
+        (null, ?, ?, ?, ?)
+2022-08-20 02:24:00.493 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [10]
+2022-08-20 02:24:00.493 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [BIGINT] - [1]
+2022-08-20 02:24:00.493 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [2]
+2022-08-20 02:24:00.493 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [3]
+HTTP/1.1 201 
+Location: /lines/2
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    "id": 2,
+    "name": "이호선",
+    "color": "bg-red-600",
+    "stations": [
+        {
+            "id": 3,
+            "name": "교대역",
+            "createdDate": "2022-08-20T02:24:00.302",
+            "modifiedDate": "2022-08-20T02:24:00.302"
+        },
+        {
+            "id": 1,
+            "name": "강남역",
+            "createdDate": "2022-08-20T02:24:00.212",
+            "modifiedDate": "2022-08-20T02:24:00.212"
+        }
+    ],
+    "createdDate": "2022-08-20T02:24:00.489",
+    "modifiedDate": "2022-08-20T02:24:00.489"
+}
+POST /lines HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 95
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 201 Created
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Location: /lines/2
+Content-Type: application/json
+
+
+
+Request method:	POST
+Request URI:	http://localhost:37811/lines
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "color": "bg-red-600",
+    "distance": "5",
+    "name": "삼호선",
+    "downStationId": "2",
+    "upStationId": "3"
+}
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.525 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2022-08-20 02:24:00.525 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.526 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.526 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [교대역]
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.527 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2022-08-20 02:24:00.528 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.528 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.528 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [양재역]
+Hibernate: 
+    insert 
+    into
+        line
+        (id, created_date, modified_date, color, name) 
+    values
+        (null, ?, ?, ?, ?)
+2022-08-20 02:24:00.530 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-08-20T02:24:00.529]
+2022-08-20 02:24:00.530 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-08-20T02:24:00.529]
+2022-08-20 02:24:00.530 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [bg-red-600]
+2022-08-20 02:24:00.530 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [삼호선]
+Hibernate: 
+    insert 
+    into
+        section
+        (id, distance, down_station_id, line_id, up_station_id) 
+    values
+        (null, ?, ?, ?, ?)
+2022-08-20 02:24:00.531 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [5]
+2022-08-20 02:24:00.531 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [BIGINT] - [2]
+2022-08-20 02:24:00.532 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [3]
+2022-08-20 02:24:00.532 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [3]
+HTTP/1.1 201 
+Location: /lines/3
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    "id": 3,
+    "name": "삼호선",
+    "color": "bg-red-600",
+    "stations": [
+        {
+            "id": 3,
+            "name": "교대역",
+            "createdDate": "2022-08-20T02:24:00.302",
+            "modifiedDate": "2022-08-20T02:24:00.302"
+        },
+        {
+            "id": 2,
+            "name": "양재역",
+            "createdDate": "2022-08-20T02:24:00.245",
+            "modifiedDate": "2022-08-20T02:24:00.245"
+        }
+    ],
+    "createdDate": "2022-08-20T02:24:00.529",
+    "modifiedDate": "2022-08-20T02:24:00.529"
+}
+POST /lines HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 94
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 201 Created
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Location: /lines/3
+Content-Type: application/json
+
+
+
+Request method:	POST
+Request URI:	http://localhost:37811/lines/3/sections
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "distance": "3",
+    "downStationId": "4",
+    "upStationId": "3"
+}
+Hibernate: 
+    select
+        line0_.id as id1_1_0_,
+        line0_.created_date as created_2_1_0_,
+        line0_.modified_date as modified3_1_0_,
+        line0_.color as color4_1_0_,
+        line0_.name as name5_1_0_ 
+    from
+        line line0_ 
+    where
+        line0_.id=?
+2022-08-20 02:24:00.600 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2022-08-20 02:24:00.602 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.529]
+2022-08-20 02:24:00.602 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.529]
+2022-08-20 02:24:00.602 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([color4_1_0_] : [VARCHAR]) - [bg-red-600]
+2022-08-20 02:24:00.602 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_1_0_] : [VARCHAR]) - [삼호선]
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.606 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2022-08-20 02:24:00.607 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.607 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.608 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [교대역]
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.609 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [4]
+2022-08-20 02:24:00.610 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.349]
+2022-08-20 02:24:00.610 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.349]
+2022-08-20 02:24:00.611 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [남부터미널역]
+Hibernate: 
+    select
+        sections0_.line_id as line_id4_3_0_,
+        sections0_.id as id1_3_0_,
+        sections0_.id as id1_3_1_,
+        sections0_.distance as distance2_3_1_,
+        sections0_.down_station_id as down_sta3_3_1_,
+        sections0_.line_id as line_id4_3_1_,
+        sections0_.up_station_id as up_stati5_3_1_,
+        station1_.id as id1_4_2_,
+        station1_.created_date as created_2_4_2_,
+        station1_.modified_date as modified3_4_2_,
+        station1_.name as name4_4_2_,
+        station2_.id as id1_4_3_,
+        station2_.created_date as created_2_4_3_,
+        station2_.modified_date as modified3_4_3_,
+        station2_.name as name4_4_3_ 
+    from
+        section sections0_ 
+    left outer join
+        station station1_ 
+            on sections0_.down_station_id=station1_.id 
+    left outer join
+        station station2_ 
+            on sections0_.up_station_id=station2_.id 
+    where
+        sections0_.line_id=?
+2022-08-20 02:24:00.616 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2022-08-20 02:24:00.621 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_1_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.622 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_2_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.622 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_3_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.623 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([distance2_3_1_] : [INTEGER]) - [5]
+2022-08-20 02:24:00.623 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([down_sta3_3_1_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.623 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_1_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.623 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([up_stati5_3_1_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.624 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_2_] : [TIMESTAMP]) - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.625 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_2_] : [TIMESTAMP]) - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.625 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_2_] : [VARCHAR]) - [양재역]
+2022-08-20 02:24:00.625 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_0_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.625 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [3]
+Hibernate: 
+    insert 
+    into
+        section
+        (id, distance, down_station_id, line_id, up_station_id) 
+    values
+        (null, ?, ?, ?, ?)
+2022-08-20 02:24:00.630 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [3]
+2022-08-20 02:24:00.631 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [BIGINT] - [4]
+2022-08-20 02:24:00.631 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [3]
+2022-08-20 02:24:00.631 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [3]
+Hibernate: 
+    update
+        section 
+    set
+        distance=?,
+        down_station_id=?,
+        line_id=?,
+        up_station_id=? 
+    where
+        id=?
+2022-08-20 02:24:00.636 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [2]
+2022-08-20 02:24:00.636 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [BIGINT] - [2]
+2022-08-20 02:24:00.636 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [BIGINT] - [3]
+2022-08-20 02:24:00.636 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [BIGINT] - [4]
+2022-08-20 02:24:00.637 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [BIGINT] - [3]
+HTTP/1.1 200 
+Content-Length: 0
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+POST /lines/3/sections HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 54
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 200 OK
+Keep-Alive: timeout=60
+Connection: keep-alive
+Content-Length: 0
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+
+
+
+Request method:	GET
+Request URI:	http://localhost:37811/paths?source=3&target=2
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+Hibernate: 
+    select
+        line0_.id as id1_1_,
+        line0_.created_date as created_2_1_,
+        line0_.modified_date as modified3_1_,
+        line0_.color as color4_1_,
+        line0_.name as name5_1_ 
+    from
+        line line0_
+2022-08-20 02:24:00.683 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_] : [BIGINT]) - [1]
+2022-08-20 02:24:00.684 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2022-08-20T02:24:00.417]
+2022-08-20 02:24:00.684 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2022-08-20T02:24:00.417]
+2022-08-20 02:24:00.684 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([color4_1_] : [VARCHAR]) - [bg-red-600]
+2022-08-20 02:24:00.684 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_1_] : [VARCHAR]) - [신분당선]
+2022-08-20 02:24:00.684 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.685 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2022-08-20T02:24:00.489]
+2022-08-20 02:24:00.685 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2022-08-20T02:24:00.489]
+2022-08-20 02:24:00.685 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([color4_1_] : [VARCHAR]) - [bg-red-600]
+2022-08-20 02:24:00.685 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_1_] : [VARCHAR]) - [이호선]
+2022-08-20 02:24:00.685 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_1_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.686 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_1_] : [TIMESTAMP]) - [2022-08-20T02:24:00.529]
+2022-08-20 02:24:00.686 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_1_] : [TIMESTAMP]) - [2022-08-20T02:24:00.529]
+2022-08-20 02:24:00.686 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([color4_1_] : [VARCHAR]) - [bg-red-600]
+2022-08-20 02:24:00.686 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name5_1_] : [VARCHAR]) - [삼호선]
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.687 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2022-08-20 02:24:00.688 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.688 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.302]
+2022-08-20 02:24:00.688 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [교대역]
+Hibernate: 
+    select
+        station0_.id as id1_4_0_,
+        station0_.created_date as created_2_4_0_,
+        station0_.modified_date as modified3_4_0_,
+        station0_.name as name4_4_0_ 
+    from
+        station station0_ 
+    where
+        station0_.id=?
+2022-08-20 02:24:00.689 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2022-08-20 02:24:00.690 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.691 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_0_] : [TIMESTAMP]) - [2022-08-20T02:24:00.245]
+2022-08-20 02:24:00.692 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_0_] : [VARCHAR]) - [양재역]
+Hibernate: 
+    select
+        sections0_.line_id as line_id4_3_0_,
+        sections0_.id as id1_3_0_,
+        sections0_.id as id1_3_1_,
+        sections0_.distance as distance2_3_1_,
+        sections0_.down_station_id as down_sta3_3_1_,
+        sections0_.line_id as line_id4_3_1_,
+        sections0_.up_station_id as up_stati5_3_1_,
+        station1_.id as id1_4_2_,
+        station1_.created_date as created_2_4_2_,
+        station1_.modified_date as modified3_4_2_,
+        station1_.name as name4_4_2_,
+        station2_.id as id1_4_3_,
+        station2_.created_date as created_2_4_3_,
+        station2_.modified_date as modified3_4_3_,
+        station2_.name as name4_4_3_ 
+    from
+        section sections0_ 
+    left outer join
+        station station1_ 
+            on sections0_.down_station_id=station1_.id 
+    left outer join
+        station station2_ 
+            on sections0_.up_station_id=station2_.id 
+    where
+        sections0_.line_id=?
+2022-08-20 02:24:00.701 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2022-08-20 02:24:00.702 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_1_] : [BIGINT]) - [1]
+2022-08-20 02:24:00.702 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_2_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.703 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_3_] : [BIGINT]) - [1]
+2022-08-20 02:24:00.703 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([distance2_3_1_] : [INTEGER]) - [10]
+2022-08-20 02:24:00.703 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([down_sta3_3_1_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.703 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_1_] : [BIGINT]) - [1]
+2022-08-20 02:24:00.703 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([up_stati5_3_1_] : [BIGINT]) - [1]
+2022-08-20 02:24:00.704 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_3_] : [TIMESTAMP]) - [2022-08-20T02:24:00.212]
+2022-08-20 02:24:00.704 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_3_] : [TIMESTAMP]) - [2022-08-20T02:24:00.212]
+2022-08-20 02:24:00.704 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_3_] : [VARCHAR]) - [강남역]
+2022-08-20 02:24:00.704 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_0_] : [BIGINT]) - [1]
+2022-08-20 02:24:00.705 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [1]
+Hibernate: 
+    select
+        sections0_.line_id as line_id4_3_0_,
+        sections0_.id as id1_3_0_,
+        sections0_.id as id1_3_1_,
+        sections0_.distance as distance2_3_1_,
+        sections0_.down_station_id as down_sta3_3_1_,
+        sections0_.line_id as line_id4_3_1_,
+        sections0_.up_station_id as up_stati5_3_1_,
+        station1_.id as id1_4_2_,
+        station1_.created_date as created_2_4_2_,
+        station1_.modified_date as modified3_4_2_,
+        station1_.name as name4_4_2_,
+        station2_.id as id1_4_3_,
+        station2_.created_date as created_2_4_3_,
+        station2_.modified_date as modified3_4_3_,
+        station2_.name as name4_4_3_ 
+    from
+        section sections0_ 
+    left outer join
+        station station1_ 
+            on sections0_.down_station_id=station1_.id 
+    left outer join
+        station station2_ 
+            on sections0_.up_station_id=station2_.id 
+    where
+        sections0_.line_id=?
+2022-08-20 02:24:00.706 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [2]
+2022-08-20 02:24:00.707 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_1_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.707 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_2_] : [BIGINT]) - [1]
+2022-08-20 02:24:00.707 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_3_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.708 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([distance2_3_1_] : [INTEGER]) - [10]
+2022-08-20 02:24:00.708 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([down_sta3_3_1_] : [BIGINT]) - [1]
+2022-08-20 02:24:00.708 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_1_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.710 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([up_stati5_3_1_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.710 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_0_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.710 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [2]
+Hibernate: 
+    select
+        sections0_.line_id as line_id4_3_0_,
+        sections0_.id as id1_3_0_,
+        sections0_.id as id1_3_1_,
+        sections0_.distance as distance2_3_1_,
+        sections0_.down_station_id as down_sta3_3_1_,
+        sections0_.line_id as line_id4_3_1_,
+        sections0_.up_station_id as up_stati5_3_1_,
+        station1_.id as id1_4_2_,
+        station1_.created_date as created_2_4_2_,
+        station1_.modified_date as modified3_4_2_,
+        station1_.name as name4_4_2_,
+        station2_.id as id1_4_3_,
+        station2_.created_date as created_2_4_3_,
+        station2_.modified_date as modified3_4_3_,
+        station2_.name as name4_4_3_ 
+    from
+        section sections0_ 
+    left outer join
+        station station1_ 
+            on sections0_.down_station_id=station1_.id 
+    left outer join
+        station station2_ 
+            on sections0_.up_station_id=station2_.id 
+    where
+        sections0_.line_id=?
+2022-08-20 02:24:00.712 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [3]
+2022-08-20 02:24:00.713 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_1_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.713 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_2_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.713 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_3_] : [BIGINT]) - [4]
+2022-08-20 02:24:00.713 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([distance2_3_1_] : [INTEGER]) - [2]
+2022-08-20 02:24:00.713 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([down_sta3_3_1_] : [BIGINT]) - [2]
+2022-08-20 02:24:00.715 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_1_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.716 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([up_stati5_3_1_] : [BIGINT]) - [4]
+2022-08-20 02:24:00.716 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_4_3_] : [TIMESTAMP]) - [2022-08-20T02:24:00.349]
+2022-08-20 02:24:00.717 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_4_3_] : [TIMESTAMP]) - [2022-08-20T02:24:00.349]
+2022-08-20 02:24:00.717 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([name4_4_3_] : [VARCHAR]) - [남부터미널역]
+2022-08-20 02:24:00.717 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_0_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.717 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.717 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_1_] : [BIGINT]) - [4]
+2022-08-20 02:24:00.720 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_2_] : [BIGINT]) - [4]
+2022-08-20 02:24:00.720 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_4_3_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.720 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([distance2_3_1_] : [INTEGER]) - [3]
+2022-08-20 02:24:00.721 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([down_sta3_3_1_] : [BIGINT]) - [4]
+2022-08-20 02:24:00.721 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_1_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.721 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([up_stati5_3_1_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.722 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([line_id4_3_0_] : [BIGINT]) - [3]
+2022-08-20 02:24:00.722 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_3_0_] : [BIGINT]) - [4]
+HTTP/1.1 200 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:24:00 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    "stations": [
+        {
+            "id": 3,
+            "name": "교대역",
+            "createdDate": "2022-08-20T02:24:00.302",
+            "modifiedDate": "2022-08-20T02:24:00.302"
+        },
+        {
+            "id": 4,
+            "name": "남부터미널역",
+            "createdDate": "2022-08-20T02:24:00.349",
+            "modifiedDate": "2022-08-20T02:24:00.349"
+        },
+        {
+            "id": 2,
+            "name": "양재역",
+            "createdDate": "2022-08-20T02:24:00.245",
+            "modifiedDate": "2022-08-20T02:24:00.245"
+        }
+    ],
+    "distance": 5
+}
+GET /paths?source=3&target=2 HTTP/1.1
+accept: application/json
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:24:00 GMT
+Content-Type: application/json
+
+
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

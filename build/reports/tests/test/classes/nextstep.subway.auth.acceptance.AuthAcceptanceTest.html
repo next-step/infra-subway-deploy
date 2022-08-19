@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class nextstep.subway.auth.acceptance.AuthAcceptanceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class nextstep.subway.auth.acceptance.AuthAcceptanceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/nextstep.subway.auth.acceptance.html">nextstep.subway.auth.acceptance</a> &gt; AuthAcceptanceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.304s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">Bearer Auth 로그인 실패</td>
+<td class="success">myInfoWithBadBearerAuth()</td>
+<td class="success">0.130s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Bearer Auth</td>
+<td class="success">myInfoWithBearerAuth()</td>
+<td class="success">0.147s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Bearer Auth 유효하지 않은 토큰</td>
+<td class="success">myInfoWithWrongBearerAuth()</td>
+<td class="success">0.027s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-08-20 02:23:59.572  INFO 16121 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [nextstep.subway.auth.acceptance.AuthAcceptanceTest], using SpringBootContextLoader
+2022-08-20 02:23:59.573  INFO 16121 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [nextstep.subway.auth.acceptance.AuthAcceptanceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-08-20 02:23:59.573  INFO 16121 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [nextstep.subway.auth.acceptance.AuthAcceptanceTest]: AuthAcceptanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-08-20 02:23:59.628  INFO 16121 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration nextstep.subway.SubwayApplication for test class nextstep.subway.auth.acceptance.AuthAcceptanceTest
+2022-08-20 02:23:59.631  INFO 16121 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-08-20 02:23:59.632  INFO 16121 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@478bfe9d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6595d73e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5f0ac799, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4575540e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5d12252b, org.springframework.test.context.transaction.TransactionalTestExecutionListener@16753590, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1fca1ec8, org.springframework.test.context.event.EventPublishingTestExecutionListener@7070ec1b, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3c07a443, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3e1cfe6, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4c92ad0c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3b7580b1, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3a510e20, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@37c27873]
+Hibernate: 
+    
+SET
+    REFERENTIAL_INTEGRITY FALSE
+Hibernate: 
+    TRUNCATE TABLE section
+Hibernate: 
+    ALTER TABLE section ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE line
+Hibernate: 
+    ALTER TABLE line ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE favorite
+Hibernate: 
+    ALTER TABLE favorite ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE station
+Hibernate: 
+    ALTER TABLE station ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE member
+Hibernate: 
+    ALTER TABLE member ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    
+SET
+    REFERENTIAL_INTEGRITY TRUE
+Request method:	POST
+Request URI:	http://localhost:37811/members
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+{
+    &quot;password&quot;: &quot;password&quot;,
+    &quot;email&quot;: &quot;email@email.com&quot;,
+    &quot;age&quot;: &quot;20&quot;
+}
+Hibernate: 
+    insert 
+    into
+        member
+        (id, created_date, modified_date, age, email, password) 
+    values
+        (null, ?, ?, ?, ?, ?)
+2022-08-20 02:23:59.680 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-08-20T02:23:59.675]
+2022-08-20 02:23:59.680 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-08-20T02:23:59.675]
+2022-08-20 02:23:59.681 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [20]
+2022-08-20 02:23:59.681 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [email@email.com]
+2022-08-20 02:23:59.681 TRACE 16121 --- [o-auto-1-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [password]
+HTTP/1.1 201 
+Location: /members/1
+Content-Length: 0
+Date: Fri, 19 Aug 2022 17:23:58 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+Request method:	POST
+Request URI:	http://localhost:37811/login/token
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+{
+    &quot;password&quot;: &quot;password&quot;,
+    &quot;email&quot;: &quot;email@email.comOTHER&quot;
+}
+POST /members HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 60
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 201 Created
+Keep-Alive: timeout=60
+Connection: keep-alive
+Content-Length: 0
+Date: Fri, 19 Aug 2022 17:23:58 GMT
+Location: /members/1
+
+
+
+Hibernate: 
+    select
+        member0_.id as id1_2_,
+        member0_.created_date as created_2_2_,
+        member0_.modified_date as modified3_2_,
+        member0_.age as age4_2_,
+        member0_.email as email5_2_,
+        member0_.password as password6_2_ 
+    from
+        member member0_ 
+    where
+        member0_.email=?
+2022-08-20 02:23:59.723 TRACE 16121 --- [o-auto-1-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [email@email.comOTHER]
+HTTP/1.1 401 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    &quot;timestamp&quot;: &quot;2022-08-19T17:23:59.737+00:00&quot;,
+    &quot;status&quot;: 401,
+    &quot;error&quot;: &quot;Unauthorized&quot;,
+    &quot;message&quot;: &quot;&quot;,
+    &quot;path&quot;: &quot;/login/token&quot;
+}
+POST /login/token HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 54
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 401 Unauthorized
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Content-Type: application/json
+
+
+
+Hibernate: 
+    
+SET
+    REFERENTIAL_INTEGRITY FALSE
+Hibernate: 
+    TRUNCATE TABLE section
+Hibernate: 
+    ALTER TABLE section ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE line
+Hibernate: 
+    ALTER TABLE line ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE favorite
+Hibernate: 
+    ALTER TABLE favorite ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE station
+Hibernate: 
+    ALTER TABLE station ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE member
+Hibernate: 
+    ALTER TABLE member ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    
+SET
+    REFERENTIAL_INTEGRITY TRUE
+Request method:	POST
+Request URI:	http://localhost:37811/members
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+{
+    &quot;password&quot;: &quot;password&quot;,
+    &quot;email&quot;: &quot;email@email.com&quot;,
+    &quot;age&quot;: &quot;20&quot;
+}
+Hibernate: 
+    insert 
+    into
+        member
+        (id, created_date, modified_date, age, email, password) 
+    values
+        (null, ?, ?, ?, ?, ?)
+2022-08-20 02:23:59.794 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [TIMESTAMP] - [2022-08-20T02:23:59.793]
+2022-08-20 02:23:59.794 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [TIMESTAMP] - [2022-08-20T02:23:59.793]
+2022-08-20 02:23:59.794 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [20]
+2022-08-20 02:23:59.794 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [email@email.com]
+2022-08-20 02:23:59.794 TRACE 16121 --- [o-auto-1-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [password]
+POST /members HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 60
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 201 Created
+Keep-Alive: timeout=60
+Connection: keep-alive
+Content-Length: 0
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Location: /members/1
+
+
+
+HTTP/1.1 201 
+Location: /members/1
+Content-Length: 0
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+Request method:	POST
+Request URI:	http://localhost:37811/login/token
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Accept=*/*
+				Content-Type=application/json; charset=UTF-8
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:
+{
+    &quot;password&quot;: &quot;password&quot;,
+    &quot;email&quot;: &quot;email@email.com&quot;
+}
+Hibernate: 
+    select
+        member0_.id as id1_2_,
+        member0_.created_date as created_2_2_,
+        member0_.modified_date as modified3_2_,
+        member0_.age as age4_2_,
+        member0_.email as email5_2_,
+        member0_.password as password6_2_ 
+    from
+        member member0_ 
+    where
+        member0_.email=?
+2022-08-20 02:23:59.812 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [email@email.com]
+2022-08-20 02:23:59.813 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_2_] : [BIGINT]) - [1]
+2022-08-20 02:23:59.813 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_2_] : [TIMESTAMP]) - [2022-08-20T02:23:59.793]
+2022-08-20 02:23:59.813 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_2_] : [TIMESTAMP]) - [2022-08-20T02:23:59.793]
+2022-08-20 02:23:59.814 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([age4_2_] : [INTEGER]) - [20]
+2022-08-20 02:23:59.814 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_2_] : [VARCHAR]) - [email@email.com]
+2022-08-20 02:23:59.814 TRACE 16121 --- [o-auto-1-exec-9] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password6_2_] : [VARCHAR]) - [password]
+HTTP/1.1 200 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE2NjA5Mjk4MzksImV4cCI6MTY2MDkzMzQzOX0.lPbe03LCjPF51zzDIVKjvFIm6QZp6XH88h1kPiOQ22w&quot;
+}
+POST /login/token HTTP/1.1
+accept: */*
+content-type: application/json; charset=UTF-8
+content-length: 49
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Content-Type: application/json
+
+
+
+Request method:	GET
+Request URI:	http://localhost:37811/members/me
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Accept=application/json
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:			&lt;none&gt;
+Hibernate: 
+    select
+        member0_.id as id1_2_,
+        member0_.created_date as created_2_2_,
+        member0_.modified_date as modified3_2_,
+        member0_.age as age4_2_,
+        member0_.email as email5_2_,
+        member0_.password as password6_2_ 
+    from
+        member member0_ 
+    where
+        member0_.email=?
+2022-08-20 02:23:59.901 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [email@email.com]
+2022-08-20 02:23:59.902 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([id1_2_] : [BIGINT]) - [1]
+2022-08-20 02:23:59.902 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([created_2_2_] : [TIMESTAMP]) - [2022-08-20T02:23:59.793]
+2022-08-20 02:23:59.902 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([modified3_2_] : [TIMESTAMP]) - [2022-08-20T02:23:59.793]
+2022-08-20 02:23:59.903 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([age4_2_] : [INTEGER]) - [20]
+2022-08-20 02:23:59.903 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([email5_2_] : [VARCHAR]) - [email@email.com]
+2022-08-20 02:23:59.903 TRACE 16121 --- [-auto-1-exec-10] o.h.type.descriptor.sql.BasicExtractor   : extracted value ([password6_2_] : [VARCHAR]) - [password]
+HTTP/1.1 200 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    &quot;id&quot;: 1,
+    &quot;email&quot;: &quot;email@email.com&quot;,
+    &quot;age&quot;: 20
+}
+Hibernate: 
+    
+SET
+    REFERENTIAL_INTEGRITY FALSE
+Hibernate: 
+    TRUNCATE TABLE section
+GET /members/me HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE2NjA5Mjk4MzksImV4cCI6MTY2MDkzMzQzOX0.lPbe03LCjPF51zzDIVKjvFIm6QZp6XH88h1kPiOQ22w
+accept: application/json
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Content-Type: application/json
+
+
+
+Hibernate: 
+    ALTER TABLE section ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE line
+Hibernate: 
+    ALTER TABLE line ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE favorite
+Hibernate: 
+    ALTER TABLE favorite ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE station
+Hibernate: 
+    ALTER TABLE station ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    TRUNCATE TABLE member
+Hibernate: 
+    ALTER TABLE member ALTER COLUMN ID RESTART WITH 1
+Hibernate: 
+    
+SET
+    REFERENTIAL_INTEGRITY TRUE
+Request method:	GET
+Request URI:	http://localhost:37811/members/me
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	&lt;none&gt;
+Headers:		Accept=application/json
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:			&lt;none&gt;
+GET /members/me HTTP/1.1
+authorization: Bearer accesstoken
+accept: application/json
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 401 Unauthorized
+Transfer-Encoding: chunked
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Content-Type: application/json
+
+
+
+HTTP/1.1 401 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 19 Aug 2022 17:23:59 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    &quot;timestamp&quot;: &quot;2022-08-19T17:23:59.937+00:00&quot;,
+    &quot;status&quot;: 401,
+    &quot;error&quot;: &quot;Unauthorized&quot;,
+    &quot;message&quot;: &quot;&quot;,
+    &quot;path&quot;: &quot;/members/me&quot;
+}
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.6.1</a> at Aug 20, 2022 2:24:03 AM</p>
+</div>
+</div>
+</body>
+</html>
