@@ -50,14 +50,14 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
-hyojin107-public-a (EC2-hyojin107-public)
-hyojin107-public-b
-hyojin107-internal-a (EC2-hyojin107-internal)
-hyojin107-internal-b (EC2-hyojin107-bastion)
+hyojin107-public-a (192.168.3.0/26)
+hyojin107-public-b (192.168.3.64/26)
+hyojin107-internal-a (192.168.3.128/27)
+hyojin107-internal-b (192.168.3.160/27)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 3.39.254.92
+- URL : http://www.hyojin-subway.kro.kr:8080 (3.39.254.92)
 
 
 
