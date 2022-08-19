@@ -72,6 +72,8 @@ npm run dev
 
 - URL : [https://mand2-infra-subway.kro.kr](https://mand2-infra-subway.kro.kr)
 
+- submodule: github token으로 로그인해야 됨. 
+
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
