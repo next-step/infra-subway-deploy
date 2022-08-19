@@ -17,7 +17,6 @@
 <br>
 
 ## 🚀 Getting Started
-
 ### Install
 #### npm 설치
 ```
@@ -69,7 +68,7 @@ KEY-johnprk.pem
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : www.find-subway.p-e.kr(자동 포트(8080:80) 및 https(http -> https) 포워딩)
 
 ---
 
