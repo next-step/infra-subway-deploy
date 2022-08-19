@@ -7,7 +7,7 @@ spring:
     active: prod
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.11.145:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://192.168.17.136:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: masterpw
   jpa:
