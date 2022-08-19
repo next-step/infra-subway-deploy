@@ -31,8 +31,13 @@ dependencies {
 	// jwt
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
+	// database - mysql
+	implementation 'mysql:mysql-connector-java'
+
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// database - h2
+	testImplementation 'com.h2database:h2'
 
 	runtimeOnly 'com.h2database:h2'
 }
