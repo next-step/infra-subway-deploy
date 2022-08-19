@@ -1,0 +1,10 @@
+account:
+  name: produser
+  passwd: prod
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: masterpw
+    url: jdbc:mysql://192.168.14.141:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
