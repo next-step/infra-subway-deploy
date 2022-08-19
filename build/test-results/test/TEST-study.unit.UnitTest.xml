@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="단위 테스트" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-19T17:24:03" hostname="ip-192-168-15-12" time="0.001">
+  <properties/>
+  <testcase name="단위 테스트 1" classname="study.unit.UnitTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
