@@ -2,6 +2,7 @@
 
 ## Variables
 LOGGING_DIR="$HOME/nextstep/logs"
+SCRIPT_DIR="$HOME/nextstep/infra-subway-deploy/scripts"
 
 ## Colors
 txtrst='\033[1;37m' # White
@@ -15,6 +16,13 @@ add_line_crlf() {
   echo ""
 }
 
+permit_authority_scripts() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${txtgrn} Permit scripts execution for other ${txtrst}"
+  echo -e "${txtylw}=======================================${txtrst}"
+  chmod o+x *
+}
+
 make_logging_directory() {
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn} Make logging Directory ${txtrst}"
@@ -26,5 +34,7 @@ make_logging_directory() {
 
   add_line_crlf
 }
+
+permit_authority_scripts
 
 make_logging_directory
