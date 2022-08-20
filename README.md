@@ -86,6 +86,7 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+<<<<<<< HEAD
 - deploy.sh
 
 ---
@@ -137,3 +138,6 @@ npm run dev
 ## 3단계 - 배포 스크립트 작성하기
 ### 기능 요구사항
 - [x] 배포 스크립트 작성하기
+=======
+- /home/ubuntu/nextstep/infra-subway-deploy
+>>>>>>> 9b67a42 (feature: step3 구현)
