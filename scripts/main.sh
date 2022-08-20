@@ -18,7 +18,7 @@ txtgra='\033[1;30m' # Gray
 ## Early return usage
 if [[ $# -ne 2 ]]; then
   echo -e "${txtylw}=======================================${txtrst}"
-  echo -e "${txtgrn} 사용법 : $0 {branch-name} {local | prod}${txtrst}"
+  echo -e "${txtgrn} 사용법 : $0 {branch-name} {local | prod} {ex) ./build/libs/subway-0.0.1-SNAPSHOT.jar}${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
   exit
 fi
@@ -55,3 +55,6 @@ pull_branch
 
 ## 3.Build application by Gradle
 build_application
+
+## 4.Shutdown previous processes
+"$SHELL_SCRIPT_PATH"/shutdown.sh
