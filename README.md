@@ -130,6 +130,14 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+- 통합 실행 스크립트:
+    - `scripts/main.sh`
+    - ex) /home/ubuntu/nextstep/infra-subway-deploy/scripts/main.sh step3 prod ./build/libs/subway-0.0.1-SNAPSHOT.jar
+- 구성 스크립트 :
+    - `scripts/preprocess.sh` : 먼저 생성되어야하는 디렉토리나 파일 생성 목적
+    - `scripts/shutdown.sh` : 기존에 생성되었던 프로세스 종료 목적
+    - `scripts/start.sh` : 새롭게 애플리케이션 실행 목적
+
 --- 
 
 ## 요구사항
@@ -185,6 +193,6 @@ npm run dev
 
 ### 3단계 - 배포 스크립트 작성하기
 
-- [ ] 배포 스크립트 작성하기
+- [x] 배포 스크립트 작성하기
     - 아래 내용을 모두 반영할 필요는 없습니다.
     - 반복적으로 실행하더라도 정상적으로 배포하는 스크립트를 작성해봅니다.
