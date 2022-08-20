@@ -50,6 +50,7 @@ KEY-johnprk.pem
 
 
 ### 1단계 - 망 구성하기
+
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 :
   - public-server1 : 192.168.15.0/26
@@ -61,11 +62,10 @@ KEY-johnprk.pem
 
   - URL : [바로가기](http://www.find-subway.p-e.kr:8080)
 
-
-
 ---
 
 ### 2단계 - 배포하기
+
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : www.find-subway.p-e.kr (자동 포트(8080:80) 및 https(http -> https) 포워딩)

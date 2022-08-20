@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="study.jgraph.JgraphTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-08-19T17:24:03" hostname="ip-192-168-15-12" time="0.017">
+  <properties/>
+  <testcase name="getKShortestPaths()" classname="study.jgraph.JgraphTest" time="0.016"/>
+  <testcase name="getDijkstraShortestPath()" classname="study.jgraph.JgraphTest" time="0.0"/>
+  <system-out><![CDATA[DELETE /favorites/1 HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE2NjA5Mjk4NDMsImV4cCI6MTY2MDkzMzQ0M30.cQfwqIvrHeYkxEwJPviqWTfdfP2K7_CgCJHdT-WuYps
+accept: */*
+host: localhost:37811
+connection: Keep-Alive
+user-agent: Apache-HttpClient/4.5.13 (Java/1.8.0_342)
+accept-encoding: gzip,deflate
+
+
+
+HTTP/1.1 204 No Content
+Keep-Alive: timeout=60
+Connection: keep-alive
+Date: Fri, 19 Aug 2022 17:24:02 GMT
+
+
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
