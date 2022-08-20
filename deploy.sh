@@ -56,15 +56,12 @@ function deploy() {
 }
 
 function start() {
-  read -p "Do you wish to install this program? " yn
-  case $yn in
-    [Yy] ) pull;
-           gradle_build;
-           find_pid;
-           kill_pid;
-           deploy;
-    [Nn] ) exit
-  esac
+  echo -e "배포를 시작할까요? (y)"
+    read input
+    if [ $input != "y" ]; then
+      echo "(${input}) 를 중단합니다"
+      exit;
+    fi
 }
 
 ## 조건 설정
