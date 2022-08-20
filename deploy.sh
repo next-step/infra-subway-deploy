@@ -48,6 +48,7 @@ function kill_pid() {
   fi
 }
 
+# jar 실행
 function deploy() {
   echo -e ""
   echo -e "${txtpur}>> deploy ${txtrst}"
@@ -55,19 +56,18 @@ function deploy() {
   nohup java -jar -Dspring.profiles.active=${PROFILE} $( find ./* -name ${BUILD_FILE}) >1 nextstep.log 2>&1  &
 }
 
-function start() {
-  echo -e "배포를 시작할까요? (y)"
-    read input
-    if [ $input != "y" ]; then
-      echo -e "${txtred} ====== 배포를 중단합니다 =====${txtrst}"
-      exit;
-    fi
-  echo -e "${txtgrn} ======= 배포를 시작합니다 =========${txtrst}"
-  pull;
-  gradle_build;
-  find_pid;
-  kill_pid;
-  deploy;
+# 변경이 있을 경우 pull
+function check_df() {
+  git fetch
+
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+  else
+    pull;
+  fi
 }
 
 ## 조건 설정
@@ -84,4 +84,8 @@ fi
 echo -e $BRANCH
 echo -e $PROFILE
 
-start;
+check_df;
+gradle_build;
+find_pid;
+kill_pid;
+deploy;
