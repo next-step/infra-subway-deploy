@@ -55,17 +55,6 @@ function deploy() {
   nohup java -jar -Dspring.profiles.active=${PROFILE} $( find ./* -name ${BUILD_FILE}) >1 nextstep.log 2>&1  &
 }
 
-function check_df() {
-  git fetch
-  master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin $BRANCH)
-
-  if [[ $master == $remote ]]; then
-    echo -e "${txtred}[$(date)] Nothing to do!!! 😫 ${txtrst}"
-    exit 0
-  fi
-}
-
 function start() {
   pull;
   gradle_build;
@@ -80,7 +69,7 @@ then
     echo -e "${txtylw}=======================================${txtrst}"
     echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
     echo -e ""
-    echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
+    echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ test | local | prod }"
     echo -e "${txtylw}=======================================${txtrst}"
     exit
 fi
