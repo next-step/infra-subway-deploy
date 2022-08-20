@@ -17,9 +17,9 @@ txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
 ## Early return usage
-if [[ $# -ne 2 ]]; then
+if [[ $# -ne 3 ]]; then
   echo -e "${txtylw}=======================================${txtrst}"
-  echo -e "${txtgrn} 사용법 : $0 {branch-name} {local | prod} {ex) ./build/libs/subway-0.0.1-SNAPSHOT.jar}${txtrst}"
+  echo -e "${txtgrn} Usage : $0 {branch-name} {local | prod} {ex) ./build/libs/subway-0.0.1-SNAPSHOT.jar}${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
   exit
 fi
@@ -30,7 +30,7 @@ add_line_crlf() {
 
 pull_branch() {
   echo -e "${txtylw}=======================================${txtrst}"
-  echo -e "${txtgrn} '$BRANCH' branch 를 pull 합니다.. ${txtrst}"
+  echo -e "${txtgrn} Pull branch: '$BRANCH' ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
 
   git pull origin "$BRANCH"
@@ -40,7 +40,7 @@ pull_branch() {
 
 build_application() {
   echo -e "${txtylw}=======================================${txtrst}"
-  echo -e "${txtgrn} '빌드를 시작합니다.. ${txtrst}"
+  echo -e "${txtgrn} 'Build application source ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
 
   ./gradlew clean build
