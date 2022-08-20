@@ -20,7 +20,7 @@ permit_authority_scripts() {
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn} Permit scripts execution for other ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
-  chmod o+x *
+  chmod u+x *
 }
 
 make_logging_directory() {
