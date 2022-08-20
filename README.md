@@ -170,3 +170,10 @@ find_pid;
 kill_pid;
 deploy;
 ```
+
+- crontab 설정
+- 1분마다 실행되게 설정하였습니다.
+
+```
+*/1 * * * * sudo bash /home/ubuntu/nextstep/infra-subway-deploy/deploy.sh main prod  > /home/ubuntu/crontab.log 2>&1
+```
