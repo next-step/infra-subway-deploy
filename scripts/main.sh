@@ -2,12 +2,12 @@
 
 set -e
 
-## 변수 설정
+## Variables
 SHELL_SCRIPT_PATH=$(dirname "$0")
 BRANCH=$1
 PROFILE=$2
 
-# 색 관련 변수
+# Colors
 txtrst='\033[1;37m' # White
 txtred='\033[1;31m' # Red
 txtylw='\033[1;33m' # Yellow
@@ -15,7 +15,7 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
-## 조건 설정
+## Early return usage
 if [[ $# -ne 2 ]]; then
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn} 사용법 : $0 {branch-name} {local | prod}${txtrst}"
@@ -47,8 +47,11 @@ build_application() {
   add_line_crlf
 }
 
-## 저장소 pull
+## 1.Preprocess
+"$SHELL_SCRIPT_PATH"/preprocess.sh
+
+## 2.Pull branch
 pull_branch
 
-## Build application by Gradle
+## 3.Build application by Gradle
 build_application
