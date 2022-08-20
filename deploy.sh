@@ -59,9 +59,10 @@ function start() {
   echo -e "배포를 시작할까요? (y)"
     read input
     if [ $input != "y" ]; then
-      echo "(${input}) 를 중단합니다"
+      echo -e "${txtred} ====== 배포를 중단합니다 =====${txtrst}"
       exit;
     fi
+  echo -e "${txtgrn} ======= 배포를 시작합니다 =========${txtrst}"
 }
 
 ## 조건 설정
