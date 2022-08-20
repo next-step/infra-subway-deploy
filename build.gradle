@@ -1,7 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.4.0-SNAPSHOT'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+    id "org.flywaydb.flyway" version "8.5.9"
 }
 
 group = 'nextstep'
@@ -9,40 +10,42 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
-	maven { url 'https://repo.spring.io/snapshot' }
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {
-	// spring
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-	// handlebars
-	implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
+    // handlebars
+    implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
 
-	// log
-	implementation 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
+    // log
+    implementation 'net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1'
 
-	// jgraph
-	implementation 'org.jgrapht:jgrapht-core:1.0.1'
+    // jgraph
+    implementation 'org.jgrapht:jgrapht-core:1.0.1'
 
-	// jwt
-	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    // jwt
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
-	// mysql
-	implementation 'mysql:mysql-connector-java'
+    // mysql
+    implementation 'mysql:mysql-connector-java'
 
-	testImplementation 'io.rest-assured:rest-assured:3.3.0'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'com.h2database:h2'
+    testImplementation 'io.rest-assured:rest-assured:3.3.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.h2database:h2'
 
-	// db
-	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'mysql:mysql-connector-java'
+    // db
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    compile 'org.flywaydb:flyway-core'  // runtimeOnly, implementation 만 쓰면 안됨. 이거로.
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
