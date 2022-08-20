@@ -56,11 +56,15 @@ function deploy() {
 }
 
 function start() {
-  pull;
-  gradle_build;
-  find_pid;
-  kill_pid;
-  deploy;
+  read -p "Do you wish to install this program? " yn
+  case $yn in
+    [Yy] ) pull;
+           gradle_build;
+           find_pid;
+           kill_pid;
+           deploy;
+    [Nn] ) exit
+  esac
 }
 
 ## 조건 설정
