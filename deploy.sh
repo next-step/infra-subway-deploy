@@ -63,6 +63,11 @@ function start() {
       exit;
     fi
   echo -e "${txtgrn} ======= 배포를 시작합니다 =========${txtrst}"
+  pull;
+  gradle_build;
+  find_pid;
+  kill_pid;
+  deploy;
 }
 
 ## 조건 설정
