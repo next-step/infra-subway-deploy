@@ -6,6 +6,7 @@ set -e
 SHELL_SCRIPT_PATH=$(dirname "$0")
 BRANCH=$1
 PROFILE=$2
+APPLICATION_JAR_PATH_FILENAME=$3
 
 # Colors
 txtrst='\033[1;37m' # White
@@ -58,3 +59,6 @@ build_application
 
 ## 4.Shutdown previous processes
 "$SHELL_SCRIPT_PATH"/shutdown.sh
+
+## 5.Start new process
+"$SHELL_SCRIPT_PATH"/start.sh "$PROFILE" "$APPLICATION_JAR_PATH_FILENAME"
