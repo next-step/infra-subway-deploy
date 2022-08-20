@@ -52,7 +52,7 @@ function deploy() {
   echo -e ""
   echo -e "${txtpur}>> deploy ${txtrst}"
   echo -e "$( find ./* -name "*subway*jar")"
-  nohup java -jar -Dspring.profiles.active=${PROFILE} $( find ./* -name ${BUILD_FILE}) >1 subway.log 2>&1  &
+  nohup java -jar -Dspring.profiles.active=${PROFILE} $( find ./* -name ${BUILD_FILE}) >1 nextstep.log 2>&1  &
 }
 
 function check_df() {
