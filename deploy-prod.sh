@@ -47,7 +47,11 @@ function check_df() {
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
+
+  # 서버에서 직접 수정한 것은 충돌나므로, 다 삭제 + 충돌나기 전에 repo에 push 하는 정책으로.
+  git stash -u
   git pull origin $BRANCH
+  git stash clear
 }
 
 function build() {
