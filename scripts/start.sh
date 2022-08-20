@@ -25,7 +25,7 @@ add_line_crlf() {
 
 startup() {
   echo -e "${txtylw}=======================================${txtrst}"
-  echo -e "${txtgrn} 'Starting WebServer ${txtrst}"
+  echo -e "${txtgrn} Starting WebServer ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
 
   if [[ ! -e $JAR_PATH_FILENAME ]]; then

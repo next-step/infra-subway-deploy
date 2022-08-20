@@ -40,7 +40,7 @@ pull_branch() {
 
 build_application() {
   echo -e "${txtylw}=======================================${txtrst}"
-  echo -e "${txtgrn} 'Build application source ${txtrst}"
+  echo -e "${txtgrn} Build application source ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
 
   ./gradlew clean build
