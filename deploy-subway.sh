@@ -27,7 +27,7 @@ echo -e ">> gradle clean build"
 ./gradlew clean build
 
 echo -e ">> find jar name"
-JAR_FILE_NAME=$(find ./infra-subway-deploy/build/* -name "*jar")
+JAR_FILE_NAME=$(find ~/nextstep/infra-subway-deploy/build/* -name "*jar")
 
 ACTIVE_PROFILE=prod
 echo ">> 배포할 파일명  ${JAR_NAME}"
