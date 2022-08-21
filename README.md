@@ -74,3 +74,5 @@ npm run dev
 
 /home/ubuntu/script/deploy.sh
 
+
+
