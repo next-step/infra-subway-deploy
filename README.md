@@ -58,7 +58,6 @@ npm run dev
   '192.168.8.160/27' - manage
 ]
 
-
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : sm9171.r-e.kr:8080
@@ -75,7 +74,8 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-- deploy.sh
+
+- /home/ubuntu/nextstep/infra-subway-deploy
 
 ---
 ## 1단계 - 지하철역 인수 테스트 작성
@@ -126,3 +126,4 @@ npm run dev
 ## 3단계 - 배포 스크립트 작성하기
 ### 기능 요구사항
 - [x] 배포 스크립트 작성하기
+
