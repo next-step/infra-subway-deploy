@@ -74,4 +74,85 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+```shell
+# 파라미터 옵션 가능
+./deploy.sh --branch wbluke --port 8081 --profile prod
+```
+
+deploy.sh
+
+```shell
+#!/bin/bash
+
+######################################## Functions
+function extract_variables() {
+        while [ $# -gt 0 ]; do
+
+                if [[ $1 == *"--"* ]]; then
+                        param="${1/--/}"
+                        declare -g $param="$2"
+                fi
+
+                shift
+        done
+}
+extract_variables $@;
+
+######################################## Variables
+GIT_REPOSITORY="infra-subway-deploy"
+GIT_REPOSITORY_URL="https://github.com/wbluke/${GIT_REPOSITORY}.git"
+GIT_TARGET_BRANCH="main"
+
+APPLCATION_PORT=8080
+ACTIVE_PROFILE="prod"
+
+: ${branch:=$GIT_TARGET_BRANCH}
+: ${port:=$APPLCATION_PORT}
+: ${profile:=$ACTIVE_PROFILE}
+echo -e "#################### params : branch=$branch port=$port profile=$profile \n"
+
+######################################## Script
+echo -e "#################### deploy start \n"
+
+## git repository pull (check directory)
+if [ ! -d "$GIT_REPOSITORY" ]; then
+        echo ">>>>>>>>>> git directory does not exist. clone from $GIT_REPOSITORY_URL"
+        git clone $GIT_REPOSITORY_URL
+fi
+
+## cd
+cd $GIT_REPOSITORY
+echo ">>>>>>>>>> change dir : $(pwd)"
+
+## checkout & pull
+echo ">>>>>>>>>> git checkout $branch"
+git checkout $branch
+echo ">>>>>>>>>> git pull origin $branch"
+git pull origin $branch
+echo ""
+
+## gradle build
+echo ">>>>>>>>>> project build"
+./gradlew clean build
+echo ""
+
+## if process exists, kill it
+PID="$(lsof -t -i :${port})"
+if [ ! -z "$PID" ]; then
+        echo ">>>>>>>>>> current application PID = $PID"
+        echo ">>>>>>>>>> kill the process"
+        kill $PID
+        echo ">>>>>>>>>> sleep 10s"
+        sleep 10
+        echo ""
+fi
+
+## deploy
+echo ">>>>>>>>>> run application on '$profile' profile"
+nohup java -jar -Dspring.profiles.active=$profile ./build/libs/*.jar 1> ../application.log 2>&1 &
+
+
+echo -e "#################### deploy end \n"
+```
+
 
