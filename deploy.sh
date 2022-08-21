@@ -17,7 +17,7 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtgrn} $0 브랜치 이름 ${BRANCH} ${txred}"
 echo -e "${txtylw}=======================================${txtrst}"
 
-echo "data now : $(date +%Y)-$(date +%m)-$(date +%d) $(date +%H):$(date +%M):$(date +%S)" >> check_test.txt
+#echo "data now : $(date +%Y)-$(date +%m)-$(date +%d) $(date +%H):$(date +%M):$(date +%S)" >> check_test.txt
 
 
 ## 프로젝트로 이동
