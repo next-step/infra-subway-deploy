@@ -59,7 +59,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : www.jsubway.ga:8080(3.34.95.107:8080)
+- URL : www.jsubway.ga:8080(3.39.39.61:8080)
 
 
 
