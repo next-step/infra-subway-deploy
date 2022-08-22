@@ -60,11 +60,15 @@ npm run dev
 
 1. 구성한 망의 서브넷 대역을 알려주세요
 
-- 대역 :
+- 대역
+  - `n00nietzsche-subnet-public-01`: `192.168.92.0/26`
+  - `n00nietzsche-subnet-public-02`: `192.168.92.64/26`
+  - `n00nietzsche-subnet-private-01`: `192.168.92.128/27`
+  - `n00nietzsche-subnet-management-01`: `192.168.92.128/27`
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL :
+- URL : `http://3.34.143.73:8080/`
 
 ---
 
