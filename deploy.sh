@@ -15,8 +15,6 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 
-BRANCH=$2
-
 SOURCE_DIR=/home/ubuntu/nextstep6/infra-subway-deploy
 
 PID=-1
@@ -27,14 +25,9 @@ function find_pid_of_older_version_app() {
   fi
 }
 
-
 function kill_older_version_app() {
   echo -e "Older version app is going to be terminated. $PID"
-  if [ a process exists with $PID ]; then
-
-      kill -0 $PID
-
-  fi
+  kill -9 $PID
 }
 
 function build_new_app() {
