@@ -20,6 +20,7 @@ SHELL_SCRIPT_PATH=$(dirname $0)
 BRANCH=main
 ACTIVE_PROFILE=prod
 
+cd $EXECUTION_PATH
 
 function build_new() {
   ## gradle build
@@ -39,7 +40,7 @@ function pull() {
 
 ## 저장소 확인 / pull
 function check_df() {
-  cd $EXECUTION_PATH
+
   git fetch
   master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin $BRANCH)
