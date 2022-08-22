@@ -30,8 +30,20 @@ echo -e ">> find jar name"
 JAR_FILE_NAME=$(find ./build/* -name "*jar")
 
 ACTIVE_PROFILE=prod
-echo ">> 배포할 파일명  ${JAR_FILE_NAME}"
+echo ">> 배포할 파일명  $JAR_FILE_NAME"
 echo ">> 실행할 profile = ${ACTIVE_PROFILE}"
 
+## 프로세스 pid 찾기
+PID=$(pgrep -f ${JAR_FILE_NAME})
+
+echo ">> 종료할 프로세스 pid = $PID"
+
+
+## pid로 프로세스 종료
+echo ">> 프로세스 종료하기"
+kill -2 ${PID}
+
+
+echo ">> $JAR_FILE_NAME 서비스 $ACTIVE_PROFILE 로 배포"
 ## 실행하기
 nohup java -jar -Dspring.profiles.active=${ACTIVE_PROFILE} ${JAR_FILE_NAME} &
