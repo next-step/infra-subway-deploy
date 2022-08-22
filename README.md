@@ -49,11 +49,14 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- leejaek-public-a : 192.168.55.0/26
+- leejaek-public-c : 192.168.55.64/26
+- leejaek-internal-a : 192.168.55.128/27
+- leejaek-admin-c : 192.168.55.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : 13.125.48.163 (http://www.leejaek-infro-subway.kro.kr/)
 
 
 
