@@ -15,7 +15,8 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>>>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 ## 사용할 변수 선언
-EXECUTION_PATH=$(pwd)
+#EXECUTION_PATH=$(pwd)
+EXECUTION_PATH="/home/ubuntu/nextstep/infra-subway-deploy"
 SHELL_SCRIPT_PATH=$(dirname $0)
 BRANCH=main
 ACTIVE_PROFILE=prod
