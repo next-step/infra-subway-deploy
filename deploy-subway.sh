@@ -74,3 +74,6 @@ find_pid_and_kill;
 echo ">>>> $JAR_FILE_NAME 서비스 $ACTIVE_PROFILE 로 배포"
 ## 실행하기
 nohup java -jar -Dspring.profiles.active=${ACTIVE_PROFILE} ${JAR_FILE_NAME} &
+
+
+###### END
