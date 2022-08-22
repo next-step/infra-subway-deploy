@@ -39,6 +39,7 @@ function pull() {
 
 ## 저장소 확인 / pull
 function check_df() {
+  cd $EXECUTION_PATH
   git fetch
   master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin $BRANCH)
