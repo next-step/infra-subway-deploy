@@ -55,7 +55,7 @@ npm run dev
 
 2. 업로드한 pem키는 무엇인가요.
    1. `n00nietzsche-nextstep.pem`
-   
+
 ---
 
 ### 1단계 - 망 구성하기
@@ -70,7 +70,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : `http://3.34.143.73:8080/`
+- URL : `http://jake-infra-homework.kro.kr:8080/` -> `http://3.34.143.73:8080/`
 
 ---
 
