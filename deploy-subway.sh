@@ -35,20 +35,21 @@ function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
   git pull origin $BRANCH
-  build_new;
 }
+
 ## 저장소 확인 / pull
 function check_df() {
-
   git fetch
   master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin $BRANCH)
+  #remote=$(git rev-parse origin $BRANCH) ## 결과값 2개 출력됨 ( 변경사항이 없어도 $master != $remote)
+  remote=$(git rev-parse origin/$BRANCH) ## 결과값 1개 출력됨 ( 변경사항이 없으면 $master == $remote )
 
   if [[ $master == $remote ]]; then
-    echo -e "[$(date)] Nothing to do!!! 😫"
-    exit 0
+    echo -e "[$(date)] Nothing to do!!! 😫 BYE!"
+    exit 0 ## 스크립트 종료
   else
     pull;
+    build_new;
   fi
 }
 
