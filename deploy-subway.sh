@@ -13,7 +13,7 @@ EXECUTION_PATH="/home/ubuntu/nextstep/infra-subway-deploy"
 BRANCH=main
 ACTIVE_PROFILE=prod
 JAR_FILE_NAME=""
-PID=0
+PID=
 
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 스크립트 🧐 >>>>${txtrst}"
@@ -53,7 +53,7 @@ function pull() {
 function build_new() {
   ## gradle build
   echo -e ""
-  echo -e "....................GRADLE CLEAN BUILD 🛠"
+  echo -e ".................... GRADLE CLEAN BUILD 🛠"
   $EXECUTION_PATH/gradlew clean build
 }
 
@@ -62,14 +62,15 @@ function find_jar_name() {
   echo -e ""
   JAR_FILE_NAME=$(find $EXECUTION_PATH/build/* -name "*jar")
   echo ""
-  echo "....................FIND JAR FILE NAME 🔎) : $JAR_FILE_NAME "
+  echo ".................... FIND JAR FILE NAME 🔎) : $JAR_FILE_NAME "
 }
 
 ## 종료할 프로세스 pid 찾기
 function find_pid() {
-  PID=$(pgrep -f ${JAR_FILE_NAME})
-  echo ""
-  echo "....................FIND PID TO KILL 🔎️) $PID"
+  #PID=$(pgrep -f $JAR_FILE_NAME)
+  PID=$(pgrep -f subway-0.0.1-SNAPSHOT.jar)
+  echo -e ""
+  echo ".................... FIND PID TO KILL 🔎️) $PID"
 #  echo $PID
 }
 
@@ -78,17 +79,20 @@ function kill_old_pid() {
   if [[ $PID -ne 0 ]]; then
     KILL_PID=$PID
     kill -9 $KILL_PID
-    echo ""
-    echo "....................KILL PID 😵) $KILL_PID"
+    echo -e ""
+    echo ".................... KILL PID 😵) $KILL_PID"
   fi
 }
 
 function deploy() {
-  if [[ $JAR_FILE_NAME -ne "" && $PID -ne 0 ]]; then
-    echo ""
-    echo "....................JAR FILE TO DEPLOY ✅) $JAR_FILE_NAME"
-    echo "....................ACTIVE PROFILE ✅) $ACTIVE_PROFILE"
+  if [[ -n "$JAR_FILE_NAME" ]] && [[ $PID -ne 0 ]]; then
+    echo -e ""
+    echo ".................... JAR FILE TO DEPLOY ✅) $JAR_FILE_NAME"
+    echo ".................... ACTIVE PROFILE ✅) $ACTIVE_PROFILE"
     nohup java -jar -Dspring.profiles.active=${ACTIVE_PROFILE} ${JAR_FILE_NAME} &
+
+    echo ".................... DEPLOY SUCCESS! BYE! 👍"
+
   fi
 }
 
@@ -105,5 +109,3 @@ kill_old_pid;
 deploy;
 
 ###### deploy-subway.sh : END ######
-
-
