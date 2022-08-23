@@ -72,13 +72,13 @@ npm run dev
 
 - URL : `http://jake-infra-homework.kro.kr:8080/` -> `http://3.34.20.133:8080/`
 
----dd
+---
 
 ### 2단계 - 배포하기
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL :
+- URL : `https://jake-infra-homework.kro.kr`
 
 ---
 
