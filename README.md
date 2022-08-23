@@ -46,14 +46,18 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
+- KEY-leejaek-nextstep
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- leejaek-public-a : 192.168.55.0/26
+- leejaek-public-c : 192.168.55.64/26
+- leejaek-internal-a : 192.168.55.128/27
+- leejaek-admin-c : 192.168.55.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : 13.125.48.163 (http://www.leejaek-infro-subway.kro.kr/)
 
 
 
