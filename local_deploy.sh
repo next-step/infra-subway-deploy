@@ -15,19 +15,25 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 
-SOURCE_DIR=/Users/john_park/Desktop/인프라공방/infra-subway-deploy
+SOURCE_DIR=$(pwd)
 
+PID_EXISTS=0
 PID=-1
 function find_pid_of_older_version_app() {
   PID=`ps -ef | grep java | grep subway | grep -v "bash -c" | awk '{print $2}'`
   if [ -z "$PID" ]; then
-    echo -e "[$(date)] Application not found."
+    echo -e ">> Application not found."
+  else
+    echo -e ">> Kill older-version java application"
+    PID_EXISTS=1
   fi
 }
 
 function kill_older_version_app() {
-  echo -e "Older version app is going to be terminated. $PID"
-  kill -9 $PID
+  if [ PID_EXISTS == 1 ]; then
+    echo -e ">> older-version application is going to be terminated. $PID"
+    kill -9 $PID
+  fi
 }
 
 function build_new_app() {
@@ -38,8 +44,8 @@ function build_new_app() {
 
 function execute_app() {
   cd $SOURCE_DIR
-  echo -e "run java application"
-  nohup java -jar -Dspring.profiles.active=test ./build/libs/subway-0.0.1-SNAPSHOT.jar > log.txt 2>&1 &
+  echo -e "run java application - local DB"
+  nohup java -jar -Dspring.profiles.active=local ./build/libs/subway-0.0.1-SNAPSHOT.jar > log.txt 2>&1 &
 }
 
 
