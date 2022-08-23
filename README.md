@@ -71,6 +71,8 @@ npm run dev
 
 - URL : https://인쿠26.메인.한국/
 
+- 서비스 시작 명령어 : nohup java -jar -Dspring.profiles.active=prod ~/nextstep/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar & 
+
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
