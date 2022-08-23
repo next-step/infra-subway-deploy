@@ -69,12 +69,15 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://인쿠26.메인.한국/
+
+- 서비스 시작 명령어 : nohup java -jar -Dspring.profiles.active=prod ~/nextstep/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar & 
 
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+- deploy.sh
 
 
