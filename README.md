@@ -72,7 +72,7 @@ npm run dev
 
 - URL : `http://jake-infra-homework.kro.kr:8080/` -> `http://3.34.20.133:8080/`
 
----
+---dd
 
 ### 2단계 - 배포하기
 
