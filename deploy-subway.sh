@@ -15,11 +15,13 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>>>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 ## 사용할 변수 선언
-EXECUTION_PATH=$(pwd)
+#EXECUTION_PATH=$(pwd)
+EXECUTION_PATH="/home/ubuntu/nextstep/infra-subway-deploy"
 SHELL_SCRIPT_PATH=$(dirname $0)
 BRANCH=main
 ACTIVE_PROFILE=prod
 
+cd $EXECUTION_PATH
 
 function build_new() {
   ## gradle build
@@ -39,6 +41,7 @@ function pull() {
 
 ## 저장소 확인 / pull
 function check_df() {
+
   git fetch
   master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin $BRANCH)
@@ -74,3 +77,6 @@ find_pid_and_kill;
 echo ">>>> $JAR_FILE_NAME 서비스 $ACTIVE_PROFILE 로 배포"
 ## 실행하기
 nohup java -jar -Dspring.profiles.active=${ACTIVE_PROFILE} ${JAR_FILE_NAME} &
+
+
+###### END
