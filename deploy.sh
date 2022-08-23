@@ -38,13 +38,15 @@ function profile_check(){
   fi
 }
 function check_diff() {
-  cd "$SHELL_SCRIPT_PATH" || exit 1
+  cd $EXECUTION_PATH
+  git checkout $BRANCH
   git fetch
-  master=$(git rev-parse "$BRANCH")
-  remote=$(git rev-parse origin/"$BRANCH")
-  if [[ "$master" == "$remote" ]]; then
-    echo -e "[$(date)] Nothing to do!!! "
-    exit 0
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+
+  if [[ $master == $remote ]]; then
+       echo -e "[$(date)] Nothing to do!!! 😫"
+       exit 0
   fi
 }
 function repository_pull() {
