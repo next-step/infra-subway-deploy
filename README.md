@@ -70,7 +70,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : `http://jake-infra-homework.kro.kr:8080/` -> `http://3.34.143.73:8080/`
+- URL : `http://jake-infra-homework.kro.kr:8080/` -> `http://3.34.20.133:8080/`
 
 ---
 
