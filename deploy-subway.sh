@@ -100,7 +100,8 @@ check_df;
 pull;
 build_new;
 find_jar_name;
-find_pid_and_kill;
+find_pid;
+kill_old_pid;
 deploy;
 
 ###### deploy-subway.sh : END ######
