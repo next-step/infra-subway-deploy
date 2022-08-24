@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="단위 테스트 - mockito의 MockitoExtension을 활용한 가짜 협력 객체 사용" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-19T17:24:03" hostname="ip-192-168-15-12" time="0.002">
-  <properties/>
-  <testcase name="findAllLines()" classname="study.unit.MockitoExtensionTest" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
