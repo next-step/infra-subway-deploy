@@ -53,11 +53,14 @@ sunghundev-nextstep.pem
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+- 192.168.33.0/26 - sunghundev-subnet-public-2a
+- 192.168.33.64/26 - sunghundev-subnet-public-2c
+- 192.168.33.128/27 - sunghundev-subnet-private-2a
+- 192.168.33.192/27 - sunghundev-subnet-bastion-public-2c
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
-
-
+3. 
+- URL : http://43.200.104.77:8080
 
 ---
 
