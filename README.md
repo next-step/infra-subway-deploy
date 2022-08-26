@@ -56,15 +56,21 @@ npm run dev
 2. 업로드한 pem키는 무엇인가요.
    1. `n00nietzsche-nextstep.pem`
 
+---
+
 ### 1단계 - 망 구성하기
 
 1. 구성한 망의 서브넷 대역을 알려주세요
 
-- 대역 :
+- 대역
+  - `n00nietzsche-subnet-public-01`: `192.168.92.0/26`
+  - `n00nietzsche-subnet-public-02`: `192.168.92.64/26`
+  - `n00nietzsche-subnet-private-01`: `192.168.92.128/27`
+  - `n00nietzsche-subnet-management-01`: `192.168.92.128/27`
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL :
+- URL : `http://jake-infra-homework.kro.kr:8080/` -> `http://3.34.20.133:8080/`
 
 ---
 
@@ -72,7 +78,7 @@ npm run dev
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL :
+- URL : `https://jake-infra-homework.kro.kr`
 
 ---
 
