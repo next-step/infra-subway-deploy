@@ -59,8 +59,8 @@ sunghundev-nextstep.pem
 - 192.168.33.192/27 - sunghundev-subnet-bastion-public-2c
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-3. 
-- URL : http://43.200.104.77:8080
+- URL :
+- http://test.infra-test-sunghun.kro.kr:8080 (http://43.200.104.77:8080)
 
 ---
 
@@ -68,11 +68,12 @@ sunghundev-nextstep.pem
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : 
+- https://infra.sunghun.dev
 
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-
+- deploy.sh
 
