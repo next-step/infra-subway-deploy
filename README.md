@@ -60,7 +60,8 @@ sunghundev-nextstep.pem
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 3. 
-- URL : http://43.200.104.77:8080
+- URL :
+  http://ec2-43-200-104-77.ap-northeast-2.compute.amazonaws.com:8080 (http://43.200.104.77:8080)
 
 ---
 
