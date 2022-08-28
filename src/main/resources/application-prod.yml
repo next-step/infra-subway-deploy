@@ -1,7 +1,7 @@
 spring:
   profiles: prod
   datasource:
-    url: jdbc:log4jdbc:mysql://192.168.10.138:3306/subway?allowPublicKeyRetrieval=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://192.168.10.138:3306/subway
     username: root
     password: masterpw
     driver-class-name: com.mysql.jdbc.Driver
