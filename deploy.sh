@@ -41,14 +41,13 @@ function check_diff() {
 
   if [[ $master == $remote ]]
   then
-    echo -e "[$(date)] 이미 최신버전이에요!"
+    echo -e "[$(date)] 최신버전이네요! 나머지 스크립트를 실행할게요!"
+  else
+    echo -e "[$(date)] 최신버전이 아니에요. 최신버전으로 업데이트 할게요. 잠시만 기다려주세요!"
+    pull
+    echo -e "[$(date)] 성공적으로 git pull 을 마쳤어요! 배포 스크립트를 다시 실행해보세요!"
     exit
   fi
-
-  echo -e "[$(date)] 최신버전이 아니에요. 최신버전으로 업데이트 할게요. 잠시만 기다려주세요!"
-  pull
-  echo -e "[$(date)] 성공적으로 git pull 을 마쳤어요! 배포 스크립트를 다시 실행해보세요!"
-  exit
 }
 
 function pull() {
