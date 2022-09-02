@@ -11,7 +11,6 @@ txtgra='\033[1;30m' # Gray
 
 EXECUTION_PATH=$(pwd)
 SHELL_SCRIPT_PATH=$(dirname $0)
-BUILD_PATH=$(pwd)
 BRANCH=$1
 PROFILE=$2
 
@@ -28,7 +27,7 @@ echo -e ""
 echo -e "${txtgrn} 스크립트 : ${txtred} $0"
 echo -e "${txtgrn} 브랜치 : ${txtred} $1"
 echo -e "${txtgrn} 프로필 : ${txtred} $2"
-echo -e "${txtgrn} 프로젝트 경로 : ${txtred} $BUILD_PATH"
+echo -e "${txtgrn} 프로젝트 경로 : ${txtred} $EXECUTION_PATH"
 echo -e "${txtylw}=======================================${txtrst}"
 
 ## diff
