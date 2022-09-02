@@ -24,7 +24,8 @@ fi
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 배포 시작! 🧐 >>${txtrst}"
 echo -e ""
-echo -e "${txtgrn} $0 브랜치 이름: ${txtred} {prod | dev}"
+echo -e "${txtgrn} $0 브랜치 이름: ${txtred} $1"
+echo -e "${txtgrn} $0 프로필 이름: ${txtred} $2"
 echo -e "${txtylw}=======================================${txtrst}"
 
 ## diff
