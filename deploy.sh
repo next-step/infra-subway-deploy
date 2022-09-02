@@ -11,7 +11,7 @@ txtgra='\033[1;30m' # Gray
 
 EXECUTION_PATH=$(pwd)
 SHELL_SCRIPT_PATH=$(dirname $0)
-BUILD_PATH=$(dirname $EXECUTION_PATH)
+BUILD_PATH=$(pwd)
 BRANCH=$1
 PROFILE=$2
 
@@ -53,7 +53,7 @@ function check_diff() {
 ## gradle build
 function gradle_build() {
   echo -e "[$(date)] 프로젝트를 gradle 로 빌드할게요."
-  ../gradlew
+  ./$
 }
 
 ## 프로세스 pid를 찾는 명령어
