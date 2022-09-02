@@ -60,7 +60,8 @@ function pull() {
 function gradle_build() {
   echo -e "[$(date)] 프로젝트를 gradle 로 빌드할게요."
   # 자주 실행해보아야 해서 잠시 build 명령어 제거
-  ./gradlew clean build
+  echo -e "[$(date)] 테스트를 위해 빌드는 잠시 생략할게요."
+  # ./gradlew clean build
 }
 
 ## 프로세스 pid를 찾는 명령어
