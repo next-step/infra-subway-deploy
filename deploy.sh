@@ -52,7 +52,7 @@ function check_diff() {
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
-  git pull origin $BRANCH
+  git pull
 }
 
 ## gradle build
@@ -63,6 +63,7 @@ function gradle_build() {
 
 ## 프로세스 pid를 찾는 명령어
 ## 프로세스를 종료하는 명령어
+# 테스트
 
 check_diff;
 gradle_build;
