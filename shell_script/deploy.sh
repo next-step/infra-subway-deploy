@@ -44,10 +44,8 @@ function check_diff() {
     exit 0
   fi
 
-  echo -e "[$(date)] 배포할 내용이 있어요! 잠시만 기다려주세요!"
+  echo -e "[$(date)] 최신버전이 아니에요. 최신버전으로 업데이트 할게요. 잠시만 기다려주세요!"
   git pull
-
-  echo -e "git pull 에 성공하였어요."
 }
 
 ## gradle build
