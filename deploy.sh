@@ -52,7 +52,7 @@ function check_diff() {
 ## gradle build
 function gradle_build() {
   echo -e "[$(date)] 프로젝트를 gradle 로 빌드할게요."
-  ./$
+  ./gradlew clean build
 }
 
 ## 프로세스 pid를 찾는 명령어
@@ -60,3 +60,4 @@ function gradle_build() {
 ## ...
 
 check_diff;
+gradle_build;
