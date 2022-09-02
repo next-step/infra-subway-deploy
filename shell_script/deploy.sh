@@ -21,12 +21,13 @@ then
   exit
 fi
 
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 배포 시작! 🧐 >>${txtrst}"
+echo -e "${txtylw}======================================="
+echo -e "${txtgrn}  << 배포 시작! 🧐 >>"
 echo -e ""
-echo -e "${txtgrn} $0 브랜치 이름: ${txtred} $1"
-echo -e "${txtgrn} $0 프로필 이름: ${txtred} $2"
-echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn} 스크립트 : ${txtred} $0"
+echo -e "${txtgrn} 브랜치 : ${txtred} $1"
+echo -e "${txtgrn} 프로필 : ${txtred} $2"
+echo -e "${txtylw}======================================="
 
 ## diff
 function check_diff() {
@@ -42,6 +43,9 @@ function check_diff() {
     echo -e "[$(date)] 이미 최신버전이에요!"
     exit 0
   fi
+
+  echo -e "[$(date)] 배포할 내용이 있어요! 잠시만 기다려주세요!"
+  git pull
 }
 
 ## gradle build
