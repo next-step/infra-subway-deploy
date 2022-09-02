@@ -27,7 +27,7 @@ echo -e ""
 echo -e "${txtgrn} 스크립트 : ${txtred} $0"
 echo -e "${txtgrn} 브랜치 : ${txtred} $1"
 echo -e "${txtgrn} 프로필 : ${txtred} $2"
-echo -e "${txtylw}======================================="
+echo -e "${txtylw}=======================================${txtrst}"
 
 ## diff
 function check_diff() {
@@ -46,6 +46,8 @@ function check_diff() {
 
   echo -e "[$(date)] 배포할 내용이 있어요! 잠시만 기다려주세요!"
   git pull
+
+  echo -e "git pull 에 성공하였어요."
 }
 
 ## gradle build
