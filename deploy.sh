@@ -42,11 +42,17 @@ function check_diff() {
   if [[ $master == $remote ]]
   then
     echo -e "[$(date)] 이미 최신버전이에요!"
-    exit 0
+    exit
   fi
 
   echo -e "[$(date)] 최신버전이 아니에요. 최신버전으로 업데이트 할게요. 잠시만 기다려주세요!"
-  git pull
+  pull
+}
+
+function pull() {
+  echo -e ""
+  echo -e ">> Pull Request 🏃♂️ "
+  git pull origin master
 }
 
 ## gradle build
