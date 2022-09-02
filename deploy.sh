@@ -52,7 +52,7 @@ function check_diff() {
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
-  git pull origin master
+  git pull origin $BRANCH
 }
 
 ## gradle build
