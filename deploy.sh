@@ -63,7 +63,6 @@ function gradle_build() {
 
 ## 프로세스 pid를 찾는 명령어
 ## 프로세스를 종료하는 명령어
-## ...
 
 check_diff;
 gradle_build;
