@@ -50,6 +50,7 @@ function check_diff() {
   fi
 }
 
+# git pull
 function pull() {
   echo -e ""
   echo -e ">> Pull Request 🏃♂️ "
@@ -65,7 +66,7 @@ function gradle_build() {
   echo -e "[$(date)] Gradle build 를 완료했어요!"
 }
 
-## 프로세스 pid를 찾는 명령어
+## java 프로세스 pid를 찾기
 function get_java_pid() {
   echo -e ""
   echo -e ">> Get java PID 🏃♂️ "
@@ -73,7 +74,16 @@ function get_java_pid() {
   echo -e "Java PID: $PID"
 }
 
+## jar 의 이름 찾기
+function get_jar_name() {
+  echo -e ""
+  echo -e ">> Get jar name 🏃♂️ "
+  JAR_NAME=$(find build/* -name "*jar")
+  echo -e "Jar name: $JAR_NAME"
+}
+
 ## 프로세스를 종료하는 명령어
+
 # 테스트
 
 check_diff;
