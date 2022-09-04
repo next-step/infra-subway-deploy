@@ -58,15 +58,24 @@ function pull() {
 
 ## gradle build
 function gradle_build() {
+  echo -e ""
+  echo -e ">> Gradle Build 🏃♂️ "
   echo -e "[$(date)] 프로젝트를 gradle 로 빌드할게요."
-  # 자주 실행해보아야 해서 잠시 build 명령어 제거
-  echo -e "[$(date)] 테스트를 위해 빌드는 잠시 생략할게요."
-  # ./gradlew clean build
+  ./gradlew clean build
+  echo -e "[$(date)] Gradle build 를 완료했어요!"
 }
 
 ## 프로세스 pid를 찾는 명령어
+function get_java_pid() {
+  echo -e ""
+  echo -e ">> Get java PID 🏃♂️ "
+  PID=`pgrep -f java`
+  echo -e "Java PID: $PID"
+}
+
 ## 프로세스를 종료하는 명령어
 # 테스트
 
 check_diff;
-gradle_build;
+# gradle_build;
+get_java_pid;
