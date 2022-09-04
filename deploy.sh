@@ -83,10 +83,21 @@ function get_jar_name() {
 }
 
 ## 프로세스를 종료하는 명령어
+# WHY NOT USE SIGKILL - https://stackoverflow.com/questions/2541475/capture-sigint-in-java
+function kill_process() {
+  echo -e ""
+  echo -e ">> Kill process 🏃♂️ "
+  if [ -z "$PID" ]; then
+    echo -e "실행 중인 프로세스를 찾지 못했어요! 🙅🏻‍♂️"
+  else
+    kill -2 $PID
+    echo -e "프로세스를 성공적으로 종료했어요! 🙆🏻‍♂️ (KILL -2)"
+}
 
 # 테스트
 
 check_diff;
-# gradle_build;
 get_java_pid;
-get_jar_name;
+kill_process;
+# gradle_build;
+# get_jar_name;
