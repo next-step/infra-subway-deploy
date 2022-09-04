@@ -89,3 +89,4 @@ function get_jar_name() {
 check_diff;
 # gradle_build;
 get_java_pid;
+get_jar_name;
