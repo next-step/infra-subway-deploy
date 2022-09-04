@@ -92,6 +92,7 @@ function kill_process() {
   else
     kill -2 $PID
     echo -e "프로세스를 성공적으로 종료했어요! 🙆🏻‍♂️ (KILL -2)"
+  fi
 }
 
 # 테스트
