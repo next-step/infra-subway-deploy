@@ -71,7 +71,12 @@ function get_java_pid() {
   echo -e ""
   echo -e ">> Get java PID 🏃♂️ "
   PID=`pgrep -f java`
-  echo -e "Java PID: $PID"
+  if [ -z "$PID" ]; then
+    echo -e "PID 를 찾지 못했어요! 🙅🏻‍♂️"
+  else
+    echo -e "PID 를 찾았어요! 🙆🏻‍♂️"
+    echo -e "Java PID: $PID"
+  fi
 }
 
 ## jar 의 이름 찾기
@@ -83,7 +88,7 @@ function get_jar_name() {
 }
 
 ## 프로세스를 종료하는 명령어
-# WHY NOT USE SIGKILL - https://stackoverflow.com/questions/2541475/capture-sigint-in-java
+## WHY NOT USE SIGKILL - https://stackoverflow.com/questions/2541475/capture-sigint-in-java
 function kill_process() {
   echo -e ""
   echo -e ">> Kill process 🏃♂️ "
@@ -95,10 +100,20 @@ function kill_process() {
   fi
 }
 
-# 테스트
+## 실행
+function run() {
+  echo -e ""
+  echo -e ">> Run application 🏃♂️ "
+  echo -e ">>> Profile: $PROFILE"
+  if ! [ -d logs ]; then
+    mkdir logs
+  fi
+  nohup java -jar -Dspring.profiles.active=$PROFILE $JAR_NAME 1> $SHELL_SCRIPT_PATH/logs/log.txt 2>&1 &
+}
 
 check_diff;
 get_java_pid;
 kill_process;
-# gradle_build;
-# get_jar_name;
+gradle_build;
+get_jar_name;
+run;
