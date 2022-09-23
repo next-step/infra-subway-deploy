@@ -52,10 +52,13 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+![img.png](img.png)
+
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
-
+- Public IP : http://52.78.110.251
+- URL : http://subway.infrastudy.kro.kr
 
 
 ---
