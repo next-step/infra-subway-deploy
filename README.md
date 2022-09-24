@@ -49,14 +49,18 @@ npm run dev
 - KEY-hongeunbeen
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역
+    | 서브넷                   | 대역                | 
+    |:-----------------------|:-------------------|
+    | hongeunbeen-public-a      | `192.168.71.0/26`    |
+    | hongeunbeen-public-c      | `192.168.71.64/26`   |
+    | hongeunbeen-internal-a    | `192.168.71.128/27`  |
+    | hongeunbeen-bastion-c     | `192.168.71.160/27`  |
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
-
-
-
+- IP : http://13.125.78.161:8080/
+- URL : http://hongeunbeen-infra.kro.kr:8080/
 ---
 
 ### 2단계 - 배포하기
