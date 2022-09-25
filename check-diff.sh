@@ -7,7 +7,7 @@ git fetch
 MASTER=$(git rev-parse $BRANCH)
 REMOTE=$(git rev-parse origin/$BRANCH)
 
-if [ $MASTER = $REMOTE ]; then
+if [ "$MASTER" == "$REMOTE" ]; then
         exit 1
 fi
 
