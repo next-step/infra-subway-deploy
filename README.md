@@ -45,17 +45,19 @@ npm run dev
 
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
-2. 업로드한 pem키는 무엇인가요. **KEY-seonghun**
+2. 업로드한 pem키는 무엇인가요. **KEY-kimseonghun**
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 (VPC) : 192.168.4.0/24
+- public-a (외부망 a-AZ) : 192.168.4.0/26
+- public-c (외부망 c-AZ) : 192.168.4.64/26
+- internal-a (내부망 a-AZ) : 192.168.4.128/27
+- management-c (관리망 c-AZ) : 192.168.4.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
-
-
+- URL : wwww.infra-subway-deploy.kro.kr:8080
 
 ---
 
