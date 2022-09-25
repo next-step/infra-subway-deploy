@@ -26,22 +26,22 @@ stop() {
                 COUNT=1
                 while true
                 do
-            if [ -z "$PID" ]
-            then
-                echo "Kill sigterm. pid=$PID"
-                break;
-            elif [ $COUNT -ge 60 ]
-            then
-                echo "Kill sigkill. pid=$PID"
-                sudo kill -9 $PID
-                break;
-            fi
+            		if [ -z "$PID" ]
+            		then
+                	echo "Kill sigterm. pid=$PID"
+                	break;
+            	elif [ $COUNT -ge 60 ]
+            	then
+                	echo "Kill sigkill. pid=$PID"
+                	sudo kill -9 $PID
+                	break;
+            	fi
 
-            COUNT=$(expr $COUNT + 1);
-            sleep 1;
+            	COUNT=$(expr $COUNT + 1);
+            	sleep 1;
                 done
         else
-        echo "Application is not running ..."
+        	echo "Application is not running ..."
         fi
 }
 
