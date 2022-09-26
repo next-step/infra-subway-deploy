@@ -24,12 +24,19 @@ spring:
   config:
     activate:
       on-profile: local
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:13306/subway?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+      username: root
+      password: root
+      driver-class-name: org.mariadb.jdbc.Driver
 
 ---
 spring:
   config:
     activate:
-      on-profile: local
+      on-profile: test
+  # h2를 사용하도록 별도 설정 x
 ---
 spring:
   config:
@@ -37,7 +44,7 @@ spring:
       on-profile: prod
   datasource:
     hikari:
-      jdbc-url: jdbc:mysql://192.168.4.149:3306/subway
+      jdbc-url: jdbc:mysql://192.168.4.149:3306/subway?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
       username: root
       password: masterpw
       driver-class-name: org.mariadb.jdbc.Driver
