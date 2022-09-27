@@ -59,14 +59,14 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- IP : http://13.125.78.161:8080/
+- IP : http://13.125.26.58:8080/
 - URL : http://hongeunbeen-infra.kro.kr:8080/
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://hongeunbeen-infra.n-e.kr/
 
 ---
 
