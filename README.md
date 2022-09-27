@@ -59,7 +59,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : https://younghun-subway.kro.kr
 
 
 
