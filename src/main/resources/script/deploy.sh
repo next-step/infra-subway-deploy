@@ -78,7 +78,7 @@ function startServer() {
     JAR_NAME=$(ls -tr $JAR_REPOSITORY/ | grep jar | tail -n 1)
     echo -e "-Dspring.profiles.active=${PROFILE}"
     echo -e "${JAR_REPOSITORY}${JAR_NAME}"
-    nohup java -jar -Dspring.profiles.active=${PROFILE} -Djava.security.egd=file:/dev/./urandom ${JAR_REPOSITORY}/${JAR_NAME} 1> /home/ubuntu/nextstep/infra-subway-deploy 2>&1 &
+    nohup java -jar -Dspring.profiles.active=${PROFILE} -Djava.security.egd=file:/dev/./urandom ${JAR_REPOSITORY}/${JAR_NAME} 1> /home/ubuntu/nextstep/infra-subway-deploy.log 2>&1 &
     echo -e "${txtylw}=======================================${txtrst}"
 }
 
