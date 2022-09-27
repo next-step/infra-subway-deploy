@@ -63,7 +63,7 @@ function findPidAndKillPid() {
     echo -e ">> Find Pid And Kill Pid 🏃♂️ "
     CURRENT_PID=$(pgrep -f java)
     echo -e "실행중인 프로세스 ${CURRENT_PID}"
-    if [ -z $CURRENT_PID ]; then
+    if [ -z "$CURRENT_PID" ]; then
         echo "> 현재 구동 중인 애플리케이션이 없으므로 종료하지 않습니다."
     else
         kill -2 $CURRENT_PID
@@ -78,7 +78,7 @@ function startServer() {
     JAR_NAME=$(ls -tr $JAR_REPOSITORY/ | grep jar | tail -n 1)
     echo -e "-Dspring.profiles.active=${PROFILE}"
     echo -e "${JAR_REPOSITORY}${JAR_NAME}"
-    nohup java -jar -Dspring.profiles.active=${PROFILE} -Djava.security.egd=file:/dev/./urandom ${JAR_REPOSITORY}/${JAR_NAME} 1> infra-prod 2>&1 &
+    nohup java -jar -Dspring.profiles.active=${PROFILE} -Djava.security.egd=file:/dev/./urandom ${JAR_REPOSITORY}/${JAR_NAME} 1> /home/ubuntu/nextstep/infra-subway-deploy 2>&1 &
     echo -e "${txtylw}=======================================${txtrst}"
 }
 
