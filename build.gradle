@@ -35,7 +35,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	// flyway
-	implementation 'org.flywaydb:flyway-core:6.4.2'
+	implementation 'org.flywaydb:flyway-core'
 
 	// mysql
 	runtimeOnly 'mysql:mysql-connector-java'

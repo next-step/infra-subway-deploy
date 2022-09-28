@@ -55,11 +55,10 @@ npm run dev
 - public-c (외부망 c) : 192.168.32.64/26
 - internal-a (내부망 a) : 192.168.32.128/27
 - management (괸리망 c) : 192.168.32.160/27
-- DNS : www.younghun-subway.p-e.kr(http://3.34.253.59:8080)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : https://younghun-subway.kro.kr
+- URL : http://younghun-subway.kro.kr:8080
 
 
 
@@ -68,7 +67,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://younghun-subway.kro.kr
 
 ---
 
