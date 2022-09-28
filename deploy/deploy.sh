@@ -80,7 +80,6 @@ function kill_origin_process() {
       kill -9 $origin_pid
       break
     fi
-
     COUNT=$(expr $COUNT + 1)
     sleep 1
   done
