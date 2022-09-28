@@ -2,18 +2,19 @@
 
 BRANCH=$1
 
-git fetch
+diff() {
+  git fetch
 
-MASTER=$(git rev-parse $BRANCH)
-REMOTE=$(git rev-parse origin/$BRANCH)
+  MASTER=$(git rev-parse $BRANCH)
+  REMOTE=$(git rev-parse origin/$BRANCH)
 
-if [ "$MASTER" == "$REMOTE" ]; then
-        exit 1
-fi
+  if [ "$MASTER" != "$REMOTE" ]; then
+    echo "[$(date)] Changed."
+    git pull origin $BRANCH
+    echo true
+  else
+    echo false
+  fi
+}
 
-echo -e "[$(date)] A change has been detected."
-git pull origin $BRANCH
-git checkout $BRANCH
-
-./gradlew clean build
-/bin/bash subway-service.sh
+diff
