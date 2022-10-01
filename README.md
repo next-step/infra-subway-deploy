@@ -52,13 +52,13 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
-wish45-public-a <br>
+wish45-public-a 
     -192.168.13.0/26 <br>
-wish45-public-c <br>
+wish45-public-c 
     -192.168.13.64/26<br>
-wish45-internal-a <br>
+wish45-internal-a 
     -192.168.13.128/27<br>
-wish45-manage-c <br>
+wish45-manage-c 
     -192.168.13.160/27<br>
 
 
