@@ -58,7 +58,7 @@ wish45-public-c <br>
     -192.168.13.64/26<br>
 wish45-internal-a <br>
     -192.168.13.128/27<br>
-wish45-internal-c <br>
+wish45-manage-c <br>
     -192.168.13.160/27<br>
 
 
@@ -68,7 +68,7 @@ wish45-internal-c <br>
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : wish45.kro.kr
+- URL : http://wish45.kro.kr:8080/
 
 
 
