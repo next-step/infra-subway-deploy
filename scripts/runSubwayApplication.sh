@@ -45,7 +45,7 @@ function killProcess() {
     echo -e "${txtgrn}>>>>> 진행 중인 process($pid)가 존재하므로 종료합니다. ${txtrst}"
     kill -15 $pid
     echo -e "${txtgrn}>>>>> 프로세스가 정상적으로 종료되었습니다. ${txtrst}"
-    exit 0
+    exit 1
   fi
 
   echo -e "${txtgrn}>>>>> 진행 중인 process가 없습니다. ${txtrst}"
