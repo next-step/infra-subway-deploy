@@ -52,9 +52,24 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+
+wish45-public-a 
+    -192.168.13.0/26 <br>
+wish45-public-c 
+    -192.168.13.64/26<br>
+wish45-internal-a 
+    -192.168.13.128/27<br>
+wish45-manage-c 
+    -192.168.13.160/27<br>
+
+
+
+
+
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://wish45.kro.kr:8080/
 
 
 
