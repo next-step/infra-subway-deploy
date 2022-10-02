@@ -21,38 +21,35 @@ function check_df() {
   echo -e ">>>>> master : $master"
   echo -e ">>>>> remote : $remote"
 
-  if [[ $master == $remote ]];
-	then
+  if [[ $master == $remote ]]; then
     return 1
   fi
 
-	return 0
+  return 0
 }
 
 
 ### 저장소 pull
 function pull() {
-	echo -e "${txtgrn}>>>>> Pull Request 🏃♂️ 통해 코드를 업데이트 합니다. (from origin $BRANCH) ${txtrst}"
+  echo -e "${txtgrn}>>>>> Pull Request 🏃♂️ 통해 코드를 업데이트 합니다. (from origin $BRANCH) ${txtrst}"
   git pull origin $BRANCH
 
-	echo -e "${txtgrn}>>>>> origin $BRANCH 으로부터 성공적으로 Pull 완료되었습니다. ${txtrst}"
+  echo -e "${txtgrn}>>>>> origin $BRANCH 으로부터 성공적으로 Pull 완료되었습니다. ${txtrst}"
 }
 
 ### 현재 process 조회 후 종료
 function killProcess() {
-	pid=$(pgrep -f subway-0.0.1-SNAPSHOT.jar)
+  pid=$(pgrep -f subway-0.0.1-SNAPSHOT.jar)
 
-	if [[ -n "$pid" ]];
-	then
-  	echo -e "${txtgrn}>>>>> 진행 중인 process($pid)가 존재하므로 종료합니다. ${txtrst}"
-	  kill -15 $pid
-	  echo -e "${txtgrn}>>>>> 프로세스가 정상적으로 종료되었습니다. ${txtrst}"
+  if [[ -n "$pid" ]]; then
+    echo -e "${txtgrn}>>>>> 진행 중인 process($pid)가 존재하므로 종료합니다. ${txtrst}"
+    kill -15 $pid
+    echo -e "${txtgrn}>>>>> 프로세스가 정상적으로 종료되었습니다. ${txtrst}"
     exit 0
-	fi
+  fi
 
   echo -e "${txtgrn}>>>>> 진행 중인 process가 없습니다. ${txtrst}"
 }
-
 
 
 ## 배포 스크립트
@@ -82,12 +79,10 @@ echo -e "${txtgrn}>>>>> 새로운 앱 빌드를 실행합니다.${txtrst}"
 echo -e "${txtgrn}>>>>> 빌드한 앱을 시작합니다. 실행 환경을 선택해주세요(local/prod) ${txtrst}"
 read env
 
-if [[ "$env" = "prod" ]];
-then
+if [[ "$env" = "prod" ]]; then
   echo -e "${txtgrn}>>>>> 운영 환경에서 앱 배포를 시작합니다.${txtrst}"
   java -jar -Dspring.profiles.active=prod ./build/libs/subway-0.0.1-SNAPSHOT.jar &
-elif [[ "$env" = "local" ]];
-then
+elif [[ "$env" = "local" ]]; then
   echo -e "${txtgrn}>>>>> 로컬 환경에서 앱 배포를 시작합니다.${txtrst}"
   java -jar -Dspring.profiles.active=local ./build/libs/subway-0.0.1-SNAPSHOT.jar &
 else
