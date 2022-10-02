@@ -116,13 +116,13 @@ function pull() {
 ### 현재 process 조회 후 종료
 function killProcess() {
 	pid=$(pgrep -f subway-0.0.1-SNAPSHOT.jar)
-  echo -e "${txtgrn}>>>>> 진행 중인 process($pid)가 존재하므로 종료합니다. ${txtrst}"
 
 	if [[ -n "$pid" ]];
 	then
   	echo -e "${txtgrn}>>>>> 진행 중인 process($pid)가 존재하므로 종료합니다. ${txtrst}"
 	  kill -15 $pid
 	  echo -e "${txtgrn}>>>>> 프로세스가 정상적으로 종료되었습니다. ${txtrst}"
+    exit 0
 	fi
 
   echo -e "${txtgrn}>>>>> 진행 중인 process가 없습니다. ${txtrst}"
@@ -170,6 +170,7 @@ fi
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}<< subway의 배포가 성공적으로 완료되었습니다 🎉>>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
+
 
 ```
 
