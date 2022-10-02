@@ -7,9 +7,9 @@ module.exports = {
   mode: 'production',
   output: {
     path: outputPath,
-    filename: '[name].js',
-    plugins : [
-      new BundleAnalyzerPlugin()
-    ]
-  }
+    filename: '[name].js'
+  },
+  plugins : [
+    new BundleAnalyzerPlugin()
+  ]
 }
