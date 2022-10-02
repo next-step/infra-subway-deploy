@@ -85,11 +85,14 @@ read env
 if [[ "$env" = "prod" ]];
 then
   echo -e "${txtgrn}>>>>> 운영 환경에서 앱 배포를 시작합니다.${txtrst}"
+  java -jar -Dspring.profiles.active=prod ./build/libs/subway-0.0.1-SNAPSHOT.jar &
 elif [[ "$env" = "local" ]];
 then
   echo -e "${txtgrn}>>>>> 로컬 환경에서 앱 배포를 시작합니다.${txtrst}"
+  java -jar -Dspring.profiles.active=local ./build/libs/subway-0.0.1-SNAPSHOT.jar &
 else
   echo -e "${txtgrn}>>>>> 존재하지 않는 환경입니다. 프로세스를 종료합니다. ${txtrst}"
+  exit 0
 fi
 
 echo -e "${txtylw}=======================================${txtrst}"
