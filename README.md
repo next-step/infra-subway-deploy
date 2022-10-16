@@ -54,9 +54,14 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+* bo-yoon-subnet-public-a **192.168.102.0**/26
+* bo-yoon-subnet-public-c **192.168.102.64/26**
+* bo-yoon-subnet-private-a 192.168.102.128/27
+* bo-yoon-subnet-admin-c  192.168.102.160/27
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://15.164.148.13:8080/
 
 
 
