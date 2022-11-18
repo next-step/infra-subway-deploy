@@ -46,7 +46,7 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
-- earth-h.pem
+- key-earth-h.pem (기존 key가 삭제되어 신규 key를 업로드 하였습니다.)
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
@@ -102,7 +102,19 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://earth-h.tk
+
+#### 요구사항
+**[ 운영 환경 구성하기 ]**
+- [x] 웹 어플리케이션 앞단에 reverse proxy 구성하기
+  - [x] 외부망에 nginx로 reverse proxy 구성
+  - [x] reverse proxy에 TLS 설정
+- [ ] 운영 데이터베이스 구성하기
+**[ 개발 환경 구성하기 ]**
+- [ ] 설정 파일 나누기
+  - JUnit: H2
+  - Local: docker(mysql)
+  - Prod: 운영 DB 사용하도록 설정
 
 ---
 
