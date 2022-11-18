@@ -109,12 +109,12 @@ npm run dev
 - [x] 웹 어플리케이션 앞단에 reverse proxy 구성하기
   - [x] 외부망에 nginx로 reverse proxy 구성
   - [x] reverse proxy에 TLS 설정
-- [ ] 운영 데이터베이스 구성하기
+- [x] 운영 데이터베이스 구성하기
 **[ 개발 환경 구성하기 ]**
-- [ ] 설정 파일 나누기
-  - JUnit: H2
-  - Local: docker(mysql)
-  - Prod: 운영 DB 사용하도록 설정
+- [x] 설정 파일 나누기
+  - JUnit: H2 -> application-test.yml
+  - Local: docker(mysql) -> application-local.yml
+  - Prod: 운영 DB 사용하도록 설정 -> application-prod.yml
 
 ---
 
