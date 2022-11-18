@@ -116,6 +116,56 @@ npm run dev
   - Local: docker(mysql) -> application-local.yml
   - Prod: 운영 DB 사용하도록 설정 -> application-prod.yml
 
+#### 작업 내용
+- nginx 설정 시, 로그를 서버 내에서 보고자 docker-compose 이용해 volumes 지정
+  - dockerfile과 docker-compose 경로: `ssh ubuntu@earth-h-web-service` 접근 후 `cd /nextstep/sw/nginx/.` 내에 존재
+    - nginx 로그 위치: /nextstep/sw/nginx/logs/access.log, error.log
+  - docker-compose 사용 시, `docker-compose : Unsupported config option for services services: 'nginx'`에러가 발생하여서, docker-compose는 힌트에서 적힌 버전이 아닌 최신 버전 설치함
+  ```bash
+  sudo curl -L https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+  ```
+- http://earth-h.tk -> https://earth-h.tk 리다이렉트 설정
+- AWS에 띄워둔 EC2 내에 fork한 레포지토리를 클론하여 현재 step의 yml을 가지고 prod 환경으로 어플리케이션 띄움
+  - `nohup java -Dspring.profiles.active=prod -jar subway-0.0.1-SNAPSHOT.jar 1> /nextstep/log/202211190044.log 2>&1 &`
+  - 어플리케이션 로그 위치: /nextstep/log/202211190044.log
+- private subnet에 인터넷을 통해 docker를 설정하고자 NAT gateway 설정
+  - 참고자료: https://www.linkedin.com/pulse/connecting-internet-from-ec2-instance-private-subnet-aws-thandra/
+- 운영 DB에 어떤 database로 생성되어있는지 확인
+  ```bash
+  [DB][00:09:50][ubuntu@ip-172-20-0-152 ~] $ docker exec -it naughty_meitner bash
+  root@948bd7b6557f:/# mysql -u root -p
+  Enter password:
+  ...
+  mysql> show databases;
+  +--------------------+
+  | Database           |
+  +--------------------+
+  | information_schema |
+  | mysql              |
+  | performance_schema |
+  | subway             |
+  | sys                |
+  +--------------------+
+  5 rows in set (0.00 sec)
+  
+  mysql> use subway;
+  Reading table information for completion of table and column names
+  You can turn off this feature to get a quicker startup with -A
+  
+  Database changed
+  mysql> show tables;
+  +------------------+
+  | Tables_in_subway |
+  +------------------+
+  | favorite         |
+  | line             |
+  | member           |
+  | section          |
+  | station          |
+  +------------------+
+  5 rows in set (0.00 sec)
+  ```
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
