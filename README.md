@@ -309,15 +309,113 @@ end;
 ```
 **[ 스크립트 사용법 ]**
 - 스크립트 위치: /nextstep/project/sh/deploy.sh
+- 로그 생성 위치: /nextstep/log/[프로젝트명(infra-subway-deploy)]_[날짜(예:202211191728)].log
 - 스크립트 사용법
   - 스크립트 실행 시, 넣어야 하는 변수 가이드: `sh deploy.sh guide`
-  - earth-h 브랜치 pull: `sh deploy.sh pull infra-subway-deploy earth-h`
-  - infra-subway-deploy 프로젝트 build: `sh deploy.sh build infra-subway-deploy earth-h`
-  - infra-subway-deploy 프로젝트를 earth-h 브랜치로 실행: `sh deploy.sh start infra-subway-deploy earth-h`
-  - infra-subway-deploy 프로젝트 프로세스를 종료: 'sh deploy.sh stop infra-subway-deploy earth-h'
+  - earth-h 브랜치 pull: `sh deploy.sh pull infra-subway-deploy step3`
+  - infra-subway-deploy 프로젝트 build: `sh deploy.sh build infra-subway-deploy step3`
+  - infra-subway-deploy 프로젝트를 earth-h 브랜치로 실행: `sh deploy.sh start infra-subway-deploy step3`
+  - infra-subway-deploy 프로젝트 프로세스를 종료: 'sh deploy.sh stop infra-subway-deploy step3'
+  - 원격 저장소와 서버 내 레포 변경 사항 있을 경우 pull, build, 프로세스 시작 진행: `sh deploy.sh check infra-subway-deploy step3`
+
+**[ 스크립트 사용 예시 ]**
+```shell
+[WEB-SERVICE][17:27:56][ubuntu@ip-172-20-0-4 /nextstep/project/sh]
+$ sh deploy.sh check infra-subway-deploy step3
+
+------------------------
+| << check START 🧐 >> |
+------------------------
+
+---------------------------------------------------
+ 1st param(function name) = /nextstep/project/
+ 2nd param(repository name) = infra-subway-deploy
+ 3rd param(branch name) = step3
+---------------------------------------------------
+
+ >> Stop Process 🏃♂️
+
+
+ >> Find Java process(infra-subway-deploy) & Kill Java process
+ >> JAR NAME: subway-0.0.1-SNAPSHOT.jar, PID:
+deploy.sh: 90: kill: Usage: kill [-s sigspec | -signum | -sigspec] [pid | job]... or
+kill -l [exitstatus]
+
+---------------------------------------------------
+ 1st param(function name) = /nextstep/project/
+ 2nd param(repository name) = infra-subway-deploy
+ 3rd param(branch name) = step3
+---------------------------------------------------
+
+ >> Pull Request 🏃♂️
+ >> Path: /nextstep/project/infra-subway-deploy
+
+From https://github.com/earth-h/infra-subway-deploy
+ * branch            step3      -> FETCH_HEAD
+Already up to date.
+
+---------------------------------------------------
+ 1st param(function name) = /nextstep/project/
+ 2nd param(repository name) = infra-subway-deploy
+ 3rd param(branch name) = step3
+---------------------------------------------------
+
+ >> Build Project 🏃♂️
+ >> Path: /nextstep/project/infra-subway-deploy
+ >> Clean Build
+
+
+> Task :compileJava
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :compileTestJava
+Errors occurred while build effective model from /home/ubuntu/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-osgi/2.2.10/c926a537af564ec047ec6308df1d0d2a03364a86/jaxb-osgi-2.2.10.pom:
+    'dependencyManagement.dependencies.dependency.systemPath' for com.sun:tools:jar must specify an absolute path but is ${tools.jar} in com.sun.xml.bind:jaxb-osgi:2.2.10
+Note: /nextstep/project/infra-subway-deploy/src/test/java/study/jgraph/JgraphTest.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :test
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass (file:/home/ubuntu/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.5.13/ac054525fdc81cbd0bc2552b57052ebb1a93cd40/groovy-2.5.13.jar) to method java.lang.Object.finalize()
+WARNING: Please consider reporting this to the maintainers of org.codehaus.groovy.reflection.CachedClass
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2022-11-19 17:28:32.546  INFO 11049 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-11-19 17:28:32.552  INFO 11049 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-19 17:28:32.552  INFO 11049 --- [extShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-11-19 17:28:32.553 DEBUG 11049 --- [extShutdownHook] org.hibernate.SQL                        :
+
+    drop table if exists favorite CASCADE
+2022-11-19 17:28:32.556  WARN 11049 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 90121, SQLState: 90121
+2022-11-19 17:28:32.556 ERROR 11049 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-11-19 17:28:32.557  WARN 11049 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 90121, SQLState: 90121
+2022-11-19 17:28:32.557 ERROR 11049 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-11-19 17:28:32.558  WARN 11049 --- [extShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'entityManagerFactory': org.hibernate.exception.JDBCConnectionException: Unable to release JDBC Connection used for DDL execution
+2022-11-19 17:28:32.558  INFO 11049 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-19 17:28:32.569  INFO 11049 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+BUILD SUCCESSFUL in 20s
+7 actionable tasks: 7 executed
+
+---------------------------------------------------
+ 1st param(function name) = /nextstep/project/
+ 2nd param(repository name) = infra-subway-deploy
+ 3rd param(branch name) = step3
+---------------------------------------------------
+
+ >> Start Process 🏃♂️
+
+
+------------------------
+| <<  check END 🧐  >> |
+------------------------
+[WEB-SERVICE][17:28:33][ubuntu@ip-172-20-0-4 /nextstep/project/sh]
+```
 
 #### 요구사항
 - [x] 반복적으로 실행하더라도 정상적으로 배포하는 스크립트 작성하기
   - [x] 반복적으로 사용하는 명령어에 대해 함수로 작성
 - [x] 크론탭을 통해 브랜치에 변경이 있는 경우, 원격 브랜치 땡겨서 가져오고 process 재실행하도록 설정
-  - `* * * * * /nextstep/project/sh/deploy.sh check infra-subway-deploy earth-h`
+  - `0 * * * * /nextstep/project/sh/deploy.sh check infra-subway-deploy step3`
+    - 매시간마다 수행하도록 설정(1시, 2시, 3시...)
