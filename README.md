@@ -69,6 +69,7 @@ npm run dev
     - [x]  관리용으로 사용할 Subnet: 32개씩 1개 → Public
 - [x]  Internet Gateway 연결
 - [x]  Route Table 생성
+- [x]  NAT 게이트웨이 생성
 - [x]  Security Group 설정
     - [x]  외부망
         - [x]  전체 대역: 8080포트 오픈
@@ -84,6 +85,10 @@ npm run dev
     - [x]  관리망에 베스쳔 서버 용도의 EC2 생성
     - [x]  베스쳔 서버에 Session Timeout 600s 설정
     - [x]  베스쳔 서버에 Command 감사 로그 설정
+    - [x]  웹 서버에 Session Timeout 600s 설정
+    - [x]  웹 서버에 Command 감사 로그 설정
+    - [x]  데이터베이스 서버에 Session Timeout 600s 설정
+    - [x]  데이터베이스 서버에 Command 감사 로그 설정
 ### 웹 애플리케이션 배포
 - [x]  외부망에 웹 애플리케이션을 배포
 - [x]  DNS 설정
