@@ -177,11 +177,8 @@ npm run dev
 ## set variable
 
 txtrst='\033[1;37m' # White
-txtred='\033[1;31m' # Red
 txtylw='\033[1;33m' # Yellow
-txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
-txtgra='\033[1;30m' # Gray
 
 PROJECT_PATH='/nextstep/project/'
 LOG_PATH='/nextstep/log/'
@@ -227,7 +224,7 @@ build() {
   info;
 
   echo "\n >> Build Project 🏃♂️ \n >> Path: ${PROJECT_PATH}${REPO_NAME}\n >> Clean Build\n"
-  cd ${PROJECT_PATH}${REPO_NAME} && ./gradlew clean build
+  cd ${PROJECT_PATH}${REPO_NAME} && ./gradlew clean build -x test
 }
 
 find_jar() {
@@ -251,6 +248,8 @@ find_pid() {
 stop_process() {
   info;
 
+  echo "\n >> Stop Process 🏃♂️ \n"
+
   JAR_NAME=$(find_jar)
   PID=$(find_pid)
 
@@ -266,6 +265,8 @@ stop_process() {
 start_process() {
   info;
 
+  echo "\n >> Start Process 🏃♂️ \n"
+
   JAR_NAME=$(find_jar)
 
   if [ "${JAR_NAME}" = "${PROJECT_PATH}${REPO_NAME}/build/libs not exists!" ]
@@ -276,6 +277,29 @@ start_process() {
     echo "이미 실행 중인 프로세스가 존재합니다. 재시작을 원하시면 stop을 먼저 진행해야 합니다."
   else
     nohup java -jar ${PROJECT_PATH}${REPO_NAME}/build/libs/${JAR_NAME} 1> ${LOG_PATH}${REPO_NAME}_${CURRENT_TIME}.log 2>&1 &
+  fi
+}
+
+check() {
+  if [ ! -d ${PROJECT_PATH}${REPO_NAME} ]
+  then
+    echo "${PROJECT_PATH}${REPO_NAME} is not exists!"
+    exit 0
+  fi
+
+  cd ${PROJECT_PATH}${REPO_NAME} && git fetch
+  master=$(cd ${PROJECT_PATH}${REPO_NAME} && git rev-parse ${BRANCH_NAME})
+  remote=$(cd ${PROJECT_PATH}${REPO_NAME} && git rev-parse origin)
+
+  if [ "$master" = "$remote" ]
+  then
+    echo "[${CURRENT_TIEM}] Nothing to do!!! 😫"
+    exit 0
+  else
+    stop_process;
+    pull;
+    build;
+    start_process;
   fi
 }
 
@@ -303,6 +327,9 @@ case ${FUNC_NAME} in
   start)
     start_process
     ;;
+  check)
+    check
+    ;;
 esac
 
 end;
@@ -320,97 +347,7 @@ end;
 
 **[ 스크립트 사용 예시 ]**
 ```shell
-[WEB-SERVICE][17:27:56][ubuntu@ip-172-20-0-4 /nextstep/project/sh]
-$ sh deploy.sh check infra-subway-deploy step3
 
-------------------------
-| << check START 🧐 >> |
-------------------------
-
----------------------------------------------------
- 1st param(function name) = /nextstep/project/
- 2nd param(repository name) = infra-subway-deploy
- 3rd param(branch name) = step3
----------------------------------------------------
-
- >> Stop Process 🏃♂️
-
-
- >> Find Java process(infra-subway-deploy) & Kill Java process
- >> JAR NAME: subway-0.0.1-SNAPSHOT.jar, PID:
-deploy.sh: 90: kill: Usage: kill [-s sigspec | -signum | -sigspec] [pid | job]... or
-kill -l [exitstatus]
-
----------------------------------------------------
- 1st param(function name) = /nextstep/project/
- 2nd param(repository name) = infra-subway-deploy
- 3rd param(branch name) = step3
----------------------------------------------------
-
- >> Pull Request 🏃♂️
- >> Path: /nextstep/project/infra-subway-deploy
-
-From https://github.com/earth-h/infra-subway-deploy
- * branch            step3      -> FETCH_HEAD
-Already up to date.
-
----------------------------------------------------
- 1st param(function name) = /nextstep/project/
- 2nd param(repository name) = infra-subway-deploy
- 3rd param(branch name) = step3
----------------------------------------------------
-
- >> Build Project 🏃♂️
- >> Path: /nextstep/project/infra-subway-deploy
- >> Clean Build
-
-
-> Task :compileJava
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-
-> Task :compileTestJava
-Errors occurred while build effective model from /home/ubuntu/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-osgi/2.2.10/c926a537af564ec047ec6308df1d0d2a03364a86/jaxb-osgi-2.2.10.pom:
-    'dependencyManagement.dependencies.dependency.systemPath' for com.sun:tools:jar must specify an absolute path but is ${tools.jar} in com.sun.xml.bind:jaxb-osgi:2.2.10
-Note: /nextstep/project/infra-subway-deploy/src/test/java/study/jgraph/JgraphTest.java uses unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
-
-> Task :test
-WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass (file:/home/ubuntu/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.5.13/ac054525fdc81cbd0bc2552b57052ebb1a93cd40/groovy-2.5.13.jar) to method java.lang.Object.finalize()
-WARNING: Please consider reporting this to the maintainers of org.codehaus.groovy.reflection.CachedClass
-WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-WARNING: All illegal access operations will be denied in a future release
-2022-11-19 17:28:32.546  INFO 11049 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2022-11-19 17:28:32.552  INFO 11049 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-11-19 17:28:32.552  INFO 11049 --- [extShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2022-11-19 17:28:32.553 DEBUG 11049 --- [extShutdownHook] org.hibernate.SQL                        :
-
-    drop table if exists favorite CASCADE
-2022-11-19 17:28:32.556  WARN 11049 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 90121, SQLState: 90121
-2022-11-19 17:28:32.556 ERROR 11049 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
-2022-11-19 17:28:32.557  WARN 11049 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 90121, SQLState: 90121
-2022-11-19 17:28:32.557 ERROR 11049 --- [extShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
-2022-11-19 17:28:32.558  WARN 11049 --- [extShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'entityManagerFactory': org.hibernate.exception.JDBCConnectionException: Unable to release JDBC Connection used for DDL execution
-2022-11-19 17:28:32.558  INFO 11049 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-11-19 17:28:32.569  INFO 11049 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-
-BUILD SUCCESSFUL in 20s
-7 actionable tasks: 7 executed
-
----------------------------------------------------
- 1st param(function name) = /nextstep/project/
- 2nd param(repository name) = infra-subway-deploy
- 3rd param(branch name) = step3
----------------------------------------------------
-
- >> Start Process 🏃♂️
-
-
-------------------------
-| <<  check END 🧐  >> |
-------------------------
-[WEB-SERVICE][17:28:33][ubuntu@ip-172-20-0-4 /nextstep/project/sh]
 ```
 
 #### 요구사항
