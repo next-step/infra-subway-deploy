@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.20.0.152:3306/subway?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: masterpw
+
+  jpa:
+    hibernate:
+      ddl-auto: none
