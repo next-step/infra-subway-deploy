@@ -171,5 +171,153 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```shell
+#!/bin/bash
 
+## set variable
 
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+PROJECT_PATH='/nextstep/project/'
+LOG_PATH='/nextstep/log/'
+FUNC_NAME=$1
+REPO_NAME=$2
+BRANCH_NAME=$3
+CURRENT_TIME=$(date "+%Y%m%d%H%M")
+JAR_NAME=''
+PID=''
+
+FIX_LENGTH_FUNC_NAME=$(printf "%5.5s" "$FUNC_NAME")
+
+begin() {
+  echo "\n${txtylw}------------------------${txtrst}"
+  echo "${txtgrn}| << ${FIX_LENGTH_FUNC_NAME} START 🧐 >> |${txtrst}"
+  echo "${txtylw}------------------------${txtrst}"
+}
+
+info() {
+  echo "\n${txtylw}---------------------------------------------------${txtrst}"
+  echo " 1st param(function name) = ${PROJECT_PATH}"
+  echo " 2nd param(repository name) = ${REPO_NAME}"
+  echo " 3rd param(branch name) = ${BRANCH_NAME}"
+  echo "${txtylw}---------------------------------------------------${txtrst}"
+}
+
+guide() {
+  echo "${txtylw}============================================================================================================${txtrst}"
+  echo " 1st param(function name) = guide, pull, build, start, stop 중 하나"
+  echo " 2st param(repository name) = ${PROJECT_PATH} 내에 존재하는 github repository명(예: infra-subway-deploy)"
+  echo " 3rd param(branch name) = 2st param 내 존재하는 대상 branch명(예: earth-h)"
+  echo "${txtylw}============================================================================================================${txtrst}"
+}
+
+pull() {
+  info;
+
+  echo "\n >> Pull Request 🏃♂️ \n >> Path: ${PROJECT_PATH}${REPO_NAME}\n"
+  cd ${PROJECT_PATH}${REPO_NAME} && git pull origin ${BRANCH_NAME}
+}
+
+build() {
+  info;
+
+  echo "\n >> Build Project 🏃♂️ \n >> Path: ${PROJECT_PATH}${REPO_NAME}\n >> Clean Build\n"
+  cd ${PROJECT_PATH}${REPO_NAME} && ./gradlew clean build
+}
+
+find_jar() {
+  if [ ! -d ${PROJECT_PATH}${REPO_NAME}/build/libs ]
+  then
+    echo "${PROJECT_PATH}${REPO_NAME}/build/libs not exists!"
+    exit 0
+  fi
+  echo "$(cd ${PROJECT_PATH}${REPO_NAME}/build/libs && find ./* -name "*jar" | awk -F './' '{print $2}')"
+}
+
+find_pid() {
+  if [ "${JAR_NAME}" = "${PROJECT_PATH}${REPO_NAME}/build/libs not exists!" ]
+  then
+    echo "can't find PID because there is no jar file!"
+  else
+    echo "$(ps -ef | grep ${JAR_NAME} | grep -v grep | awk '{print $2}')"
+  fi
+}
+
+stop_process() {
+  info;
+
+  JAR_NAME=$(find_jar)
+  PID=$(find_pid)
+
+  if [ "${PID}" = "can't find PID because there is no jar file!" ]
+  then
+    echo "프로세스가 현재 실행중이지 않습니다."
+  else
+    echo "\n >> Find Java process(${REPO_NAME}) & Kill Java process\n >> JAR NAME: ${JAR_NAME}, PID: ${PID}"
+    kill ${PID}
+  fi
+}
+
+start_process() {
+  info;
+
+  JAR_NAME=$(find_jar)
+
+  if [ "${JAR_NAME}" = "${PROJECT_PATH}${REPO_NAME}/build/libs not exists!" ]
+  then
+    echo "실행핧 수 있는 jar 파일이 존재하지 않습니다."
+  elif [ -n "$(find_pid)" ]
+  then
+    echo "이미 실행 중인 프로세스가 존재합니다. 재시작을 원하시면 stop을 먼저 진행해야 합니다."
+  else
+    nohup java -jar ${PROJECT_PATH}${REPO_NAME}/build/libs/${JAR_NAME} 1> ${LOG_PATH}${REPO_NAME}_${CURRENT_TIME}.log 2>&1 &
+  fi
+}
+
+end() {
+  echo "\n${txtylw}------------------------${txtrst}"
+  echo "${txtgrn}| <<  ${FIX_LENGTH_FUNC_NAME} END 🧐  >> |${txtrst}"
+  echo "${txtylw}------------------------${txtrst}"
+}
+
+begin;
+
+case ${FUNC_NAME} in
+  guide)
+    guide
+    ;;
+  pull)
+    pull
+    ;;
+  build)
+    build
+    ;;
+  stop)
+    stop_process
+    ;;
+  start)
+    start_process
+    ;;
+esac
+
+end;
+```
+**[ 스크립트 사용법 ]**
+- 스크립트 위치: /nextstep/project/sh/deploy.sh
+- 스크립트 사용법
+  - 스크립트 실행 시, 넣어야 하는 변수 가이드: `sh deploy.sh guide`
+  - earth-h 브랜치 pull: `sh deploy.sh pull infra-subway-deploy earth-h`
+  - infra-subway-deploy 프로젝트 build: `sh deploy.sh build infra-subway-deploy earth-h`
+  - infra-subway-deploy 프로젝트를 earth-h 브랜치로 실행: `sh deploy.sh start infra-subway-deploy earth-h`
+  - infra-subway-deploy 프로젝트 프로세스를 종료: 'sh deploy.sh stop infra-subway-deploy earth-h'
+
+#### 요구사항
+- [x] 반복적으로 실행하더라도 정상적으로 배포하는 스크립트 작성하기
+  - [x] 반복적으로 사용하는 명령어에 대해 함수로 작성
+- [x] 크론탭을 통해 브랜치에 변경이 있는 경우, 원격 브랜치 땡겨서 가져오고 process 재실행하도록 설정
+  - `* * * * * /nextstep/project/sh/deploy.sh check infra-subway-deploy earth-h`
