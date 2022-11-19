@@ -365,5 +365,5 @@ end;
 - [x] 반복적으로 실행하더라도 정상적으로 배포하는 스크립트 작성하기
   - [x] 반복적으로 사용하는 명령어에 대해 함수로 작성
 - [x] 크론탭을 통해 브랜치에 변경이 있는 경우, 원격 브랜치 땡겨서 가져오고 process 재실행하도록 설정
-  - `0 * * * * /nextstep/project/sh/deploy.sh check infra-subway-deploy step3`
+  - `0 * * * * sh /nextstep/project/sh/deploy.sh check infra-subway-deploy step3 >> /nextstep/log/deploy_crontab.log`
     - 매시간마다 수행하도록 설정(1시, 2시, 3시...)
