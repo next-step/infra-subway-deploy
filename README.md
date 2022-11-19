@@ -346,9 +346,14 @@ end;
   - 원격 저장소와 서버 내 레포 변경 사항 있을 경우 pull, build, 프로세스 시작 진행: `sh deploy.sh check infra-subway-deploy step3`
 
 **[ 스크립트 사용 예시 ]**
-```shell
-
-```
+- STOP
+![stop](./files/배포_stop.png)
+- PULL
+![pull](./files/배포_pull.png)
+- BUILD
+![build](./files/배포_build.png)
+- START
+![start](./files/배포_start.png)
 
 #### 요구사항
 - [x] 반복적으로 실행하더라도 정상적으로 배포하는 스크립트 작성하기
