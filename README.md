@@ -334,6 +334,10 @@ esac
 
 end;
 ```
+- jar 파일 실행 시, jar가 있는지 먼저 확인한 후 진행
+- jar가 있을 경우에먼 pid를 체크하며, pid가 없다면 현재 process가 떠있지 않다고 판단하여 stop 진행하지 않음
+- 이미 process가 떠있을 때 start하려고 stop 후 start하라는 얼럿 발생시킴
+
 **[ 스크립트 사용법 ]**
 - 스크립트 위치: /nextstep/project/sh/deploy.sh
 - 로그 생성 위치: /nextstep/log/[프로젝트명(infra-subway-deploy)]_[날짜(예:202211191728)].log
@@ -354,6 +358,8 @@ end;
 ![build](./files/배포_build.png)
 - START
 ![start](./files/배포_start.png)
+- CHECK
+![check](./files/배포_check.png)
 
 #### 요구사항
 - [x] 반복적으로 실행하더라도 정상적으로 배포하는 스크립트 작성하기
