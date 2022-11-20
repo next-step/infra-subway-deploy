@@ -105,11 +105,25 @@ npm run dev
 - [x] 설정 파일 나누기
 JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
 
-
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+- deploy.sh
 
+#### 요구사항
+- 배포 스크립트 작성하기
+- crontab을 활용 (매 분마다 동작하도록)
 
+#### 기능 구현 목록
+- [x] 배포 스크립트작성
+  - [x] 사용법 출력 함수 작성
+  - [x] git diff 함수 작성
+  - [x] git pull 함수 작성
+  - [x] build 함수 작성
+  - [x] find process 함수 작성
+  - [x] kill process 함수 작성
+  - [x] 재시작 함수 작성
+- [x] 크론탭 설정
+  - [x] 크론 탭 로그 확인
