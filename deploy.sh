@@ -14,6 +14,7 @@ SHELL_SCRIPT_PATH=$(dirname $0)
 BRANCH=$1
 PROFILE=$2
 
+## 사용법
 function usage() {
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn}  << 배포 스크립트 🧐 >>${txtrst}"
