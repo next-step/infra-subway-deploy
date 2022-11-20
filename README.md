@@ -121,10 +121,10 @@ npm run dev
 
 개발 환경 구성하기
 
-- [ ] 설정 파일 나누기
+- [x] 설정 파일 나누기
     - [x] JUnit : h2
     - [x] Local : docker(mysql)
-    - [ ] Prod : 운영 DB를 사용하도록 설정
+    - [x] Prod : 운영 DB를 사용하도록 설정
 
 ---
 
