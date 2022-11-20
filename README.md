@@ -60,7 +60,7 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL :   
-  - http://infra.wootechcamp-sonyoon7.p-e.kr/  
+  - http://infra.wootechcamp-sonyoon7.p-e.kr:8080/  
   - http://3.38.98.126:8080/
 
 
