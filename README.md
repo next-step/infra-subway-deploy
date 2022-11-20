@@ -46,16 +46,52 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
+- key-ec2-giraffelim.pem
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역
+- giraffelim-public-subnet-2a: 192.168.27.0/26
+- giraffelim-public-subnet-2b: 192.168.27.64/26
+- giraffelim-private-subnet-2b: 192.168.27.128/27
+- giraffelim-admin-subnet-2b: 192.168.27.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
+- URL : http://web.giraffelim.kro.kr:8080/
 
-- URL : 
-
-
+## 구현 목록
+### 망 구성
+- [x]  VPC 생성(192.168.27.0/24)
+    - [x]  CIDR은 C 클래스(x.x.x.x/24)로 생성, 이 때 다른사람과 겹치지 않게 생성
+- [x]  Subnet 생성
+    - [x]  외부망으로 사용할 Subnet: 64개씩 2개(AZ를 다르게 구성) → Public
+    - [x]  내부망으로 사용할 Subnet: 32개씩 1개 → Internal
+    - [x]  관리용으로 사용할 Subnet: 32개씩 1개 → Public
+- [x]  Internet Gateway 연결
+- [x]  Route Table 생성
+- [x]  NAT 게이트웨이 생성
+- [x]  Security Group 설정
+    - [x]  외부망
+        - [x]  전체 대역: 8080포트 오픈
+        - [x]  관리망: 22번 포트 오픈
+    - [x]  내부망
+        - [x]  외부망: 3306 포트 오픈
+        - [x]  관리망: 22번 포트 오픈
+    - [x]  관리망
+        - [x]  자신의 공인 IP: 22번 포트 오픈
+- [x]  서버 생성
+    - [x]  외부망에 웹 서비스 용도의 EC2 생성
+    - [x]  내부망에 데이터베이스 용도의 EC2 생성
+    - [x]  관리망에 베스쳔 서버 용도의 EC2 생성
+    - [x]  베스쳔 서버에 Session Timeout 600s 설정
+    - [x]  베스쳔 서버에 Command 감사 로그 설정
+    - [x]  웹 서버에 Session Timeout 600s 설정
+    - [x]  웹 서버에 Command 감사 로그 설정
+    - [x]  데이터베이스 서버에 Session Timeout 600s 설정
+    - [x]  데이터베이스 서버에 Command 감사 로그 설정
+### 웹 애플리케이션 배포
+- [x]  외부망에 웹 애플리케이션을 배포
+- [x]  DNS 설정
 
 ---
 
