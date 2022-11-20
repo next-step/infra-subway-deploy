@@ -4,14 +4,16 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/subway?serverTimezone=UTC&characterEncoding=UTF-8
-    username: local
-    password: localpw
+    username: root
+    password: Spation1234!
   jpa:
     hibernate:
       ddl-auto: create
     properties:
-      show_sql: true
-      format_sql: true
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        show_sql: true
+        format_sql: true
 
 logging:
   level:
@@ -28,5 +30,5 @@ security:
       expire-length: 3600000
 
 handlebars:
-  suffix: html
+  suffix: .html
   enabled: true

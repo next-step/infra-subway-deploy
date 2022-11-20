@@ -9,7 +9,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
 security:
   jwt:
     token:
@@ -17,5 +19,5 @@ security:
       expire-length: 3600000
 
 handlebars:
-  suffix: html
+  suffix: .html
   enabled: true
