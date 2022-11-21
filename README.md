@@ -115,6 +115,103 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```shell
+#!/bin/bash
+
+## 변수 설정
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+BRANCH=$1
+PROFILE=$2
+CHECK=$3
+
+## guide
+function help() {
+  echo -e "${txtgra}===============================================================${txtrst}"
+  echo -e "${txtrst}          << deploy.sh manual🧐 >>                             ${txtrst}"
+  echo -e "${txtrst}  argumetns: 1st=branch, 2nd=profile, 3nd=check(true, false)   ${txtrst}"
+  echo -e "${txtrst}  !if check=${txtred}true${txtrst} compare branch to origin branch ${txtrst}"
+  echo -e "${txtrst}  !if check=${txtred}false${txtrst} always deploy using branch, profile ${txtrst}"
+  echo -e "${txtrst}  example: ./deploy.sh step2 prod true(or false)               ${txtrst}"
+  echo -e "${txtgra}===============================================================${txtrst}"
+}
+
+## check diff
+function check_df() {
+  git fetch
+  MASTER=$(git rev-parse $BRANCH)
+  REMOTE=$(git rev-parse origin/$BRANCH)
+
+  if [ $MASTER == $REMOTE ]; then
+	  echo -e "[$(date)] Nothing to do!!! 😫"
+	  exit 0
+  fi;
+}
+
+## 배포
+function deploy() {
+  if [ "$CHECK" == true ]; then
+	  check_df
+  fi;
+  pull;
+  build;
+  find_running_process;
+  kill_running_process;
+  run_application;
+}
+
+## 저장소 pull
+function pull() {
+  echo -e ""
+  echo -e ">> Pull Request $BRANCH 🏃♂️ "
+  git pull origin $BRANCH
+}
+
+## gradle build
+function build() {
+  echo -e ""
+  echo -e ">> Gradle Build 🚴♂️"
+  ./gradlew clean build
+}
+
+## find running process pid
+function find_running_process() {
+  echo -e ""
+  echo -e ">> find exist running subway service process 🧐"
+  RUNNING_PROCESS=$(ps -ef | grep subway | grep jar | awk '{print $2}' )
+  if [ -n "$RUNNING_PROCESS" ]; then
+	  echo -e "find running subway process: ${txtred}$RUNNING_PROCESS${txtrst}"
+  else
+	  echo -e "no process found ❌"
+  fi;
+}
+
+## kill running process by pid
+function kill_running_process() {
+  if [ -n "$RUNNING_PROCESS" ]; then
+	  echo -e ""
+	  echo -e ">> kill running process ${txtred}$RUNNING_PROCESS 🪡 ${txtrst} "
+	  kill -9 $RUNNING_PROCESS
+  fi;
+}
+
+## run subway application
+function run_application() {
+  echo -e ""
+  echo -e ">> run subway application 🚀"
+  nohup java -jar -Dspring.profiles.active=$PROFILE ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
+}
+
+if [ -n "$BASH" ] && [ -n "$PROFILE" ]; then
+	deploy
+else
+	help
+fi;
+```
 
 ## 구현 목록
 - [x] 아래 조건을 만족하는 배포 스크립트 작성하기
