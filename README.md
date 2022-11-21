@@ -43,17 +43,22 @@ npm run dev
 
 ### 0단계 - pem 키 생성하기
 
-1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
+1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요  
+업로드 완료했습니다.
 
-2. 업로드한 pem키는 무엇인가요.
+2. 업로드한 pem키는 무엇인가요.  
+gunkim-key.pem
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- admin(busten) : 192.168.18.128/27
+- public1 : 192.168.18.0/26
+- public2 : 192.168.18.64/26
+- bastion : 192.168.18.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://infra-study.kro.kr:8080/
 
 
 
