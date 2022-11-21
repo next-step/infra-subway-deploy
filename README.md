@@ -46,16 +46,39 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
+- key-crongcm.pem
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 : 192.168.38.0/24
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://3.38.238.194:8080 (http://crongcm.p-e.kr:8080)
 
-
+- [x] VPC 생성 - `crongcm-vpc` `192.168.38.0/24` `vpc-004c29db603b106e6`
+- [x] Subnet 생성
+  - [x] 외부망으로 사용할 Subnet - `crongcm-public-a` `192.168.38.0/26`
+  - [x] 외부망으로 사용할 Subnet - `crongcm-public-c` `192.168.38.64/26`
+  - [x] 내부망으로 사용할 Subnet - `crongcm-internal-a` `192.168.38.128/27`
+  - [x] 관리용으로 사용할 Subnet - `crongcm-admin-c` `192.168.38.160/27`
+- [x] Internet Gateway 연결 - `crongcm-igw`, `crongcm-nat`
+- [x] Route Table 생성 - `crongcm-public-rt`, `crongcm-internal-rt`
+- [x] Security Group 설정
+  - [x] 외부망 - `crongcm-public-sg`
+    - [x] 전체 대역 : 8080 포트 오픈
+    - [x] 관리망 : 22번 포트 오픈
+  - [x] 내부망 - `crongcm-internal-sg`
+    - [x] 외부망 : 3306 포트 오픈
+    - [x] 관리망 : 22번 포트 오픈
+  - [x] 관리망 - `crongcm-admin-sg`
+    - [x] 자신의 공인 IP : 22번 포트 오픈
+- [x] 서버 생성
+  - [x] 외부망에 웹 서비스용도의 EC2 생성 - `ec2-crongcm-web` 
+  - [x] 내부망에 데이터베이스용도의 EC2 생성 - `ec2-crongcm-db`
+  - [x] 관리망에 베스쳔 서버용도의 EC2 생성 - `ec2-crongcm-admin`
+  - [x] 베스쳔 서버에 Session Timeout 600s 설정
+  - [x] 베스쳔 서버에 Command 감사로그 설정
 
 ---
 
