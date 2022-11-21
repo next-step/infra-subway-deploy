@@ -70,11 +70,15 @@ npm run dev
     -[X] 관리망
         - 자신의 공인 IP : 22번 포트 오픈
 -[X] 서버 생성
-    -[X] 외부망에 웹 서비스용도의 EC2 생성
-    -[X] 내부망에 데이터베이스용도의 EC2 생성
-    -[X] 관리망에 베스쳔 서버용도의 EC2 생성
-    -[X] 베스쳔 서버에 Session Timeout 600s 설정
-    -[X] 베스쳔 서버에 Command 감사로그 설정
+    - [X] 외부망에 웹 서비스용도의 EC2 생성
+        - gyeom-infra-subway-deploy-subnet-public1-ap-northeast-2a
+        - gyeom-infra-subway-deploy-subnet-public2-ap-northeast-2b
+    - [X] 내부망에 데이터베이스용도의 EC2 생성
+        - gyeom-infra-subway-deploy-subnet-private1-ap-northeast-2a
+    - [X] 관리망에 베스쳔 서버용도의 EC2 생성
+        - gyeom-infra-subway-deploy-subnet-private2-ap-northeast-2b
+    - [X] 베스쳔 서버에 Session Timeout 600s 설정
+    - [X] 베스쳔 서버에 Command 감사로그 설정
 
 #### 웹 애플리케이션 배포
 - [X] 외부망에 웹 애플리케이션을 배포
@@ -86,7 +90,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 3.39.220.195
+- URL : 3.39.220.195 (http://gyeom-subway-admin.kro.kr:8080)
 
 
 
