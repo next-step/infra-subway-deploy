@@ -116,4 +116,13 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+## 구현 목록
+- [x] 아래 조건을 만족하는 배포 스크립트 작성하기
+    - [x] branch pull
+    - [x] gradle build
+    - [x] find running process
+    - [x] remove running process
+    - [x] run application
+    - [x] check diff
+    - [x] help(사용법)
 
