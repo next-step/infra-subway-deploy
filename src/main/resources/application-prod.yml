@@ -12,7 +12,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto:
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true
