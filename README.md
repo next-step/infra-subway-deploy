@@ -125,6 +125,7 @@ txtylw='\033[1;33m' # Yellow
 txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
+PWD=$(pwd)
 BRANCH=$1
 PROFILE=$2
 CHECK=$3
@@ -175,7 +176,7 @@ function pull() {
 function build() {
   echo -e ""
   echo -e ">> Gradle Build 🚴♂️"
-  ./gradlew clean build
+  $PWD/gradlew clean build
 }
 
 ## find running process pid
@@ -203,7 +204,7 @@ function kill_running_process() {
 function run_application() {
   echo -e ""
   echo -e ">> run subway application 🚀"
-  nohup java -jar -Dspring.profiles.active=$PROFILE ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
+  nohup java -jar -Dspring.profiles.active=$PROFILE $PWD/build/libs/subway-0.0.1-SNAPSHOT.jar 1> $PWD/subway.log 2>&1 &
 }
 
 if [ -n "$BASH" ] && [ -n "$PROFILE" ]; then
