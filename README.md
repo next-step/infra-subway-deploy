@@ -77,5 +77,71 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```
+#!/bin/bash
 
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+REPOSITORY=/home/ubuntu/
+PROJECT_NAME=infra-subway-deploy
+BRANCH=step2
+
+
+echo  "${txtylw}====================================================${txtrst}"
+echo  "${txtgrn}                 << DEPLOY SCRIPT >>                   ${txtrst}"
+echo  "${txtylw}====================================================${txtrst}"
+
+
+
+cd $REPOSITORY/$PROJECT_NAME/
+
+
+echo "> Git Pull"
+
+git pull
+
+echo "> Project Build"
+
+./gradlew clean build -x test
+
+
+echo "> Move To Directory"
+
+cd $REPOSITORY
+
+
+echo "> COPY Build file"
+
+cp $REPOSITORY/$PROJECT_NAME/build/libs/*.jar $REPOSITORY/
+
+JAR_NAME=$(ls -tr $REPOSITORY/ | grep jar | tail -n 1)
+
+echo "> JAR Name: $JAR_NAME"
+
+
+echo "> Check Running pid "
+
+CURRENT_PID=$(pgrep -f  *.jar)
+
+echo "pid: $CURRENT_PID"
+
+if [ -z "$CURRENT_PID" ]; then
+        echo "> Nothing to kill ."
+else
+        echo "> kill -15 $CURRENT_PID"
+        kill -15 $CURRENT_PID
+        sleep 5
+fi
+
+echo "> Deploy New "
+
+nohup java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=prod -jar $REPOSITORY/$JAR_NAME &
+
+
+```
 
