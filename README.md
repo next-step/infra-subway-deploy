@@ -85,13 +85,17 @@ chunhodong-admin-subnet01(192.168.19.160/27)
   - [x] 관리망에 베스쳔 서버용도의 EC2 생성
   - [x] 베스쳔 서버에 Session Timeout 600s 설정
   - [x] 베스쳔 서버에 Command 감사로그 설정
-
+- [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+  - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+  - [x] Reverse Proxy에 TLS 설정
+- [x] 운영 데이터베이스 구성하기
+- [x] 설정 파일 나누기
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://chunhodong.p-e.kr
 
 ---
 
