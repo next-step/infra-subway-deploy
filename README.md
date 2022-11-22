@@ -54,7 +54,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://3.38.238.194:8080 (http://crongcm.p-e.kr:8080)
+- URL : http://3.38.238.194:8080 (http://crongcm.n-e.kr:8080)
 
 - [x] VPC 생성 - `crongcm-vpc` `192.168.38.0/24` `vpc-004c29db603b106e6`
 - [x] Subnet 생성
@@ -85,7 +85,16 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://crongcm.n-e.kr
+
+- [x] 운영 환경 구성하기
+  - [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+    - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+    - [x] Reverse Proxy에 TLS 설정
+  - [x] 운영 데이터베이스 구성하기
+- [x] 개발 환경 구성하기
+  - [x] 설정 파일 나누기
+  - [x] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
 
 ---
 
