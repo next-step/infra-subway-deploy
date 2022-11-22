@@ -181,98 +181,106 @@ npm run dev
     ```
 - `deploy.sh`
     - pull, build, stop_process, start_process 과정을 거쳐 서버를 띄웁니다.
-    ```shell
-    #!/bin/bash
-    
-    . /home/ubuntu/nextstep/script/setting.sh
-    ## 변수 설정
-    
-    txtrst='\033[1;37m' # White
-    txtred='\033[1;31m' # Red
-    txtylw='\033[1;33m' # Yellow
-    txtpur='\033[1;35m' # Purple
-    txtgrn='\033[1;32m' # Green
-    txtgra='\033[1;30m' # Gray
-    
-    ## script parameter
-    BRANCH=$1
-    
-    ## guide
-    guide() {
-            echo "${txtgra}===============================================================${txtrst}"
-            echo "${txtrst}              << This is a manual for deploy 😃 >>             ${txtrst}"
-            echo "${txtrst}           This script need a parameter branch name.           ${txtrst}"
-            echo "${txtrst}                   ex) sh deploy.sh step3                      ${txtrst}"
-            echo "${txtgra}===============================================================${txtrst}"
-    }
-    
-    ## pull
-    pull() {
-            echo ""
-            echo ">> Pull Request 🏃♂️ "
-            echo ""
-            cd ${PROJECT_PATH} && git pull origin ${BRANCH}
-    }
-    
-    ## build
-    build() {
-        echo ""
-        echo ">> Build Project 🏃♂️ "
-        echo ""
-        cd ${PROJECT_PATH} && ./gradlew clean build
-    }
-    
-    ## stop process
-    stop_process() {
-        JAR_NAME=$(cd ${JAR_PATH} && find ./* -name "*jar" | cut -c 3-)
-        PID=$(ps -ef | grep $JAR_NAME | grep -v grep | awk '{print $2}')
-    
-        if [ -n "$PID" ]; then
-            echo ""
-            echo ">> Stop running process 🏃♂️ "
-            echo ""
-            kill $PID
-        fi
-    }
-    
-    ## start process
-    start_process() {
-        echo ""
-        echo ">> Start Process 🏃♂️ "
-        echo ""
-    
-        nohup java -jar -Dspring.profiles.active=prod $JAR_PATH/$JAR_NAME 1> $APP_LOG_PATH/app.log 2>&1 &
-    }
-    
-    ## deploy
-    deploy() {
-        pull;
-        build;
-        stop_process;
-        start_process;
-    }
-    
-    ## check
-    check() {
-        cd ${PROJECT_PATH} && git fetch
-        master=$(cd ${PROJECT_PATH} && git rev-parse ${BRANCH})
-        remote=$(cd ${PROJECT_PATH} && git rev-parse origin/${BRANCH})
-    
-        if [ "$master" = "$remote" ]; then
-            echo "[$(date)] Nothing to do!!! 😢"
-            exit 0
-        else
-            deploy;
-        fi
-    }
-    
-    
-    if [ -n "$BRANCH" ]; then
-        check;
-    else
-        guide;
-    fi
-    ```
+  ```shell
+  #!/bin/bash
+  
+  . /home/ubuntu/nextstep/script/setting.sh
+  ## 변수 설정
+  
+  txtrst='\033[1;37m' # White
+  txtred='\033[1;31m' # Red
+  txtylw='\033[1;33m' # Yellow
+  txtpur='\033[1;35m' # Purple
+  txtgrn='\033[1;32m' # Green
+  txtgra='\033[1;30m' # Gray
+  
+  ## script parameter
+  BRANCH=$1
+  
+  ## guide
+  guide() {
+          echo "${txtgra}===============================================================${txtrst}"
+          echo "${txtrst}              << This is a manual for deploy 😃 >>             ${txtrst}"
+          echo "${txtrst}           This script need a parameter branch name.           ${txtrst}"
+          echo "${txtrst}                   ex) sh deploy.sh step3                      ${txtrst}"
+          echo "${txtgra}===============================================================${txtrst}"
+  }
+  
+  ## pull
+  pull() {
+          echo ""
+          echo ">> Pull Request 🏃♂️ "
+          echo ""
+          cd ${PROJECT_PATH} && git pull origin ${BRANCH}
+  }
+  
+  ## build
+  build() {
+      echo ""
+      echo ">> Build Project 🏃♂️ "
+      echo ""
+      cd ${PROJECT_PATH} && ./gradlew clean build
+  }
+  
+  ## stop process
+  stop_process() {
+      JAR_NAME=$(cd ${JAR_PATH} && find ./* -name "*jar" | cut -c 3-)
+      PID=$(ps -ef | grep $JAR_NAME | grep -v grep | awk '{print $2}')
+  
+      if [ -n "$PID" ]; then
+          echo ""
+          echo ">> Stop running process 🏃♂️ "
+          echo ""
+          kill $PID
+      fi
+  }
+  
+  ## start process
+  start_process() {
+      echo ""
+      echo ">> Start Process 🏃♂️ "
+      echo ""
+  
+      nohup java -jar -Dspring.profiles.active=prod $JAR_PATH/$JAR_NAME 1> $APP_LOG_PATH/app.log 2>&1 &
+  }
+  
+  ## deploy
+  deploy() {
+      pull;
+      build;
+      stop_process;
+      start_process;
+  }
+  
+  ## check
+  check() {
+  
+      PID=$(find_pid)
+  
+      if [ -z "$PID" ]; then
+      deploy;
+      exit 0
+      fi
+  
+      cd ${PROJECT_PATH} && git fetch
+      master=$(cd ${PROJECT_PATH} && git rev-parse ${BRANCH})
+      remote=$(cd ${PROJECT_PATH} && git rev-parse origin/${BRANCH})
+  
+      if [ "$master" = "$remote" ]; then
+      echo "[$(date)] Nothing to do!!! 😢"
+          exit 0
+      else
+          deploy;
+      fi
+  }
+  
+  
+  if [ -n "$BRANCH" ]; then
+      check;
+  else
+      guide;
+  fi
+  ```
 
 - crontab 설정
     - */60 * * * * /home/ubuntu/nextstep/script/deploy.sh step3 >> /home/ubuntu/nextstep/log/deploy.log 2>&1
