@@ -55,10 +55,9 @@ npm run dev
 ---
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
-- URL :
+- URL : https://subway.sixthou.kro.kr
 ---
 ### 3단계 - 배포 스크립트 작성하기
-
 1. 작성한 배포 스크립트를 공유해주세요.
 
 ---
@@ -112,3 +111,23 @@ npm run dev
     - ~/data/log/subway.log
   -[x] DNS 설정
     - http://subway.sixthou.kro.kr:8080/
+
+
+---
+## 🚀 2단계 - 서비스 배포하기
+### 요구사항
+- 운영 환경 구성하기
+  - [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+    - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+      1. 도커설치
+      2. 도커파일 작성
+    - [x] Reverse Proxy에 TLS 설정
+      1. 인증서 발급
+      2. 도커파일 수정
+      3. 443 포트 오픈
+  - [x] 운영 데이터베이스 구성하기
+    1. nat 게이트웨이 설정
+    2. 도커설치
+- 개발 환경 구성하기
+  - [x] 설정 파일 나누기
+    - JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
