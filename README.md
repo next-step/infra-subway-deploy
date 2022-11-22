@@ -46,14 +46,14 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
-
+    -> KEY-yeojiin.pem
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://3.35.50.232:8080/
 
 
 
@@ -114,8 +114,8 @@ npm run dev
 **모든 리소스는 태그를 작성합니다. 이 때 자신의 계정을 Prefix로 붙입니다. (예: brainbackdoor-public)**
 
 ### 웹 애플리케이션 배포
-* [ ] 외부망에 웹 애플리케이션을 배포
-* [ ] DNS 설정
+* [x] 외부망에 웹 애플리케이션을 배포
+* [x] DNS 설정
 
 </details>
 
