@@ -50,10 +50,17 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  * VPC IPv4 CIDR : 192.168.34.0/24
+  * 외부망1: 192.168.34.0/26
+  * 외부망2: 192.168.34.64/26
+  * 관리망: 192.168.34.160/27
+  * 내부망: 192.168.34.128/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://3.35.50.232:8080/
+- URL : 
+  * http://3.35.50.232:8080/
+  * http://www.yeojiin-subway.n-e.kr:8080/
 
 
 
@@ -72,14 +79,16 @@ npm run dev
 
 ***
 
-# 🚀 1단계 - 서비스 구성하기
 
-## 요구사항
+### 힌트
 <details open>
 <summary> </summary>
 
-* [ ] 웹 서비스를 운영할 네트워크 망 구성하기
-* [ ] 웹 애플리케이션 배포하기
+### 🚀 1단계 - 서비스 구성하기
+## 요구사항
+
+* [x] 웹 서비스를 운영할 네트워크 망 구성하기
+* [x] 웹 애플리케이션 배포하기
 
 ### 요구사항 설명
 * 저장소를 활용하여 아래 요구사항을 해결합니다.
@@ -117,23 +126,22 @@ npm run dev
 * [x] 외부망에 웹 애플리케이션을 배포
 * [x] DNS 설정
 
-</details>
 
-## 힌트
+### 힌트
 <details>
 <summary> </summary>
 
 1. EC2 생성하기</br>
-A. aws web console에 사용자 이름 / 비밀번호 등을 입력하여 접속합니다.   </br>
-B. EC2 메뉴로 접근하세요.</br>
-a. Ubuntu 64 bit 선택 (Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-00edfb46b107f643c)</br>
-b. InstanceType : t4g.medium 생성 가능</br>
-c. 서브넷 : 적절한 서브넷 선택, 퍼블릭 IP 자동할당 : 활성화</br>
-d. 스토리지 : 서비스 운영할 것을 고려해서 설정해주세요.</br>
-e. 서버를 생성할 때는 다른 사람의 서버와 구분하기 위해 반드시 Name 이름으로 태그에 자신의 계정명을 작성합니다.</br>
-f. 보안그룹 : 적절한 보안그룹을 선택</br>
-g. 키 페어 생성</br>
-   * 키 페어 이름에 자신의 계정을 prefix로 붙입니다.
+   A. aws web console에 사용자 이름 / 비밀번호 등을 입력하여 접속합니다.   </br>
+   B. EC2 메뉴로 접근하세요.</br>
+   a. Ubuntu 64 bit 선택 (Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-00edfb46b107f643c)</br>
+   b. InstanceType : t4g.medium 생성 가능</br>
+   c. 서브넷 : 적절한 서브넷 선택, 퍼블릭 IP 자동할당 : 활성화</br>
+   d. 스토리지 : 서비스 운영할 것을 고려해서 설정해주세요.</br>
+   e. 서버를 생성할 때는 다른 사람의 서버와 구분하기 위해 반드시 Name 이름으로 태그에 자신의 계정명을 작성합니다.</br>
+   f. 보안그룹 : 적절한 보안그룹을 선택</br>
+   g. 키 페어 생성</br>
+    * 키 페어 이름에 자신의 계정을 prefix로 붙입니다.
 
     ```
     서버 생성시 발급받은 key를 분실할 경우 서버에 접속할 수 없어요. key를 분실하지 않도록 주의하세요,
@@ -142,8 +150,8 @@ g. 키 페어 생성</br>
     서버를 사용하지 않을 때는 stop해주세요.
     ```
 
-    C. 서버에 접속하기
-   * 서버 IP는 aws web console에서 확인 가능 <br><br>
+   C. 서버에 접속하기
+    * 서버 IP는 aws web console에서 확인 가능 <br><br>
    ```
    맥운영체제 사용자
     # 터미널 접속한 후 앞 단계에서 생성한 key가 위치한 곳으로 이동한다.
@@ -154,9 +162,9 @@ g. 키 페어 생성</br>
     PuTTY를 사용하여 Windows에서 Linux 인스턴스에 연결
     putty를 위한 ppk 생성
    ```   
-   
+
 2. 접근제어
-Bastion Server로 사용할 별도의 EC2를 생성하고, Bastion Server에서 서비스용 서버에 ssh 연결을 설정
+   Bastion Server로 사용할 별도의 EC2를 생성하고, Bastion Server에서 서비스용 서버에 ssh 연결을 설정
 ```
 ## Bastion Server에서 공개키를 생성합니다.
 bastion $ ssh-keygen -t rsa
@@ -169,9 +177,9 @@ $ vi ~/.ssh/authorized_keys
 bastion $ ssh ubuntu@[서비스용 서버 IP]
 ```   
 
-* Bastion Server는 자신의 공인 IP에서만 22번 포트로 접근이 가능하도록 Security Group을 설정합니다.   
+* Bastion Server는 자신의 공인 IP에서만 22번 포트로 접근이 가능하도록 Security Group을 설정합니다.
 * 서비스용 서버에 22번 포트로의 접근은 Bastion 서버에서만 가능하도록 Security Group을 설정합니다.
-*  Bastion 서버에서 다른 서버에 접근이 용이하도록 별칭을 설정합니다.   
+*  Bastion 서버에서 다른 서버에 접근이 용이하도록 별칭을 설정합니다.
 ```
 bastion $ vi /etc/hosts
 [서비스용IP]    [별칭]
@@ -180,8 +188,8 @@ bastion $ ssh [별칭]
 ```   
 
 3. 서버 환경설정 해보기   
-a. 환경 병수 적용하기
-* Sessio Timeout 설정을 하여 일정 시간 작업을 하지 않을 경우 터미널 연결을 해제할 수 있습니다.   
+   a. 환경 병수 적용하기
+* Sessio Timeout 설정을 하여 일정 시간 작업을 하지 않을 경우 터미널 연결을 해제할 수 있습니다.
 ```
 $ sudo vi ~/.profile
   HISTTIMEFORMAT="%F %T -- "    ## history 명령 결과에 시간값 추가
@@ -192,7 +200,7 @@ $ source ~/.profile
 $ env
 ```
 b. shell prompt 변경하기   
-Bastion 등 구분해야 하는 서버의 Shell Prompt를 설정하여 관리자의 인적 장애를 예방할 수 있습니다.   
+Bastion 등 구분해야 하는 서버의 Shell Prompt를 설정하여 관리자의 인적 장애를 예방할 수 있습니다.
 ```
 $ sudo vi ~/.bashrc
   USERNAME=BASTION
@@ -220,7 +228,7 @@ $ sudo service rsyslog restart
 $ tail -f /var/log/command.log
 ```   
 4. 환경 세팅   
-a.확인
+   a.확인
 ```
 # 현재 위치를 확인합니다.
 $ pwd
@@ -249,7 +257,7 @@ $ sudo apt install default-jdk
 
 5. 소스코드 배포, 빌드 및 실행   
    a. github repository clone   
-   b. 빌드   
+   b. 빌드
     ```
    $ ./gradlew clean build
 
@@ -257,17 +265,17 @@ $ sudo apt install default-jdk
     $ find ./* -name "*jar"
    ```      
    c. 실행   
-    Application을 실행 후 정상적으로 동작하는지 확인해보세요.   
+   Application을 실행 후 정상적으로 동작하는지 확인해보세요.
     ```
    $ java -jar [jar파일명] &
     $ curl http://localhost:8080
    ```
-    * -Dserver.port=8000 옵션을 활용하여 port를 변경할 수 있어요.   
+    * -Dserver.port=8000 옵션을 활용하여 port를 변경할 수 있어요.
     * 서버를 시작 시간이 너무 오래 걸리는 경우 -Djava.security.egd 옵션을 적용해보세요.
     ```
     $ java -Djava.security.egd=file:/dev/./urandom -jar [jar파일명] &
     ```
-   * 터미널 세션이 끊어질 경우, background로 돌던 프로세스에 hang-up signal이 발생해 죽는 경우가 있는데요. 이 경우 nohup명령어를 활용합니다.
+    * 터미널 세션이 끊어질 경우, background로 돌던 프로세스에 hang-up signal이 발생해 죽는 경우가 있는데요. 이 경우 nohup명령어를 활용합니다.
    ```
     $  nohup java -jar [jar파일명] 1> [로그파일명] 2>&1  &
     ```
@@ -282,10 +290,10 @@ $ sudo apt install default-jdk
     $ chmod [옵션] [파일명]
     > https://ko.wikipedia.org/wiki/Chmod
    ```
-   * 브라우저에서 http://{서버 ip}:{port}로 접근해보세요.      
-    
-    e. 종료   
-    a. 로세스 pid를 찾는 명령어
+    * 브라우저에서 http://{서버 ip}:{port}로 접근해보세요.
+
+   e. 종료   
+   a. 로세스 pid를 찾는 명령어
     ```
     $ ps -ef | grep java
     $ pgrep -f java
@@ -296,14 +304,11 @@ $ sudo apt install default-jdk
     $ kill -2 [PID]
     ```   
 
-    f. 명령어 이력 확인
+   f. 명령어 이력 확인
     ```
     $ history
     ```
 
-
-
-
-
-
 </details>
+</details>
+
