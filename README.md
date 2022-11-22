@@ -125,7 +125,7 @@ txtylw='\033[1;33m' # Yellow
 txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
-PWD=$(pwd)
+PROJECT_DIR=/home/ubuntu/nextstep/infra-subway-deploy
 BRANCH=$1
 PROFILE=$2
 CHECK=$3
@@ -176,7 +176,7 @@ function pull() {
 function build() {
   echo -e ""
   echo -e ">> Gradle Build 🚴♂️"
-  $PWD/gradlew clean build
+  $PROJECT_DIR/gradlew clean build
 }
 
 ## find running process pid
@@ -204,9 +204,10 @@ function kill_running_process() {
 function run_application() {
   echo -e ""
   echo -e ">> run subway application 🚀"
-  nohup java -jar -Dspring.profiles.active=$PROFILE $PWD/build/libs/subway-0.0.1-SNAPSHOT.jar 1> $PWD/subway.log 2>&1 &
+  nohup java -jar -Dspring.profiles.active=$PROFILE $PROJECT_DIR/build/libs/subway-0.0.1-SNAPSHOT.jar 1> $PROJECT_DIR/subway.log 2>&1 &
 }
 
+cd $PROJECT_DIR
 if [ -n "$BASH" ] && [ -n "$PROFILE" ]; then
 	deploy
 else
