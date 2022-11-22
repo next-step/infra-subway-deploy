@@ -132,4 +132,148 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
-
+- `/home/ubuntu/nextstep/script` 경로에 스크립트가 있습니다.
+- `/home/ubuntu/nextstep/log` 경로에 `app.log` 파일로 로그를 기록하고 있습니다.
+- `setting.sh`
+    - 여러 스크립트에서 공통으로 사용하는 변수와 함수를 정의해두었습니다.
+    - find_jar -> jar 명 출력
+    - find_pid -> PID 출력
+      ```shell
+      #!/bin/bash
+      
+      ## set variable
+      
+      PROJECT_PATH='/home/ubuntu/nextstep/infra-subway-deploy'
+      JAR_PATH=${PROJECT_PATH}/build/libs
+      APP_LOG_PATH='/home/ubuntu/nextstep/log'
+      
+      find_jar() {
+              echo "$(cd ${JAR_PATH} && find ./* -name "*jar" | cut -c 3-)"
+      }
+      
+      
+      find_pid() {
+              JAR=$(find_jar)
+              echo "$(ps -ef | grep $JAR | grep -v grep | awk '{print $2}')"
+      }
+      ```
+- `stop.sh`
+    - 현재 실행중인 프로세스를 종료시킵니다.
+      ```shell
+      #!/bin/bash
+      
+      . ./setting.sh
+      
+      echo ""
+      echo ">> Stop Process 🏃♂️ "
+      echo ""
+      
+      JAR_NAME=$(find_jar)
+      PID=$(find_pid)
+      
+      
+      if [ -z "$PID" ]; then
+              echo "프로세스가 실행중이지 않습니다."
+      else
+              echo "$JAR_NAME의 프로세스를 종료합니다. (PID = $PID)"
+              kill $PID
+      fi
+      ```
+- `deploy.sh`
+    - pull, build, stop_process, start_process 과정을 거쳐 서버를 띄웁니다.
+      ```shell
+      #!/bin/bash
+      
+      . ./setting.sh
+      
+      ## 변수 설정
+      
+      txtrst='\033[1;37m' # White
+      txtred='\033[1;31m' # Red
+      txtylw='\033[1;33m' # Yellow
+      txtpur='\033[1;35m' # Purple
+      txtgrn='\033[1;32m' # Green
+      txtgra='\033[1;30m' # Gray
+      
+      ## script parameter
+      BRANCH=$1
+      
+      ## guide
+      guide() {
+              echo "${txtgra}===============================================================${txtrst}"
+              echo "${txtrst}              << This is a manual for deploy 😃 >>             ${txtrst}"
+              echo "${txtrst}           This script need a parameter branch name.           ${txtrst}"
+              echo "${txtrst}                   ex) sh deploy.sh step3                      ${txtrst}"
+              echo "${txtgra}===============================================================${txtrst}"
+      }
+      
+      ## pull
+      pull() {
+              echo ""
+              echo ">> Pull Request 🏃♂️ "
+              echo ""
+          git pull origin ${BRANCH}
+      }
+      
+      ## build
+      build() {
+          echo ""
+          echo ">> Build Project 🏃♂️ "
+          echo ""
+          cd ${PROJECT_PATH} && ./gradlew clean build
+      }
+      
+      ## stop process
+      stop_process() {
+          JAR_NAME=$(cd ${JAR_PATH} && find ./* -name "*jar" | cut -c 3-)
+          PID=$(ps -ef | grep $JAR_NAME | grep -v grep | awk '{print $2}')
+      
+          if [ -n "$PID" ]; then
+              echo ""
+              echo ">> Stop running process 🏃♂️ "
+              echo ""
+              kill $PID
+          fi
+      }
+      
+      ## start process
+      start_process() {
+          echo ""
+          echo ">> Start Process 🏃♂️ "
+          echo ""
+      
+          nohup java -jar -Dspring.profiles.active=prod $JAR_PATH/$JAR_NAME 1> $APP_LOG_PATH/app.log 2>&1 &
+      }
+      
+      ## deploy
+      deploy() {
+          pull;
+          build;
+          stop_process;
+          start_process;
+      }
+      
+      ## check
+      check() {
+          cd ${PROJECT_PATH} && git fetch
+          master=$(cd ${PROJECT_PATH} && git rev-parse ${BRANCH})
+          remote=$(cd ${PROJECT_PATH} && git rev-parse origin)
+      
+          if [ "$master" = "$remote" ]; then
+              echo "[$(date)] Nothing to do!!! 😢"
+              exit 0
+          else
+              deploy;
+          fi
+      }
+      
+      
+      if [ -n "$BRANCH" ]; then
+          check;
+      else
+          guide;
+      fi
+      ```
+      
+- crontab 설정
+  - */60 * * * * sh /home/ubuntu/nextstep/script/deploy.sh step3 >> /home/ubuntu/nextstep/log/deploy.log
