@@ -1,0 +1,9 @@
+[submodule "src/main/resources/config/src/main/resources/config"]
+	path = src/main/resources/config/src/main/resources/config
+	url = https://github.com/hyeongJuKim/infra-subway-deploy-private.git
+[submodule "src/main/resources/config/infra-subway-deploy-private"]
+	path = src/main/resources/config/infra-subway-deploy-private
+	url = https://github.com/hyeongJuKim/infra-subway-deploy-private.git
+[submodule "src/main/resources/config"]
+	path = src/main/resources/config
+	url = https://github.com/hyeongJuKim/infra-subway-deploy-private.git
