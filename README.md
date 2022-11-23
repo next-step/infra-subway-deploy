@@ -87,7 +87,7 @@ npm run dev
       - [Install the Compose plugin](https://docs.docker.com/compose/install/linux/)
     - [x] 외부망(public)에 `nginx`로 `Reverse Proxy`를 구성
     - [x] `Reverse Proxy`에 `TLS` 설정
-  - [ ] 운영 데이터베이스 구성하기
+  - [x] 운영 데이터베이스 구성하기
 
 ---
 
