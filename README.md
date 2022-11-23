@@ -45,15 +45,24 @@ npm run dev
 
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
-2. 업로드한 pem키는 무엇인가요.
+2. 업로드한 pem키는 무엇인가요. 
+   - KEY-seogineer.pem
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - VPC : 192.168.21.0/24 (seogineer-vpc)
+    - public
+      - 192.168.21.0/26 (seogineer-public-2a)
+      - 192.168.21.64/26 (seogineer-public-2c)
+    - private
+      - 192.168.21.128/27 (seogineer-private-2a)
+    - admin
+      - 192.168.21.160/27 (seogineer-admin-2c)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://www.seogineer.kro.kr:8080/
 
 
 
