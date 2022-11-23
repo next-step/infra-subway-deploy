@@ -27,22 +27,28 @@ function do_deploy() {
 
 function git_pull() {
   echo -e "${txtgrn}>> git pull ${txtrst}"
-  git pull origin master
+  git pull origin $BRANCH
 }
 
 function gradle_build() {
   echo -e "${txtgrn}>> gradle build ${txtrst}"
-  git pull origin master
+  ./gradlew clean build
 }
 
 function find_process() {
   echo -e "${txtgrn}>> find process ${txtrst}"
-  git pull origin master
+  PID=`ps -ef | grep java | grep subway | awk '{print $2}'`
+  echo -e "find process id = ${PID}"
 }
 
 function kill_process() {
   echo -e "${txtgrn}>> kill process ${txtrst}"
-  git pull origin master
+  if [ -z "$PID" ]
+  then
+    echo "process is not running"
+  else
+    kill -9 ${PID}
+  fi
 }
 
 function start_process() {
