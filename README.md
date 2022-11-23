@@ -224,8 +224,8 @@ npm run dev
   
   ## stop process
   stop_process() {
-      JAR_NAME=$(cd ${JAR_PATH} && find ./* -name "*jar" | cut -c 3-)
-      PID=$(ps -ef | grep $JAR_NAME | grep -v grep | awk '{print $2}')
+      JAR_NAME=$(find_jar)
+      PID=$(find_pid)
   
       if [ -n "$PID" ]; then
           echo ""
@@ -263,10 +263,10 @@ npm run dev
       fi
   
       cd ${PROJECT_PATH} && git fetch
-      master=$(cd ${PROJECT_PATH} && git rev-parse ${BRANCH})
+      local=$(cd ${PROJECT_PATH} && git rev-parse ${BRANCH})
       remote=$(cd ${PROJECT_PATH} && git rev-parse origin/${BRANCH})
   
-      if [ "$master" = "$remote" ]; then
+      if [ "$local" = "$remote" ]; then
       echo "[$(date)] Nothing to do!!! 😢"
           exit 0
       else
