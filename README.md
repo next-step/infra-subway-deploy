@@ -82,7 +82,7 @@ npm run dev
 #### Action Items
 - [ ] 운영 환경 구성하기
   - [ ] 웹 애플리케이션 앞에 `Reverse Proxy` 구성하기 
-    - [ ] docker 설치 강의 설명 페이지에서 도커 설치 힌트 스크립트가 현재와 맞지않아 조금 조정이 필요했습니다. 공식 홈페이지의 설치매뉴얼을 참고했습니다. 
+    - [x] docker 설치 강의 설명 페이지에서 도커 설치 힌트 스크립트가 현재와 맞지않아 조금 조정이 필요했습니다. 공식 홈페이지의 설치매뉴얼을 참고했습니다. 
       - [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
       - [Install the Compose plugin](https://docs.docker.com/compose/install/linux/)
     - [ ] 외부망(public)에 `nginx`로 `Reverse Proxy`를 구성
