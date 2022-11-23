@@ -67,7 +67,7 @@ npm run dev
         - 관리망: 192.168.32.160/27(haservi-admin-subnet-a)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-    - URL : [http://3.34.189.53:8080/](http://subway.haservi.kro.kr/)
+    - URL : [http://13.124.221.139:8080/](http://haservi.r-e.kr/)
 
 ---
 
@@ -75,7 +75,7 @@ npm run dev
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL :
+- URL : https://haservi.r-e.kr
 
 ---
 
@@ -126,7 +126,7 @@ npm run dev
         - [x] 웹 어플리케이션 앞단에 Reverse Proxy 구성하기
             - [x] 외부망에 Nginx로 Reverse Proxy를 구성하기
             - [x] Reverse Proxy에 TLS 설정
-        - [ ] 운영 데이터베이스 구성하기
+        - [x] 운영 데이터베이스 구성하기
     - 개발 환경 구성하기
-        - [ ] 설정 파일 나누기
+        - [x] 설정 파일 나누기
             - JUnit: h2, Local: docker(mysql), Prod: 운영 DB를 사용하도록 설정
