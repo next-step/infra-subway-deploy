@@ -71,5 +71,45 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```
+#!/bin/bash
 
+## 변수 설정
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
 
+APPLICATION_JAR=infra-subway-deploy.jar
+APPLICATION_PID=$(pgrep -f $APPLICATION_JAR)
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+cd /home/ubuntu/nextstep/infra-subway-deploy
+
+## 저장소 pill
+echo "> git pull"
+git pull
+
+## gradle build
+echo "> gralde build"
+./gradlew clean build -x test
+mv ./build/libs/*.jar ./build/libs/$APPLICATION_JAR
+
+## 프로세스 pid를 찾는 명령어
+echo "> find pid $APPLICATION_PID"
+
+## 프로세스를 종료하는 명령어
+if [ -n $APPLICATION_PID ]
+then
+echo > " kill pid $APPLICATION_PID"
+kill -15 $APPLICATION_PID
+fi
+
+## 프로세스를 시작하는 명령어
+echo "> start application"
+nohup java -Dspring.profiles.active=prod -jar ./build/libs/$APPLICATION_JAR &
+```
