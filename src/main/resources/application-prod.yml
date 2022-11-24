@@ -2,3 +2,6 @@ spring:
   config:
     import:
       - classpath:secret/prod-db.yml
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
