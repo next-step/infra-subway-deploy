@@ -13,13 +13,13 @@ echo -e "${txtgrn}  환경 :${txtrst}"
 echo -e "${txtgrn}  - BRANCH :$BRANCH${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
-
+WEB_ROOT_PATH="/home/ubuntu/nextstep/infra-subway-deploy"
 
 ## Branch 다른점 있는지 확인
 function check_df(){
   git fetch
-  master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin/$BRANCH)
+  master=$(git -C $WEB_ROOT_PATH rev-parse $BRANCH)
+  remote=$(git -C $WEB_ROOT_PATH rev-parse origin/$BRANCH)
 
     if [[ $master == $remote ]]; then
       echo -e "${txtred}[$(date)] Nothing to do!!! 😫${txtrst}"
@@ -31,7 +31,7 @@ function check_df(){
 function pull(){
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn}>> Pull Request 🏃♂️ ${txtrst}"
-  git pull origin $BRANCH
+  git -C $WEB_ROOT_PATH pull origin $BRANCH
   echo -e "${txtgrn}>> Pull Request END ✅️ ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
 }
@@ -40,7 +40,7 @@ function pull(){
 function build(){
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn}>> Start Build Gradle!! 🛠🛠${txtrst}"
-  ./gradlew --console=plain clean build
+  $WEB_ROOT_PATH/gradlew --console=plain clean build
   echo -e "${txtgrn}>> Build Gradle!! END  ✅️ ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
 }
@@ -59,7 +59,7 @@ function kill_process(){
 function start_app(){
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn}>> Start New Application 🍀🍀🍀${txtrst}"
-  nohup java -jar -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=prod $(find ./build -name "*jar") 1> $HOME/application.log 2>&1  &
+  nohup java -jar -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=prod $(find $WEB_ROOT_PATH/build -name "*jar") 1> $HOME/application.log 2>&1  &
   echo -e "${txtgrn}>> Start New Application Successfully!!  ✅️ ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
 }
