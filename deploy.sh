@@ -21,7 +21,7 @@ echo -e "${txtylw}=======================================${txtrst}"
 function check_df(){
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn}>> Check Differences 🧐️ ${txtrst}"
-  git -C $WEB_ROOT_PATH rev-parse $BRANCH fetch
+  git -C $WEB_ROOT_PATH fetch
   master=$(git -C $WEB_ROOT_PATH rev-parse $BRANCH)
   remote=$(git -C $WEB_ROOT_PATH rev-parse origin/$BRANCH)
 
