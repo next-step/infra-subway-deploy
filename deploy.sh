@@ -13,7 +13,8 @@ echo -e "${txtgrn}  환경 :${txtrst}"
 echo -e "${txtgrn}  - BRANCH :$BRANCH${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
-WEB_ROOT_PATH="/home/ubuntu/nextstep/infra-subway-deploy"
+WEB_ROOT_PATH=$0
+BRANCH=$1
 
 ## Branch 다른점 있는지 확인
 function check_df(){
