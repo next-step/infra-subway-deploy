@@ -59,8 +59,6 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
-  - 3.35.148.36
-  - hyeongjukim.o-r.kr- 
 
 3. 요구사항
 - [x] VPC 생성
@@ -72,36 +70,39 @@ npm run dev
 - [x] Internet Gateway 연결
 - [x] Route Table 생성
 - [x] Security Group 설정
-  - [x] 외부망 hyeongjukim-public-sg
+  - [x] 외부망
     - [x] 전체 대역 : 8080 포트 오픈
     - [x] 관리망 : 22번 포트 오픈
-  - [x] 내부망 hyeongjukim-internal-sg
+  - [x] 내부망
     - [x] 외부망 : 3306 포트 오픈
     - [x] 관리망 : 22번 포트 오픈
-  - [x] 관리망 hyeongjukim-manage-sg
+  - [x] 관리망
     - [x] 자신의 공인 IP : 22번 포트 오픈
 - [x] 서버 생성
   - [x] 외부망에 웹 서비스용도의 EC2 생성
   - [x] 내부망에 데이터베이스용도의 EC2 생성
   - [x] 관리망에 베스쳔 서버용도의 EC2 생성
     - [x] 베스쳔 서버에 Session Timeout 600s 설정
-    - [x] 베스쳔 서버에 Command 감사로그 설정
+    - [ ] 베스쳔 서버에 Command 감사로그 설정
+
 
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : http://hyeongjukim.o-r.kr
-
+- URL : 
+  - 3.35.148.36
+  - hyeongjukim.o-r.kr
 - 운영 환경 구성하기
   - [x] 외부망에 docker 설치
   - [x] 외부망에 Nginx로 Reverse Proxy를 구성
   - [x] Reverse Proxy에 TLS 설정
   - [x] 운영 데이터베이스 구성하기
-    개발 환경 구성하기
-- [ ] 설정 파일 나누기
-- [ ] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+- 개발 환경 구성하기
+- [x] 설정 파일 나누기
+- [x] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+- [x] submodule을 사용하여 설정파일 관리하기
 
 ---
 
