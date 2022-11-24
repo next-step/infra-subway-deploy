@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  config:
+    import:
+      - classpath:secret/security.yml
+  flyway:
+    enabled: false
+
+handlebars:
+  suffix: .html
+  enabled: true
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace
+
+

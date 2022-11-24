@@ -31,10 +31,14 @@ dependencies {
 	// jwt
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
+	// flyway
+	implementation 'org.flywaydb:flyway-core:6.4.2'
+
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
 }
 
 test {

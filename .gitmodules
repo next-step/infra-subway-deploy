@@ -1,0 +1,3 @@
+[submodule "src/main/resources/secret"]
+	path = src/main/resources/secret
+	url = https://github.com/paki1019/infra-subway-deploy-secret.git
