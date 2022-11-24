@@ -34,7 +34,12 @@ dependencies {
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	// JDBC
 	runtimeOnly 'com.h2database:h2'
+	implementation 'mysql:mysql-connector-java'
+
+	// flyway
+	implementation('org.flywaydb:flyway-core:5.2.0')
 }
 
 test {
