@@ -25,10 +25,10 @@ function check_df(){
   master=$(git -C $WEB_ROOT_PATH rev-parse $BRANCH)
   remote=$(git -C $WEB_ROOT_PATH rev-parse origin/$BRANCH)
 
-    if [[ $master == $remote ]]; then
-      echo -e "${txtred}[$(date)] Nothing to do!!! 😫${txtrst}"
-      exit 0
-    fi
+  if [[ $master == $remote ]]; then
+    echo -e "${txtred}[$(date)] Nothing to do!!! 😫${txtrst}"
+    exit 0
+  fi
   commit_msg=$(git -C $WEB_ROOT_PATH log origin/step3 --oneline -1)
   echo -e "${txtgrn}>> Has Difference : $commit_msg ✅️ ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
