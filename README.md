@@ -82,9 +82,10 @@ npm run dev
   - [x] 외부망에 웹 서비스용도의 EC2 생성
   - [x] 내부망에 데이터베이스용도의 EC2 생성
   - [x] 관리망에 베스쳔 서버용도의 EC2 생성
-    - [x] 베스쳔 서버에 Session Timeout 600s 설정
-    - [ ] 베스쳔 서버에 Command 감사로그 설정
-
+  - [x] 베스쳔 서버에 Session Timeout 600s 설정
+  - [x] 베스쳔 서버에 Command 감사로그 설정
+- [x] 외부망에 웹 애플리케이션을 배포
+- [x] DNS 설정
 
 ---
 
@@ -103,6 +104,7 @@ npm run dev
 - [x] 설정 파일 나누기
 - [x] JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
 - [x] submodule을 사용하여 설정파일 관리하기
+- [x] 로컬테스트(MultiRun)
 
 ---
 
