@@ -47,7 +47,7 @@ function pull(){
 function build(){
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn}>> Start Build Gradle!! 🛠🛠${txtrst}"
-  sh $WEB_ROOT_PATH/gradlew --console=plain clean build
+  sh $WEB_ROOT_PATH/gradlew -p $WEB_ROOT_PATH --console=plain clean build
   echo -e "${txtgrn}>> Build Gradle!! END  ✅️ ${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
 }
