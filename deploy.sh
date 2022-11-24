@@ -7,14 +7,15 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
+WEB_ROOT_PATH=$1
+BRANCH=$2
+
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 스크립트 🧐  >>${txtrst}"
 echo -e "${txtgrn}  환경 :${txtrst}"
 echo -e "${txtgrn}  - BRANCH :$BRANCH${txtrst}"
+echo -e "${txtgrn}  - WEB_PATH :$WEB_ROOT_PATH${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
-
-WEB_ROOT_PATH=$0
-BRANCH=$1
 
 ## Branch 다른점 있는지 확인
 function check_df(){
