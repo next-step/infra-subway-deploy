@@ -131,3 +131,8 @@ npm run dev
         - [x] 설정 파일 나누기
             - JUnit: h2, Local: docker(mysql), Prod: 운영 DB를 사용하도록 설정
         - [x] Git private 저장소로 설정 별도 관리하기
+
+### 3단계 - 배포 스크립트 작성하기
+
+1. 요구사항
+    - [] 배포 스크립트 작성하기
