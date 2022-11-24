@@ -24,13 +24,16 @@
     - badaelephant-internal-rt : badaelephant-internal-a
     - badaelephant-admin-rt : badaelephant-admin-c
   - [x] Security Group 설정
+    - [x] pemkey : badaelephant-keypair.pem
     - [x] 외부망 (43.201.1.36 / 192.168.36.49)
       - [x] 전체 대역 : 8080 포트 오픈
       - [x] 관리망 : 22번 포트 오픈
     - [x] 내부망 (15.165.246.65 / 192.168.36.138)
+      - pemkey 루트 경로에 있음
       - [x] 외부망 : 3306 포트 오픈
       - [x] 관리망 : 22번 포트 오픈
     - [x] 관리망 (52.78.131.211 / 192.168.36.173)
+      - pemkey 루트 경로에 있음
       - [x] 자신의 공인 IP : 22번 포트 오픈
   - [x] 서버 생성
     - [x] 외부망에 웹 서비스용도의 EC2 생성
@@ -40,4 +43,4 @@
     - [x] 베스쳔 서버에 Command 감사로그 설정
 - [x] 웹 애플리케이션 배포하기
   - [x] 외부망에 웹 애플리케이션을 배포
-  - [x] DNS 설정 : http://www.badaelephant.kro.kr:8080/
+  - [x] DNS 설정 : http://nextstep.badaelephant.kro.kr:8080/
