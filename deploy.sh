@@ -14,12 +14,14 @@ echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 스크립트 🧐  >>${txtrst}"
 echo -e "${txtgrn}  환경 :${txtrst}"
 echo -e "${txtgrn}  - BRANCH :$BRANCH${txtrst}"
-echo -e "${txtgrn}  - WEB_PATH :$WEB_ROOT_PATH${txtrst}"
+echo -e "${txtgrn}  - WEB_ROOT_PATH :$WEB_ROOT_PATH${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 ## Branch 다른점 있는지 확인
 function check_df(){
-  git fetch
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${txtgrn}>> Check Differences 🧐️ ${txtrst}"
+  git -C $WEB_ROOT_PATH rev-parse $BRANCH fetch
   master=$(git -C $WEB_ROOT_PATH rev-parse $BRANCH)
   remote=$(git -C $WEB_ROOT_PATH rev-parse origin/$BRANCH)
 
@@ -27,6 +29,9 @@ function check_df(){
       echo -e "${txtred}[$(date)] Nothing to do!!! 😫${txtrst}"
       exit 0
     fi
+  commit_msg=$(git -C $WEB_ROOT_PATH log origin/step3 --oneline -1)
+  echo -e "${txtgrn}>> Has Difference : $commit_msg ✅️ ${txtrst}"
+  echo -e "${txtylw}=======================================${txtrst}"
 }
 
 ## 저장소 pull
