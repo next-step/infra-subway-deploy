@@ -13,8 +13,8 @@ BRANCH=$2
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 스크립트 🧐  >>${txtrst}"
 echo -e "${txtgrn}  환경 :${txtrst}"
-echo -e "${txtgrn}  - BRANCH :$BRANCH${txtrst}"
-echo -e "${txtgrn}  - WEB_ROOT_PATH :$WEB_ROOT_PATH${txtrst}"
+echo -e "${txtgrn}  - BRANCH: $BRANCH${txtrst}"
+echo -e "${txtgrn}  - WEB_ROOT_PATH: $WEB_ROOT_PATH${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 ## Branch 다른점 있는지 확인
