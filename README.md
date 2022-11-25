@@ -260,3 +260,5 @@ npm run dev
 - crontab 설정
   <img width="488" alt="스크린샷 2022-11-25 오후 3 05 17" src="https://user-images.githubusercontent.com/20774279/203912038-045cc596-feab-4e48-82ab-5503c5b6a566.png">
 
+- 동작화면
+  <img width="645" alt="스크린샷 2022-11-25 오후 3 08 19" src="https://user-images.githubusercontent.com/20774279/203912330-ca654753-4779-4032-baeb-1924bc7386a5.png">
