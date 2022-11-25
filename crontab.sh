@@ -7,6 +7,7 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
+cd /home/ubuntu/infra-subway-deploy
 EXECUTION_PATH=$(pwd)
 BRANCH=$1
 PROFILE=$2
