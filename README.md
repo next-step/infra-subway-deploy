@@ -83,6 +83,9 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+/scripts 폴더에 저장했습니다. 매일 오전1시에 배포 설정(git의 변경사항이 없다면 배포안함) 했습니다.
+실행되는 스크립트는 /home/ubuntu/infra-subway-deploy/deploy.sh 입니다.
+
 ## 요구사항 정리
 
 ### 1단계 - 서비스 구성하기
@@ -135,9 +138,12 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 요구사항
-    - [ ] 배포 스크립트 작성하기
+    - [x] 배포 스크립트 작성하기
         - [x] pull
         - [x] jar 파일 찾기
         - [x] java pid 찾기
         - [x] stop process
         - [x] gradlew build
+        - [x] start process
+        - [x] check diff
+        - [x] deploy

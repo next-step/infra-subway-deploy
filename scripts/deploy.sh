@@ -13,7 +13,7 @@ PROJECT_PATH='/home/ubuntu/infra-subway-deploy'
 JAR_PATH=${PROJECT_PATH}/build/libs
 JAR=$(cd ${JAR_PATH} && find ./* -name "*jar" | cut -c 3-)
 JAR_PID=$(ps -ef | grep $JAR | grep -v grep | awk '{print $2}')
-LOG_FILE='home/ubuntu/infra-subway-deploy/subway.log'
+LOG_FILE='/home/ubuntu/infra-subway-deploy/subway.log'
 BRANCH=step3
 
 
