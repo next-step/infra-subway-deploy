@@ -57,7 +57,6 @@ npm run dev
   - admin 192.168.23.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
 - URL : 
   - 3.35.148.36
   - hyeongjukim.o-r.kr
