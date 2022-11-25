@@ -187,6 +187,9 @@ function check_df() {
 
 check_df
 ```
+```shell
+*/1 * * * * sudo /home/ubuntu/nextstep/infra-subway-deploy/deploy.sh step3 prod >> /home/ubuntu/nextstep/deploy.log 2>&1
+```
 
 #### 요구사항
-- [x] 배포 스크립트 작성하기 
+- [x] 배포 스크립트 작성하기
