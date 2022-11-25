@@ -11,30 +11,27 @@
 
 # TODO List
 ### 망구성
-1. [ ] VPC 생성
-  - CIDR x.x.x.x.0/24 대역의 VPC 생성
+1. [x] VPC 생성
+  - CIDR 192.168.22.0/24 대역의 VPC 생성
   - hahoho87-vpc
 
-2. [ ] Internet Gateway 생성
+2. [x] Internet Gateway 생성
   - hahoho87-igw
   
-3. [ ] Subnet 생성
+3. [x] Subnet 생성
   - hahoho87-public-subnet-a   : 192.168.22.0/26, az-2a에 구성 (64개)
   - hahoho87-public-subnet-c   : 192.168.22.64/26, az-2c에 구성 (64개)
   - hahoho87-internal-subnet-a : 192.168.22.128/27, az-2a에 구성 (32개)
   - hahoho87-admin-subnet-c    : 192.168.22.160/27, az-2c에 구성 (32개)
 
-4. [ ] Routing Table 생성
+4. [x] Routing Table 생성
   - hahoho87-rt : public, admin subnet에 연결
   - hahoho87-private-rt : internal subnet에 연결
 
-4. [ ] Security Group 설정
-  - 공통 설정
-    - 0.0.0.0/0 : ICMP (ping test)
-  
+4. [x] Security Group 설정
   - `hahoho87-public-SG` : 외부망을 위한 SG 설정
     - ssh : `hahohho87-admin-SG`의 요청에 대해 TCP 22 port 오픈
-    - 0.0.0.0/0 : TCP 8080/443 port (HTTP/HTTPS)
+    - 0.0.0.0/0 : TCP 80/443 port (HTTP/HTTPS)
 
   - `hahoho87-admin-SG` : 관리망을 위한 SG 설정 
     - private-ip : TCP 22 port (ssh)
@@ -44,7 +41,7 @@
     - mysql : `hahoho87-public-SG`의 요청에 대해 TCP 3306 port 오픈 
 
 ### EC2 생성
-5. [ ] EC2 생성 : Ubuntu 22.04 LTS, t3.medium, KEY-hahoho87, vpc(hahoho87-vpc)
+5. [x] EC2 생성 : Ubuntu 22.04 LTS, t3.medium, KEY-hahoho87, vpc(hahoho87-vpc)
   - `hahoho87-service-01-EC2`
     - subnet : hahoho87-public-subnet-a 
     - SG : hahoho87-public-SG
@@ -53,14 +50,14 @@
   - `hahoho87-bastion-EC2`
     - subnet : hahoho87-admin-subnet-c 
     - SG : hahoho87-admin-SG 
-    - Public IP : 
+    - Public IP : 3.34.26.76 
     
   - `hahoho87-database-EC2`
     - subnet : hahoho87-private-subnet-a
     - SG : hahoho87-private-SG
-    - Public IP : x
+    - Public IP : 43.200.73.105
 
-6. [ ] EC2 환경 설정
+6. [x] EC2 환경 설정
   - Session Timeout 설정
   - 현재 접속 서버를 명시적으로 확인하기 위한 shell prompt 수정
   - logger설정을 이용한 감사 로깅 설정
@@ -76,7 +73,11 @@
   - 서비스 실행 명령어
     - nohup java -jar subway-0.0.1-SNAPSHOT.jar 1> infra-subway-deploy-log 2>&1 &
   
-8. [ ] DNS 설정
-  - http://www.xxxx.com
+8. [x] DNS 설정
+  - 8080 -> 80 포트 포워딩
+    ```shell
+    $sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+    ```
+  - http://www.hahoho87-wootech.kro.kr/
 
 ---
