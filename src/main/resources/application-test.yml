@@ -9,6 +9,6 @@ spring:
     hibernate:
       ddl-auto: create-drop
 
-  logging:
-    level:
-      org.hibernate.SQL: debug
+logging:
+  level:
+    org.hibernate.SQL: debug
