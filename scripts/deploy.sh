@@ -58,11 +58,11 @@ function start_process() {
 }
 
 echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  자동 배포를 시작합니다.                    ${txtrst}"
+echo -e "${txtgrn}  Deploy Start                         ${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 check_df
-if [[ $? -q 0 ]]; then
+if [[ $? -eq 0 ]]; then
   echo -e "[$(date)] 변경된 내용이 없으므로 배포를 중지합니다."
   exit 0
 fi
@@ -73,10 +73,10 @@ pull
 stop_process
 build
 start_process
-tail -f LOG_FILE
+tail -f $LOG_FILE
 
 echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  🛠정상적으로 배포가 됐습니다.               ${txtrst}"
+echo -e "${txtgrn}  🛠 정상적으로 배포가 됐습니다.              ${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 
