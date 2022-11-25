@@ -135,5 +135,128 @@ npm run dev
 ---
 ## 🚀 3단계 - 배포 스크립트 작성하기
 ### 요구사항
-- [ ] 배포 스크립트 작성하기   
+- [x] 배포 스크립트 작성하기   
+- [x] crontab 설정
+
+<br>
+  
+- 작업 파일 위치
+  - 배포 스크립트 -> /home/ubuntu/app/deploy.sh
+  - crontab 로그 -> /home/ubuntu/data/log/cron_log.log
+
+<br>
+  
+- 배포 스크립트
+  ```shell
+  #!/bin/bash
+  
+  ## 변수 설정
+  txtrst='\033[1;37m' # White
+  txtred='\033[1;31m' # Red
+  txtylw='\033[1;33m' # Yellow
+  txtpur='\033[1;35m' # Purple
+  txtgrn='\033[1;32m' # Green
+  txtgra='\033[1;30m' # Gray
+  
+  PROJECT_PATH='/home/ubuntu/app/infra-subway-deploy'
+  JAR_PATH=${PROJECT_PATH}/build/libs/
+  LOG_PATH='/home/ubuntu/data/log/subway_log.log'
+  EXECUTION_PATH=$(pwd)
+  SHELL_SCRIPT_PATH=$(dirname $0)
+  BRANCH=$1
+  PROFILE=$2
+  
+  function findJar(){
+      echo "$(find ${JAR_PATH} -name '*jar')"
+  }
+  
+  function findPid(){
+      echo "$(ps -ef | grep -v 'grep' | grep ${JAR_PATH}$1 | awk '{print $2}')"
+  }
+  
+  function print() {
+      echo -e "${txtgrn}>> $1 ${txtgrn}"
+  }
+  
+  function pull() {
+      print "${txtrst}Step1. pull request 🥚${txtrst}"
+      cd ${PROJECT_PATH}
+      print "$(pwd)"
+      git pull origin ${BRANCH}
+  }
+  
+  function build() {
+      print "${txtrst}Step2. gradle build 🐣${txtrst}"
+      cd ${PROJECT_PATH}
+      ./gradlew clean build
+  }
+  
+  function stop_process() {
+      print "${txtrst}Step3. stop 🐥${txtrst}"
+      PID=$(findPid);
+      if [[ -n ${PID} ]]
+      then
+          print "${txtgrn}KILL SUCCESS : ${PID}${txtgrn}"
+          kill ${PID}
+      else
+          print "${txtylw}실행중인 프로세스가 없습니다.${txtylw}"
+      fi
+  }
+  
+  function run() {
+      print "${txtrst}Step4. run 🐓${txtrst}"
+      JAR=$(findJar);
+      sleep 5
+      nohup java -jar -Dspring.profiles.active=${PROFILE} ${JAR} 1>> ${LOG_PATH} 2>&1 &
+      PID=$(findPid);
+      if [[ -n ${PID} ]]
+      then
+          print "${txtgrn}RUN SUCCESS PID : ${PID}${txtgrn}"
+      else
+          print "${txtred}RUN FAIL${txtred}"
+      fi
+  }
+  
+  function deploy(){
+      pull;
+      build;
+      stop_process;
+      run;
+      exit
+  }
+  
+  function check(){
+      cd ${PROJECT_PATH}
+      git fetch
+      master=$(git rev-parse $BRANCH)
+      remote=$(git rev-parse origin/$BRANCH)
+  
+      if [[ $master == $remote ]] 
+      then
+          echo -e "[$(date)] Nothing to do!!! 😫"
+          exit 0
+      else
+          echo -e "${txtylw}=======================================${txtrst}"
+          echo -e "${txtgrn}           << 배포 스크립트 🧐>>           ${txtrst}"
+          echo -e ""
+          echo -e "${txtgrn} 브랜치 : ${txtred}${BRANCH} ${txtgrn}, 프로파일 : ${txtred}${PROFILE}"
+          echo -e "${txtylw}=======================================${txtrst}"
+          deploy;
+      fi
+  }
+  
+  
+  if [[ $# -eq 2 ]]
+  then
+      check;
+      exit
+  else
+      echo -e "${txtylw}=======================================${txtrst}"
+      echo -e "${txtred}         브랜치와 프로파일을 설정하세요        ${txtred}"
+      echo -e "${txtylw}=======================================${txtrst}"
+      exit
+  fi
+  ```
+- crontab 설정
+  <img width="488" alt="스크린샷 2022-11-25 오후 3 05 17" src="https://user-images.githubusercontent.com/20774279/203912038-045cc596-feab-4e48-82ab-5503c5b6a566.png">
 
