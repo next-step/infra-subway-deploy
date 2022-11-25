@@ -73,7 +73,6 @@ pull
 stop_process
 build
 start_process
-tail -f $LOG_FILE
 
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  🛠 정상적으로 배포가 됐습니다.              ${txtrst}"
