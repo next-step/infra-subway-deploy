@@ -59,7 +59,9 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
-
+  - 3.35.148.36
+  - hyeongjukim.o-r.kr
+  
 3. 요구사항
 - [x] VPC 생성
   - [x] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
