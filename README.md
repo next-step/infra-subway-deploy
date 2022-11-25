@@ -47,15 +47,20 @@ npm run dev
 
 2. 업로드한 pem키는 무엇인가요.
 
+-> key-optimistlabyrinth.pem
+
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+
+- 서브넷 ID : `subnet-0063d941d12caba27`
+- 대역 : `172.31.32.0/20`
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- PUBLIC IP : `52.79.239.214:8080`
+- URL : `http://optimistlabyrinth.ddns.net:8080/`
 
-
+[1주차 완료 - 웹사이트 방문](./photo-capture/phase-01.png)
 
 ---
 
