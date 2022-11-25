@@ -178,3 +178,8 @@ echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 배포 스크립트 종료 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 ```
+
+2. crontab 등록
+```
+crontab -e 0 */6 * * * /home/ubuntu/nextstep/scripts/deploy.sh step3 >> /home/ubuntu/nextstep/scripts/logs/deploy.log 2>&1
+```
