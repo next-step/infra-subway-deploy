@@ -135,4 +135,9 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 요구사항
-    - [] 배포 스크립트 작성하기
+    - [ ] 배포 스크립트 작성하기
+        - [x] pull
+        - [x] jar 파일 찾기
+        - [x] java pid 찾기
+        - [x] stop process
+        - [x] gradlew build
