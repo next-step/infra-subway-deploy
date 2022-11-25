@@ -25,22 +25,10 @@ then
 fi
 
 echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  <<  스크립트 🧐 >>${txtrst}"
+echo -e "${txtgrn}  << 배포 스크립트 🧐 >>${txtrst}"
 echo -e ""
 echo -e "${txtgrn} $0 ${txtred}$1 ${txtylw}$2"
 echo -e "${txtylw}=======================================${txtrst}"
-
-## branch 변경 체크
-function check_diff() {
-  git fetch
-  master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin/$BRANCH)
-
-  if [[ $master == $remote ]]; then
-    echo -e "[$(date)] Nothing to do!!! 😫"
-    exit 0
-  fi
-}
 
 ## 저장소 pull
 function pull() {
@@ -108,8 +96,6 @@ function startApplication() {
   fi
 }
 
-check_diff
-sleep 5
 pull
 sleep 5
 checkout
