@@ -122,8 +122,7 @@ echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
-EXECUTION_PATH=$(pwd)
-SHELL_SCRIPT_PATH=$(dirname $0)
+EXECUTION_PATH=/home/ubuntu/nextstep/infra-subway-deploy
 BRANCH=$1
 PROFILE=$2
 
@@ -171,6 +170,7 @@ function run() {
 }
 
 function check_df() {
+  cd $EXECUTION_PATH
   git fetch
   master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin/$BRANCH)
@@ -183,6 +183,9 @@ function check_df() {
     find
     run
   fi
+}
+
+check_df
 }
 
 check_df
