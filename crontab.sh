@@ -41,8 +41,8 @@ function check_diff() {
 }
 
 ## 배포 스크립트 실행
-function pull() {
-  sh ${DEPLOY_SH_PATH} ${BRANCH} ${PROFILE}
+function deploy() {
+  bash ${DEPLOY_SH_PATH} ${BRANCH} ${PROFILE}
 }
 
 check_diff
