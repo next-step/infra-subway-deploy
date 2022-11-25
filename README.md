@@ -89,6 +89,14 @@ npm run dev
     - [x] `Reverse Proxy`에 `TLS` 설정
   - [x] 운영 데이터베이스 구성하기
 
+#### 2단계 피드백
+- [ ] 외부망 서브넷이 2개 존재하니, proxy server와 application server를 각각 분리해봐도 좋을 것 같음
+  - 인스턴스를 한개 더 생성해야 하나(reverse proxy 용)
+- [x] 운영 db 연동
+  - 아,, 이부분은 숙지했는 지 확인하는 것이 아니라 실제 환경을 구성했는지 확인
+  - M1 (arm64) mac 환경에서 교육중이라, local에서 mysql 을 어떻게 띄워야 할 지 확인해봐야 할 것 같습니다!
+- [ ] 별도 private repository 를 활용하여 id / pwd 노출 없앨 것
+
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
