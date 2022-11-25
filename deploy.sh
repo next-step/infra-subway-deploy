@@ -47,7 +47,6 @@ function pull() {
   echo -e ""
   echo -e ">> Pull Request ${BRANCH} 🏃♂️ "
   git pull origin ${BRANCH}
-  git submodule update --remote
 }
 
 ## 저장소 checkout
