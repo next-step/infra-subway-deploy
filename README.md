@@ -80,7 +80,7 @@ npm run dev
 - URL : https://runningmap.kro.kr 
 
 #### Action Items
-- [ ] 운영 환경 구성하기
+- [x] 운영 환경 구성하기
   - [x] 웹 애플리케이션 앞에 `Reverse Proxy` 구성하기 
     - [x] docker 설치 강의 설명 페이지에서 도커 설치 힌트 스크립트가 현재와 맞지않아 조금 조정이 필요했습니다. 공식 홈페이지의 설치매뉴얼을 참고했습니다. 
       - [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
@@ -90,13 +90,20 @@ npm run dev
   - [x] 운영 데이터베이스 구성하기
 
 #### 2단계 피드백
-- [ ] 외부망 서브넷이 2개 존재하니, proxy server와 application server를 각각 분리해봐도 좋을 것 같음
-  - 인스턴스를 한개 더 생성해야 하나(reverse proxy 용)
+- [x] 외부망 서브넷이 2개 존재하니, proxy server와 application server를 각각 분리해봐도 좋을 것 같음
+  - 인스턴스를 한개 더 생성해야 하나(기존 web service 띄우는 용도)
 - [x] 운영 db 연동
   - 아,, 이부분은 숙지했는 지 확인하는 것이 아니라 실제 환경을 구성했는지 확인
-  - M1 (arm64) mac 환경에서 교육중이라, local에서 mysql 을 어떻게 띄워야 할 지 확인해봐야 할 것 같습니다!
-- [ ] 별도 private repository 를 활용하여 id / pwd 노출 없앨 것
+  - M1 (arm64) mac 환경 사용중, local에서 mysql 을 어떻게 띄워야 할 지 확인
+    - docker run 명령어 실행 시 `--platform=linux/amd64` 추가
 
+#### 추가 설정에 관한 내용 정리 (적용 X)
+- [x] Flyway : 테이블 스키마에 대한 버전관리
+- [x] git submodule : 이미 git의 버전관리 대상인 폴더의 서브모듈로 다른 git repository를 참조할 수 있도록 하는 기술
+  - private repository에 설정을 별도로 관리하고, 이를 서브모듈로 가지고 있는 것이 **_보안에 용이하게 관리 할 수 있다_**
+- [x] SonarLint : 정적테스트 도구, 소스코드를 정적으로 분석하여 예상되는 취약점이나 버그를 미리 발견할 수 있는 도구
+- [x] Multi Run : DB, frontend.. 등등 하나의 시스템을 구동하기 위해 이기종 소프트웨어의 실행이 의존적일 때,  
+  multi run을 설정하여 한번에 구동시킬 수 있다(Local 환경에서 구동시킬 때 용이해보임)
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
