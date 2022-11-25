@@ -75,4 +75,15 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+## deploy.sh
+- 배포 작업을 하는 스크립트.
+- git pull, checkout 및 spring 배포 작업 수행
 
+## crontab.sh 
+- 브랜치 변경 여부를 확인하여, 변경이 있을 경우 deploy.sh를 실행하는 스크립트,
+- 크론 작업에서 호출되는 스크립트. 
+
+```
+# crontab
+* * * * * /home/ubuntu/infra-subway-deploy/crontab.sh step3 prod >> /home/ubuntu/infra-subway-deploy/log/crontab.log 2>&1
+```
