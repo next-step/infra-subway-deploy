@@ -119,7 +119,89 @@ npm run dev
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
+### 요구사항
+- [x] 배포 스크립트 작성하기  
+
 
 1. 작성한 배포 스크립트를 공유해주세요.
+- 작업 파일 경로 : /home/ubuntu/nextstep/infra-subway-deploy/deploy.sh
+```
+#!/bin/bash
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
 
 
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
+PARAMS_COUNT=$#
+APPLICATION_JAR="subway_application.jar"
+
+function vaildate_parameter() {
+    if [ $PARAMS_COUNT -ne 2 ] || [ $PROFILE != "prod" ];
+    then
+        echo -e "${txtylw}=======================================${txtrst}"
+        echo -e "${txtgrn}  << validate parameter >> ${txtrst}"
+        echo -e ""
+        echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod }"
+        exit
+    fi
+}
+
+function pull() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << git checkout $BRANCH >> ${txtrst}"
+    git checkout $BRANCH
+
+    echo -e "${txtgrn}  << git pull >> ${txtrst}"
+    git pull origin $BRANCH
+}
+
+function build() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << gradle build >> ${txtrst}"
+    ./gradlew clean build
+    mv ./build/libs/*.jar ./build/libs/$APPLICATION_JAR
+}
+
+
+function find_process() {
+    echo $(pgrep -f $APPLICATION_JAR)
+}
+
+
+function kill_process() {
+    if [ -n "$1" ]
+    then
+        echo -e "${txtylw}=======================================${txtrst}"
+        echo -e "${txtgrn}  << process kill $1 >> ${txtrst}"
+        kill -15 $1
+    fi
+}
+
+function run() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << spring application run >> ${txtrst}"
+    nohup java -jar -Dspring.profiles.active=$PROFILE ./build/libs/$APPLICATION_JAR > subway-deploy.log 2>&1 &
+}
+
+function deploy() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << deploy 🧐 >>${txtrst}"
+    cd $SHELL_SCRIPT_PATH
+    vaildate_parameter
+    pull
+    build
+    kill_process $(find_process)
+    run
+    echo -e "${txtgrn}  << deploy finish >> ${txtrst}"
+    echo -e "${txtylw}=======================================${txtrst}"
+}
+
+deploy;
+```
