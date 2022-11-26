@@ -116,7 +116,7 @@ npm run dev
 
 ```shell
 #!/bin/bash
-REPOSITORY=~/nextstep/infra-subway-deploy/
+REPOSITORY=~/nextstep/infra-subway-deploy
 BRANCH=step2-service-deploy
 APPLICATION_NAME=subway
 LOG_FILE_NAME=web-service.log
@@ -144,7 +144,6 @@ function check_diff() {
 
 function pull() {
     echo "> 🚀 repository pull을 수행합니다."
-    cd $REPOSITORY
     git pull origin $BRANCH
     git submodule update --recursive --remote
 }
@@ -174,10 +173,10 @@ function start_service() {
 }
 
 
+cd $REPOSITORY
 check_diff
 pull
 build_anc_copy
 stop_service
 start_service
-tail -f $LOG_FILE_NAME
 ```
