@@ -81,22 +81,22 @@ function run() {
 
 
 ## diff 확인
-#check_df;
+check_df;
 
 ## 저장소 pull
-#pull;
+pull;
 
 ## gradle build
-#build;
+build;
 
 ## 프로세스 pid를 찾는 명령어
-#findPid;
+findPid;
 
 ## 프로세스를 종료하는 명령어
-#killProcess;
+killProcess;
 
 ## 프로세스 pid를 찾는 명령어
-#findPid;
+findPid;
 
 ## 실행
 run;
