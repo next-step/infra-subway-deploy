@@ -1,0 +1,1 @@
+nohup java -jar -Dspring.profiles.active=prod prod.jar 1> ./prod.log 2>&1  &
