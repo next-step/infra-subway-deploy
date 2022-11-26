@@ -117,7 +117,7 @@ npm run dev
 ```shell
 #!/bin/bash
 REPOSITORY=~/nextstep/infra-subway-deploy
-BRANCH=step2-service-deploy
+BRANCH=step3-deploy-script
 APPLICATION_NAME=subway
 LOG_FILE_NAME=web-service.log
 
@@ -135,7 +135,7 @@ echo -e "${txtylw}=======================================${txtrst}"
 function check_diff() {
     git fetch
     master=$(git rev-parse $BRANCH)
-    remote=$(git rev-parse origin $BRANCH)
+    remote=$(git rev-parse origin/$BRANCH)
     if [[ $master == $remote ]]; then
         echo -e "[$(date)] 변경된 내용이 없습니다. 😫"
         exit 0
@@ -145,7 +145,7 @@ function check_diff() {
 function pull() {
     echo "> 🚀 repository pull을 수행합니다."
     git pull origin $BRANCH
-    git submodule update --recursive --remote
+    #git submodule update --recursive --remote
 }
 
 function build_anc_copy {
