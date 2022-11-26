@@ -66,7 +66,7 @@ function killProcess() {
   echo -e ""
   if [ $JAVA_PROCESS_ID -a -n $JAVA_PROCESS_ID  ]; then
     echo -e ">> Kill Running Java Process 🥺🥺🥺🥺🥺"
-    kill -9 $JAVA_PROCESS_ID
+    kill -2 $JAVA_PROCESS_ID
   fi
 }
 
