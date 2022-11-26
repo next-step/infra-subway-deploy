@@ -57,7 +57,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- PUBLIC IP : `52.79.239.214:8080`
+- PUBLIC IP : `43.200.169.4:8080`
 - URL : `http://optimistlabyrinth.ddns.net:8080/`
 
 [1주차 완료 - 웹사이트 방문](./photo-capture/phase-01.png)
