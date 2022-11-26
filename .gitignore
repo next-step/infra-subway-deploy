@@ -40,3 +40,8 @@ out/
 frontend/node_modules
 fronted/.prttierrc.js
 fronted/.eslintrc.js
+
+### publish file ###
+subway-0.0.1-SNAPSHOT.jar
+web-service.log
+
