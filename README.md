@@ -117,13 +117,33 @@ npm run dev
   - [x] 반복적으로 동작하는 스크립트 작성
     - [x] github branch 변경이 있는 경우만 스크립트가 동작하도록 작성(diff)
     - [x] crontab에 등록하여 매 분마다 동작하도록 한 후 log 확인
-  - [ ] crontab vs /etc/crontab 차이 학습
+  - [x] crontab vs /etc/crontab 차이 학습
+    - crontab : /var/spool/cron
+      - 시스템 개별 사용자를 위한 crontab 파일 위치
+      - 일반적으로 root 계정용 하나와 계정 사용자당 1개의 파일을 가짐
+      - 이곳의 설정 파일들은 crontab 명령으로 관리함
+        - crontab -e : 생성
+        - crontab -l : 리스트 확인
+        - crontab -r : 삭제
+    - /etc/crontab
+      - 관리자가 직접 지정한 작업들을 설정
+      - 임의의 사용자 권한으로 실행 가능
+      - 시스템 관련 작업들을 등록해 사용
 
 1. 작성한 배포 스크립트를 공유해주세요.
 ```shell
 #!/bin/bash
 
 ## 변수 설정
+EXECUTION_PATH=$(pwd)
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
+
+GIT_PULL_SCRIPT="git pull origin $BRANCH"
+BUILD_SCRIPT="./gradlew clean build"
+FIND_PID_SCRIPT="java -jar -Dspring.profiles.active=$PROFILE build/libs/subway.jar"
+RUN_SCRIPT_PATH=$EXECUTION_PATH"/run_$PROFILE.sh"
 
 txtrst='\033[1;37m' # White
 txtred='\033[1;31m' # Red
@@ -132,14 +152,87 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
+## 조건 설정
+if [[ $# -ne 2 ]]
+then
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${txtgrn}  << 배포 스크립트 🧐 >>${txtrst}"
+  echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ local | prod }"
+  echo -e "${txtylw}=======================================${txtrst}"
+  exit
+fi
 
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
+function check_df() {
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 0
+  fi
+}
+
+function pull() {
+  echo -e ""
+  echo -e ">> Pull Request 🏃🏃🏃🏃🏃"
+  $GIT_PULL_SCRIPT
+}
+
+function build() {
+  echo -e ""
+  echo -e ">> Gradle Build 🛠🛠🛠🛠🛠"
+  $BUILD_SCRIPT
+}
+
+function findPid() {
+  echo -e ""
+  echo -e ">> Find Running Java Process ID 🔎🔎🔎🔎🔎"
+  JAVA_PROCESS_ID=$(pgrep -f "$FIND_PID_SCRIPT")
+  if [ $JAVA_PROCESS_ID -a -n $JAVA_PROCESS_ID  ]; then
+    echo -e "Found!!"
+  else
+    echo -e "Not Found!!"
+  fi
+}
+
+function killProcess() {
+  echo -e ""
+  if [ $JAVA_PROCESS_ID -a -n $JAVA_PROCESS_ID  ]; then
+    echo -e ">> Kill Running Java Process 🥺🥺🥺🥺🥺"
+    kill -2 $JAVA_PROCESS_ID
+  fi
+}
+
+function run() {
+  echo -e ""
+  if [ -z $JAVA_PROCESS_ID ]; then
+    echo -e ">> New Run 🏃🏃🏃🏃🏃"
+    "$RUN_SCRIPT_PATH"
+    exit 0
+  fi
+}
+
+
+## diff 확인
+check_df;
 
 ## 저장소 pull
+pull;
+
 ## gradle build
+build;
+
 ## 프로세스 pid를 찾는 명령어
+findPid;
+
 ## 프로세스를 종료하는 명령어
-## ...
+killProcess;
+
+## 프로세스 pid를 찾는 명령어
+findPid;
+
+## 실행
+run;
+
 ```
