@@ -2,7 +2,7 @@
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.\
-   `jisu1211.pem`
+   `jisu1211-new.pem`
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요\
@@ -71,5 +71,115 @@
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```shell
+#!/bin/bash
 
+## 변수 설정
+PROJECT_PATH='/home/ubuntu/nextstep/infra-subway-deploy'
+BRANCH=$1
+JAR=''
+PID=''
 
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 배포 스크립트 실행 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtpur}PROJECT_PATH = ${PROJECT_PATH}"
+echo -e "${txtpur}BRANCH = ${BRANCH}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+## deploy
+deploy() {
+    check_deploy;
+    pull;
+    build;
+    check_jar;
+    find_ps_pid;
+    stop_ps;
+    start_ps;
+}
+
+## deploy 실행 조건 점검
+check_deploy() {
+    cd ${PROJECT_PATH} && git fetch
+    master=$(cd ${PROJECT_PATH} && git rev-parse ${BRANCH})
+    remote=$(cd ${PROJECT_PATH} && git rev-parse origin/${BRANCH})
+
+    if [[ "$master" = "$remote" ]]
+    then
+        echo -e "${txtgra}[$(date)] Nothing to do!!! 😫"
+        exit 0
+    fi
+}
+
+## git pull
+pull() {
+    echo -e ""
+    echo -e "${txtgra}>> Pull Request 🏃♂️ "
+    cd ${PROJECT_PATH} && git pull origin ${BRANCH}
+}
+
+## gradle build
+build() {
+    echo -e ""
+    echo -e "${txtgra}>> Build Project 🏃♂️ "
+    cd ${PROJECT_PATH} && ./gradlew clean build
+}
+
+## jar 파일 생성 확인
+check_jar() {
+   if [[ -d "${PROJECT_PATH}/build/libs"  ]]
+   then
+       JAR=$(echo "$(cd ${PROJECT_PATH}/build/libs && find ./* -name '*jar' | awk -F './' '{print $2}')")
+       echo -e ""
+       echo -e "${txtgra}>> Build Jar Complete 🏃♂️ "
+       echo -e "${txtgra}Path >> ${JAR}"
+   else
+       echo -e ""
+       echo -e "${txtgra}>> Build Jar Failure 😢"
+       exit 0
+   fi
+}
+
+## jar 프로세스 pid 찾기
+find_ps_pid() {
+    PID=$(echo "$(ps -eaf | grep ${JAR} | grep -v grep | awk '{print $2}')")
+    echo -e ""
+    echo -e "${txtgra}PID >> ${PID}"
+}
+
+## 프로세스를 종료
+stop_ps() {
+    if [[ -n "$PID"  ]]
+    then
+        echo -e ""
+        echo -e "${txtgra}>> Stop Process 🏃♂️ "
+        kill $PID
+    fi
+}
+
+## 프로세스를 실행
+start_ps() {
+    echo -e ""
+    echo -e "${txtgra}>> Start Process 🏃♂️ "
+
+    nohup java -jar -Dspring.profiles.active=prod ${PROJECT_PATH}/build/libs/$JAR 1> ${PROJECT_PATH}/logs/subway.log 2>&1 &
+}
+
+deploy;
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 배포 스크립트 종료 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+```
+
+2. crontab 등록
+```
+crontab -e 0 */6 * * * /home/ubuntu/nextstep/scripts/deploy.sh step3 >> /home/ubuntu/nextstep/scripts/logs/deploy.log 2>&1
+```
