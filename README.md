@@ -73,7 +73,7 @@ npm run dev
 
 2. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://cylee9409-subway.o-r.kr
 
 ---
 
