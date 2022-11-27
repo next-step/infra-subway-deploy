@@ -114,3 +114,69 @@ npm run dev
 1. 작성한 배포 스크립트를 공유해주세요.
 
 
+```shell
+#!/bin/bash
+REPOSITORY=~/nextstep/infra-subway-deploy
+BRANCH=step3-deploy-script
+APPLICATION_NAME=subway
+LOG_FILE_NAME=web-service.log
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+function check_diff() {
+    git fetch
+    master=$(git rev-parse $BRANCH)
+    remote=$(git rev-parse origin/$BRANCH)
+    if [[ $master == $remote ]]; then
+        echo -e "[$(date)] 변경된 내용이 없습니다. 😫"
+        exit 0
+    fi
+}
+
+function pull() {
+    echo "> 🚀 repository pull을 수행합니다."
+    git pull origin $BRANCH
+    #git submodule update --recursive --remote
+}
+
+function build_anc_copy {
+    echo "> 🚀 gradle build를 수행합니다."
+    ./gradlew clean build
+    echo "> 🚀 빌드 파일을 복사합니다."
+    cp $REPOSITORY/build/libs/$APPLICATION_NAME*.jar $REPOSITORY
+}
+
+function stop_service {
+    CURRENT_PID=$(pgrep -f $APPLICATION_NAME.*.jar)
+    if [ -z "$CURRENT_PID" ]; then
+        echo " 🚀 현재 구동중인 애플리케이션이 없으로 종료하지 않습니다."
+    else
+        echo " 🚀 현재 구동중인 애플리케이션을 종료합니다."
+        echo " 🚀 kill -15 $CURRENT_PID"
+        kill -15 $CURRENT_PID
+        sleep 5
+    fi
+}
+
+function start_service() {
+        echo "> 🚀 새로운 애플리케이션을 구동합니다."
+        nohup java -Djava.security.egd=file:/dev/./urandom -Dserver.port=8080 -jar -Dspring.profiles.active=prod $REPOSITORY/build/libs/subway-0.0.1-SNAPSHOT.jar 1> $LOG_FILE_NAME 2>&1 &
+}
+
+
+cd $REPOSITORY
+check_diff
+pull
+build_anc_copy
+stop_service
+start_service
+```
