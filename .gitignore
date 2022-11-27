@@ -40,3 +40,6 @@ out/
 frontend/node_modules
 fronted/.prttierrc.js
 fronted/.eslintrc.js
+
+local_exec.log
+prod_exec.log
