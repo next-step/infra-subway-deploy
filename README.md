@@ -25,14 +25,14 @@
     - badaelephant-admin-rt : badaelephant-admin-c
   - [x] Security Group 설정
     - [x] pemkey : badaelephant-keypair.pem
-    - [x] 외부망 (43.201.1.36 / 192.168.36.49)
+    - [x] 외부망 (52.79.159.211 / 192.168.36.28)
       - [x] 전체 대역 : 8080 포트 오픈
       - [x] 관리망 : 22번 포트 오픈
-    - [x] 내부망 (15.165.246.65 / 192.168.36.138)
+    - [x] 내부망 (3.36.72.201 / 192.168.36.140)
       - pemkey 루트 경로에 있음
       - [x] 외부망 : 3306 포트 오픈
       - [x] 관리망 : 22번 포트 오픈
-    - [x] 관리망 (52.78.131.211 / 192.168.36.173)
+    - [x] 관리망 (15.165.246.65 / 192.168.36.167)
       - pemkey 루트 경로에 있음
       - [x] 자신의 공인 IP : 22번 포트 오픈
   - [x] 서버 생성
@@ -43,4 +43,33 @@
     - [x] 베스쳔 서버에 Command 감사로그 설정
 - [x] 웹 애플리케이션 배포하기
   - [x] 외부망에 웹 애플리케이션을 배포
-  - [x] DNS 설정 : http://nextstep.badaelephant.kro.kr:8080/
+  - [x] DNS 설정 : http://www.next-badaelephant.kro.kr:8080/ => 변경 : https://next-bada.n-e.kr/
+
+### 피드백 반영
+- [x] 별칭생성
+  - admin 인스턴스에서 ssh public / ssh internal을 통해 각각의 인스턴스로 이동 가능
+- [x] 환경변수(세션 타임 아웃, history에 시간 추가) public / internal 에 적용
+- [x] 쉘 프롬프트 변경 public / internal 에 적용
+- [x] logger 사용(감사용) public / internal 에 적용 - alias 설정하여 명령어 'slogs'를 통해 확인 가능
+- [x] 외부망 application log - alias 설정하여 명령어 : 'alogs' 를 통해 100줄 확인 가능
+
+## Step2. 서비스 배포하기
+
+### 서비스 url
+- https://next-bada.n-e.kr/
+
+### 서브모듈 repo
+- https://github.com/badaelephant/next-config.git
+
+### 요구사항
+
+- [x] 운영 환경 구성하기
+  - [x] 외부망에 Nginx로 Reverse Proxy를 구성
+  - [x] Reverse Proxy에 TLS 설정
+- [x] 개발 환경 구성하기
+  - [x] 설정파일 나누기
+    - [x] DB 설정 나누기
+
+### 추가 요구사항
+
+- [x] git submodule로 환경변수 관리하기
