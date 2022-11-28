@@ -66,20 +66,26 @@ npm run dev
    - Route Table 생성
      - [X] seonghyeoklee-rtb 생성
    - Security Group 설정
-     - [X] 외부망 (SG-seonghyeoklee-public)
-       - 전체 대역 : 8080 포트 오픈
+     - [X] 외부망 (seonghyeoklee-public-sg)
+       - 전체 대역 : 80 포트 오픈
        - 관리망 : 22번 포트 오픈
-     - [X] 내부망 (SG-seonghyeoklee-internal)
+     - [X] 내부망 (seonghyeoklee-internal-sg)
        - 외부망 : 3306 포트 오픈
        - 관리망 : 22번 포트 오픈
-     - [X] 관리망 (SG-seonghyeoklee-admin)
+     - [X] 관리망 (seonghyeoklee-admin-sg)
        - 자신의 공인 IP : 22번 포트 오픈
      - 서버 생성
        - [X] 외부망에 웹 서비스용도의 EC2 생성
+         - seonghyeoklee-public-t3-medium (192.168.85.6)
        - [X] 내부망에 데이터베이스용도의 EC2 생성
+         - seonghyeoklee-internal-t3-medium (192.168.85.151)
        - [X] 관리망에 베스쳔 서버용도의 EC2 생성
+         - seonghyeoklee-admin-t3-medium (192.168.85.173)
        - [X] 베스쳔 서버에 Session Timeout 600s 설정
        - [X] 베스쳔 서버에 Command 감사로그 설정
+       - [X] ssh [별칭] 설정완료. 베스쳔 서버에서 접근하는 경우 아래 명령어 사용
+         - ssh public (외부망)
+         - ssh internal (내부망)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
