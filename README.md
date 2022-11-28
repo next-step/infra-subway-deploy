@@ -45,17 +45,21 @@ npm run dev
 
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
-2. 업로드한 pem키는 무엇인가요.
+2. 업로드한 pem키는 무엇인가요. key-baeksoo
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+   - 외부망 Subnet : 64개 (AZ를 다르게 구성)
+     - baeksoo-subnet-public-ap-northeast-2a (192.168.33.0/26)
+     - baeksoo-subnet-public-ap-northeast-2b (192.168.33.64/26)
+   - 내부망 Subnet : 32개
+     - baeksoo-subnet-private-ap-northeast-2a (192.168.33.128/27)
+   - 관리용 Subnet : 32개
+     - baeksoo-subnet-private-management-ap-northeast-2b (192.168.33.160/27)
+
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
-- URL : 
-
-
+   - URL : http://service.baeksoo.p-e.kr (http://3.36.111.223:8080/)
 
 ---
 
