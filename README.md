@@ -70,4 +70,4 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
-
+ - 외부망 EC2 내 /home/ubuntu/nextstep/release.sh 로 작성되었습니다.
