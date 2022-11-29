@@ -60,9 +60,20 @@ npm run dev
 ---
 
 ### 2단계 - 배포하기
-1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+#### 요구사항 작성하기
+#### 운영환경 구성하기
+- 웹 어플리케이션 앞단에 Reverse proxy 구성
+    - 외부망에 Nginx로 Reverse Proxy 구성
+    -  Reverse Proxy 에 TLS 설정
+- 운영 DB 구성하기
+#### 개발환경 구성하기
+- 설정 파일 나누기
+    - JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+
+2. TLS가 적용된 URL을 알려주세요
+
+- URL : https://cylee9409-subway.o-r.kr
 
 ---
 
