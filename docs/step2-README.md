@@ -34,7 +34,7 @@
       - DNS TXT 레코드를 적용 여부 확인 : $ dig -t txt _acme-challenge.example.com +short
     - [x] Dockerfile에 인증서 설정 추가
     - [x] nginx.conf에 SSL 설정 추가
-    - [x] ssl 적용 여부 확인
+    - [ ] ssl 적용 여부 확인
 
 ### Database 설정
 
@@ -53,9 +53,9 @@
 ### 설정 파일 분리
 
 - [x] application-{profiles} 분리
-- [ ] 변경사항 적용
-  - [ ] git clone -b step2 --single-branch https://github.com/hahoho87/infra-subway-deploy.git
-  - [ ] nohup java -jar -Dspring.profiles.active=prod subway-0.0.1-SNAPSHOT.jar 1> infra-subway-deploy-log 2>&1 &
+- [x] 변경사항 적용
+  - [x] git clone -b step2 --single-branch https://github.com/hahoho87/infra-subway-deploy.git
+  - [x] nohup java -jar -Dspring.profiles.active=prod subway-0.0.1-SNAPSHOT.jar 1> infra-subway-deploy-log 2>&1 &
 
 ### Database 테이블 스키마 버전 관리
 
@@ -67,9 +67,3 @@
   - hahoho87/infra-subway-deploy-config
   - [ ] 리뷰어 권한 부여
 - [ ] `submodule` 기능 활용 `private repository` 참조 설정
-
----
-
-### 작업 내용
-
-

@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: prod
+  datasource:
+    url: jdbc:mysql://192.168.22.149:3306/subway?useUnicode=true&characterEncoding=utf-8&&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: masterpw
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
