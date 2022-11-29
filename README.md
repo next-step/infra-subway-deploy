@@ -72,5 +72,17 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+- check_df.sh 를 1분마다 동작하도록 크론탭으로 등록하였습니다.
+- 마스터 브랜치와 리모트 브랜치를 비교하여 변경이 발생했을 경우 deploy.sh 를 실행합니다.
+  - /home/ubuntu/nextstep/log/crontab_log.txt 에 크론탭 수행 로그가 남겨집니다.
+  - /home/ubuntu/nextstep/log/check_df_log.txt 에 check_df.sh 수행 로그가 남겨집니다.
+- deploy.sh 에는 각 동작별로 함수로 작성하였습니다.
+- git pull 을 수행한 뒤 빌드 및 배포를 진행합니다.
+  - /home/ubuntu/nextstep/log/application.log 에 nohup 명령어 로그가 남겨집니다.
 
+배포 스크립트 경로:
+- yoonmin-kim-public-EC2-a(192.168.94.32) 접속
+- /home/ubuntu/nextstep/check_df.sh
+- /home/ubuntu/nextstep/deploy.sh
 
+   
