@@ -46,14 +46,25 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
+<br>`KEY-tlaqk229.pem`
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역
+
+| 망 구분 | Name태그                 | 대역                |
+|:----:|------------------------|-------------------|
+|  외부  | tlaqk229-public-a      | 192.168.90.0/26   |
+|  외부  | tlaqk229-public-c      | 192.168.90.64/27  |
+|  관리  | tlaqk229-manage-c      | 192.168.90.160/27 |
+|  내부  | tlaqk229-internal-db-a | 192.168.90.128/27 |
+
+(요구사항에는 외부망의 경우 전체대역에 대해 8080포트를 오픈하라고 되어있었지만,
+<br>무료 도메인 적용을 위해 80포트 오픈하고 포트포워딩 했습니다.)
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://runningmap.kro.kr (`http://13.124.77.156`)
 
 
 
