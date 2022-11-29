@@ -21,26 +21,26 @@
 ### Reverse Proxy 구성
 
 - Reverse Proxy 세팅
-  - [ ] Docker 설치
-  - [ ] nginx Dockerfile 작성
-  - [ ] nginx.conf 설정
-  - [ ] docker build & run
+  - [x] Docker 설치
+  - [x] nginx Dockerfile 작성
+  - [x] nginx.conf 설정
+  - [x] docker build & run
 
 - Reverse Proxy 설정
-  - [ ] TLS 설정
-    - [ ] letsencrypt를 이용한 인증서 생성
-    - [ ] 유효한 URL인지 확인을 위한 `DNS TXT 레코드`로 추가
+  - [x] TLS 설정
+    - [x] letsencrypt를 이용한 인증서 생성
+    - [x] 유효한 URL인지 확인을 위한 `DNS TXT 레코드`로 추가
       - TXT 레코드 설정
       - DNS TXT 레코드를 적용 여부 확인 : $ dig -t txt _acme-challenge.example.com +short
-    - [ ] Dockerfile에 인증서 설정 추가
-    - [ ] nginx.conf에 SSL 설정 추가
-    - [ ] ssl 적용 여부 확인
+    - [x] Dockerfile에 인증서 설정 추가
+    - [x] nginx.conf에 SSL 설정 추가
+    - [x] ssl 적용 여부 확인
 
 ### Database 설정
 
-- [ ] Docker 설치
-- [ ] docker build & run
-- [ ] docker를 이용한 mysql 구동 확인
+- [x] Docker 설치
+- [x] docker build & run
+- [x] docker를 이용한 mysql 구동 확인
   ```shell
   $docker exec -it {docker container name or id} mysql -u root -p
   ```
@@ -52,7 +52,7 @@
 
 ### 설정 파일 분리
 
-- [ ] application-{profiles} 분리
+- [x] application-{profiles} 분리
 - [ ] 변경사항 적용
   - [ ] git clone -b step2 --single-branch https://github.com/hahoho87/infra-subway-deploy.git
   - [ ] nohup java -jar -Dspring.profiles.active=prod subway-0.0.1-SNAPSHOT.jar 1> infra-subway-deploy-log 2>&1 &
