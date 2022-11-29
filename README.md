@@ -75,6 +75,8 @@ npm run dev
 
 ## 변수 설정
 PROJECT=/home/ubuntu/nextstep/infra-subway-deploy
+BRANCH=$0
+PROFILE=$1
 txtrst='\033[1;37m' # White
 txtred='\033[1;31m' # Red
 txtylw='\033[1;33m' # Yellow
@@ -87,11 +89,20 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 ## 저장소 pull
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << git pull 🧐 >>${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
 cd $PROJECT
-git pull
+git fetch
+master=$(git rev-parse $BRANCH)
+remote=$(git rev-parse origin $BRANCH)
+
+echo -e "${txtylw}=======================================${txtrst}"
+if [[ $master == $remote ]]; then
+    echo -e "[$(date)] 변경 사항이 없어요 😫"
+    exit 0
+else
+    echo -e "${txtgrn}  << git pull 🧐 >>${txtrst}"
+    git pull
+fi
+echo -e "${txtylw}=======================================${txtrst}"
 
 ## gradle build
 echo -e "${txtylw}=======================================${txtrst}"
@@ -113,7 +124,7 @@ else
 fi
 
 # 프로세스 실행
-nohup java -jar -Dspring.profiles.active=prod ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
+nohup java -jar -Dspring.profiles.active=$PROFILE ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
 
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 실행 완료 🥳 >>${txtrst}"
