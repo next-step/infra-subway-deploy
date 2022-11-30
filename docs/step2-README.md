@@ -34,7 +34,7 @@
       - DNS TXT 레코드를 적용 여부 확인 : $ dig -t txt _acme-challenge.example.com +short
     - [x] Dockerfile에 인증서 설정 추가
     - [x] nginx.conf에 SSL 설정 추가
-    - [ ] ssl 적용 여부 확인
+    - [?] ssl 적용 여부 확인
 
 ### Database 설정
 
@@ -59,11 +59,11 @@
 
 ### Database 테이블 스키마 버전 관리
 
-- [ ] flyway 설정
+- [x] flyway 설정
 
 ### 설정 별도 관리
 
-- [ ] github private repository 생성
+- [x] github private repository 생성
   - hahoho87/infra-subway-deploy-config
-  - [ ] 리뷰어 권한 부여
-- [ ] `submodule` 기능 활용 `private repository` 참조 설정
+  - [x] 리뷰어 권한 부여
+- [x] `submodule` 기능 활용 `private repository` 참조 설정
