@@ -54,11 +54,15 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+- thisisspear-seoul-vpc : 192.169.234.0/24
+- thisisspear-seoul-public-a : 192.169.234.0/26
+- thisisspear-seoul-public-c : 192.169.234.64/26
+- thisisspear-seoul-private-a : 192.169.234.128/27
+- thisisspear-seoul-management-c : 192.169.234.160/27
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
-
-
+- URL : http://넥스트스텝-건창.서버.한국/
 
 ---
 
