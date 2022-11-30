@@ -53,7 +53,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 13.124.88.35:8080
+- URL : 13.124.88.35:8080 (http://wtc.wtc-developyo.p-e.kr:8080/)
 
 
 
