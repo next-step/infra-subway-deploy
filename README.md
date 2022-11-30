@@ -141,7 +141,7 @@ else
 fi
 
 nohup java -jar -Dspring.profiles.active=$PROFILE ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
-function_print "프로세스가 실행되었습니다."
+function_print "'$PROFILE'환경으로 애플리케이션이 실행되었습니다."
 
 function_print "======================================="
 echo -e "${txtgrn}  << 스크립트 종료 🧐 >>${txtrst}"
