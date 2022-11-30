@@ -78,6 +78,6 @@
     ```shell
     $sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
     ```
-  - http://www.hahoho87-wootech.kro.kr/
+  - http://www.hahoho87-subway.kro.kr/
 
 ---

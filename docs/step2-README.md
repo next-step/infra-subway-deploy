@@ -34,7 +34,7 @@
       - DNS TXT 레코드를 적용 여부 확인 : $ dig -t txt _acme-challenge.example.com +short
     - [x] Dockerfile에 인증서 설정 추가
     - [x] nginx.conf에 SSL 설정 추가
-    - [?] ssl 적용 여부 확인
+    - [x] ssl 적용 여부 확인
 
 ### Database 설정
 
