@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active:
+      - local
+    group:
+      local:
+        - mysql
+        - security
+      test:
+        - h2
+        - security
+      prod:
+        - mysql
+        - security
