@@ -9,8 +9,8 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PathService {
@@ -20,14 +20,14 @@ public class PathService {
         graph.addEdge(lines);
 
         // 다익스트라 최단 경로 찾기
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        DijkstraShortestPath<Station, SectionEdge> dijkstraShortestPath = new DijkstraShortestPath<>(graph);
         GraphPath<Station, SectionEdge> path = dijkstraShortestPath.getPath(source, target);
 
         return convertSubwayPath(path);
     }
 
-    private SubwayPath convertSubwayPath(GraphPath graphPath) {
-        List<SectionEdge> edges = (List<SectionEdge>) graphPath.getEdgeList().stream().collect(Collectors.toList());
+    private SubwayPath convertSubwayPath(GraphPath<Station, SectionEdge> graphPath) {
+        List<SectionEdge> edges = new ArrayList<>(graphPath.getEdgeList());
         List<Station> stations = graphPath.getVertexList();
         return new SubwayPath(edges, stations);
     }
