@@ -22,14 +22,28 @@ function pull() {
   git pull origin $BRANCH
 }
 
+function run_server() {
+	echo "어플리케이션 실행 중..."
+	nohup java -jar -Dspring.profiles.active=$PROFILE $JAR_PATH 1> subway.log 2>&1 &
+	sleep 5
+	CURRENT_PID=$(pidof java)
+	echo "PID: ${CURRENT_PID} 어플리케이션이 실행되었습니다. - ${PROFILE}환경"
+}
+
 function check_df() {
   git fetch
   master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin/$BRANCH)
 
   if [[ $master == $remote ]]; then
-    echo -e "[$(date)] Nothing to do!!! 😫"
-    exit 1
+	CURRENT_PID=$(pidof java)
+	if [ -z $CURRENT_PID ]; then
+	  run_server
+	  exit 1
+	fi
+	else
+      echo -e "[$(date)] Nothing to do!!! 😫"
+      exit 1
   fi
 }
 
@@ -86,8 +100,4 @@ fi
 
 
 ## 서버 실행
-echo "어플리케이션 실행 중..."
-nohup java -jar -Dspring.profiles.active=$PROFILE $JAR_PATH 1> subway.log 2>&1 &
-sleep 5
-CURRENT_PID=$(pidof java)
-echo "PID: ${CURRENT_PID} 어플리케이션이 실행되었습니다. - ${PROFILE}환경"
+run_server
