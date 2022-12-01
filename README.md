@@ -51,10 +51,14 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - wlroh-public-a: 192.168.30.0/26
+  - wlroh-public-b: 192.168.30.64/26
+  - wlroh-internal-a: 192.168.30.128/27
+  - wlroh-admin-c: 192.168.30.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://subway.wlroh.p-e.kr:8080
 
 
 
