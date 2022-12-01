@@ -48,6 +48,9 @@ function check_param() {
   fi
 }
 
+## 실행경로 이동
+cd $SHELL_SCRIPT_PATH
+
 ## check params
 check_param $1 $2
 
