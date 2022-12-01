@@ -51,10 +51,16 @@ npm run dev
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - soosue-public-a : 192.168.3.0/26
+  - soosue-public-c : 192.168.3.64/26
+  - soosue-internal-a : 192.168.3.128/27
+  - soosue-management-c : 192.168.3.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- IP : 3.36.170.223
+- URL : http://enfunha.kro.kr
+- PORT(WEB) : 8080
 
 
 
@@ -70,5 +76,3 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-
-
