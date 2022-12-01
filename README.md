@@ -59,14 +59,14 @@ npm run dev
     | hahoho87-admin-subnet-c | 192.168.22.160/27 | az-2c |
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- URL : http://www.hahoho87-wootech.kro.kr/ (http://15.165.92.73)
+- URL : http://www.hahoho87-subway.kro.kr/ (http://15.165.92.73)
 
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://hahoho87-subway.kro.kr
 
 ---
 

@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 @DisplayName("단위 테스트 - mockito의 MockitoExtension을 활용한 가짜 협력 객체 사용")
 @ExtendWith(MockitoExtension.class)
-public class MockitoExtensionTest {
+class MockitoExtensionTest {
     @Mock
     private LineRepository lineRepository;
     @Mock
