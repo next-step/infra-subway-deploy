@@ -72,6 +72,11 @@ npm run dev
 1. 작성한 배포 스크립트를 공유해주세요.
 ```
 #!/bin/bash
+## 파라미터 체크
+if [ $# -ne 2 ]; then
+        echo "> ./deploy.sh [브랜치명] [환경] 형태의 요청만 가능합니다."
+        exit 0
+fi
 
 ## 변수 설정
 PROJECT=/home/ubuntu/nextstep/infra-subway-deploy
