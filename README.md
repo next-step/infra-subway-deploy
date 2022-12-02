@@ -86,65 +86,55 @@ BRANCH=$1
 PROFILE=$2
 
 
-function_print() {
-  echo -e "${txtylw}>> $1${txtrst}"
+print() {
+echo -e "${txtylw}>> $1${txtrst}"
 }
 
-function_pull() {
-  function_print "'$1' Pull Request"
-  git pull origin $1
+pull() {
+print "Pull Request"
+git pull origin $BRANCH
 }
 
-# 여기부터 시작
-function_print "======================================="
-echo -e "${txtgrn}  << 스크립트 시작 🧐 >>${txtrst}"
-function_print "======================================="
+check_df() {
+git fetch origin
+master=$(git rev-parse $BRANCH)
+remote=$(git rev-parse origin $BRANCH)
 
-cd $PROJECT_PATH
-
-function_pull $BRANCH;
-
-function_print "프로젝트 빌드"
-./gradlew clean build
-
-CURRENT_PID=$(pidof java)
-function_print "현재 구동중인 프로세스 ID : $CURRENT_PID"
-
-"deploy.sh" 49L, 1254C                                                                                                                     1,1           Top
-
-function_pull() {
-  function_print "'$1' Pull Request"
-  git pull origin $1
+if [[ $master == $remote ]]; then
+print "[$(date)] Nothing to do!!! 😫"
+exit 0
+fi
 }
 
 # 여기부터 시작
-function_print "======================================="
-echo -e "${txtgrn}  << 스크립트 시작 🧐 >>${txtrst}"
-function_print "======================================="
-
 cd $PROJECT_PATH
+print "======================================="
+echo -e "${txtgrn}  << 스크립트 시작 🧐 >>${txtrst}"
+print "======================================="
 
-function_pull $BRANCH;
+check_df
+pull
 
-function_print "프로젝트 빌드"
+print "프로젝트 빌드"
 ./gradlew clean build
 
 CURRENT_PID=$(pidof java)
-function_print "현재 구동중인 프로세스 ID : $CURRENT_PID"
+print "현재 구동중인 프로세스 ID : $CURRENT_PID"
 
 if [ -z "$CURRENT_PID" ]; then
-  function_print "구동중이지 않아 프로세스를 종료하지 않습니다."
+print "구동중이지 않아 프로세스를 종료하지 않습니다."
 else
-  function_print "$CURRENT_PID번 프로세스를 죽입니다."
-  kill -9 $CURRENT_PID
-  sleep 2
+print "$CURRENT_PID번 프로세스를 죽입니다."
+kill -9 $CURRENT_PID
+sleep 2
 fi
 
 nohup java -jar -Dspring.profiles.active=$PROFILE ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
-function_print "'$PROFILE'환경으로 애플리케이션이 실행되었습니다."
+print "'$PROFILE'환경으로 애플리케이션이 실행되었습니다."
 
-function_print "======================================="
+print "======================================="
 echo -e "${txtgrn}  << 스크립트 종료 🧐 >>${txtrst}"
-function_print "======================================="
+print "======================================="
+
 ```
 
