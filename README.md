@@ -59,7 +59,7 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
-  - public a : 3.39.117.112
+  - public a : 15.165.241.66
   - public a : 15.165.241.66
   - http://hey-mando.p-e.kr/
 ---
@@ -67,7 +67,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://hey-mando.p-e.kr/
 
 ---
 
