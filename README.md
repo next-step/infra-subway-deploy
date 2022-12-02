@@ -50,11 +50,16 @@ npm run dev
     minggul2-key.pem
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 대역 :
+    minggul2-public-a 192.168.87.0/26
+    minggul2-public-c 192.168.87.64/26
+    minggul2-internal-a 192.168.87.128/27
+    minggul2-manage-c 192.168.87.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 
+  http://minggul2.r-e.kr:8080
 
 
 
