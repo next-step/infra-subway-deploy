@@ -62,7 +62,15 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://nextstep-aksgudwns.p-e.kr/
+
+#### 요구사항
+* 운영 환경 구성
+- [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성
+- [x] Reverse Proxy에 TLS 설정
+- [x] 컨테이너로 운영 DB 사용하기
+- [x] 설정파일 분리
+- [x] git submodule을 통한 설정 별도로 관리하기
 
 ---
 
