@@ -1,4 +1,4 @@
-<p 정align="center">
+<p align="center">
     <img width="200px;" src="https://raw.githubusercontent.com/woowacourse/atdd-subway-admin-frontend/master/images/main_logo.png"/>
 </p>
 <p align="center">
