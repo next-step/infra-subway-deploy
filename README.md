@@ -46,14 +46,20 @@ npm run dev
 1. 서버에 접속을 위한 pem키를 [구글드라이브](https://drive.google.com/drive/folders/1dZiCUwNeH1LMglp8dyTqqsL1b2yBnzd1?usp=sharing)에 업로드해주세요
 
 2. 업로드한 pem키는 무엇인가요.
+   KEY-90mansik
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - 90mansik-vpc : 192.168.51.0/24
+  - 90mansik-public-a : 192.168.51.0/26
+  - 90mansik-public-c : 192.168.51.64/26
+  - 90mansik-internal-a : 192.168.51.128/27
+  - 90mansik-admin-a : 192.168.51.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://90mansik.kro.kr:8080/
 
 
 
