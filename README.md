@@ -57,14 +57,14 @@ npm run dev
   - 관리망 : 192.168.128.0/27
 
 1. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-- URL : 13.124.50.17 (http://www.92soojong.p-e.kr/)
+- URL : 13.124.50.17 (https://92soojong.o-r.kr/)
 
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : http://www.92soojong.p-e.kr/
+- URL : https://92soojong.o-r.kr/
 
 ---
 
