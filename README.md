@@ -54,7 +54,9 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 - URL : http://subwayrun.kro.kr:8080/
 
-
+#### Step1 리뷰 사항 반영
+- [x] Step1 1차 리뷰 사항 반영
+    - [x] internal, admin Ec2 Public IP -> Private IP로 변경
 
 ---
 
