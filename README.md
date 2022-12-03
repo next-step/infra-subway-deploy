@@ -73,3 +73,22 @@
 ### 추가 요구사항
 
 - [x] git submodule로 환경변수 관리하기
+
+## Step3. 배포 스크립트 작성하기 
+
+### 요구사항
+
+- [x] 리뷰 피드백 반영하기
+  - [x] 로그위치 재정의
+  - public 에서 log alias
+    - slogs : shell-script log
+    - alogs : application log
+    - clogs : crontab log
+    - dlogs : deploy-script log
+  - [x] 퍼블릭, 인터널 호스트네임 변경 ( PUBLIC / INTERNAL)
+
+
+- [x] 배포 스크립트 작성하기
+  - [x] 배포스크립트 작성하기
+  - [x] 배포 동작 함수화하기
+  - [x] 배포 동작 반복해서 돌도록 crontab에 등록하기
