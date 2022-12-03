@@ -1,4 +1,4 @@
-<p align="center">
+<p 정align="center">
     <img width="200px;" src="https://raw.githubusercontent.com/woowacourse/atdd-subway-admin-frontend/master/images/main_logo.png"/>
 </p>
 <p align="center">
@@ -50,11 +50,14 @@ npm run dev
 
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+- 외부망(wu22e-public-a) 대역 : 192.168.22.0/26
+- 외부망(wu22e-public-c) 대역 : 192.168.22.64/26
+- 내부망(wu22e-internal-a) 대역 : 192.168.22.128/27
+- 관리망(wu22e-management-c) 대역 : 192.168.22.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://www.wu22e-subway.kro.kr:8080 (13.124.200.219:8080)
 
 
 
