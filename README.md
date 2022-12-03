@@ -80,7 +80,61 @@ npm run dev
 
 1. TLS가 적용된 URL을 알려주세요
 
-- URL :
+- URL : https://3.35.131.48
+- http://www.meeingjae-subway.kro.kr/ 로 접근하면 redirection url이 보입니다 !
+
+### 요구사항 설명
+
+* **운영환경 구성하기**
+    * 웹 어플리케이션 앞단에 Reverse Proxy 구성하기
+        * 외부망에 Nginx로 Reverse Proxy를 구성
+        * Reverse Proxy에 TLS 설정
+    * 운영 데이터베이스 구성
+* **개발 환경 구성하기**
+    * 설정 파일 나누기
+        * JUnit : h2
+        * Local : docker(mysql)
+        * Prod : docker(mysql)
+
+### nginx
+
+- 디렉터리
+    - ~/nginx
+- 컨테이너
+    - name
+        - proxy
+    - port
+        - 80
+        - 443
+- nginx.conf 경로
+    - ~/nginx/nginx.conf
+
+### subway-service
+
+- 디렉터리
+    - ~/infra-subway-deploy
+
+- 설정파일 (proerties)
+    - application-prod.properties
+        - mysql 3306 port
+    - application-local.properties
+        - mysql 13306 port
+    - application-test.properties
+        - h2
+
+### subway-db
+
+- Docker Image
+    - meeingjae/subway-mysql:0.0.1
+- Dockerfile 경로
+    - ~/infra-subway-deploy/Dockerfile
+- scheam 경로
+    - ~/infra-subway-deploy/schema.sql
+- 컨테이너 (name)
+    - subway-db-prod
+        - port : 3306
+    - subway-db-local
+        - port : 13306
 
 ---
 
@@ -176,9 +230,11 @@ npm run dev
             * icmp ipv4 - 모두
 
 # Internet Gateway
+
 * name
-  * meeingjae-internet-gateway
+    * meeingjae-internet-gateway
 
 ## routing table
+
 * 0.0.0.0 -> meeingjae-internet-gateway
 
