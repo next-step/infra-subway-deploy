@@ -74,5 +74,67 @@ gunkim-key.pem
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```shell
+#!/bin/bash
 
+txtrst='\033[1;37m' # White
+txtylw='\033[1;33m' # Yellow
+txtgrn='\033[1;32m' # Green
+
+PROJECT_PATH='infra-subway-deploy'
+BRANCH=$1
+PROFILE=$2
+
+
+print() {
+echo -e "${txtylw}>> $1${txtrst}"
+}
+
+pull() {
+print "Pull Request"
+git pull origin $BRANCH
+}
+
+check_df() {
+git fetch origin
+master=$(git rev-parse $BRANCH)
+remote=$(git rev-parse origin $BRANCH)
+
+if [[ $master == $remote ]]; then
+print "[$(date)] Nothing to do!!! 😫"
+exit 0
+fi
+}
+
+# 여기부터 시작
+cd $PROJECT_PATH
+print "======================================="
+echo -e "${txtgrn}  << 스크립트 시작 🧐 >>${txtrst}"
+print "======================================="
+
+check_df
+pull
+
+print "프로젝트 빌드"
+./gradlew clean build
+
+CURRENT_PID=$(pidof java)
+print "현재 구동중인 프로세스 ID : $CURRENT_PID"
+
+if [ -z "$CURRENT_PID" ]; then
+print "구동중이지 않아 프로세스를 종료하지 않습니다."
+else
+print "$CURRENT_PID번 프로세스를 죽입니다."
+kill -9 $CURRENT_PID
+sleep 2
+fi
+
+nohup java -jar -Dspring.profiles.active=$PROFILE ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
+print "'$PROFILE'환경으로 애플리케이션이 실행되었습니다."
+
+print "======================================="
+echo -e "${txtgrn}  << 스크립트 종료 🧐 >>${txtrst}"
+print "======================================="
+
+```
 
