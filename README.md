@@ -72,4 +72,78 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+```bash
+#!/bin/bash
 
+## 색상 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+## 변수 설정
+PROJECT_PATH=/home/ubuntu/nextstep/infra-subway-deploy
+
+## 프로젝트 경로로 이동
+function changeDirectoryToProject() {
+  echo -e "${txtgrn}>> Move to Project Directory${txtrst}"
+  cd $PROJECT_PATH
+
+}
+
+
+## 저장소 pull
+function pull() {
+  echo -e ""
+  echo -e "${txtgrn}>> PULL main BRANCH ${txtrst}"
+  git pull origin main
+}
+
+## gradle build
+function build() {
+  echo -e ""
+  echo -e "${txtgrn}>> BUILD${txtrst}"
+  ./gradlew clean build
+}
+
+
+## 프로세를 KILL 하는 명령어
+function killProcess() {
+  echo -e ""
+  echo -e "${txtgrn}>> KILL PROCESS${txtrst}"
+  PID=$(lsof -ti tcp:8080)
+  if [ -z "${PID}" ]
+    then
+      echo "> NO RUNNING PROCESS IN PORT 8080"  
+    else
+      echo -e "KILL ${PID}"
+      kill -9 "${PID}"
+  fi
+}
+
+## 애플리케이션을 실행
+function run() {
+  echo -e ""
+  echo -e "${txtgrn}>> RUN APPLICATION ${txtrst}"
+
+  JAR_PATH=$(find $PROJECT_PATH/build/libs/*jar)
+  JAR_NAME=$(basename "$JAR_PATH")
+  echo -e "Jar name is ${JAR_NAME}"
+
+  nohup java -jar -Dspring.profiles.active=prod ./${JAR_NAME} 1> ./subway.log 2>&1  &
+}
+
+changeDirectoryToProject;
+pull;
+build;
+killProcess;
+run;
+
+```
