@@ -182,11 +182,8 @@ echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
-pull;
 check_df;
+pull;
 build;
 processFindAndKill;
 run;
-
-
-테스트2
