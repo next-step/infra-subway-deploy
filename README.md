@@ -75,4 +75,4 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
-
+- /src/main/scripts 경로에 추가했습니다.
