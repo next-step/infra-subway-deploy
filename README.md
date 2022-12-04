@@ -76,12 +76,13 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+    - deploy.sh
 
 ***  
 
 
 ### 힌트 1
-<details open>  
+<details>  
 <summary> </summary>  
 
 ### 🚀 1단계 - 서비스 구성하기
@@ -126,52 +127,33 @@ npm run dev
 * [x] 외부망에 웹 애플리케이션을 배포
 * [x] DNS 설정
 
+***
 
-### 힌트
-<details>
-<summary> </summary>
+### 🚀 2단계 - 서비스 배포하기
 
-### 🚀 1단계 - 서비스 구성하기
 ## 요구사항
-
-* [x] 웹 서비스를 운영할 네트워크 망 구성하기
-* [x] 웹 애플리케이션 배포하기
+* [x] 운영 환경 구성하기
+* [x] 개발 환경 구성하기
 
 ### 요구사항 설명
-* 저장소를 활용하여 아래 요구사항을 해결합니다.
-* README 에 있는 질문에 답을 추가한 후 PR을 보내고 리뷰요청을 합니다.
+운영 환경 구성하기
+* [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
+    * [x] 외부망에 Nginx로 Reverse Proxy를 구성
+    * [x] Reverse Proxy에 TLS 설정
+* [x] 운영 데이터베이스 구성하기     
+  운영 환경 구성하기
+* [x] 설정 파일 나누기
+    * JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
 
-### 망 구성
-* [x] VPC 생성
-    * [x] CIDR은 C class(x.x.x.x/24)로 생성. 이 때, 다른 사람과 겹치지 않게 생성
-* [x] Subnet 생성
-    * [x] 외부망으로 사용할 Subnet : 64개씩 2개 (AZ를 다르게 구성)
-    * [x] 내부망으로 사용할 Subnet : 32개씩 1개
-    * [x] 관리용으로 사용할 Subnet : 32개씩 1개
-* [x] Internet Gateway 연결
-* [x] Route Table 생성
-* [x] Security Group 설정
-    * [x] 외부망
-        * 전체 대역 : 8080 포트 오픈
-        * 관리망 : 22번 포트 오픈
-    * [x] 내부망
-        * 외부망 : 3306 포트 오픈
-        * 관리망 : 22번 포트 오픈
-    * [x] 관리망
-        * 자신의 공인 IP : 22번 포트 오픈
-* [x] 서버 생성
-    * [x] 외부망에 웹 서비스용도의 EC2 생성
-    * [x] 내부망에 데이터베이스용도의 EC2 생성
-    * [x] 관리망에 베스쳔 서버용도의 EC2 생성
-    * [x] 베스쳔 서버에 Session Timeout 600s 설정
-    * [x] 베스쳔 서버에 Command 감사로그 설정
+***
 
-### 주의사항
-**모든 리소스는 태그를 작성합니다. 이 때 자신의 계정을 Prefix로 붙입니다. (예: brainbackdoor-public)**
+### 🚀 3단계 - 배포 스크립트 작성하기
 
-### 웹 애플리케이션 배포
-* [x] 외부망에 웹 애플리케이션을 배포
-* [x] DNS 설정
+## 요구사항
+* [x] 배포 스크립트 작성하기
+  * 아래 내용을 모두 반영할 필요는 없습니다. 반복적으로 실행하더라도 정상적으로 배포하는 스크립트를 작성해봅니다.
+
+***
 
 
 ### 힌트 1
@@ -362,27 +344,6 @@ $ sudo apt install default-jdk
 ***  
 
 ### 힌트 2
-<details>  
-<summary> </summary>
-
-### 🚀 2단계 - 서비스 배포하기
-
-## 요구사항
-
-* [x] 운영 환경 구성하기
-* [x] 개발 환경 구성하기
-
-### 요구사항 설명
-운영 환경 구성하기
-* [x] 웹 애플리케이션 앞단에 Reverse Proxy 구성하기
-    * [x] 외부망에 Nginx로 Reverse Proxy를 구성
-    * [x] Reverse Proxy에 TLS 설정
-* [x] 운영 데이터베이스 구성하기     
-  운영 환경 구성하기
-* [x] 설정 파일 나누기
-    * JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
-
-### 힌트
 <details>  
 <summary> </summary>
 
@@ -590,3 +551,94 @@ git submodule foreach git push origin main
   package.json: ~/.../atdd-subway-service/fronted/package.json  
   * Multi Run 설정  
   name: local  
+
+</details>
+
+***
+
+### 힌트3
+<details>
+<summary> </summary>
+ 
+* **반복적으로 사용하는 명령어를 Script로 작성해봅니다.**
+```
+#!/bin/bash
+
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+## 저장소 pull
+## gradle build
+## 프로세스 pid를 찾는 명령어
+## 프로세스를 종료하는 명령어
+## ...
+```
+
+* **기능 단위로 함수로 만들어봅니다.**
+```
+function pull() {
+  echo -e ""
+  echo -e ">> Pull Request 🏃♂️ "
+  git pull origin master
+}
+
+pull;
+```
+
+* **스크립트 실행시 파라미터를 전달해봅니다.**
+```
+#!/bin/bash
+
+## ...
+
+EXECUTION_PATH=$(pwd)
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
+
+## 조건 설정
+if [[ $# -ne 2 ]]
+then
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
+    echo -e "${txtylw}=======================================${txtrst}"
+    exit
+fi
+
+## ...
+```
+* 실행시 파라미터를 전달하도록 하여 범용성 있는 스크립트를 작성해봅니다.
+* read 명령어를 활용하여 사용자의 Y/N 답변을 받도록 할 수도 있어요.   
+
+* **반복적으로 동작하는 스크립트를 작성해봅니다.**
+  * github branch 변경이 있는 경우에 스크립트가 동작하도록 작성해봅니다.
+```
+function check_df() {
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin $BRANCH)
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 0
+  fi
+}
+```
+* crontab을 활용해봅니다.
+  * 매 분마다 동작하도록한 후 log를 확인해보세요.
+  * crontab과 /etc/crontab의 차이에 대해 학습해봅니다.
+
+</details>
