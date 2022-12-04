@@ -69,7 +69,7 @@ doorisopen-key.pem
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : [https://doorisopen.kro.kr/](https://doorisopen.kro.kr/)
 
 ---
 
