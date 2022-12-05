@@ -67,7 +67,7 @@ function checkDiff() {
   echo -e "check branch ${branch}"
   currentBranch=$(git rev-parse ${branch})
   echo -e "currentBranch : ${currentBranch}"
-  remoteBranch=$(git rev-parse ${upstream}/${branch})
+  remoteBranch=$(git rev-parse ${origin})
   echo -e "remoteBranch : ${remoteBranch}"
 
   if [[ "${currentBranch}" == "${remoteBranch}" ]]; then
@@ -86,6 +86,7 @@ fi
 branch="step3"
 port=8080
 upstream="step3"
+origin="origin/meeingjae"
 cd /home/ubuntu/infra-subway-deploy
 # 빌드 실행 날짜 출력
 printDate
