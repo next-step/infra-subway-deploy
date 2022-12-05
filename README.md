@@ -54,16 +54,46 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL : 3.38.166.210
+- https://www.aws-nextstep-deokmoo.kro.kr/
 
 
-
+이외 미션 수행 정보
+   - 인스턴스
+      - deokmoon-t3-DB-EC2
+      - deokmoon-t3-public-EC2
+      - deokmoon-bastion-EC2
+   - 보안그룹
+      - SG-deokmoon-bastion
+      - SG-deokmoon-private
+      - SG-deokmoon-public
+   - vpc
+      - deokmoon-vpc
+   - 라우팅 테이블
+      - deokmoon-private-rt
+      - deokmoon-public-rt
+   - nat
+      - deokmoon-nat
+   - igw
+      - deokmoon-igw
+   - 서브넷 정보
+      - public-1: 192.168.47.0/26
+      - public-2: 192.168.47.64/26
+      - private: 192.168.47.128/27
+      - admin(bastion): 192.168.47.160/27
+   
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
 - URL : 
-
+   - https://www.aws-nextstep-deokmoo.kro.kr/
+   - https://3.38.166.210/
+2. 이외 내용
+   - project 폴더 경로
+      - ~/nextstep
+   - Dockerfile 경로
+      - ~/nextstep/infra-subway-deploy
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
