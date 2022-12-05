@@ -33,14 +33,14 @@ function rebase() {
 }
 
 ## 프로세스 pid 탐색
-function findapp() {
+function findApp() {
   echo -e ${txtylw}
   subwayPid=$(pgrep -f subway.*.jar)
   echo -e "subway application processId = ${subwayPid}"
 }
 
 ## 프로세스 종료
-function killapp() {
+function killApp() {
   if [[ $subwayPid -gt 0 ]]; then
     echo -e "app pid : ${subwayPid}"
     echo -e ${txtred}
@@ -52,7 +52,7 @@ function killapp() {
 }
 
 ## 서비스 시작
-function startapp() {
+function startApp() {
   echo -e ${txtylw}
   echo -e "build app"
   ./gradlew clean build
@@ -65,8 +65,8 @@ function startapp() {
 function checkDiff() {
   echo -e "${txtrst}"
   echo -e "check branch ${branch}"
-  currentBranch= $(git rev-parse ${branch})
-  remoteBranch= $(git rev-parse ${upstream}/${branch})
+  currentBranch=$(git rev-parse ${branch})
+  remoteBranch=$(git rev-parse ${upstream}/${branch})
 
   if [[ $currentBranch == $remoteBranch ]]; then
     echo -e "[$(date)] Nothing to do!!! "
@@ -94,9 +94,9 @@ checkDiff
 # 브랜치 변경 사항 pull
 rebase
 # subway application PID 값 탐색
-findapp
+findApp
 # subway application 프로세스 종료
-killapp
+killApp
 # subway application 실행
-startapp
+startApp
 echo -e "---------------- 스크립트 종료 --------------------"
