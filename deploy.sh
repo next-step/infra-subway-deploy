@@ -75,7 +75,7 @@ function checkDiff() {
 }
 
 echo -e "---------------- 스크립트 시작 --------------------"
-if [[$# -eq 0]]; then
+if [ -z $1]; then
   profile=prod
 else
   profile=$1
