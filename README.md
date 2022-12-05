@@ -307,7 +307,9 @@ function checkDiff() {
   echo -e "${txtrst}"
   echo -e "check branch ${branch}"
   currentBranch=$(git rev-parse ${branch})
+  echo -e "currentBranch : ${currentBranch}"
   remoteBranch=$(git rev-parse ${upstream}/${branch})
+  echo -e "remoteBranch : ${remoteBranch}"
 
   if [[ "${currentBranch}" == "${remoteBranch}" ]]; then
     echo -e "[$(date)] Nothing to do!!! "
@@ -316,7 +318,7 @@ function checkDiff() {
 }
 
 echo -e "---------------- 스크립트 시작 --------------------"
-if [ -z $1]; then
+if [ -z "$1"]; then
   profile=prod
 else
   profile=$1
