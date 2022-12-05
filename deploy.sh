@@ -68,7 +68,7 @@ function checkDiff() {
   currentBranch=$(git rev-parse ${branch})
   remoteBranch=$(git rev-parse ${upstream}/${branch})
 
-  if [[ $currentBranch == $remoteBranch ]]; then
+  if [[ "${currentBranch}" == "${remoteBranch}" ]]; then
     echo -e "[$(date)] Nothing to do!!! "
     exit 0
   fi
