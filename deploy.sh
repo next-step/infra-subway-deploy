@@ -62,7 +62,7 @@ function startapp() {
 }
 
 # 브랜치 변경사항 체크 (upstream 브랜치로 대체함)
-function check_df() {
+function checkDiff() {
   echo -e "${txtrst}"
   echo -e "check branch ${branch}"
   currentBranch= $(git rev-parse ${branch})
@@ -85,7 +85,7 @@ printDate
 # 인자 값 출력
 printArgs
 # 브랜치 변경사항 체크 (빌드 필요 여부 체크)
-check_df
+checkDiff
 # 브랜치 변경 사항 pull
 rebase
 # subway application PID 값 탐색
