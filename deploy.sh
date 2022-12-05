@@ -45,7 +45,7 @@ function killapp() {
     echo -e "app pid : ${subwayPid}"
     echo -e ${txtred}
     echo -e "kill ${subwaypid} start"
-    kill -9 ${subwayPid}
+    kill -15 ${subwayPid}
     sleep 2
     echo -e "subway application stopped"
   fi
