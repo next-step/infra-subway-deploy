@@ -71,7 +71,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : www.meeingjae-subway.kro.kr
+- URL : meeingjae-subway.kro.kr
 - IP  : 3.35.131.48:8080
 
 # Subnet
