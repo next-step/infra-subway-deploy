@@ -72,4 +72,94 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+```
+#!/bin/bash
 
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+SHELL_SCRIPT_PATH=$(dirname $0)
+cd $SHELL_SCRIPT_PATH
+
+EXECUTION_PATH=$(pwd)
+BRANCH=$1
+PROFILE=$2
+APP_NAME=velcronicity_subway
+PID=$(pgrep -f ${APP_NAME})
+JAR_PATH=/build/libs
+
+
+function check_df() {
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+#    exit 0
+  fi
+}
+
+function pull() {
+   echo -e ""
+   echo -e "${txtgrn}[pull] git pull origin ${BRANCH}${txtrst}"
+   git pull origin ${BRANCH}
+}
+
+function build() {
+   echo -e ""
+   echo -e "${txtgrn}[build] ./gradlew clean build${txtrst}"
+   ./gradlew clean build
+}
+
+function stop() {
+   echo -e ""
+   if [ -z "${PID}" ]; then
+     echo -e "${txtgrn}[stop] not running${txtrst}" 
+   else
+     echo -e "${txtgrn}[stop] kill -15 ${PID}${txtrst}"
+     while $(kill -15 ${PID} 2>/dev/null); do
+        sleep 1;
+     done 
+   fi
+}
+
+function start() {
+   echo -e ""
+   echo -e "${txtgrn}[start] nohup java -DAPP_NAME=${APP_NAME} -Dspring.profiles.active=${PROFILE} -jar ${EXECUTION_PATH}${JAR_PATH}/*.jar 1>subway.log 2>&1 &${txtrst}"
+   nohup java -DAPP_NAME=${APP_NAME} -Dspring.profiles.active=${PROFILE} -jar ${EXECUTION_PATH}${JAR_PATH}/*.jar 1>subway.log 2>&1 &
+   PID=$(pgrep -f ${APP_NAME})
+   ps -ef | grep ${PID} | grep -v grep
+}
+
+function deploy() {
+   check_df;
+   pull;
+   build;
+   stop;
+   start;
+}
+
+
+if [[ $# -ne 2 ]]
+then
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
+    echo -e "${txtylw}=======================================${txtrst}"
+    exit
+fi
+
+echo -e ""
+echo -e "${txtgrn} [branch]: $BRANCH ${txtsrt}"
+echo -e "${txtgrn} [profile]: $PROFILE ${txtsrt}"
+
+deploy;
+echo -e ""
