@@ -77,4 +77,120 @@ doorisopen-key.pem
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+스크립트 경로: /home/ubuntu/nextstep/subway.sh
+
+예시
+```bash
+>> cd /home/ubuntu/nextstep
+>> ./subway.sh
+==================FUNCTION LIST=====================
+1. build
+2. start
+3. stop
+4. status
+====================================================
+수행할 번호를 입력해주세요: 4
+```
+
+스크립트
+```bash
+#!/bin/bash
+
+BASE_PATH=/home/ubuntu/nextstep
+APP_PATH=$BASE_PATH/infra-subway-deploy
+LOG_PATH=$BASE_PATH/log/subway.log
+APP_NAME=subway
+
+JAVA_OPTION=-Djava.security.egd=file:/dev/./urandom
+
+cd $APP_PATH
+
+## 저장소 pull
+function pull() {
+  echo -e ""
+  echo -e ">> branch를 입력해주세요:"
+  read branch
+  echo -e ">> input branch: $branch"
+  echo -e ">> Pull Request"
+
+  check_diff $branch
+
+  git checkout $branch
+  git pull origin $branch
+}
+
+function check_diff() {
+  git fetch
+  master=$(git rev-parse ${1})
+  remote=$(git rev-parse origin/${1})
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date) Noting to do!]"
+    exit 1
+  fi
+}
+
+## gradle build
+function build() {
+  echo -e ">> Build Start"
+  pull
+  echo -e ">> Pull Ok"
+  ./gradlew clean build
+}
+
+function find() {
+  ps -ef | grep java | grep ${APP_NAME} | awk '{print $2}'
+}
+
+function status() {
+  local PID=$(find)
+  if [ -n "${PID}" ]; then
+    echo -e ">>${APP_NAME}(PID=${PID}) is running"
+  else
+    echo - ">>${APP_NAME} is stopped"
+  fi
+}
+
+function start() {
+  echo -e ">> App Start";
+
+  echo -e ">> 실행할 profile을 입력해주세요(local, test, prod):"
+  read profile
+  echo -e ">> input profile: $profile"
+
+  nohup java ${JAVA_OPTION} -Dspring.profiles.active=$profile -jar $APP_PATH/build/libs/subway-0.0.1-SNAPSHOT.jar 1> $LOG_PATH 2>&1 &
+}
+
+## 프로세스를 종료하는 명령어
+function stop() {
+  echo -e ">> App Stop"
+  local PID=$(find)
+  echo "Stopping ${APP_NAME}..... (PID:${PID})"
+  if [[ "${PID}" -lt 3 || -z "${PID}" ]]; then
+    echo "${APP_NAME} was not running."
+  else
+    kill -9 ${PID}
+    echo " - Shutdown ...."
+  fi
+}
+
+
+FUNCTIONS=("build" "start" "stop" "status")
+echo "==================FUNCTION LIST====================="
+for i in "${!FUNCTIONS[@]}"
+do
+  echo "$((i+1)). ${FUNCTIONS[$i]}"
+done
+echo "===================================================="
+
+echo -n "수행할 번호를 입력해주세요: "
+read selectNumber
+
+case $selectNumber in
+  "1") build;;
+  "2") start;;
+  "3") stop;;
+  "4") status;;
+  *) echo "1 ~ 4까지 입력 가능합니다";;
+esac
+```
 
