@@ -108,15 +108,13 @@ cd $APP_PATH
 ## 저장소 pull
 function pull() {
   echo -e ""
-  echo -e ">> branch를 입력해주세요:"
-  read branch
-  echo -e ">> input branch: $branch"
+  echo -e ">> input branch: ${1}"
   echo -e ">> Pull Request"
 
-  check_diff $branch
+  check_diff ${1}
 
-  git checkout $branch
-  git pull origin $branch
+  git checkout ${1}
+  git pull origin ${1}
 }
 
 function check_diff() {
@@ -131,12 +129,14 @@ function check_diff() {
 
 ## gradle build
 function build() {
+  echo -e ""
   echo -e ">> Build Start"
-  pull
+  pull ${1}
   echo -e ">> Pull Ok"
   ./gradlew clean build
 }
 
+## 프로세스 pid를 찾는 명령어
 function find() {
   ps -ef | grep java | grep ${APP_NAME} | awk '{print $2}'
 }
@@ -146,17 +146,14 @@ function status() {
   if [ -n "${PID}" ]; then
     echo -e ">>${APP_NAME}(PID=${PID}) is running"
   else
-    echo - ">>${APP_NAME} is stopped"
+    echo -e ">>${APP_NAME} is stopped"
   fi
 }
 
 function start() {
+  echo -e ""
   echo -e ">> App Start";
-
-  echo -e ">> 실행할 profile을 입력해주세요(local, test, prod):"
-  read profile
   echo -e ">> input profile: $profile"
-
   nohup java ${JAVA_OPTION} -Dspring.profiles.active=$profile -jar $APP_PATH/build/libs/subway-0.0.1-SNAPSHOT.jar 1> $LOG_PATH 2>&1 &
 }
 
@@ -173,24 +170,33 @@ function stop() {
   fi
 }
 
+if [ "$1" = "auto" ]; then
+  build doorisopen
+  stop
+  start prod
+else
+  FUNCTIONS=("build" "start" "stop" "status")
+  echo "==================FUNCTION LIST====================="
+  for i in "${!FUNCTIONS[@]}"
+  do
+    echo "$((i+1)). ${FUNCTIONS[$i]}"
+  done
+  echo "===================================================="
 
-FUNCTIONS=("build" "start" "stop" "status")
-echo "==================FUNCTION LIST====================="
-for i in "${!FUNCTIONS[@]}"
-do
-  echo "$((i+1)). ${FUNCTIONS[$i]}"
-done
-echo "===================================================="
+  echo -n "수행할 번호를 입력해주세요: "
+  read selectNumber
 
-echo -n "수행할 번호를 입력해주세요: "
-read selectNumber
-
-case $selectNumber in
-  "1") build;;
-  "2") start;;
-  "3") stop;;
-  "4") status;;
-  *) echo "1 ~ 4까지 입력 가능합니다";;
-esac
+  case $selectNumber in
+    "1")  echo -e ">> branch를 입력해주세요:"
+          read branch
+          build $branch;;
+    "2")  echo -e ">> 실행할 profile을 입력해주세요(local, test, prod):"
+          read profile
+          start $profile;;
+    "3") stop;;
+    "4") status;;
+    *) echo "1 ~ 4까지 입력 가능합니다";;
+  esac
+fi
 ```
 
