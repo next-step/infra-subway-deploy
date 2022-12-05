@@ -28,7 +28,7 @@ function rebase() {
   echo -e "fetch branch ${branch}"
   git fetch ${upstream} ${branch}
   echo -e "fetch success"
-  echo -e "rebase bracn ${branch}"
+  echo -e "rebase branch ${branch}"
   git rebase ${upstream}/${branch}
 }
 
@@ -75,10 +75,15 @@ function checkDiff() {
 }
 
 echo -e "---------------- 스크립트 시작 --------------------"
-branch=$1
-port=$2
-profile=$3
-upstream="mingvel"
+if [[$# -eq 0]]; then
+  profile=prod
+else
+  profile=$1
+fi
+
+branch="step3"
+port=8080
+upstream="step3"
 cd /home/ubuntu/infra-subway-deploy
 # 빌드 실행 날짜 출력
 printDate
