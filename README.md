@@ -74,6 +74,10 @@ npm run dev
        - 관리망 : 22번 포트 오픈
      - [X] 관리망 (seonghyeoklee-admin-sg)
        - 자신의 공인 IP : 22번 포트 오픈
+     - [X] Proxy (seonghyeoklee-proxy-sg)
+       - 전체 대역 : 80 포트 오픈
+       - 전체 대역 : 443 포트 오픈
+       - 관리망 : 22번 포트 오픈
      - 서버 생성
        - [X] 외부망에 웹 서비스용도의 EC2 생성
          - seonghyeoklee-public-t3-medium (192.168.85.6)
@@ -81,15 +85,18 @@ npm run dev
          - seonghyeoklee-internal-t3-medium (192.168.85.151)
        - [X] 관리망에 베스쳔 서버용도의 EC2 생성
          - seonghyeoklee-admin-t3-medium (192.168.85.173)
+       - [X] Proxy 서버용도의 EC2 생성
+         - seonghyeoklee-proxy (192.168.85.41)
        - [X] 베스쳔 서버에 Session Timeout 600s 설정
        - [X] 베스쳔 서버에 Command 감사로그 설정
        - [X] ssh [별칭] 설정완료. 베스쳔 서버에서 접근하는 경우 아래 명령어 사용
          - ssh public (외부망)
          - ssh internal (내부망)
+         - ssh proxy
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-   - URL : 43.201.110.139 (http://seonghyeoklee.wootecam.kro.kr)
+   - URL : https://seong.wootecam.o-r.kr/
 
 ---
 
@@ -105,6 +112,7 @@ npm run dev
 - 개발 환경 구성하기
   - [X] 설정 파일 나누기
     - JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
+- 
 
 1. TLS가 적용된 URL을 알려주세요
 
