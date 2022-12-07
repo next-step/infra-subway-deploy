@@ -95,7 +95,13 @@ npm run dev
    - Dockerfile 경로
       - ~/nextstep/infra-subway-deploy
 ---
+### Step1, Step2 회고
+* Step1을 구성하면서 그 동안 프로그램을 구현했던 기반 서비스의 아키텍처를 알게되는 계기가 됨
+* infra 미션이라 각 용어가 생소하여 찾아가며 바로 적용하느라 readme에 요구사항을 정리하지 않고 진행하다보니 실수 발생
+    * nohup 이슈
+    * 요구사항 누락(properties 구성)
 
+---
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
