@@ -123,3 +123,100 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+
+- [X] 배포 스크립트 작성하기
+- [X] crontab 설정하기
+
+```shell
+#! /bin/bash
+## 변수 설정
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+RET_TRUE=1
+RET_FALSE=0
+EXECUTION_PATH=$(pwd)
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
+REPOSITORY="/home/ubuntu/nextstep/infra-subway-deploy"
+BUILD_PATH="${REPOSITORY}/build/libs"
+
+function usage() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${txtgrn}<< 스크립트 🧐 >>${txtrst}"
+  echo -e "${txtgrn}$0 branch${txtred}{ seonghyeoklee | step3 } ${txtgrn}profile${txtred}{ prod | test | local }"
+  echo -e "${txtylw}=======================================${txtrst}"
+}
+
+function check_df() {
+  echo -e ""
+  echo -e "${txtred}>> git fetch...${txtrst}"
+
+  cd ${REPOSITORY} && git fetch
+  master=$(cd ${REPOSITORY} && git rev-parse ${BRANCH})
+  remote=$(cd ${REPOSITORY} && git rev-parse origin/${BRANCH})
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 0
+  else
+    deploy
+  fi
+}
+
+function pull() {
+  echo -e ""
+  echo -e "${txtred}>> git pull...${txtrst}"
+  git pull origin $BRANCH
+}
+
+function build() {
+  echo -e ""
+  echo -e "${txtred}>> gradle clean build...${txtrst}"
+  ./gradlew clean build
+}
+
+function find_application() {
+  echo -e ""
+  PID=`ps -ef | grep java | grep subway | awk '{print $2}'`
+  echo -e "${txtred}>> find pid :${txtrst} ${PID}"
+}
+
+function kill_application() {
+  echo -e ""
+  if [ -z "$PID" ]
+  then
+    echo "Process is not running"
+  else
+    kill -9 ${PID}
+    echo -e "${txtred}>> kill pid :${txtrst} ${PID}"
+  fi
+}
+
+function start_application() {
+  echo -e ""
+  echo -e "[$(date)] Application start!!! 🧐"
+  nohup java -jar -Dspring.profiles.active=prod ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> ../logs/infra-subway-log.log 2>&1  &
+}
+
+function deploy() {
+  pull
+  build
+  find_application
+  kill_application
+  start_application
+}
+
+if [[ $# -ne 2 ]]
+then
+  usage;
+else
+  check_df;
+fi
+exit;
+```
