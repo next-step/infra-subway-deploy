@@ -69,5 +69,52 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+위치 : ec2 public server [ home/ubuntu/scripts/deploy.sh ]
+#!/bin/bash
 
+## 변수 설정
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
 
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+BRANCH="step-2"
+pull() {
+  echo -e ""
+  echo -e ">> Pull Request 🏃♂️ "
+  cd /home/ubuntu/infra-subway-deploy
+  git pull origin diqksrk
+}
+check_df() {
+  git fetch
+  master="$(git rev-parse $BRANCH)"
+  echo "local branch commit number : " $master
+  remote="$(git rev-parse origin $BRANCH | tail -1)"
+  echo $remote
+
+  if [ $master == $remote ]
+  then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 0
+  fi
+}
+
+cd /home/ubuntu/infra-subway-deploy
+check_df
+pull
+./gradlew clean build
+pkill -f 'java -jar'
+BUILD_JAR=$(find ./* -name "*SNAPSHOT.jar")
+echo $BUILD_JAR "jar execute"
+nohup java -jar -Dspring.profiles.active=prod $BUILD_JAR 1> /home/ubuntu/log 2>&1 &
+echo "complete"
+
+### crontab 설정
+0 */10 * * * /home/ubuntu/scripts/deploy.sh >> /home/ubuntu/cronlog 2>&1
+(10시간마다 돌게 설정)
