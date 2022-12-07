@@ -107,6 +107,17 @@ function valid_parameter() {
   esac
 }
 
+function check_current_branch() {
+  echo -e ""
+  echo -e ">> Check Current Branch 🏃♂️ "
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  if [ "$current_branch" != "$BRANCH" ]; then # 여기서 비교를 못하는 듯;; (crontab 할 때)
+    echo -e "please check current branch and checkout deploy target branch. Current branch -> ${current_branch}"
+    exit 1
+  fi
+  echo -e "current branch -> ${current_branch}"
+}
+
 ## git branch 변경 사항 체크
 function check_branch_df() {
   echo -e ""
@@ -157,6 +168,9 @@ function run_application() {
 
 ## deploy.sh 파라미터 유효성 검증
 valid_parameter;
+
+## 현재 branch 확인
+check_current_branch
 
 ## branch 변경 유무 확인
 check_branch_df;
