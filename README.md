@@ -53,7 +53,6 @@ npm run dev
 - 대역 : 192.168.152.0/25
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
-
 - URL : http://beeteam-0n.kro.kr:8080
 
 
