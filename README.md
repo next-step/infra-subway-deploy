@@ -54,7 +54,7 @@ npm run dev
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : http://ganjinajae.n-e.kr
+- URL : http://ganjinajae.n-e.kr:8080
 
 
 
@@ -71,4 +71,63 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+```bash
+#!/bin/bash
+
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+EXECUTION_PATH=$(pwd)
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
+
+## 조건 설정
+if [[ $# -ne 2 ]]
+then
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | local }"
+    echo -e "${txtylw}=======================================${txtrst}"
+    exit
+fi
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+## 저장소 pull
+function pull() {
+  echo -e ""
+  echo -e ">> Pull Request 🏃♂️ "
+  git pull origin ${BRANCH}
+}
+## gradle build
+function build() {
+  ./gradlew clean build
+}
+
+## pid 찾아서 종료
+function kill_process() {
+  kill -9 `ps -ef | grep -v grep | grep subway | awk '{print $2}'`
+  echo "process is killed"
+}
+
+## 프로세스 시작
+function start_process() {
+  java -jar -Dspring.profiles.active=${PROFILE} `find ./* -name 'subway*.jar'` &
+}
+
+pull;
+build;
+kill_process;
+start_process;
+```
 
