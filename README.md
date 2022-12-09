@@ -90,9 +90,6 @@ npm run dev
   echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
   echo -e "${txtylw}=======================================${txtrst}"
   
-  EXECUTION_PATH=$(pwd)
-  echo -e "$EXECUTION_PATH"
-  #SHELL_SCRIPT_PATH=$(dirname $0)
   BRANCH=soosue
   
   function check_df() {
