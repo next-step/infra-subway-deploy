@@ -60,14 +60,10 @@ npm run dev
 - URL : http://www.yohan-subway.o-r.kr:8080/
 - IP : http://3.36.51.91:8080/
 
-
-
----
-
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://yohan-subway.o-r.kr 
 
 ---
 
