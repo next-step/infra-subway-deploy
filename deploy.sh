@@ -9,6 +9,7 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
+EXE_PATH=/home/ubuntu/nextstep/infra-subway-deploy/
 BRANCH=$1
 PROFILE=$2
 
@@ -34,7 +35,7 @@ function check_df() {
 
         if [[ $master == $remote ]]; then
                 echo -e "[$(date)] Nothing to do!!! 😫"
-                        exit 0
+                exit 0
         else
                 pull
         fi
@@ -57,7 +58,8 @@ function find_process() {
       jar_file_name=$(basename ./build/libs/*.jar)
       ps_pid=$(pgrep -f $jar_file_name)
       if [ -z "$ps_pid" ]; then
-	      echo -e "${txtgrn} >> There is no existing process. ${txtrst}"
+	      echo -e "${txtgrn} >> There is no existing process. Reruning... ${txtrst}"
+	      app_start
       else
 	      echo -e "${txtgrn} >> Find existing process: $ps_pid"
       fi
@@ -87,12 +89,12 @@ function app_start() {
 }
 
 function deploy() {
-	
+	find_process
 	check_df
 	find_process
 	kill_process
 	app_build
 	app_start
 }
-
+cd $EXE_PATH
 deploy
