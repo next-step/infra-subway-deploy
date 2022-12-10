@@ -34,18 +34,9 @@ dependencies {
 	// mysql connector
 	implementation 'mysql:mysql-connector-java'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	// flyway-core
 	implementation 'org.flywaydb:flyway-core:6.3.0'
 
-=======
->>>>>>> 73e6a91 ([step2] deploy)
-=======
-	// flyway-core
-	implementation 'org.flywaydb:flyway-core:6.3.0'
-
->>>>>>> 6bbcabe ([step2] apply flyway)
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
