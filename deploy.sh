@@ -88,7 +88,7 @@ function app_start() {
 
 function deploy() {
 	
-#	check_df
+	check_df
 	find_process
 	kill_process
 	app_build
