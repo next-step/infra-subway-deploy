@@ -1,4 +1,7 @@
 [submodule "src/main/resources/config"]
 	path = src/main/resources/config
 	url = https://github.com/InSooBae/infra-subway-deploy-setting.git
+<<<<<<< HEAD
 	branch = main
+=======
+>>>>>>> 597fc73 ([step2] eject properties files to private repo)
