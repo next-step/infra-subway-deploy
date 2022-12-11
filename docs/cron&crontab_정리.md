@@ -116,6 +116,8 @@
 > cron명령 > /dev/null 2>&1
 
 ※ 오류도 함께 기록하려면 뒤에 2>&1 추가
+<br>
+※ `/dev/null`에 대해서는 아래 번외 내용 참고
 
 <br>
 
@@ -156,3 +158,31 @@
   - `커맨드 >aaa.log 2>&1` : 표준 출력은 aaa.log파일로 리다이렉트, 표준 오류는 표준 출력으로 리다이렉트
     <br>(즉, 표준 오류도 aaa.log파일에 기록된다)
   - `커맨드 >aaa.log 2>1` 이렇게 적으면 표준 오류가 '1'이라는 이름의 파일에 기록된다
+
+
+## Bit Bucket ( `/dev/null` )
+> 리눅스의 null 장치파일
+> <br>주로 불필요한 출력 스트림을 버리는 곳으로 사용
+
+- 아래와 같이 말하기도 함
+  - black hole
+  - null device
+- 대용 장치파일 `/dev/zero`
+  - null 문자를 무한 제공하는 리눅스 장치파일
+  - `/dev/null`과 같이 출력 스트림을 버리는 데 활용 가능
+  - 원하는 용량만큼 빈 값으로 파일 채우는 데 사용 가능
+
+
+## `/dev/zero` 사용 예
+null로 채워진 1MB짜리 파일 만들기
+```shell
+dd if=/dev/zero of=foobar count=1024 bs=1024
+```
+만들어진 파일 용량, 내용 확인
+```shell
+root:~# ls -h foobar
+-rw-r--r-- 1 root root 1.0M Dec 12 07:05 foobar
+
+root:~# cat foobar | xxd -i -l8
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+```
