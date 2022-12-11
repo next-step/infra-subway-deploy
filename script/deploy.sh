@@ -191,10 +191,10 @@ check_diff() {
   echo -e "${txtcyn}check if there is a difference between remote repo and local repo${txtrst}"
   cd "$APP_PATH$BUILD_FOLDER_NAME" || exit_script
   git fetch origin
-  master=$(git rev-parse $CURRENT_BRANCH)
+  local=$(git rev-parse $CURRENT_BRANCH)
   remote=$(git rev-parse origin/$CURRENT_BRANCH)
 
-  if [ $master == $remote ]
+  if [ $local == $remote ]
   then
     echo -e "[$(date)] Nothing to do!!! 😫"
     exit_script 0
