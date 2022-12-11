@@ -2,10 +2,14 @@
 ## 변수 설정
 txtrst='\033[1;37m' # White
 txtred='\033[1;31m' # Red
-txtylw='\033[1;33m' # Yellow
-txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
+txtylw='\033[1;33m' # Yellow
+txtmgt='\033[1;35m' # Magenta
 txtcyn='\033[0;36m' # Cyan
+
+txtmgb='\033[0;45m' # Magenta Background
+txtlrb='\033[0;101m' # Light Red Background
+txtdfb='\033[0;49m' # Default Background
 
 APP_PATH='/home/ubuntu/nextstep/'
 APP_FOLDER_NAME='infra-subway-deploy'
@@ -25,7 +29,7 @@ DEFAULT_SERVICE_MODE=${SERVICE_MODE_LIST[i]}
 help() {
   echo "How to use this shell file"
   echo -e "${txtgrn}$0 ${txtylw}[사용할 기능명]"
-  echo -e "${txtpur}----------------------------------"
+  echo -e "${txtmgt}----------------------------------"
   echo -e "${txtcyn}사용가능한 기능"
   echo "1. service_start"
   echo "2. service_stop"
@@ -36,7 +40,7 @@ help() {
   echo "7. overwrite_app"
   echo "8. check_diff"
   echo "9. help (지금 보고있는 화면 출력)"
-  echo -e "${txtpur}----------------------------------${txtrst}"
+  echo -e "${txtmgt}----------------------------------${txtrst}"
 }
 
 # 서비스 시작
@@ -96,7 +100,7 @@ wait_prosess_killed() {
 check_jar_file() {
   if [ "$JAR_FILE" == "" ]
     then
-      echo -e "${txtred}cannot find jar file${txtrst}"
+      echo -e "${txtlrb}cannot find jar file${txtrst}${txtdfb}"
       exit_script
   fi
 }
@@ -108,13 +112,13 @@ find_jar() {
   echo -e "${txtcyn}finding jar...${txtrst}"
   JAR_FILE=$(find ./build/* -name "*jar")
   check_jar_file
-  echo -e "${txtcyn}jar file >> $JAR_FILE${txtrst}"
+  echo -e "${txtylw}jar file >> $JAR_FILE${txtrst}"
 }
 
 # 원격저장소에서 소스 pull
 pull() {
   local branch
-  echo -e "${txtcyn}current local branch is $CURRENT_BRANCH${txtrst}"
+  echo -e "${txtylw}current local branch is $CURRENT_BRANCH${txtrst}"
   if [ $# -eq 1 ] && [ "$1" == "n" ]
   then
     branch=$CURRENT_BRANCH
@@ -135,7 +139,7 @@ pull() {
   FUNC_RES=$?
   if [ "$FUNC_RES" == "1" ]
   then
-    echo -e "${txtred}conflict occurred. abort merging...${txtrst}"
+    echo -e "${txtlrb}conflict occurred. abort merging...${txtrst}${txtdfb}"
     git merge --abort
     exit_script
   fi
@@ -196,10 +200,10 @@ check_diff() {
 
   if [ $local == $remote ]
   then
-    echo -e "[$(date)] Nothing to do!!! 😫"
+    echo -e "${txtylw}[$(date)] Nothing to do!!! 😫${txtrst}"
     exit_script 0
   else
-    echo -e "${txtcyn}difference detected. start deploy${txtrst}"
+    echo -e "${txtmgb}difference detected. start deploy${txtrst}${txtdfb}"
     backup
     pull n
     build
