@@ -33,8 +33,9 @@ help() {
   echo "4. build"
   echo "5. backup"
   echo "6. delete_backup"
-  echo "7. check_diff"
-  echo "8. help (지금 보고있는 화면 출력)"
+  echo "7. overwrite_app"
+  echo "8. check_diff"
+  echo "9. help (지금 보고있는 화면 출력)"
   echo -e "${txtpur}----------------------------------${txtrst}"
 }
 
@@ -45,12 +46,12 @@ service_start() {
   then
     mode=$1
   else
-    mode=$(ask_branch)
+    mode=$(ask_mode)
   fi
   if [ "$(validate_service_mode $mode)" -eq 0 ]
   then
     echo "service_start"
-    cd "$APP_PATH$APP_FOLDER_NAME" || exit
+    cd "$APP_PATH$APP_FOLDER_NAME" || exit_script
     find_jar
     nohup java -jar -Dspring.profiles.active="$mode" "${JAR_FILE}" 1> "${LOG_PATH}${LOG_FILE}" 2>&1 &
   else
@@ -86,7 +87,7 @@ wait_prosess_killed() {
     if [ $count -ge 30 ]
     then
       echo "process kill failed"
-      exit
+      exit_script
     fi
   done
 }
@@ -96,13 +97,13 @@ check_jar_file() {
   if [ "$JAR_FILE" == "" ]
     then
       echo -e "${txtred}cannot find jar file${txtrst}"
-      exit 1
+      exit_script
   fi
 }
 
 # jar 파일 검색
 find_jar() {
-  cd $APP_PATH$APP_FOLDER_NAME || exit
+  cd $APP_PATH$BUILD_FOLDER_NAME || exit_script
   unset JAR_FILE
   echo -e "${txtcyn}finding jar...${txtrst}"
   JAR_FILE=$(find ./build/* -name "*jar")
@@ -129,14 +130,14 @@ pull() {
     fi
   fi
   echo -e "${txtcyn}pull branch $branch${txtrst}"
-  cd "$APP_PATH$BUILD_FOLDER_NAME" || exit
+  cd "$APP_PATH$BUILD_FOLDER_NAME" || exit_script
   git pull origin $branch
   FUNC_RES=$?
   if [ "$FUNC_RES" == "1" ]
   then
     echo -e "${txtred}conflict occurred. abort merging...${txtrst}"
     git merge --abort
-    exit
+    exit_script
   fi
 }
 
@@ -172,7 +173,7 @@ check_error() {
   if [ $? == 1 ]
   then
     echo -e "${txtred}error occurred!!${txtrst}"
-    exit
+    exit_script
   fi
 }
 
@@ -184,11 +185,11 @@ check_diff() {
   then
     mode=$1
   else
-    mode=$(ask_branch)
+    mode=$(ask_mode)
   fi
   echo "mode check : $mode"
   echo -e "${txtcyn}check if there is a difference between remote repo and local repo${txtrst}"
-  cd "$APP_PATH$BUILD_FOLDER_NAME" || exit
+  cd "$APP_PATH$BUILD_FOLDER_NAME" || exit_script
   git fetch origin
   master=$(git rev-parse $CURRENT_BRANCH)
   remote=$(git rev-parse origin/$CURRENT_BRANCH)
@@ -196,7 +197,7 @@ check_diff() {
   if [ $master == $remote ]
   then
     echo -e "[$(date)] Nothing to do!!! 😫"
-    exit 0
+    exit_script 0
   else
     echo -e "${txtcyn}difference detected. start deploy${txtrst}"
     backup
@@ -222,7 +223,7 @@ validate_service_mode() {
   echo $result
 }
 
-ask_branch() {
+ask_mode() {
   local mode
   read -p "enter service mode (test/prod) : " mode
   echo "$mode"
@@ -230,7 +231,17 @@ ask_branch() {
 
 alert_wrong_service_mode() {
   echo -e "${txtred}wrong mode!!${txtrst}"
-  exit
+  exit_script
+}
+
+exit_script() {
+  val=1
+  if [ "$1" == "0" ]
+  then
+    val=$1
+  fi
+  function_end_print "$FUNCTION"
+  exit $val
 }
 
 function_start_print() {
@@ -245,7 +256,7 @@ function_end_print() {
   echo -e "${txtylw}=======================================${txtrst}"
 }
 
-if [ "$#" -eq "1" ]
+if [[ "$#" -eq "1" ]] || { [[ "$#" -eq "2" ]] && [[ "$FUNCTION" == "check_diff" ]]; }
 then
   function_start_print "$FUNCTION"
   case "$FUNCTION" in
@@ -256,7 +267,15 @@ then
     "build") build;;
     "backup") backup ;;
     "delete_backup") delete_backup;;
-    "check_diff") check_diff;;
+    "overwrite_app") overwrite_app;;
+    "check_diff")
+      if [ $# -eq 2 ]
+      then
+        check_diff $2
+      else
+        check_diff
+      fi
+    ;;
     * ) help;;
   esac
   function_end_print "$FUNCTION"
