@@ -162,8 +162,14 @@ backup() {
 # app 소스 백업 삭제
 delete_backup() {
   echo -e "${txtcyn}delete backup dir($BUILD_BACKUP_NAME)${txtrst}"
-  rm -rf $APP_PATH$BUILD_BACKUP_NAME
-  check_error
+  if [ -d "$APP_PATH$BUILD_BACKUP_NAME" ]
+  then
+    rm -rf $APP_PATH$BUILD_BACKUP_NAME
+    check_error
+  else
+    echo -e "${txtmgb}cannot find directory $APP_PATH$BUILD_BACKUP_NAME${txtrst}${txtdfb}"
+    echo -e "${txtmgb}skip deleting backup dir...${txtrst}${txtdfb}"
+  fi
 }
 
 # app 소스 build 소스로 덮어씌우기
@@ -204,13 +210,13 @@ check_diff() {
     exit_script 0
   else
     echo -e "${txtmgb}difference detected. start deploy${txtrst}${txtdfb}"
+    delete_backup
     backup
     pull n
     build
     service_stop
     overwrite_app
     service_start $mode
-    delete_backup
   fi
 }
 
