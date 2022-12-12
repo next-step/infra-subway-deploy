@@ -49,28 +49,27 @@
    - 백업해둔 build 디렉토리 소스 삭제
 7. check_diff
    - 원격 저장소와 비교 후 차이가 존재할 경우 아래의 작업 실행
+     1. 백업 디렉토리 삭제
      1. build 디렉토리를 백업
-     2. 해당 디렉토리를 사용하여 pull, build
-     3. 서비스 중지
-     4. app 디렉토리를 build 성공한 디렉토리로 대체
-     5. 서비스 구동
-     6. 백업 디렉토리 삭제
+     1. 해당 디렉토리를 사용하여 pull, build
+     1. 서비스 중지
+     1. app 디렉토리를 build 성공한 디렉토리로 대체
+     1. 서비스 구동
 8. help
    - 사용자에게 스크립트 실행 시 전달 가능한 인자(기능목록) 안내
 
 ```
-※ app 디렉토리와 build 디렉토리 이중 운영 이유
-  원격 저장소의 소스 반영 시 서비스 구동 중지되는 시간 단축 및
-  Pull, build 과정에서 발생하는 예상치 못한 오류 발생 시 서비스 유지를 위해 이중 운영
+※ app 디렉토리 : 서비스 구동용 jar 파일 보관
+※ build 디렉토리 : 원격 레포지토리와 소스비교, pull, build를 위한 소스 디렉토리
 ```
 
 <br>
 
 ## cron 설정
 ```
-* * * * * /home/ubuntu/deploy.sh check_diff prod >> /home/ubuntu/nextstep/logs/deploy_sh.log 2>&1
+*/5 * * * * /home/ubuntu/deploy.sh check_diff prod >> /home/ubuntu/nextstep/logs/deploy_sh.log 2>&1
 ```
-- 매분마다 git 원격저장소 차이 비교 후 차이 있는 경우 반영, 재시작
+- 5분마다 git 원격저장소 차이 비교 후 차이 있는 경우 반영, 재시작
 - 원격저장소 주소 및 브랜치
   - https://github.com/tlaqk229/infra-subway-deploy.git
   - `step3Test`
