@@ -22,8 +22,8 @@ CURRENT_BRANCH=$(cd $APP_PATH$BUILD_FOLDER_NAME && git branch --show-current)
 FUNCTION=$1
 FUNC_RES=1
 JAR_FILE=''
+BUILD_DIR_JAR_FILE=''
 SERVICE_MODE_LIST=('test' 'prod')
-DEFAULT_SERVICE_MODE=${SERVICE_MODE_LIST[i]}
 
 # 스크립트 사용 방법 안내
 help() {
@@ -45,6 +45,7 @@ help() {
 
 # 서비스 시작
 service_start() {
+  echo "function call: service_start"
   local mode
   if [ $# -eq 1 ]
   then
@@ -54,9 +55,8 @@ service_start() {
   fi
   if [ "$(validate_service_mode $mode)" -eq 0 ]
   then
-    echo "service_start"
     cd "$APP_PATH$APP_FOLDER_NAME" || exit_script
-    find_jar
+    find_jar $APP_FOLDER_NAME
     nohup java -jar -Dspring.profiles.active="$mode" "${JAR_FILE}" 1> "${LOG_PATH}${LOG_FILE}" 2>&1 &
   else
     alert_wrong_service_mode
@@ -65,8 +65,8 @@ service_start() {
 
 # 서비스 중단
 service_stop() {
-  echo "service_stop"
-  find_jar
+  echo "function call: service_stop"
+  find_jar $APP_FOLDER_NAME
   local pid
   pid=$(pgrep -f "${JAR_FILE}")
   if [ -z "$pid" ]
@@ -74,15 +74,15 @@ service_stop() {
     echo "no process running..."
   else
     echo -e "${txtcyn}kill process $pid${txtrst}"
-    echo "wait until process exit..."
     kill $pid
-    wait_prosess_killed && echo "process exited"
+    wait_prosess_killed
     check_error
   fi
 }
 
 # 프로세스 종료 대기
 wait_prosess_killed() {
+  echo "wait until process exit..."
   local count=0
   until [ "$(pgrep -f "${JAR_FILE}")" == "" ]
   do
@@ -94,11 +94,12 @@ wait_prosess_killed() {
       exit_script
     fi
   done
+  echo "process exited"
 }
 
 # jar 파일 존재여부 확인
 check_jar_file() {
-  if [ "$JAR_FILE" == "" ]
+  if [ "$1" == "" ]
     then
       echo -e "${txtlrb}cannot find jar file${txtrst}${txtdfb}"
       exit_script
@@ -107,16 +108,30 @@ check_jar_file() {
 
 # jar 파일 검색
 find_jar() {
-  cd $APP_PATH$BUILD_FOLDER_NAME || exit_script
-  unset JAR_FILE
-  echo -e "${txtcyn}finding jar...${txtrst}"
-  JAR_FILE=$(find ./build/* -name "*jar")
-  check_jar_file
-  echo -e "${txtylw}jar file >> $JAR_FILE${txtrst}"
+  local find_path
+  local jar_file
+  case $1 in
+    "$APP_FOLDER_NAME") find_path="$APP_PATH$1/*";;
+    "$BUILD_FOLDER_NAME") find_path="$APP_PATH$1/build/*";;
+    * )
+      echo -e "${txtlrb}wrong directory${txtrst}${txtdfb}"
+      exit_script
+      ;;
+  esac
+
+  echo -e "${txtcyn}finding jar from $find_path...${txtrst}"
+  jar_file=$(find $find_path -name "*jar")
+  case $1 in
+    "$APP_FOLDER_NAME") JAR_FILE=$jar_file;;
+    "$BUILD_FOLDER_NAME") BUILD_DIR_JAR_FILE=$jar_file;;
+  esac
+  check_jar_file $jar_file
+  echo -e "${txtylw}jar file >> $jar_file${txtrst}"
 }
 
 # 원격저장소에서 소스 pull
 pull() {
+  echo "function call: pull"
   local branch
   echo -e "${txtylw}current local branch is $CURRENT_BRANCH${txtrst}"
   if [ $# -eq 1 ] && [ "$1" == "n" ]
@@ -147,6 +162,7 @@ pull() {
 
 # app 빌드
 build() {
+  echo "function call: build"
   echo -e "${txtcyn}build application${txtrst}"
   cd $APP_PATH$BUILD_FOLDER_NAME && ./gradlew clean build
   check_error
@@ -154,6 +170,7 @@ build() {
 
 # app 소스 백업
 backup() {
+  echo "function call: backup"
   echo -e "${txtcyn}make backup($BUILD_BACKUP_NAME) by copying build dir($BUILD_FOLDER_NAME)${txtrst}"
   cp -r $APP_PATH$BUILD_FOLDER_NAME $APP_PATH$BUILD_BACKUP_NAME
   check_error
@@ -161,6 +178,7 @@ backup() {
 
 # app 소스 백업 삭제
 delete_backup() {
+  echo "function call: delete_backup"
   echo -e "${txtcyn}delete backup dir($BUILD_BACKUP_NAME)${txtrst}"
   if [ -d "$APP_PATH$BUILD_BACKUP_NAME" ]
   then
@@ -172,10 +190,22 @@ delete_backup() {
   fi
 }
 
-# app 소스 build 소스로 덮어씌우기
+# app jar build jar로 덮어씌우기
 overwrite_app() {
-  echo -e "${txtcyn}overwrite app dir($APP_FOLDER_NAME) by build dir($BUILD_FOLDER_NAME)${txtrst}"
-  rm -rf $APP_PATH$APP_FOLDER_NAME && cp -r $APP_PATH$BUILD_FOLDER_NAME $APP_PATH$APP_FOLDER_NAME
+  echo "function call: overwrite_app"
+  echo -e "${txtcyn}overwrite app directory jar by build directory jar${txtrst}"
+  find_jar $BUILD_FOLDER_NAME
+  echo -e "${txtcyn}empty app directory...${txtrst}"
+  if [ -d "$APP_PATH$APP_FOLDER_NAME" ]
+  then
+    rm -rf $APP_PATH$APP_FOLDER_NAME && mkdir $APP_PATH$APP_FOLDER_NAME
+    check_error
+  else
+    echo -e "${txtmgb}cannot find directory $APP_PATH$APP_FOLDER_NAME${txtrst}${txtdfb}"
+    echo -e "${txtmgb}skip deleting app dir...${txtrst}${txtdfb}"
+  fi
+  echo -e "${txtcyn}copy jar from build directory jar to app directory${txtrst}"
+  cp -f $BUILD_DIR_JAR_FILE "$APP_PATH$APP_FOLDER_NAME/"
   check_error
 }
 
@@ -190,6 +220,7 @@ check_error() {
 # 원격 저장소와 비교 및 재배포
 # shellcheck disable=SC2120
 check_diff() {
+  echo "function call: check_diff"
   local mode
   if [ $# -eq 1 ]
   then
@@ -197,7 +228,7 @@ check_diff() {
   else
     mode=$(ask_mode)
   fi
-  echo "mode check : $mode"
+  echo -e "${txtylw}mode check : $mode${txtrst}"
   echo -e "${txtcyn}check if there is a difference between remote repo and local repo${txtrst}"
   cd "$APP_PATH$BUILD_FOLDER_NAME" || exit_script
   git fetch origin
