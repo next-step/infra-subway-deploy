@@ -57,7 +57,7 @@ service_start() {
   then
     cd "$APP_PATH$APP_FOLDER_NAME" || exit_script
     find_jar $APP_FOLDER_NAME
-    nohup java -jar -Dspring.profiles.active="$mode" "${JAR_FILE}" 1> "${LOG_PATH}${LOG_FILE}" 2>&1 &
+    nohup java -jar -Dspring.profiles.active="$mode" "${JAR_FILE}" 1>> "${LOG_PATH}${LOG_FILE}" 2>&1 &
   else
     alert_wrong_service_mode
   fi
@@ -240,7 +240,7 @@ check_diff() {
     echo -e "${txtylw}[$(date)] Nothing to do!!! 😫${txtrst}"
     exit_script 0
   else
-    echo -e "${txtmgb}difference detected. start deploy${txtrst}${txtdfb}"
+    echo -e "${txtmgb}[$(date)] difference detected. start deploy${txtrst}${txtdfb}"
     delete_backup
     backup
     pull n
