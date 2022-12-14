@@ -3,10 +3,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  config:
-    activate:
-      on-profile: local
-
 
 handlebars:
   suffix: .html
