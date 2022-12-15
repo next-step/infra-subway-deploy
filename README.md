@@ -77,60 +77,73 @@ npm run dev
 
 ```
 #!/bin/bash
-  
-## 변수 설정
-PROJECT_DIR=/home/ubuntu/nextstep/infra-subway-deploy
-  
+
 txtrst='\033[1;37m' # White
 txtred='\033[1;31m' # Red
 txtylw='\033[1;33m' # Yellow
 txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
-  
-  
+
 echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
- 
-## 저장소 pull
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 저 장 소 반 영 🧐 >>${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
-cd $PROJECT_DIR
-git pull
-  
-## gradle build
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 빌 드 🧐 >>${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
-./gradlew clean build
- 
-## 프로세스 pid를 찾는 명령어
-PID=$(pidof java)
 
-## 프로세스를 종료하는 명령어
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 프 로 세 스 종 료 🧐 >>${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
-if [ -z "$PID" ]; then
-    echo -e "${txtred}  << 현재 구동중인 애플리케이션이 없으므로 종료하지 않습니다. >>${txtrst}"
-else
-    echo "> kill -15 $CURRENT_PID"
+REPOSITORY=/home/ubuntu/nextstep
+PROJECT_NAME=infra-subway-deploy
+
+function pull() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 저 장 소 PULL 😎 >>${txtrst}"
+    cd $REPOSITORY/$PROJECT_NAME/
+    git pull step3
+}
+
+function build() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 프 로 젝 트 빌 드 💘 >>${txtrst}"
+    ./gradlew clean build -x test
+}
+
+
+function moveAndCopyBuild() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 빌 드 파 일 복 사🔥 >>${txtrst}"
+    cd $REPOSITORY
+    cp $REPOSITORY/$PROJECT_NAME/build/libs/*.jar $REPOSITORY/
+    JAR_NAME=$(ls -tr $REPOSITORY/ | grep jar | tail -n 1)
+}
+
+function checkPid() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 실 행 중 인 pid 확 인👀 >>${txtrst}"
+    CURRENT_PID=$(pgrep -f  *.jar)
+    
+    echo -e "${txtgrn}  << pid: $CURRENT_PID 👀 >>${txtrst}"
+    
+    if [ -z "$CURRENT_PID" ]; then
+      echo "> 실 행 중 인 것 이 없 습 니 다 ."
+    else
+      echo "> kill -15 $CURRENT_PID"
     kill -15 $CURRENT_PID
     sleep 5
-fi
+    fi
+}
 
-## 프로세스 실행하는 명령어
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 프 로 세 스 실 행 🧐 >>${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
-nohup java -jar -Dspring.profiles.active=prod ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
+function deploy() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${txtgrn}  << 배 포 🏃♂️ >>${txtrst}"
+  nohup java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=prod -jar $REPOSITORY/$JAR_NAME &
+  echo -e "${txtylw}----------START APPLICATION ------------${txtrst}"
+}
 
-## 프로세스 실행 완료
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 실행 완료 🥳 >>${txtrst}"
-echo -e "${txtylw}=======================================${txtrst}"
+## START FUNCTION
+
+pull;
+build;
+moveAndCopyBuild;
+checkPid;
+deploy;
 ```
 
 
