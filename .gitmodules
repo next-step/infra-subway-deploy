@@ -1,0 +1,3 @@
+[submodule "src/main/resources/config"]
+	path = src/main/resources/config
+	url = https://github.com/cylee9409/confidentials.git

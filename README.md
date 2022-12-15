@@ -60,6 +60,7 @@ npm run dev
 ---
 
 ### 2단계 - 배포하기
+
 #### 요구사항 작성하기
 #### 운영환경 구성하기
 - 웹 어플리케이션 앞단에 Reverse proxy 구성
@@ -70,7 +71,7 @@ npm run dev
 - 설정 파일 나누기
     - JUnit : h2, Local : docker(mysql), Prod : 운영 DB를 사용하도록 설정
 
-1. TLS가 적용된 URL을 알려주세요
+2. TLS가 적용된 URL을 알려주세요
 
 - URL : https://cylee9409-subway.o-r.kr
 
