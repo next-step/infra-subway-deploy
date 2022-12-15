@@ -82,6 +82,7 @@ npm run dev
 
 파일명 : /home/ubuntu/nextstep/infra-subway-deploy/start_service.sh
 
+~~~
 #!/bin/bash
 
 # variable
@@ -158,4 +159,4 @@ build
 terminate_service
 
 activate_service
-
+~~~
