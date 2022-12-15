@@ -70,6 +70,9 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+/home/ubuntu/deploy.sh
+ex) ./deploy.sh 8080 prod
+
 #!/bin/bash
 
 txtrst='\033[1;37m' # White
@@ -167,3 +170,6 @@ killProcess;
 run;
 
 echo -e "finished"
+
+## 크론탭
+00 * * * * ./deploy.sh 8080 prod
