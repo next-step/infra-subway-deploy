@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/subway
+    username: localuser
+    password: local
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+      database: mysql
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      hibernate:
+        ddl-auto: none
