@@ -75,4 +75,75 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+```
+#!/bin/bash
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+REPOSITORY=/home/ubuntu/nextstep
+PROJECT_NAME=infra-subway-deploy
+
+function pull() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 저 장 소 PULL 😎 >>${txtrst}"
+    cd $REPOSITORY/$PROJECT_NAME/
+    git pull step3
+}
+
+function build() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 프 로 젝 트 빌 드 💘 >>${txtrst}"
+    ./gradlew clean build -x test
+}
+
+
+function moveAndCopyBuild() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 빌 드 파 일 복 사🔥 >>${txtrst}"
+    cd $REPOSITORY
+    cp $REPOSITORY/$PROJECT_NAME/build/libs/*.jar $REPOSITORY/
+    JAR_NAME=$(ls -tr $REPOSITORY/ | grep jar | tail -n 1)
+}
+
+function checkPid() {
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 실 행 중 인 pid 확 인👀 >>${txtrst}"
+    CURRENT_PID=$(pgrep -f  *.jar)
+    
+    echo -e "${txtgrn}  << pid: $CURRENT_PID 👀 >>${txtrst}"
+    
+    if [ -z "$CURRENT_PID" ]; then
+      echo "> 실 행 중 인 것 이 없 습 니 다 ."
+    else
+      echo "> kill -15 $CURRENT_PID"
+    kill -15 $CURRENT_PID
+    sleep 5
+    fi
+}
+
+function deploy() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${txtgrn}  << 배 포 🏃♂️ >>${txtrst}"
+  nohup java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=prod -jar $REPOSITORY/$JAR_NAME &
+  echo -e "${txtylw}----------START APPLICATION ------------${txtrst}"
+}
+
+## START FUNCTION
+
+pull;
+build;
+moveAndCopyBuild;
+checkPid;
+deploy;
+```
+
 
