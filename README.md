@@ -81,4 +81,83 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+파일명 : /home/ubuntu/nextstep/infra-subway-deploy/start_service.sh
 
+~~~
+#!/bin/bash
+
+# variable
+PROJECT_PATH=/home/ubuntu/nextstep/infra-subway-deploy
+ENV=prod
+BRANCH=master
+
+TODAY=$(date)
+YYYYMMDD=$(date "+%Y%m%d")
+CURRENT_TIME=$(date "+%Y%m%d %H:%M:%S")
+
+check_df() {
+        git fetch
+        master=$(git rev-parse $BRANCH)
+        remote=$(git rev-parse origin/$BRANCH)
+        if [ $master =  $remote ]; then
+                echo -e "[${TODAY}] Nothing to do"
+                exit 0;
+        fi
+}
+
+git_pull() {
+        echo "===>> move to project path"
+        cd ${PROJECT_PATH}
+        pwd
+        echo "==========================\n"
+
+        CURRENT_BRANCH="$(git branch | awk '{print $2}')"
+        echo "===> current branch : ${CURRENT_BRANCH}\n"
+
+        echo "===> check difference"
+        check_df
+
+        echo "===> git pull"
+        git pull
+        echo "==========================\n"
+
+}
+
+build() {
+        echo "===> project build"
+        ./gradlew clean build
+        JAR_NAME="$(find . -name "*SNAPSHOT.jar" | awk '{print $1}')"
+}
+
+activate_service() {
+        echo "===> activate jar"
+        echo "===> nohup java -jar -Dspring.profiles.active=${ENV} ${JAR_NAME} 1> subway_service_${YYYYMMDD}.log 2>&1 &"
+        nohup java -jar -Dspring.profiles.active=${ENV} ${JAR_NAME} 1> subway_service_${YYYYMMDD}.log 2>&1 &
+        echo "===> log file Name [subway_service_${YYYYMMDD}.log]"
+}
+
+terminate_service() {
+        echo "===> stop service"
+        PID="$(ps -ef | grep java | grep ${JAR_NAME} | awk '{print $2}')"
+
+        if [ -z ${PID} ];
+        then
+                echo "===> No process"
+
+        else
+                echo "===> kill process ${PID}"
+                kill -9 ${PID}
+        fi
+}
+
+# PROCESS
+
+echo ${CURRENT_TIME}
+git_pull
+
+build
+
+terminate_service
+
+activate_service
+~~~
