@@ -5,7 +5,7 @@
 PROJECT_PATH='/home/ubuntu/infra-subway-deploy'
 PROFILE=$1
 ENV=prod
-BRANCH=master
+BRANCH=kangjunjun
 
 TODAY=$(date)
 YYYYMMDD=$(date "+%Y%m%d")
@@ -65,7 +65,10 @@ if [ -z "$PID" ]; then
 fi
 
 ## 프로세스를 실행하는 명령어
-nohup java -jar -Dspring.profiles.active=prod ${PROJECT_PATH}/build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtylw}  << 배포 진행 >>${txtylw}"
+echo -e "${txtylw}=======================================${txtrst}"
+nohup java -jar -Dspring.profiles.active=${ENV} ${PROJECT_PATH}/build/libs/subway-0.0.1-SNAPSHOT.jar 1> subway.log 2>&1 &
 
 ## 프로세스 실행 완료
 echo -e "${txtylw}=======================================${txtrst}"
