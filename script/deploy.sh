@@ -3,8 +3,13 @@
 ## 변수 설정
 
 PROJECT_PATH='/home/ubuntu/infra-subway-deploy'
-
 PROFILE=$1
+ENV=prod
+BRANCH=master
+
+TODAY=$(date)
+YYYYMMDD=$(date "+%Y%m%d")
+CURRENT_TIME=$(date "+%Y%m%d %H:%M:%S")
 
 txtrst='\033[1;37m' # White
 txtred='\033[1;31m' # Red
@@ -17,11 +22,29 @@ echo -e "${txtylw}=======================================${txtrst}"
 echo -e "${txtrst}  << 배포 스크립트 시작 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
+## 브랜치 변경점 체크
+check_df() {
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+  if [[ $master ==  $remote ]]; then
+    echo -e "[${TODAY}] Nothing to do"
+    exit 0;
+  fi
+}
+
 ## 저장소 pull
 function pull() {
   echo -e ""
   echo -e ">> Pull Request"
-  git pull origin kangjunjun
+
+  CURRENT_BRANCH="$(git branch | awk '{print $2}')"
+  echo "===> current branch : ${CURRENT_BRANCH}\n"
+
+  echo "===> check difference"
+  check_df
+
+  git pull
 }
 
 pull;
