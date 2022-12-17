@@ -14,12 +14,7 @@ txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
 echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtrst}  << 스크립트 🧐 >>${txtrst}"
-echo -e "${txtred}  << 스크립트 🧐 >>${txtrst}"
-echo -e "${txtylw}  << 스크립트 🧐 >>${txtrst}"
-echo -e "${txtpur}  << 스크립트 🧐 >>${txtrst}"
-echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
-echo -e "${txtgra}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtrst}  << 배포 스크립트 시작 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 ## 저장소 pull
