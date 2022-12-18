@@ -4,6 +4,7 @@
 PROJECT_PATH=/home/ubuntu/infra-subway-deploy
 LIBRAY_PATH=/home/ubuntu/infra-subway-deploy/build/libs
 APP_NAME=subway-0.0.1-SNAPSHOT.jar
+BRANCH_NAME=90mansik
 
 
 txtrst='\033[1;37m' # White
@@ -22,6 +23,29 @@ echo -e "${txtylw}=======================================${txtrst}"
 function movePath() {
  cd $PROJECT_PATH
  echo -e "MOVE PATH[$PROJECT_PATH]"
+}
+
+## 저장소 중복 체크
+function check_git_diff() {
+git fetch origin
+
+echo  -e "git rev-parse $BRANCH_NAME"
+echo  -e "git rev-parse origin/$BRANCH_NAME"
+
+MASTER=$(git rev-parse $BRANCH_NAME)
+REMOTE=$(git rev-parse origin/$BRANCH_NAME)
+
+echo -e ""
+echo -e ">> Git Diff Check"
+echo -e "MASTER[$MASTER]"
+echo -e "REMOTE[$REMOTE]"
+
+if [[ $MASTER == $REMOTE ]]; then
+  echo -e "[$(date)] Nothing git diff!!! 😫"
+  exit 0
+fi
+
+echo -e "<< Git Diff Sucess"
 }
 ## 저장소 pull
 function pull() {
@@ -47,8 +71,8 @@ function stop() {
  if [ -z $PID ]; then
          echo -e ">> Process Not Exists"
  else
-       echo -e  ">> Kill -9 $PID"
-        kill -9 $PID
+       echo -e  ">> Kill -15 $PID"
+        kill -15 $PID
         sleep 6
  fi
 
@@ -59,8 +83,8 @@ function stop() {
 function start() {
  echo -e ""
  echo -e ">> Process ReStart 🏃♂️"
-   echo -e "nohup java -jar -Dspring.profiles.active=local  $LIBRAY_PATH/$APP_NAME 1> $PROJECT_PATH/service.log 2>&1  &"
-   nohup java -jar -Dspring.profiles.active=local $LIBRAY_PATH/$APP_NAME 1> $PROJECT_PATH/service.log 2>&1  &
+   echo -e "nohup java -jar -Dspring.profiles.active=prod  $LIBRAY_PATH/$APP_NAME 1> $PROJECT_PATH/service.log 2>&1  &"
+   nohup java -jar -Dspring.profiles.active=prod $LIBRAY_PATH/$APP_NAME 1> $PROJECT_PATH/service.log 2>&1  &
  echo -e "<< Process ReStart Sucess"
 }
 
@@ -68,6 +92,9 @@ function start() {
 
 # 저장소로 이동
 movePath
+
+# git diff check
+check_git_diff
 
 # git pull
 pull
