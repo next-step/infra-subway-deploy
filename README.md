@@ -67,12 +67,62 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : http://www.cohys7-runningmap.o-r.kr:8080/
+- URL : www.cohys7-runningmap.o-r.kr
 
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```shell
+#!/bin/bash
 
+BRANCH=$1
+PHASE=$2
+REPOSITORY=/home/ubuntu/nextstep/infra-subway-deploy
+JAR_NAME=build/libs/subway-0.0.1-SNAPSHOT.jar
+
+echo "---------------<< Git Pull >>---------------"
+cd $REPOSITORY
+git fetch
+master=$(git rev-parse $BRANCH)
+remote=$(git rev-parse origin/$BRANCH)
+
+if [ "$master" == "$remote" ]; then
+  echo -e "[$(date)] Nothing to do!!! 😫"
+  exit 1
+fi
+
+git switch $BRANCH
+git pull
+
+echo "---------------<< Stop Application >>---------------"
+echo ">> 현재 구동중인 애플리케이션 pid 확인"
+CURRENT_PID=$(pgrep -f $JAR_NAME)
+
+echo "$CURRENT_PID"
+
+if [ -z $CURRENT_PID ]; then
+    echo ">> 현재 구동중인 애플리케이션이 없으므로 종료하지 않습니다."
+else
+    echo ">> kill -2 $CURRENT_PID"
+    kill -2 $CURRENT_PID
+    sleep 5
+fi
+
+echo "---------------<< Stop Proxy >>---------------"
+docker stop proxy
+
+echo "---------------<< Gradle Build >>---------------"
+./gradlew clean build -x test
+
+echo "---------------<< Deploy New Application >>---------------"
+JAR_PATH=$REPOSITORY/$JAR_NAME
+
+echo ">> JAR Name: $JAR_PATH"
+nohup java -Dspring.profiles.active=$PHASE -Djava.security.egd=file:/dev/./urandom -jar $JAR_PATH 1> spring.log 2>&1 &
+
+echo "---------------<< Restart Proxy >>---------------"
+docker start proxy
+```
 
