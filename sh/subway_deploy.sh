@@ -4,7 +4,7 @@
 PROJECT_PATH=/home/ubuntu/nextstep/infra-subway-deploy
 LIBRAY_PATH=/home/ubuntu/nextstep/infra-subway-deploy/build/libs
 APP_NAME=subway-0.0.1-SNAPSHOT.jar
-BRANCH_NAME=step3
+BRANCH_NAME=deokmoon
 
 
 txtrst='\033[1;37m' # White
