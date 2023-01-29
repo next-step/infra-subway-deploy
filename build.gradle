@@ -34,8 +34,6 @@ dependencies {
 	// mysql
 	implementation 'mysql:mysql-connector-java'
 
-	implementation 'org.flywaydb:flyway-core:6.4.2'
-
 	testImplementation 'io.rest-assured:rest-assured:3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
