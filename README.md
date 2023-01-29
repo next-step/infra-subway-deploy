@@ -65,10 +65,14 @@ npm run dev
 1. 구성한 망의 서브넷 대역을 알려주세요
 
 - 대역 :
+  - Seung-wan-public-a: 192.168.3.0/26
+  - Seung-wan-public-c: 192.168.3.64/26
+  - Seung-wan-internal-a: 192.168.3.128/27
+  - Seung-wan-bastion-a: 192.168.3.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL :
+- URL : http://infra-seungwan.kro.kr/
 
 ---
 
