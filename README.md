@@ -19,27 +19,35 @@
 ## 🚀 Getting Started
 
 ### Install
+
 #### npm 설치
+
 ```
 cd frontend
 npm install
 ```
+
 > `frontend` 디렉토리에서 수행해야 합니다.
 
 ### Usage
+
 #### webpack server 구동
+
 ```
 npm run dev
 ```
+
 #### application 구동
+
 ```
 ./gradlew clean build
 ```
+
 <br>
 
 ## 미션
 
-* 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
+- 미션 진행 후에 아래 질문의 답을 README.md 파일에 작성하여 PR을 보내주세요.
 
 ### 0단계 - pem 키 생성하기
 
@@ -47,27 +55,31 @@ npm run dev
 
 2. 업로드한 pem키는 무엇인가요.
 
+- Seung-wan-key.pem
+
+- pem키는 EC2 인스턴스에 ssh 접속을 하기 위해 사용됩니다. EC2에 접속하기 위해서 공개키 형식을 사용하고 있는데 pem키를 생성하면 비밀키를 다운로드받게 됩니다. pem키를 이용하여 인스턴스를 생성하면 인스턴스의 ~/.ssh/authorized_keys 파일에 생성한 pem키에 맞는 공개키가 생성됩니다.
+  pem키를 이용하여 인스턴스에 접근하려고 하면 인스턴스는 pem키로 암호화된 정보를 authorized_keys 파일에 존재하는 공개키로 복호화를 시도하고, 성공했다면 인스턴스에 접속할 수 있게 됩니다.
+
 ### 1단계 - 망 구성하기
+
 1. 구성한 망의 서브넷 대역을 알려주세요
-- 대역 : 
+
+- 대역 :
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
-
-
+- URL :
 
 ---
 
 ### 2단계 - 배포하기
+
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL :
 
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-
-
