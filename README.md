@@ -52,9 +52,18 @@ ms-infra-key.pem
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
 
+  kmus1232-subnet-public-a : 192.168.7.0/26	
+
+  kmus1232-subnet-public-c : 192.168.7.64/26	
+
+  kmus1232-subnet-internal-a : 192.168.7.128/27	
+
+  kmus1232-subnet-admin-b : 192.168.7.160/27	
+
+
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : 43.201.33.176:8080, kmus1232.kro.kr:8080
 
 
 
