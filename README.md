@@ -54,10 +54,14 @@ waterfogsw-key.pem
 ### 1단계 - 망 구성하기
 1. 구성한 망의 서브넷 대역을 알려주세요
 - 대역 : 
+  - waterfogsw-public-a : 192.168.5.0/26
+  - waterfogsw-public-c : 192.168.5.64/26
+  - waterfogsw-internal-a : 192.168.5.128/27
+  - waterfogsw-admin-c : 192.168.5.160/27
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 
+- URL : http://waterfog-infrashop.kro.kr:8080/
 
 
 
