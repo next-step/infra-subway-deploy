@@ -59,8 +59,8 @@ npm run dev
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
 - URL
-  - http://3.34.30.89:8080/
-  - http://bingbingpa.kro.kr:8080/
+  - http://3.34.94.237:8080/
+  - http://bingbingpa.p-e.kr/
 
 
 
@@ -69,7 +69,7 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://bingbingpa.p-e.kr/
 
 ---
 
