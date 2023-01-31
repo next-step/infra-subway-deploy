@@ -65,8 +65,14 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://inrfa-haegun.r-e.kr/
 
+<b>docker 설치후 sudo 권한없이 실행설정</b>
+```shell
+$ sudo groupadd docker # 그룹 설정 안했을 시
+$ sudo usermod -aG docker $USER
+$ newgrp docker
+```
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
