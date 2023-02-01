@@ -66,8 +66,8 @@ vpc : 192.168.15.0/24
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : https://choizz.o-r.kr/ 
 
+- URL : https://choizz.o-r.kr/ 
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
