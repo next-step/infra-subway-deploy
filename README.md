@@ -59,14 +59,14 @@ vpc : 192.168.15.0/24
 
 2. 배포한 서비스의 공인 IP(혹은 URL)를 알려주세요
 
-- URL : 3.39.228.104 , www.http://choizz-station.kro.kr/
+- URL : 3.39.228.104 , choizz.o-r.kr //도메인 교체
 
 ---
 
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : choizz.o-r.kr 
 
 ---
 
