@@ -1,0 +1,4 @@
+[submodule "src/main/resources/config"]
+	path = src/main/resources/config
+	url = https://github.com/waterfogSW/infra-subway-config.git
+	branch = main
