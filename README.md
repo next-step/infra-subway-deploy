@@ -75,8 +75,6 @@ uj-key.pem
 
 1. 작성한 배포 스크립트를 공유해주세요.
 ```shell
-
-
 #!/bin/bash
 
 ## 변수 설정
@@ -88,8 +86,8 @@ txtpur='\033[1;35m' # Purple
 txtgrn='\033[1;32m' # Green
 txtgra='\033[1;30m' # Gray
 
-APP_DIRECTORY='./infra-subway-deploy'
-BUILD_FILE_NAME='./build/libs/subway-0.0.1-SNAPSHOT.jar'
+APP_DIRECTORY='/home/ubuntu/infra-subway-deploy'
+BUILD_FILE_NAME='/home/ubuntu/infra-subway-deploy/build/libs/subway-0.0.1-SNAPSHOT.jar'
 LOG_FILE_NAME='application.log'
 EXECUTION_PATH=$(pwd)
 SHELL_SCRIPT_PATH=$(dirname $0)
@@ -97,53 +95,55 @@ BRANCH=$1
 PROFILE=$2
 
 function move_directory() {
-cd $APP_DIRECTORY
+  cd $APP_DIRECTORY
 }
 
 function check_df() {
-git fetch
-master=$(git rev-parse $BRANCH)
-remote=$(git rev-parse origin/$BRANCH)
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
 
-if [[ $master == $remote ]]; then
-echo -e "[$(date)] Nothing to do!!! 😫"
-exit 1
-fi
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 1
+  fi
 }
 
 function pull() {
-echo -e ""
-echo -e ">>Pull Request 🏃♂️"
-git pull
+  echo -e ""
+  echo -e ">>Pull Request 🏃♂️"
+  git pull
 }
 
 function build() {
-echo -e ""
-echo -e "Gradle Build"
-./gradlew clean build
+  echo -e ""
+  echo -e "Gradle Build"
+  ./gradlew clean build
 }
 
 function app_stop() {
-local PID=$(pgrep -f java)
-echo -e ""
-echo -e "Stop App"
-kill -9 $PID
+  local PID=$(pgrep -f java)
+  echo -e ""
+  echo -e "Stop App $PID"
+  kill -9 $PID
 }
 
 function app_start() {
-echo -e ""
-echo -e "Start App"
-nohup java -jar -Dspring.profiles.active=$PROFILE $BUILD_FILE_NAME 1> $LOG_FILE_NAME 2>&1 &
+  echo -e ""
+  echo -e "Start App"
+  nohup java -jar -Dspring.profiles.active=$PROFILE $BUILD_FILE_NAME 1> $LOG_FILE_NAME 2>&1 &
+
+  echo -e "Started App $(pgrep -f java)"
 }
 
 if [[ $# -ne 2 ]]
 then
-echo -e "${txtylw}=======================================${txtrst}"
-echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
-echo -e ""
-echo -e "${txtgrn} $0 브랜치 이름, 실행환경 ${txtred}{ main | prod }"
-echo -e "${txtylw}=======================================${txtrst}"
-exit
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} $0 브랜치 이름, 실행환경 ${txtred}{ main | prod }"
+    echo -e "${txtylw}=======================================${txtrst}"
+    exit
 fi
 
 echo -e "${txtylw}=======================================${txtrst}"
