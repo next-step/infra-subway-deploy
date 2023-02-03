@@ -74,6 +74,8 @@ uj-key.pem
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```shell
+
 
 #!/bin/bash
 
@@ -154,5 +156,5 @@ pull;
 build;
 app_stop;
 app_start;
-
+```
 
