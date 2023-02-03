@@ -95,7 +95,7 @@ BRANCH=$1
 PROFILE=$2
 
 function move_directory() {
-cd ${APP_DIRECTORY}
+cd $APP_DIRECTORY
 }
 
 function check_df() {
@@ -125,13 +125,13 @@ function app_stop() {
 local PID=$(pgrep -f java)
 echo -e ""
 echo -e "Stop App"
-kill -2 ${PID}
+kill -9 $PID
 }
 
 function app_start() {
 echo -e ""
 echo -e "Start App"
-nohup java -jar -Dspring.profiles.active=$2 ${BUILD_FILE_NAME} 1> ${LOG_FILE_NAME} 2>&1 &
+nohup java -jar -Dspring.profiles.active=$PROFILE $BUILD_FILE_NAME 1> $LOG_FILE_NAME 2>&1 &
 }
 
 if [[ $# -ne 2 ]]
