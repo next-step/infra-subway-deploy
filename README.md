@@ -77,6 +77,79 @@ $ newgrp docker
 
 ### 3단계 - 배포 스크립트 작성하기
 
-1. 작성한 배포 스크립트를 공유해주세요.
+1. 작성한 배포 스크립트를 공유해주세요. 
+
+* deploy_server.sh
+```shell
+  
+#!/bin/bash
+## 변수 설정
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+REPOSITORY=~/nextstep/infra-subway-deploy
+LOG_PATH=../log/subway-deplog.log
+APP_NAME=infra-subway-deploy
+BRANCH=$1
+PROFILE=$2
+if [[ $# -ne 2 ]]
+then
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << IS NOT AVAILABLE INPUT 👎 >>${txtrst}"
+    echo -e "${txtgrn}  << 스크립트 😹 >>${txtrst}"
+    echo -e ""
+    echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ test | local | prod }"
+    echo -e "${txtylw}=======================================${txtrst}"
+    echo -e "${txtgrn}  << 로컬브렌치 리스트  >>${txtrst}"
+    echo -e "${txtylw}====👇👇👇👇===========================${txtrst}"
+    cd ${REPOSITORY}
+    git branch -a | grep -v remotes/
+    echo -e "${txtylw}=======================================${txtrst}"
+    exit
+fi 
+function move() {
+        cd ${REPOSITORY}
+}
+function check_df() {
+        git fetch
+        master=$(git rev-parse $BRANCH)
+        remote=$(git rev-parse origin/$BRANCH)
+        if [[ $master == $remote ]]; then
+                echo -e "[$(date)] Nothing to do!!! 😫"
+                exit 1
+        fi
+}
+function pull() {
+        echo -e ""
+        echo -e ">> 🚀  Pull Request  🚀"
+        git pull
+}
+function build() {
+        echo -e ""
+        echo -e ">> 🏗️  Build 🏗️"
+        ./gradlew clean build
+        echo -e ">> 😎 Build is Success 😎"
+}
+function stop() {
+        echo -e ""
+        echo -e ">> 🔴 Stop Exist Application 🔴"
+        pkill -f ${APP_NAME}
+        while pgrep -f ${APP_NAME} >/dev/null; do sleep 1; done
+}
+function start() {
+        echo -e ""
+        echo -e ">> 🏃🏻 Start New Application 🏃🏻"
+        nohup java -DAPP_NAME=${APP_NAME} -Dspring.profiles.active=${PROFILE} -jar ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> ${LOG_PATH} 2>&1 &
+}
+move;
+check_df;
+pull;
+build;
+stop;
+start;
+```
 
 
