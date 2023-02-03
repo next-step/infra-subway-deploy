@@ -72,5 +72,61 @@ vpc : 192.168.15.0/24
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+```shell
+#!/bin/bash
 
+txtwhite='\033[1;37m'
+txtred='\033[1;31m'
+txtlw='\033[1;33m'
+txtpur='\033[1;35m'
+txtgrn='\033[1;32m'
+txtgrey='\033[1;30m'
+
+echo -e "${txtpur} =================================="
+echo -e "${txtpur} <<<<<<스크립트>>>>>>"
+echo -e "${txtpur}==================================${txtgrn}"
+
+EXECUTION_PATH=$(pwd)
+SHELL_SCRIPT_PATH=$(dirname $0)
+BRANCH=$1
+PROFILE=$2
+JAR=$3
+
+echo ""
+echo "${txtred} >> Pull Request 🚀"
+
+echo ""
+echo -e "${txtgrey}실행 경로 : ${EXECUTION_PATH}"
+echo -e "${txtpur} 쉘 이름:$0 브랜치 이름 :  $BRANCH ${txtred} 적용 프로파일 : $PROFILE"
+echo "$JAR"
+echo -e "${txtpur}==============================${txtgrn}"
+git pull origin ${BRANCH}
+
+function check_deploy() {
+
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+
+  echo $master
+  echo $remote
+
+  if [[ $master == $remote ]]; then
+
+    echo "[$(date)] 할게 없음 ㅜㅜ"
+    exit 1
+
+  else
+
+    local JAVA_PID=$(pgrep -f java)
+    echo -e "${txtpur}============================ ${JAVA_PID} ${txtlw}"
+    kill -9 $JAVA_PID
+
+    nohup java -jar -Dspring.profiles.active=${PROFILE} ${JAR} &
+    tail -f nohup.out
+  fi
+}
+
+check_deploy
+```
 
