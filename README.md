@@ -149,8 +149,8 @@ echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
 echo -e "${txtylw}=======================================${txtrst}"
 
 move_directory;
-pull;
 check_df;
+pull;
 build;
 app_stop;
 app_start;
