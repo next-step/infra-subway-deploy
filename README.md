@@ -92,7 +92,7 @@ npm run dev
 
 - git fetch로 브랜치 변경을 확인합니다. -> `check_branch()`
 - 변경되었다면 git diff로 변경 내역을 출력한 후 git pull을 받을 지 사용자에게 요청합니다. 만약 변경이 없었다면 스크립트가 종료됩니다.
-- 사용자가 y를 입력했다면, git pull을 수행하고 아니라면 다른 문자를 입력하면 스크립트가 종료됩니다. -> `check_pull()`
+- 사용자가 y를 입력했다면, git pull을 수행하고 다른 문자를 입력하면 스크립트가 종료됩니다. -> `check_pull()`
 - git pull이 수행되면 현재 수행되는 프로세스를 kill합니다. -> `shotdown()`
 - 배포합니다. -> `deploy()`
 
