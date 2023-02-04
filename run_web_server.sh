@@ -58,8 +58,9 @@ function app_start() {
   echo -e "Started App $(pgrep -f java)"
 }
 
-function restart_nginx_docker() {
+function restart_containers() {
     docker restart proxy
+    docker restart local_db
 }
 
 if [[ $# -ne 2 ]]
@@ -81,13 +82,7 @@ check_df;
 pull;
 build;
 app_stop;
-
-restart_nginx_docker;
-if [[ $PROFILE == "local"]]
-then  
-    docker restart local_db
-fi
-
+restart_containers;
 app_start;
 
 
