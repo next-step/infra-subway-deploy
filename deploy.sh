@@ -35,6 +35,17 @@ if [ $# -ne 2 ]; then
   exit
 fi
 
+function check_df() {
+    git fetch
+    master=$(git rev-parse "$BRANCH")
+    remote=$(git rev-parse origin/"$BRANCH")
+
+    if [[ "$master" == "$remote" ]]; then
+      echo -e "[$(date)] Nothing to do!!! 😫"
+      exit 1
+    fi
+}
+
 function start() {
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgrn}  << 시작! 🧐 >>${txtrst}"
@@ -84,6 +95,9 @@ function log() {
   echo -e "${txtgrn}  << 로그 🎉 >>${txtrst}"
   tail -f $JAR_REPOSITORY/nohup.out
 }
+
+## 변경확인
+check_df
 
 ## 시작
 start
