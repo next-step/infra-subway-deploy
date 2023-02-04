@@ -119,8 +119,8 @@ read JAR
 
 check_df() {
   git fetch
-  master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin/$BRANCH)
+  local master=$(git rev-parse $BRANCH)
+  local remote=$(git rev-parse origin/$BRANCH)
 
   echo $master
   echo $remote
@@ -147,8 +147,8 @@ kill_process() {
  echo -e ""
  echo -e "Find Pid..."
 
- JAVA_PID=$(pgrep -f java)
- kill -2 $JAVA_PID
+ local java_pid=$(pgrep -f java)
+ kill -2 $java_pid
 
  sleep 3
 }
