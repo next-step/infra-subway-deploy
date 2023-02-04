@@ -40,3 +40,10 @@ out/
 frontend/node_modules
 fronted/.prttierrc.js
 fronted/.eslintrc.js
+
+### log file
+subway.log
+
+### submodule
+src/main/resources/config/**
+.gitmodules
