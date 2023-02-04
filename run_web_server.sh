@@ -84,7 +84,7 @@ app_stop;
 
 restart_nginx_docker;
 if [[ $PROFILE == "local"]]
-then   
+then  
     docker restart local_db
 fi
 
