@@ -35,6 +35,12 @@ if [ $# -ne 2 ]; then
   exit
 fi
 
+function start() {
+  echo -e "${txtylw}=======================================${txtrst}"
+  echo -e "${txtgrn}  << 시작! 🧐 >>${txtrst}"
+  cd $PROJECT_PATH/$PROJECT_NAME/ || return
+}
+
 function check_df() {
     git fetch
     master=$(git rev-parse "$BRANCH")
@@ -44,12 +50,6 @@ function check_df() {
       echo -e "[$(date)] Nothing to do!!! 😫"
       exit 1
     fi
-}
-
-function start() {
-  echo -e "${txtylw}=======================================${txtrst}"
-  echo -e "${txtgrn}  << 시작! 🧐 >>${txtrst}"
-  cd $PROJECT_PATH/$PROJECT_NAME/ || return
 }
 
 function pull() {
@@ -96,11 +96,11 @@ function log() {
   tail -f $JAR_REPOSITORY/nohup.out
 }
 
-## 변경확인
-check_df
-
 ## 시작
 start
+
+## 변경확인
+check_df
 
 ## 저장소 pull
 pull
