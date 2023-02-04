@@ -12,6 +12,7 @@ txtrst='\033[1;37m' # White
 
 PROJECT_PATH=/home/ubuntu/nextstep
 PROJECT_NAME=infra-subway-deploy
+JAR_REPOSITORY=$PROJECT_PATH/$PROJECT_NAME/build/libs
 BRANCH=$1
 PROFILE=$2
 
@@ -20,7 +21,7 @@ if [ $# -eq 1 ]; then
   echo -e "${txtylw}=======================================${txtrst}"
   echo -e "${txtgra}  << $0 스크립트 실행 실패!🧐 >>${txtrst}"
   echo -e ""
-  echo -e "${txtblu} ] 프로파일을 고르세요 : ${txtred}{ prod | local | test}"
+  echo -e "${txtblu} 프로파일을 고르세요 : ${txtred}{ prod | local | test }"
   echo -e "${txtylw}=======================================${txtrst}"
   exit
 fi
@@ -72,13 +73,16 @@ function pid() {
 
 function server() {
   echo -e "${txtgrn}=======================================${txtrst}"
-  JAR_REPOSITORY=$PROJECT_PATH/$PROJECT_NAME/build/libs
   cd $JAR_REPOSITORY || return
   JAR_NAME=$(ls -tr "$JAR_REPOSITORY"/ | grep jar)
-  echo -e "-Dspring.profiles.active=${PROFILE}"
-  echo -e "${JAR_REPOSITORY}${JAR_NAME}"
+  echo -e "${txtpur} ${PROFILE} 설정으로 시작합니다. "
   nohup java -jar -Dspring.profiles.active="${PROFILE}" "${JAR_REPOSITORY}"/"${JAR_NAME}" 1> nohup.out 2>&1  &
   echo -e "${txtgrn}=======================================${txtrst}"
+}
+
+function log() {
+  echo -e "${txtgrn}  << 로그 🎉 >>${txtrst}"
+  tail -f $JAR_REPOSITORY/nohup.out
 }
 
 ## 시작
@@ -96,3 +100,6 @@ pid
 
 ## 서버 시작
 server
+
+## 로그 출력
+log
