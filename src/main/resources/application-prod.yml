@@ -5,3 +5,4 @@ spring:
     url: jdbc:mysql://db:3306/subway?serverTimezone=Asia/Seoul
     username: root
     password: masterpw
+    
