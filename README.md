@@ -87,3 +87,79 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+
+```bash
+#!/bin/bash
+
+txtrst='\033[1;37m'
+txtred='\033[1;31m'
+txtylw='\033[1;33m'
+txtpur='\033[1;35m'
+txtgrn='\033[1;32m'
+txtgra='\033[1;30m'
+
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+EXECUTION_PATH=$(pwd)
+SHELL_SCRIPT_PATH=$(dirname $0)
+
+
+echo -e "Enter branch name"
+read BRANCH
+
+echo -e "Enter ENV name"
+read ENV
+
+echo -e "Enter .jar directory for running server"
+read JAR
+
+
+check_df() {
+  git fetch
+  local master=$(git rev-parse $BRANCH)
+  local remote=$(git rev-parse origin/$BRANCH)
+
+  echo $master
+  echo $remote
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 1
+  fi
+}
+
+pull() {
+  echo -e ""
+  echo -e "Github Pull Request..."
+  git pull origin ${BRANCH}
+}
+
+build_gradle() {
+  echo -e ""
+  echo -e "Build With Gradle..."
+  ./gradlew clean build
+}
+
+kill_process() {
+ echo -e ""
+ echo -e "Find Pid..."
+
+ local java_pid=$(pgrep -f java)
+ kill -2 $java_pid
+
+ sleep 3
+}
+
+run(){
+ nohup java -jar -Dspring.profiles.active=${ENV} ${JAR} &
+}
+
+check_df
+pull
+build_gradle
+kill_process
+run
+```
