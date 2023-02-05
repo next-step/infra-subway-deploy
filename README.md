@@ -60,12 +60,11 @@ npm run dev
 ### 2단계 - 배포하기
 1. TLS가 적용된 URL을 알려주세요
 
-- URL : 
+- URL : https://subway.ifjso.o-r.kr
 
 ---
 
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-
-
+- 배포 스크립트 파일 이름: deploy.sh
