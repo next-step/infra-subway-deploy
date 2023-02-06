@@ -75,4 +75,68 @@ npm run dev
 
 1. 작성한 배포 스크립트를 공유해주세요.
 
+```shell
+#!/bin/bash
 
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+SHELL_SCRIPT_PATH='/home/ubuntu/nextstep/infra-subway-deploy'
+BRANCH=$1
+PROFILE=$2
+
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e "${txtylw}=======================================${txtrst}"
+
+cd $SHELL_SCRIPT_PATH
+
+echo -e "origin/$BRANCH"
+function check_df() {
+  git fetch
+  master=$(git rev-parse $BRANCH)
+  remote=$(git rev-parse origin/$BRANCH)
+
+  if [[ $master == $remote ]]; then
+    echo -e "[$(date)] Nothing to do!!! 😫"
+    exit 1
+  fi
+}
+
+function pull() {
+  echo -e ""
+  echo -e ">>Pull Request 🏃♂️"
+  git pull
+}
+
+function build() {
+  echo -e ""
+  echo -e "Gradle Build"
+    ./gradlew clean build
+}
+
+function kill_app() {
+  echo -e ""
+  echo -e "kill java"
+  local PID=$(pgrep -f java)
+  kill -9 $PID
+}
+
+function start() {
+  echo -e ""
+  echo -e "start application"
+  nohup java -jar -Dspring.profiles.active=$PROFILE ./build/libs/subway-0.0.1-SNAPSHOT.jar 1> app.log 2>&1 &
+}
+
+check_df;
+pull;
+build;
+kill_app;
+start;
+```
