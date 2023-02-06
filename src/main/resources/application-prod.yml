@@ -1,0 +1,8 @@
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db:3306/subway?serverTimezone=Asia/Seoul
+    username: root
+    password: masterpw
+    
