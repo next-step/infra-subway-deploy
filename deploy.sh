@@ -1,11 +1,28 @@
-REPOSITORY=/build/libs
-CURRENT_PID=0
-LOG_FILE=log
+#!/bin/bash
+TODAY=$(date "+%Y%m%d")
+BRANCH=origin main
+JAR_LOCATION=build/libs/
+LOG_FILE=subway_$TODAY
+
+
+function selectProfile() {
+echo select a profile.
+read profile
+PROFILE=$profile
+
+if [ $PROFILE != "prod"  ];
+then 
+	echo "invalid profile"
+	exit
+else
+	echo "Start deployment with prod profile."
+fi
+}
 
 function pull() {
   echo -e ""
   echo -e ">> Pull Request <<"
-  git pull origin master
+  git pull $BRANCH
 }
 
 function gradleBuild() {
@@ -14,20 +31,9 @@ function gradleBuild() {
   ./gradlew clean build
 }
 
-function jar() {
-    echo -e ""
-    echo -e ">> jar repository <<"
-    cd $REPOSITORY
-}
-
-function getPid() {
-  echo -e ""
-  echo -e ">> pid <<"
-  CURRENT_PID=$(pgrep -f java)
-}
-
 function killProcess() {
   echo -e ""
+  CURRENT_PID=$(pgrep -f java)
   echo -e ">> kill process <<"
   kill -9 $CURRENT_PID
 }
@@ -35,17 +41,13 @@ function killProcess() {
 function deploy() {
     echo -e ""
     echo -e ">> deploy <<"
-    nohub java -jar -Dspring.profiles.active=prod subway-0.0.1-SNAPSHOT.jar
+    cd $JAR_LOCATION
+    nohup java -jar -Dspring.profiles.active=$PROFILE subway-0.0.1-SNAPSHOT.jar 1> $LOG_FILE 2>&1  &
 }
 
-
-echo -e " ============ script ============"
-pull;
-gradleBuild;
-getPid;
-if [ -z "$CURRENT_PID" ]; then
-	echo "> 현재 구동중인 애플리케이션이 없으므로 종료하지 않습니다."
-else
-	killProcess
-fi
-deploy;
+echo -e " ============ script =========== "
+selectProfile
+pull
+gradleBuild
+killProcess
+deploy
