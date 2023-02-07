@@ -1,0 +1,3 @@
+[submodule "src/main/resources/subway-config"]
+	path = src/main/resources/subway-config
+	url = git@github.com:HYEBPARK/subway-config.git
