@@ -11,7 +11,7 @@ read profile
 PROFILE=$profile
 
 if [ $PROFILE != "prod"  ];
-then 
+then
 	echo "invalid profile"
 	exit
 else
