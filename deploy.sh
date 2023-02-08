@@ -33,6 +33,9 @@ function check_df() {
   master=$(git rev-parse $BRANCH)
   remote=$(git rev-parse origin/$BRANCH)
 
+  echo "$master"
+  echo "$remote"
+
   if [[ $master == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!!  😫"
     exit 1
