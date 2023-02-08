@@ -25,7 +25,6 @@ function pull() {
         echo -e ""
         echo -e ">> Pull Request 🏃♂️ "
 }
-
 pull;
 
 function check_df() {
@@ -41,3 +40,4 @@ function check_df() {
     exit 1
   fi
 }
+check_df;
