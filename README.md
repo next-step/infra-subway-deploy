@@ -72,5 +72,92 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
+   #!/bin/bash
 
+## 변수 설정
+
+txtrst='\033[1;37m' # White
+txtred='\033[1;31m' # Red
+txtylw='\033[1;33m' # Yellow
+txtpur='\033[1;35m' # Purple
+txtgrn='\033[1;32m' # Green
+txtgra='\033[1;30m' # Gray
+
+EXECUTION_PATH=$(pwd)
+SHELL_SCRIPT_PATH=$(dirname $0)
+REPOSITORY=/home/ubuntu/nextstep/infra-subway-deploy
+JAR_DIR=${REPOSITORY}/build/libs
+BRANCH=$1
+PROFILE=$2
+
+## 조건 설정
+if [[ $# -ne 2 ]]
+then
+echo -e "${txtylw}=======================================${txtrst}"
+echo -e "${txtgrn}  << 스크립트 🧐 >>${txtrst}"
+echo -e ""
+echo -e "${txtgrn} $0 브랜치이름 ${txtred}{ prod | dev }"
+echo -e "${txtylw}=======================================${txtrst}"
+exit
+fi
+## move to repo folder
+function toRepo() {
+echo -e ""
+echo -e ">> Move to Repo folder 🏃♂️ "
+cd $REPOSITORY
+}
+
+## Repo pull
+function pull() {
+echo -e ""
+echo -e ">> Pull Request 🏃♂️ "
+git pull origin $BRANCH
+}
+
+## gradle build
+function build() {
+echo -e ""
+echo -e ">> Build 🏃♂️ "
+./gradlew clean build
+}
+
+## Find running java process && kill
+function killPid() {
+echo -e ""
+echo -e ">> killPid 🏃♂️ "
+currPid=$(pgrep -f java)
+echo -e "process ${currPid}"
+if [ -z $currPid ]; then
+echo "> No running java process"
+else
+kill -2 $currPid
+sleep 3
+fi
+}
+
+## Run java
+function runServer() {
+echo -e ""
+echo -e ">> Run server 🏃♂️ "
+jarFile=$(ls -tr $JAR_DIR/ | grep jar | tail -n 1)
+echo -e "-Dspring.profiles.active=${PROFILE}"
+echo -e "${JAR_DIR}${jarFile}"
+nohup java -jar -Dspring.profiles.active=${PROFILE} ${JAR_DIR}/${jarFile} 1> infra-log 2>&1 &
+}
+
+## Run Nginx
+function nginx() {
+echo -e ""
+echo -e ">> Run Nginx  "
+docker stop `docker ps -q -a`
+docker rm `docker ps -q -a`
+docker run -d -p 80:80 -p 443:443 --name proxy nextstep/reverse-proxy:0.0.2
+}
+
+nginx;
+toRepo;
+pull;
+build;
+killPid;
+runServer;
 
