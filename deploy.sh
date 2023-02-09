@@ -55,13 +55,14 @@ start_app;
 # crontab에서 실행하는 스크립트
 function check_df() {
   git fetch
-  master=$(git rev-parse $BRANCH)
-  remote=$(git rev-parse origin/$BRANCH)
+  master=$(git rev-parse step3)
+  remote=$(git rev-parse origin/step3)
 
   if [[ $master == $remote ]]; then
     echo -e "[$(date)] Nothing to do!!!  😫"
     exit 1
   else
-    git merge origin/$BRANCH
+    git merge origin/step3
+    ./deploy.sh step3 prod
   fi
 }
