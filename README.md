@@ -71,5 +71,5 @@ npm run dev
 ### 3단계 - 배포 스크립트 작성하기
 
 1. 작성한 배포 스크립트를 공유해주세요.
-
+- FILE: [deploy.sh](https://github.com/FKgk/infra-subway-deploy/blob/main/deploy.sh)
 
