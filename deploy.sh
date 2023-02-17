@@ -39,7 +39,7 @@ function stop() {
 function run() {
 	echo -e ">> deploy new server"
 	FILE_PATH=$(find ./build/* -name "*jar" -type f)
-	nohup java -jar $FILE_PATH -Dspring.profiles.active=$PROFILE -Dserver.port=$PORT 1> /var/log/$PROJECT_NAME.log 2>&1  &
+	nohup java -jar $FILE_PATH --spring.profiles.active=$PROFILE --server.port=$PORT 1> /var/log/$PROJECT_NAME.log 2>&1  &
 }
 
 init;
